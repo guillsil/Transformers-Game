@@ -37,6 +37,8 @@ public:
     NodoDiccionario* obtener_hijo_derecho();
 
     void cambiar_hijo_derecho(NodoDiccionario* hijo_derecho);
+
+    ~NodoDiccionario();
 };
 
 template<typename Clave, typename T>
@@ -108,4 +110,9 @@ void NodoDiccionario<Clave, T>::cambiar_hijo_derecho(NodoDiccionario* hijo_derec
     this->hijo_derecho = hijo_derecho;
 }
 
+template<typename Clave, typename T>
+NodoDiccionario<Clave, T>::~NodoDiccionario(){
+    delete hijo_derecho;
+    delete hijo_izquierdo;
+}
 #endif
