@@ -24,7 +24,7 @@ class Menu {
 public:
     //Pre: Menu debe haber sido correctamente inicializado.
     //Post: Se muestra por consola el menu principal del juego.
-    void mostrar_menu_principal();
+    void mostrar_menu_principal(const std::string &nombre);
 
     //Pre: personaje_elejido debe ser válido entre MEGATRON=0 u OPTIMUS=1.
     //Post: Se muestra por consola el menu principal del personaje.
@@ -81,6 +81,8 @@ public:
     //Pre: rareza debe ser una cadena no vaciá y alguno de los siguientes valores (común, raro, épico, legendario).
     //Post: Muestra por consola la rareza de un cristial.
     void mostrar_rareza(const std::string &rareza);
+
+    void mostrar_menu_inicial();
 };
 
 

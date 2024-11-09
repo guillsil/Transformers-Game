@@ -19,7 +19,8 @@ const std::string MENSAJE_CRISTAL_OBTENIDO = "EL cristal obtenido es: ";
 Juego::Juego(): personaje_seleccionado(PERSONAJE_INVALIDO), juego_en_curso(true), indice_estado('0') {}
 
 
-void Juego::procesar_menu_principal(const char& opcion_menu) {
+void Juego::procesar_menu_principal(const char& opcion_menu, const std::string &nombre) {
+    nombre_jugador = nombre;
     switch (opcion_menu) {
         case OPCION_1:
             menu.limpiar_menu();

@@ -23,7 +23,7 @@ public:
     Si la opción es '3' se sale del juego
     Si no ingresa ninguna de las opciones anteriores se vuelve a pedir que ingrese una opción.
     */
-    void procesar_menu_principal(const char &opcion_menu);
+    void procesar_menu_principal(const char &opcion_menu, const std::string &nombre);
 
     //Pre: -
     //Post: Devuelve TRue si el juego está en curso o false en caso contrario.
@@ -41,6 +41,8 @@ private:
     bool juego_en_curso;
     char indice_estado;
     std::string estado_personaje;
+
+    std::string nombre_jugador;
 
 
     //Pre: -

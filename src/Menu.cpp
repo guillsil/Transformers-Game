@@ -3,7 +3,7 @@
 //
 
 #include "Menu.hpp"
-const std::string MENU_PRINCIPAL = R"(
+const std::string TRANSFORMERS_LOGO = R"(
   ╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
   ║                                                                                                             ║
   ║   ████████╗██████╗   █████╗ ███╗   ██╗███████╗██████╗ ██████╗ ██████╗ ███╗   ███╗███████╗██████╗ ███████╗   ║
@@ -19,6 +19,14 @@ const std::string MENU_PRINCIPAL = R"(
   ║                         ██║   ██╔══██║██╔══╝       ██╚══██║██╔══██║██║╚██╔╝██║██╔══╝                        ║
   ║                         ██║   ██║  ██║███████╗     ███████║██║  ██║██║ ╚═╝ ██║███████╗                      ║
   ║                         ╚═╝   ╚═╝  ╚═╝╚══════╝     ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝                      ║
+  ║                                                                                                             ║)";
+const std::string MENU_INICIAL = R"(
+  ║                             ╔═════════════════════════════════════════╗                                     ║
+  ║                             ║             Ingrese su nombre:          ║                                     ║
+  ║                             ╚═════════════════════════════════════════╝                                     ║
+  ╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+    )";
+const std::string MENU_PRINCIPAL = R"(
   ║                                       Selecciona una opción:                                                ║
   ║                             ╔═════════════════════════════════════════╗                                     ║
   ║                             ║                                         ║                                     ║
@@ -213,7 +221,9 @@ const std::string MENU_INGRESAR_RUTA_ARCHIVO= R"(
 )";
 const std::string SIMBOLO_INGRESAR_MENSAJE = "-: ";
 
-void Menu::mostrar_menu_principal() {
+void Menu::mostrar_menu_principal(const std::string &nombre) {
+    mostrar_mensaje("Bienvenido " + nombre + " ¡prepárate para esta aventura!");
+    std::cout << TRANSFORMERS_LOGO;
     std::cout << MENU_PRINCIPAL << std::endl;
     std::cout<<SIMBOLO_INGRESAR_MENSAJE;
 }
@@ -302,6 +312,12 @@ void Menu::mostrar_estadisticas(const std::string &fuerza, const std::string &de
 void Menu::mostrar_rareza(const std::string &rareza) {
     std::cout << PARTE_SUPERIOR_RECUADRO;
     std::cout << "Rareza: " << rareza << std::endl;
+}
+
+void Menu::mostrar_menu_inicial() {
+    std::cout << TRANSFORMERS_LOGO;
+    std::cout << MENU_INICIAL;
+    std::cout << SIMBOLO_INGRESAR_MENSAJE;
 }
 
 
