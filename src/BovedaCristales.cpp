@@ -10,11 +10,27 @@ const std::string DIRECTORIO_BASE = "archivos";
 
 
 
-BovedaCristales::BovedaCristales(): cristales(TAMANIO_MAXIMO_DE_CRISTALES) {}
+BovedaCristales::BovedaCristales(): cristales(TAMANIO_MAXIMO_DE_CRISTALES) {
+}
 
 void BovedaCristales::almacenar_cristal(Cristal cristal_nuevo) {
     if (cristales.tamanio() < TAMANIO_MAXIMO_DE_CRISTALES) {
+        /*if (cristal_mas_poderoso.obtener_poder() < cristal_nuevo.obtener_poder()) {
+            cristal_mas_poderoso = cristal_nuevo;
+        }
         cristales.alta(cristal_nuevo);
+        */
+
+        size_t posicion = 0;
+        while (posicion < cristales.tamanio() && cristales[posicion].obtener_poder() > cristal_nuevo.obtener_poder()) {
+            posicion++;
+        }
+        cristales.alta(cristal_nuevo, posicion);
+        /*
+        if (cristal_nuevo.obtener_poder() > cristal_mas_poderoso.obtener_poder()) {
+            cristal_mas_poderoso = cristal_nuevo;
+        }
+        */
     }else {
         throw ExcepcionBovedaCristales(ERROR_LIMITE_DE_CRISTALES_EXCEDIDO);
     }
@@ -45,6 +61,20 @@ bool BovedaCristales::esta_vacia() {
 
 size_t BovedaCristales::tamanio() {
     return cristales.tamanio();
+}
+
+Cristal BovedaCristales::obtener_y_eliminar_cristal_mas_poderoso() {
+    try {
+        Cristal cristal_mas_poderoso = cristales[0];
+        cristales.baja(0);
+        return cristal_mas_poderoso;
+    } catch (ExcepcionVector& e) {
+        throw ExcepcionBovedaCristales(ERROR_CRISTALES_VACIO);
+    }
+}
+
+Cristal BovedaCristales::obtener_cristal_mas_poderoso() {
+    return cristales[0];
 }
 
 void BovedaCristales::exportar_cristales(std::string ruta) {

@@ -4,17 +4,17 @@
 
 #ifndef JUEGO_HPP
 #define JUEGO_HPP
-#include "OptimusPrime.hpp"
-#include "Megatron.hpp"
 #include "Menu.hpp"
 #include "Utilidades.hpp"
 #include "BovedaCristales.hpp"
 #include "FusionadorEnergon.hpp"
+#include "Personaje.hpp"
 
 
 class Juego {
 public:
     //Constructor
+    //El juego inicialmente te regala un cristal del Tipo Común con las estadísticas mínimas para que puedas empezar a jugar.
     Juego();
     /*
     Pre: (opcion_menu) debe ser un caracter válido entre '1' y '4'.
@@ -31,32 +31,18 @@ public:
 
 
 private:
-    OptimusPrime optimus;
-    Megatron megatron;
+    Personaje personaje;
     Menu menu;
     Utilidades utilidades;
-    Personaje personaje_seleccionado;
     BovedaCristales boveda;
     FusionadorEnergon fusionador;
     bool juego_en_curso;
-    char indice_estado;
-    std::string estado_personaje;
-
     std::string nombre_jugador;
-
 
     //Pre: -
     //Post: El personaje elegido responde al mensaje recibido.
     void respuesta_personaje(const std::string &mensaje);
 
-
-    //Pre: -
-    //Post: Se actualiza el estado interno del personaje según el valor de indice_estado.
-    void obtener_estado_personaje();
-
-    //Pre: -
-    //Post: Actualiza el estado del personaje según la opcion seleccionada
-    void actualizar_estado_personaje();
 
     //Pre: -
     //Post: El personaje elegido sugiere una fusion con basado en su estado actual.
@@ -98,7 +84,6 @@ private:
     //Pre: -
     //Post: Maneja el flujo del personaje hasta que el mismo decida salir.
     void interactuar_con_personaje();
-
 
     //Pre: -
     //Post: Devuelve true si la entrada es alguno de estos valores (COMÚN, RARO, ÉPICO o LEGENDARIO), o false en caso contrario.

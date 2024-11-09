@@ -4,19 +4,19 @@
 
 
 int main() {
-    Juego juego;
-    Menu menu;
     char opcion_menu;
     std::string nombre_jugador;
+    Juego juego;
+    Menu menu;
+
     menu.limpiar_menu();
+    menu.mostrar_menu_inicial();
+    std::cin >> nombre_jugador;
     while (juego.jugando()) {
-        menu.mostrar_menu_inicial();
-        std::cin >> nombre_jugador;
         menu.limpiar_menu();
         menu.mostrar_menu_principal(nombre_jugador);
         std::cin >> opcion_menu;
         juego.procesar_menu_principal(opcion_menu, nombre_jugador);
     }
-
     return 0;
 }

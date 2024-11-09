@@ -12,8 +12,10 @@ const char OPCION_3 = '3';
 const char OPCION_4 = '4';
 const char OPCION_5 = '5';
 const char OPCION_6 = '6';
+const char OPCION_7 = '7';
+const char OPCION_8 = '8';
 
-enum Personaje {
+enum Protagonista {
     MEGATRON,
     OPTIMUS_PRIME,
     PERSONAJE_INVALIDO
@@ -82,6 +84,8 @@ public:
     //Post: Muestra por consola la rareza de un cristial.
     void mostrar_rareza(const std::string &rareza);
 
+    //Pre: -
+    //Post: Imprime por consola el menu inicial del juego en el cual se pide al usuario que ingrese su nombre.
     void mostrar_menu_inicial();
 };
 

@@ -53,8 +53,19 @@ public:
     //Post: Devuelve el tamaño de la bóveda.
     size_t tamanio();
 
+    //Pre:
+    //Post:
+    Cristal obtener_y_eliminar_cristal_mas_poderoso();
+
+    //Pre: -
+    //Post: Devuelve el Cristal más poderoso que se encuentra en la bóveda que siempre se encontrara en la primera posición de
+    //la bóveda, ya que la bóveda está ordenada de manera descendente.
+    Cristal obtener_cristal_mas_poderoso();
+
 private:
     Vector<Cristal> cristales;
+
+    // Cristal cristal_mas_poderoso;
 
     Menu menu;
 

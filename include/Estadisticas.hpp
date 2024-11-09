@@ -32,6 +32,10 @@ public:
     size_t obtener_velocidad();
 
     //Pre: -
+    //Post: Devuelve el valor del poder.
+    size_t obtener_poder();
+
+    //Pre: -
     //Post: Imprimé por consola las estadísticas (fuerza, defensa, velocidad)
     void mostrar();
 
@@ -39,6 +43,7 @@ private:
     size_t fuerza;
     size_t defensa;
     size_t velocidad;
+    size_t poder;
 
     Menu menu;
 };

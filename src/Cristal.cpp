@@ -68,6 +68,10 @@ size_t Cristal::obtener_velocidad() {
     return estadisticas.obtener_velocidad();
 }
 
+size_t Cristal::obtener_poder() {
+    return estadisticas.obtener_poder();
+}
+
 std::string Cristal::convertir_rareza_a_string() {
     switch (rareza) {
         case COMUN:
@@ -81,6 +85,8 @@ std::string Cristal::convertir_rareza_a_string() {
         default: return DESCONOCIDO_CADENA;
     }
 }
+
+
 
 void Cristal::mostrar() {
     menu.mostrar_rareza(convertir_rareza_a_string());

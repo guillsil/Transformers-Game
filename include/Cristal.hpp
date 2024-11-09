@@ -56,6 +56,10 @@ public:
     std::string convertir_rareza_a_string();
 
     //Pre: -
+    //Post: Devuelve el poder de un cristal que es la suma de sus Estadísticas es decir es la suma entre la fuerza, velocidad y defensa.
+    size_t obtener_poder();
+
+    //Pre: -
     //Post: Imprime tanto la rareza del cristal así como sus estadísticas por consola.
     void mostrar();
 
