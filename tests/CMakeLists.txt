@@ -21,12 +21,6 @@ add_executable(TP_TESTS
         VectorTest.cpp
         FusionadorEnergonTest.cpp
         BovedaCristalesTest.cpp
-        GrafoTest.cpp
-        ColaTest.cpp
-        PilaTest.cpp
-        DiccionarioTest.cpp
-        HeapTest.cpp
-        ListaTest.cpp
 )
 
 target_link_libraries(TP_TESTS

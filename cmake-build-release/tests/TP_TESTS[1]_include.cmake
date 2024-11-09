@@ -1,0 +1,5 @@
+if(EXISTS "/home/guille/Documents/tp2-2c2024-guillsil/cmake-build-release/tests/TP_TESTS[1]_tests.cmake")
+  include("/home/guille/Documents/tp2-2c2024-guillsil/cmake-build-release/tests/TP_TESTS[1]_tests.cmake")
+else()
+  add_test(TP_TESTS_NOT_BUILT TP_TESTS_NOT_BUILT)
+endif()

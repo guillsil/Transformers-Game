@@ -1,0 +1,7 @@
+# This is a generated file and its contents are an internal implementation detail.
+# The patch step will be re-executed if anything in this file changes.
+# No other meaning or use of this file is supported.
+
+command (connected)=/opt/clion/clion/bin/cmake/linux/x64/bin/cmake;-Dcan_fetch=YES;-P;/home/guille/Documents/tp2-2c2024-guillsil/cmake-build-release/_deps/googletest-subbuild/googletest-populate-prefix/tmp/googletest-populate-gitupdate.cmake
+command (disconnected)=/opt/clion/clion/bin/cmake/linux/x64/bin/cmake;-Dcan_fetch=NO;-P;/home/guille/Documents/tp2-2c2024-guillsil/cmake-build-release/_deps/googletest-subbuild/googletest-populate-prefix/tmp/googletest-populate-gitupdate.cmake
+work_dir=/home/guille/Documents/tp2-2c2024-guillsil/cmake-build-release/_deps/googletest-src
