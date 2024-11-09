@@ -3,6 +3,12 @@
 
 #include <cstddef>
 #include <stdexcept>
+#include <iostream>
+
+const std::string ERROR_VECTOR_VACIO = "VectorDinamico:: Vector Vacío.";
+const std::string ERROR_INDICE_FUERA_DE_RANGO = "VectorDinamico:: Posición fuera de rango.";
+const size_t TAMANIO_INICIAL_VECTOR = 20;
+
 
 class ExcepcionVector : public std::runtime_error {
 public:
@@ -13,16 +19,41 @@ public:
     }
 };
 
+
+
 template<typename T>
 class Vector {
 private:
     T* datos;
-    size_t tamanio_logico;
-    size_t tamanio_fisico;
+    size_t tamanio_logico; // cantidad_de_elementos
+    size_t tamanio_fisico; // tamanio
+    const size_t tamanio_inicial; // Constante donde se guardara el tamaño inicial del vector que el usurio ingresa. Si no ingresa el tamaño inicial el que ocupara su lugar será TAMANIO_INICIAL_VECTOR que por defecto es de 20.
+
+    void redimensionar(const size_t &nuevo_tamanio);
 
 public:
     // Constructor.
     Vector();
+
+    //Constructor con atributo para crear arreglo y colocar el tamanio_fisico en "tamanio_inicial"
+    Vector(size_t tamanio_inicial);
+
+    //Constructor con atributo para crear arreglo y colocar el tamanio_fisico en "tamanio_inicial" y tambien con otro
+    //atributo que represento el dato con el cual se desea inicializar.
+    Vector(size_t tamanio_inicial, const T &inicializador);
+
+    // Constructor de copia (ya implementado).
+    Vector(const Vector& vector);
+
+    // Destructor.
+    ~Vector();
+
+    // PRE: El índice debe ser menor que la cantidad de datos.
+    // POST: Devuelve una referencia al dato indicado.
+    T& operator[](size_t indice);
+
+    // Operador de asignación (ya implementado).
+    Vector& operator=(const Vector& vector);
 
     // PRE: -
     // POST: Agrega el dato al final del vector.
@@ -58,58 +89,146 @@ public:
     // POST: Devuelve la cantidad de datos del vector.
     size_t tamanio();
 
-    // PRE: El índice debe ser menor que la cantidad de datos.
-    // POST: Devuelve una referencia al dato indicado.
-    T& operator[](size_t indice);
+    //Pre:-
+    //Post: Imprime por consola los elementos del vector
+    void mostrar();
 
-    // Constructor de copia (ya implementado).
-    Vector(const Vector& vector);
+    void limpiar();
 
-    // Operador de asignación (ya implementado).
-    Vector& operator=(const Vector& vector);
-
-    // Destructor.
-    ~Vector();
+    void invertir();
 };
 
 template<typename T>
-Vector<T>::Vector() {
+void Vector<T>::redimensionar(const size_t &nuevo_tamanio) {
+    T * nuevo_vector = new T[nuevo_tamanio];
+    for (size_t i = 0; i < tamanio_logico; i++) {
+        nuevo_vector[i] = datos[i];
+    }
+    delete[] datos;
+    datos = nuevo_vector;
+    tamanio_fisico = nuevo_tamanio;
+}
+
+template<typename T>
+Vector<T>::Vector(): datos(new T[TAMANIO_INICIAL_VECTOR]), tamanio_logico(0), tamanio_fisico(TAMANIO_INICIAL_VECTOR),
+                     tamanio_inicial(TAMANIO_INICIAL_VECTOR) {
+}
+
+template<typename T>
+Vector<T>::Vector(size_t tamanio_inicial): datos(new T[tamanio_inicial]), tamanio_logico(0),
+                                           tamanio_fisico(tamanio_inicial), tamanio_inicial(tamanio_inicial) {
+}
+
+template<typename T>
+Vector<T>::Vector(size_t tamanio_inicial, const T &inicializador): datos(new T[tamanio_inicial]), tamanio_logico(0),
+                                           tamanio_fisico(tamanio_inicial), tamanio_inicial(tamanio_inicial) {
+    for (size_t i = 0; i < tamanio_inicial; i++) {
+        datos[i] = inicializador;
+    }
 }
 
 template<typename T>
 void Vector<T>::alta(T dato) {
+    if (tamanio_logico == tamanio_fisico) {
+        redimensionar(tamanio_fisico + tamanio_fisico/2);
+    }
+    datos[tamanio_logico] = dato;
+    tamanio_logico++;
 }
 
 template<typename T>
 void Vector<T>::alta(T dato, size_t indice) {
+    if (indice > tamanio_logico) {
+        throw  ExcepcionVector(ERROR_INDICE_FUERA_DE_RANGO);
+    }
+    if (tamanio_logico == tamanio_fisico) {
+        redimensionar(tamanio_fisico + tamanio_fisico/2);
+    }
+    for (size_t j = tamanio_logico; j > indice; j--) {
+                datos[j] = datos[j - 1];
+    }
+    datos[indice] = dato;
+    tamanio_logico++;
 }
 
 template<typename T>
 T Vector<T>::baja() {
+    if (tamanio_logico == 0) {
+        throw ExcepcionVector(ERROR_VECTOR_VACIO);
+    }
+    T dato = datos[tamanio_logico-1];
+    tamanio_logico--;
+    if (tamanio_logico < tamanio_fisico/2 && tamanio_fisico > tamanio_inicial) {
+        redimensionar(tamanio_fisico / 2);
+    }
+    return dato;
 }
 
 template<typename T>
 T Vector<T>::baja(size_t indice) {
+    if (indice >= tamanio_logico) {
+        throw ExcepcionVector(ERROR_INDICE_FUERA_DE_RANGO);
+    }
+    T dato = datos[indice];
+    for (size_t j = indice; j < tamanio_logico - 1; j++) {
+        datos[j] = datos[j + 1];
+    }
+    tamanio_logico--;
+
+    if (tamanio_logico < tamanio_fisico/2 && tamanio_fisico > tamanio_inicial) {
+        redimensionar(tamanio_fisico / 2);
+    }
+    return dato;
 }
 
 template<typename T>
 bool Vector<T>::vacio() {
+    return tamanio_logico == 0;
 }
 
 template<typename T>
 size_t Vector<T>::tamanio() {
+    return tamanio_logico;
+}
+
+template<typename T>
+void Vector<T>::mostrar() {
+    if (tamanio_logico == 0) {
+        throw ExcepcionVector(ERROR_VECTOR_VACIO);
+    }
+    for (size_t i = 0; i < tamanio_logico; i++) {
+        std::cout << datos[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+template<typename T>
+void Vector<T>::limpiar() {
+    tamanio_logico = 0;
+}
+
+template<typename T>
+void Vector<T>::invertir() {
+    for (size_t i = 0; i < tamanio_logico / 2; i++) {
+        T aux = datos[i];
+        datos[i] = datos[tamanio_logico - i - 1];
+        datos[tamanio_logico - i -1] = aux;
+    }
 }
 
 template<typename T>
 T& Vector<T>::operator[](size_t indice) {
+    return datos[indice];
 }
 
 template<typename T>
 Vector<T>::~Vector() {
+    delete[] datos;
 }
 
+// Ya implementado. No hace falta modificarlo.
 template<typename T>
-Vector<T>::Vector(const Vector& vector) {
+Vector<T>::Vector(const Vector& vector): tamanio_inicial(0) {
     datos = nullptr;
     tamanio_logico = vector.tamanio_logico;
     tamanio_fisico = vector.tamanio_fisico;
@@ -121,6 +240,7 @@ Vector<T>::Vector(const Vector& vector) {
     }
 }
 
+// Ya implementado. No hace falta modificarlo.
 template<typename T>
 Vector<T>& Vector<T>::operator=(const Vector& vector) {
     if (this != &vector) {

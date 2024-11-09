@@ -2,8 +2,8 @@
 #define CAMINOMINIMO_HPP
 
 #include <cstddef>
-#include "Matriz.hpp"
-#include "Vector.hpp"
+#include "../Matriz.hpp"
+#include "../Vector.hpp"
 
 const int INFINITO = 999;
 

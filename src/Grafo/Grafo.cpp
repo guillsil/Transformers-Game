@@ -1,6 +1,8 @@
-#include "Grafo.hpp"
-#include "FloydWarshall.hpp"
-#include "Dijkstra.hpp"
+#include "../../include/TDAs/Grafo/Dijkstra.hpp"
+#include "../../include/TDAs/Grafo/Grafo.hpp"
+#include "../../include/TDAs/Grafo/FloydWarshall.hpp"
+#include "../../include/TDAs/Matriz.hpp"
+#include "../../include/TDAs/Vector.hpp"
 
 Grafo::Grafo() {
     vertices = 0;

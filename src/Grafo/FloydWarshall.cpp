@@ -1,4 +1,6 @@
-#include "FloydWarshall.hpp"
+#include "../../include/TDAs/Grafo/FloydWarshall.hpp"
+#include "../../include/TDAs/Vector.hpp"
+#include "../../include/TDAs/Matriz.hpp"
 
 FloydWarshall::FloydWarshall() {
 }

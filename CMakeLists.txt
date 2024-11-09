@@ -21,12 +21,16 @@ set(ARCHIVOS_FUENTE
         src/Juego.cpp
         src/Menu.cpp
         src/Utilidades.cpp
-        include/Vector.hpp
+        include/TDAs/Vector.hpp
         src/GeneradorAleatorio.cpp
         src/FusionadorEnergon.cpp
         src/Cristal.cpp
         src/BovedaCristales.cpp
         src/Estadisticas.cpp
+        src/Personaje.cpp
+        src/Grafo/Dijkstra.cpp
+        src/Grafo/Grafo.cpp
+        src/Grafo/FloydWarshall.cpp
 )
 
 add_executable(AYED_TP2_2C2024

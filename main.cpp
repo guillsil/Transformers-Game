@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Juego.hpp"
-#include "Vector.hpp"
 
 
 int main() {

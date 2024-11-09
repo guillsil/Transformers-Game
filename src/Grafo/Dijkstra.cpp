@@ -1,4 +1,6 @@
-#include "Dijkstra.hpp"
+#include "../../include/TDAs/Grafo/Dijkstra.hpp"
+#include "../../include/TDAs/Vector.hpp"
+#include "../../include/TDAs/Matriz.hpp"
 
 Dijkstra::Dijkstra() {
 }
