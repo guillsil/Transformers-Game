@@ -30,12 +30,25 @@ private:
     NodoDiccionario<Clave, T>* raiz;
     std::size_t cantidad_datos;
 
+    //Post: Calcula la altura del arbol
     int calcular_altura(NodoDiccionario<Clave, T>* nodo);
+    
+    //Post: Calcula el ancho
     Vector<T> ancho_recursivo(NodoDiccionario<Clave, T>* nodo);
+    
+    //Post: obtiene los nodos que hay en cada nivel
     void obtener_nodos_nivel(NodoDiccionario<Clave, T>* nodo, int nivel, Vector<T>& resultado);
+    
+    //Post: Da de alta un dato
     void alta_recursiva(NodoDiccionario<Clave, T>* nodo, Clave clave, T dato);
+    
+    //Post: Busca un dato y dependiendo de que tenga que hacer, lo elimina o solo lo obtiene
     T busqueda_recursiva(NodoDiccionario<Clave, T>* nodo, Clave clave, bool que_hacer);
+    
+    //Post: Ordena al arbol puede ser tanto PRE - POST - IN ORDER
     void orden_recursivo(Vector<T> vector, NodoDiccionario<Clave, T>* nodo, int tipo_orden);
+    
+    //Post: Calcula el inmediato sucesor de un elemento del arbol
     NodoDiccionario<Clave, T>* inmediato_sucesor(NodoDiccionario<Clave, T>* nodo, Clave clave);
 public:
     // Constructor.
@@ -55,19 +68,19 @@ public:
     T& operator[](Clave clave);
 
     // Pre: -
-    // Post: Devuelve el total inorder.
+    // Post: Devuelve el recorrido inorder.
     Vector<T> inorder();
 
     // Pre: -
-    // Post: Devuelve el total preorder.
+    // Post: Devuelve el recorrido preorder.
     Vector<T> preorder();
 
     // Pre: -
-    // Post: Devuelve el total postorder.
+    // Post: Devuelve el recorrido postorder.
     Vector<T> postorder();
 
     // Pre: -
-    // Post: Devuelve el total en ancho (por niveles).
+    // Post: Devuelve el recorrido en ancho (por niveles).
     Vector<T> ancho();
 
     // Pre: -
