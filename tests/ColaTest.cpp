@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "Cola.hpp"
+#include "../include/TDAs/Cola.hpp"
 
 class ColaTest : public testing::Test {
 protected:

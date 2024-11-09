@@ -31,6 +31,8 @@ set(ARCHIVOS_FUENTE
         src/Grafo/Dijkstra.cpp
         src/Grafo/Grafo.cpp
         src/Grafo/FloydWarshall.cpp
+        include/TDAs/Grafo/TuplaVerticeDistancia.hpp
+        src/Grafo/TuplaVerticeDistancia.cpp
 )
 
 add_executable(AYED_TP2_2C2024

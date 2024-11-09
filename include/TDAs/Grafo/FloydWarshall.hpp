@@ -17,6 +17,7 @@ public:
 
     // Destructor.
     ~FloydWarshall() override;
+
 };
 
 #endif

@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "Diccionario.hpp"
+#include "../include/TDAs/Diccionario.hpp"
 
 class DiccionarioTest : public testing::Test {
 protected:

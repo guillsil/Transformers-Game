@@ -218,7 +218,13 @@ void Vector<T>::invertir() {
 
 template<typename T>
 T& Vector<T>::operator[](size_t indice) {
-    return datos[indice];
+    if (tamanio_logico == 0) {
+        throw ExcepcionVector(ERROR_VECTOR_VACIO);
+    }
+    if (indice < tamanio_logico) {
+        return datos[indice];
+    }
+    throw ExcepcionVector(ERROR_INDICE_FUERA_DE_RANGO);
 }
 
 template<typename T>

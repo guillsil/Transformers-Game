@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "Lista.hpp"
+#include "../include/TDAs/Lista.hpp"
 
 class ListaTest : public testing::Test {
 protected:

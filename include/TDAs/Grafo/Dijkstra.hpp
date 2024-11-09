@@ -1,6 +1,7 @@
 #ifndef DIJKSTRA_HPP
 #define DIJKSTRA_HPP
 
+
 #include "CaminoMinimo.hpp"
 
 class Dijkstra : public CaminoMinimo {
@@ -17,6 +18,8 @@ public:
 
     // Destructor.
     ~Dijkstra() override;
+private:
+    Vector<size_t> reconstruir_camino(Vector<size_t>& padre, size_t origen, size_t destino);
 };
 
 #endif
