@@ -1,4 +1,0 @@
-/opt/clion/clion/bin/cmake/linux/x64/bin/cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_MAKE_PROGRAM=/opt/clion/clion/bin/ninja/linux/x64/ninja -G Ninja -S /home/guille/Documents/tp2-2c2024-guillsil -B /home/guille/Documents/tp2-2c2024-guillsil/cmake-build-release
--- Configuring done (0.4s)
--- Generating done (0.0s)
--- Build files have been written to: /home/guille/Documents/tp2-2c2024-guillsil/cmake-build-release

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "../include/TDAs/Vector.hpp"
+#include "Vector.hpp"
 #include <vector>
 #include <sstream>
 

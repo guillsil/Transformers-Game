@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../include/TDAs/Pila.hpp"
+#include "Pila.hpp"
 
 class PilaTest : public testing::Test {
 protected:

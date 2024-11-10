@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../include/TDAs/Grafo/Grafo.hpp"
+#include "Grafo.hpp"
 
 class GrafoTest : public testing::Test {
 protected:
