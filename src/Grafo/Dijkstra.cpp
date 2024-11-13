@@ -1,9 +1,9 @@
-#include "../../include/TDAs/Grafo/Dijkstra.hpp"
-#include "../../include/TDAs/Vector.hpp"
-#include "../../include/TDAs/Matriz.hpp"
-#include "../../include/TDAs/Grafo/TuplaVerticeDistancia.hpp"
-#include <iostream>
 #include <queue>
+#include "../../include/TDAs/Grafo/Dijkstra.hpp"
+#include "../../include/TDAs/Matriz.hpp"
+#include "../../include/TDAs/Vector.hpp"
+#include "../../include/TDAs/Grafo/TuplaVerticeDistancia.hpp"
+
 
 const int INICIALIZADOR_PADRE = 0;
 
@@ -15,6 +15,7 @@ Vector<size_t> Dijkstra::calcular_camino_minimo(Matriz<bool>& matriz_adyacencia,
     Vector<bool> visitados(vertices, false);
     Vector<size_t> padre(vertices, INICIALIZADOR_PADRE);
     distancias[origen] = 0;
+
     std::priority_queue<TuplaVerticeDistancia> cola_prioridad;
     cola_prioridad.push(TuplaVerticeDistancia(origen, 0));
 
@@ -22,7 +23,7 @@ Vector<size_t> Dijkstra::calcular_camino_minimo(Matriz<bool>& matriz_adyacencia,
         TuplaVerticeDistancia actual = cola_prioridad.top();
         cola_prioridad.pop();
 
-        int vertice_actual = static_cast<int>(actual.obtener_vertice());
+        size_t vertice_actual = actual.obtener_vertice();
 
         if (visitados[vertice_actual]) continue;
         visitados[vertice_actual] = true;
@@ -39,19 +40,27 @@ Vector<size_t> Dijkstra::calcular_camino_minimo(Matriz<bool>& matriz_adyacencia,
             }
         }
     }
+    // Si el destino no es alcanzable, devolvemos un vector vacío
+    if (distancias[destino] == INFINITO) {
+        return Vector<size_t>();
+    }
     return reconstruir_camino(padre, origen, destino);
 }
 
+
 Vector<size_t> Dijkstra::reconstruir_camino(Vector<size_t> &padre, size_t origen, size_t destino) {
     Vector<size_t> camino_minimo;
-    if (padre[destino] == INICIALIZADOR_PADRE) {  return camino_minimo;}
+    if (padre[destino] == INICIALIZADOR_PADRE && destino != origen) {
+        return camino_minimo;
+    }
 
-    for (size_t v = destino; v != INICIALIZADOR_PADRE; v = padre[v]) {
-        if (v == origen) {
+    while (destino != origen) {
+        if (destino == origen) {
             camino_minimo.limpiar();
             return camino_minimo;
         }
-        camino_minimo.alta(v);
+        camino_minimo.alta(destino);
+        destino = padre[destino];
     }
     camino_minimo.alta(origen);
     camino_minimo.invertir();
