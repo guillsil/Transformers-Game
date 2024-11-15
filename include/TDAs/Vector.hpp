@@ -4,7 +4,6 @@
 #include <cstddef>
 #include <stdexcept>
 #include <iostream>
-
 const std::string ERROR_VECTOR_VACIO = "VectorDinamico:: Vector Vacío.";
 const std::string ERROR_INDICE_FUERA_DE_RANGO = "VectorDinamico:: Posición fuera de rango.";
 const size_t TAMANIO_INICIAL_VECTOR = 20;
@@ -35,12 +34,11 @@ public:
     // Constructor.
     Vector();
 
-    //Constructor con atributo para crear arreglo y colocar el tamanio_fisico en "tamanio_inicial"
+    //Constructor con atributo para un tamaño inicial.
     Vector(size_t tamanio_inicial);
 
-    //Constructor con atributo para crear arreglo y colocar el tamanio_fisico en "tamanio_inicial" y tambien con otro
-    //atributo que represento el dato con el cual se desea inicializar.
-    Vector(size_t tamanio_inicial, const T &inicializador);
+    //Contructor con un inicializador.
+    Vector(size_t tamanio_inicial, T inicializador);
 
     // Constructor de copia (ya implementado).
     Vector(const Vector& vector);
@@ -93,8 +91,12 @@ public:
     //Post: Imprime por consola los elementos del vector
     void mostrar();
 
+    //Pre: -
+    //Post: Elimina todos los elementos del vector, estableciendo su tamaño lógico en 0.
     void limpiar();
 
+    //Pre: -
+    //Post: Invierte el orden de los elementos del vector.
     void invertir();
 };
 
@@ -119,10 +121,9 @@ Vector<T>::Vector(size_t tamanio_inicial): datos(new T[tamanio_inicial]), tamani
                                            tamanio_fisico(tamanio_inicial), tamanio_inicial(tamanio_inicial) {
 }
 
-template<typename T>
-Vector<T>::Vector(size_t tamanio_inicial, const T &inicializador): datos(new T[tamanio_inicial]), tamanio_logico(0),
-                                           tamanio_fisico(tamanio_inicial), tamanio_inicial(tamanio_inicial) {
-    for (size_t i = 0; i < tamanio_inicial; i++) {
+template <typename T>
+Vector<T>::Vector(size_t tamanio_inicial, T inicializador): datos(new T[tamanio_inicial]), tamanio_logico(tamanio_inicial), tamanio_fisico(tamanio_inicial*2), tamanio_inicial(tamanio_inicial) {
+    for (size_t i = 0; i < tamanio_inicial; i++){
         datos[i] = inicializador;
     }
 }
@@ -202,29 +203,36 @@ void Vector<T>::mostrar() {
     std::cout << std::endl;
 }
 
-template<typename T>
-void Vector<T>::limpiar() {
+template <typename T>
+void Vector<T>::limpiar(){
     tamanio_logico = 0;
+    if (tamanio_fisico > tamanio_inicial){
+        redimensionar(tamanio_inicial);
+    }
 }
 
-template<typename T>
-void Vector<T>::invertir() {
-    for (size_t i = 0; i < tamanio_logico / 2; i++) {
-        T aux = datos[i];
-        datos[i] = datos[tamanio_logico - i - 1];
-        datos[tamanio_logico - i -1] = aux;
+template <typename T>
+void Vector<T>::invertir(){
+    if (tamanio_logico == 0){
+        throw ExcepcionVector(ERROR_VECTOR_VACIO);
+    }
+    size_t i = 0;
+    size_t j = tamanio_logico - 1;
+    while (i < j){
+        T temp = datos[i];
+        datos[i] = datos[j];
+        datos[j] = temp;
+        i++;
+        j--;
     }
 }
 
 template<typename T>
 T& Vector<T>::operator[](size_t indice) {
-    if (tamanio_logico == 0) {
-        throw ExcepcionVector(ERROR_VECTOR_VACIO);
+    if (tamanio_logico == 0 || indice >= tamanio_logico || indice > tamanio_fisico) {
+        throw ExcepcionVector(ERROR_INDICE_FUERA_DE_RANGO);
     }
-    if (indice < tamanio_logico) {
-        return datos[indice];
-    }
-    throw ExcepcionVector(ERROR_INDICE_FUERA_DE_RANGO);
+    return datos[indice];
 }
 
 template<typename T>
