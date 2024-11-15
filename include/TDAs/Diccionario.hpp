@@ -5,12 +5,11 @@
 #include <stdexcept>
 #include "NodoDiccionario.hpp"
 #include "Vector.hpp"
+#include <iostream>
 
-const bool BAJA = true;
-const bool BUSQUEDA = false;
 const int PREORDER = 0;
-const int POSTORDER = 0;
-const int INORDER = 0;
+const int POSTORDER = 1;
+const int INORDER = 2;
 
 class ExcepcionDiccionario : public std::runtime_error {
 public:
@@ -29,24 +28,21 @@ class Diccionario {
 private:
     NodoDiccionario<Clave, T>* raiz;
     std::size_t cantidad_datos;
-
-    //Post: Calcula la altura del arbol
-    int calcular_altura(NodoDiccionario<Clave, T>* nodo);
-    
     //Post: Calcula el ancho
-    Vector<T> ancho_recursivo(NodoDiccionario<Clave, T>* nodo);
+    void ancho_recursivo(NodoDiccionario<Clave, T>* nodo, Vector<T>& vector, int nivel, int nivel_actual);
     
-    //Post: obtiene los nodos que hay en cada nivel
-    void obtener_nodos_nivel(NodoDiccionario<Clave, T>* nodo, int nivel, Vector<T>& resultado);
+    int obtenerAltura(NodoDiccionario<Clave, T>* nodo);
     
     //Post: Da de alta un dato
     void alta_recursiva(NodoDiccionario<Clave, T>* nodo, Clave clave, T dato);
     
     //Post: Busca un dato y dependiendo de que tenga que hacer, lo elimina o solo lo obtiene
-    T busqueda_recursiva(NodoDiccionario<Clave, T>* nodo, Clave clave, bool que_hacer);
+    T& busqueda_recursiva(NodoDiccionario<Clave, T>* nodo, Clave clave);
+
+    T baja_recursiva(NodoDiccionario<Clave, T>* nodo, Clave clave);
     
     //Post: Ordena al arbol puede ser tanto PRE - POST - IN ORDER
-    void orden_recursivo(Vector<T> vector, NodoDiccionario<Clave, T>* nodo, int tipo_orden);
+    void orden_recursivo(Vector<T>& vector, NodoDiccionario<Clave, T>* nodo, int tipo_orden);
     
     //Post: Calcula el inmediato sucesor de un elemento del arbol
     NodoDiccionario<Clave, T>* inmediato_sucesor(NodoDiccionario<Clave, T>* nodo, Clave clave);
@@ -118,43 +114,46 @@ void Diccionario<Clave, T>::alta(Clave clave, T dato){
 
 template<typename Clave, typename T>
 T Diccionario<Clave, T>::baja(Clave clave) {
-    return busqueda_recursiva(raiz, clave, BAJA);
+    return baja_recursiva(raiz, clave);
 }
 
 template<typename Clave, typename T>
 T& Diccionario<Clave, T>::operator[](Clave clave) {
-    T valor_buscado = busqueda_recursiva(raiz, clave, BUSQUEDA); 
-    return valor_buscado;
+    return busqueda_recursiva(raiz, clave);
 }
 
 template<typename Clave, typename T>
 Vector<T> Diccionario<Clave, T>::inorder() {
     Vector<T> vec;
-    orden_recursivo(vec, raiz, INORDER);
+    if(!vacio())
+        orden_recursivo(vec, raiz, INORDER);
     return vec;
 }
 
 template<typename Clave, typename T>
 Vector<T> Diccionario<Clave, T>::preorder() {
     Vector<T> vec;
-    orden_recursivo(vec, raiz, PREORDER);
+    if(!vacio())
+        orden_recursivo(vec, raiz, PREORDER);
     return vec;
 }
 
 template<typename Clave, typename T>
 Vector<T> Diccionario<Clave, T>::postorder() {
     Vector<T> vec;
-    orden_recursivo(vec, raiz, POSTORDER);
+    if(!vacio())
+        orden_recursivo(vec, raiz, POSTORDER);
     return vec;
 }
 
 template<typename Clave, typename T>
 Vector<T> Diccionario<Clave, T>::ancho() {
-    Vector<T> vec;
-    if(raiz){
-        vec = ancho_recursivo(raiz);
+    Vector<T> vector;
+    int altura = obtenerAltura(raiz);
+    for(int i = 1; i <= altura + 1; i++){
+        ancho_recursivo(raiz, vector, 1, i);
     }
-    return vec;
+    return vector;
 }
 
 template<typename Clave, typename T>
@@ -191,80 +190,105 @@ void Diccionario<Clave, T>::alta_recursiva(NodoDiccionario<Clave, T>* nodo, Clav
 }
 
 template<typename Clave, typename T>
-T Diccionario<Clave, T>::busqueda_recursiva(NodoDiccionario<Clave, T>* nodo, Clave clave, bool que_hacer){
+T& Diccionario<Clave, T>::busqueda_recursiva(NodoDiccionario<Clave, T>* nodo, Clave clave){
     if(nodo->obtener_clave() == clave){
-        T dato = nodo->obtener_dato();
-        if(que_hacer){
-            NodoDiccionario<Clave, T>* aux = inmediato_sucesor(nodo, clave);
-            nodo->cambiar_clave(aux->obtener_clave());
-            nodo->cambiar_dato(aux->obtener_dato());
-            delete aux;
-            cantidad_datos--;
-        }
+        T &dato = nodo->obtener_dato();
         return dato;
     }
     if(nodo->obtener_clave() > clave){
         if(nodo->obtener_hijo_izquierdo())
-            return busqueda_recursiva(nodo->obtener_hijo_izquierdo(), clave, que_hacer);
+            return busqueda_recursiva(nodo->obtener_hijo_izquierdo(), clave);
         else
             throw ExcepcionDiccionario("La clave no existe");
     }
     if(nodo->obtener_clave() < clave){
         if(nodo->obtener_hijo_derecho())
-            return busqueda_recursiva(nodo->obtener_hijo_derecho(), clave, que_hacer);
+            return busqueda_recursiva(nodo->obtener_hijo_derecho(), clave);
         else
             throw ExcepcionDiccionario("La clave no existe");
     }
 }
 
 template<typename Clave, typename T>
-void Diccionario<Clave, T>::orden_recursivo(Vector<T> vector, NodoDiccionario<Clave, T>* nodo, int tipo_orden){
+T Diccionario<Clave, T>::baja_recursiva(NodoDiccionario<Clave, T>* nodo, Clave clave){
+    if(nodo->obtener_clave() == clave){
+        NodoDiccionario<Clave, T>* sucesor = inmediato_sucesor(nodo, clave);
+        if (sucesor == nodo){
+            T dato = nodo->obtener_dato();
+            NodoDiccionario<Clave, T>* padre = nodo->obtener_padre();
+            if(padre->obtener_hijo_derecho() == nodo) padre->cambiar_hijo_derecho(nullptr);
+            if(padre->obtener_hijo_izquierdo() == nodo) padre->cambiar_hijo_izquierdo(nullptr);
+            delete nodo;
+            return dato;
+        }else{
+            nodo->cambiar_clave(sucesor->obtener_clave());
+            nodo->cambiar_dato(sucesor->obtener_dato());
+            return baja_recursiva(sucesor, sucesor->obtener_clave());
+        }
+    }
+    if(nodo->obtener_clave() > clave){
+        if(nodo->obtener_hijo_izquierdo())
+            return baja_recursiva(nodo->obtener_hijo_izquierdo(), clave);
+        else
+            throw ExcepcionDiccionario("La clave no existe");
+    }
+    if(nodo->obtener_clave() < clave){
+        if(nodo->obtener_hijo_derecho())
+            return baja_recursiva(nodo->obtener_hijo_derecho(), clave);
+        else
+            throw ExcepcionDiccionario("La clave no existe");
+    }
+}
+
+template<typename Clave, typename T>
+void Diccionario<Clave, T>::orden_recursivo(Vector<T>& vector, NodoDiccionario<Clave, T>* nodo, int tipo_orden){
     if(tipo_orden == PREORDER)
         vector.alta(nodo->obtener_dato());
+    
     if(nodo->obtener_hijo_izquierdo())
         orden_recursivo(vector, nodo->obtener_hijo_izquierdo(), tipo_orden);
+    
     if(tipo_orden == INORDER)
         vector.alta(nodo->obtener_dato());
+    
     if(nodo->obtener_hijo_derecho())
         orden_recursivo(vector, nodo->obtener_hijo_derecho(), tipo_orden);
+    
     if(tipo_orden == POSTORDER)
         vector.alta(nodo->obtener_dato());
 }
 
 template<typename Clave, typename T>
 NodoDiccionario<Clave, T>* Diccionario<Clave, T>::inmediato_sucesor(NodoDiccionario<Clave, T>* nodo, Clave clave){
-    if(nodo->obtener_clave() == clave)
-        return inmediato_sucesor(nodo->obtener_hijo_derecho(), clave);
+    if(nodo->obtener_clave() == clave){
+        if(nodo->obtener_hijo_derecho())
+            return inmediato_sucesor(nodo->obtener_hijo_derecho(), clave);
+        else 
+            return nodo;
+    }
     if(nodo->obtener_hijo_izquierdo())
         return inmediato_sucesor(nodo->obtener_hijo_izquierdo(), clave);
-    else
-        return nodo;
+    return nodo;
 }
 
 template<typename Clave, typename T>
-int Diccionario<Clave, T>::calcular_altura(NodoDiccionario<Clave, T>* nodo) {
-    int altura_izquierda = calcular_altura(nodo->obtener_hijo_izquierdo());
-    int altura_derecha = calcular_altura(nodo->obtener_hijo_derecho());
-    return (altura_izquierda < altura_derecha)? altura_derecha + 1:altura_izquierda + 1;
-}
-
-template<typename Clave, typename T>
-Vector<T> Diccionario<Clave, T>::ancho_recursivo(NodoDiccionario<Clave, T>* nodo){
-    Vector<T> resultado;
-    int altura = calcular_altura(nodo);
-    for (int i = 0; i < altura; i++) {
-        obtener_nodos_nivel(nodo, i, resultado);
+void Diccionario<Clave, T>::ancho_recursivo(NodoDiccionario<Clave, T>* nodo, Vector<T>& vector, int nivel, int nivel_actual){
+    if(nivel == nivel_actual){
+        vector.alta(nodo->obtener_dato());
     }
-    return resultado;
-}
-
-template<typename Clave, typename T>
-void Diccionario<Clave, T>::obtener_nodos_nivel(NodoDiccionario<Clave, T>* nodo, int nivel, Vector<T>& resultado){
-    if (nivel == 1) {
-        resultado.alta(nodo->obtener_dato());
-    } else if (nivel > 1) {
-        obtener_nodos_nivel(nodo->obtener_hijo_izquierdo(), nivel - 1, resultado);
-        obtener_nodos_nivel(nodo->obtener_hijo_derecho(), nivel - 1, resultado);
+    if(nivel < nivel_actual){
+        if(nodo->obtener_hijo_izquierdo())
+            ancho_recursivo(nodo->obtener_hijo_izquierdo(), vector, nivel + 1, nivel_actual);
+        if(nodo->obtener_hijo_derecho())
+            ancho_recursivo(nodo->obtener_hijo_derecho(), vector, nivel + 1, nivel_actual);
     }
 }
+
+template<typename Clave, typename T>
+int Diccionario<Clave, T>::obtenerAltura(NodoDiccionario<Clave, T>* nodo) {
+    if(!nodo)
+        return -1;
+    return std::max(obtenerAltura(nodo->obtener_hijo_izquierdo()), obtenerAltura(nodo->obtener_hijo_derecho())) + 1;
+}
+
 #endif
