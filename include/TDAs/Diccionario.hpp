@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include "NodoDiccionario.hpp"
 #include "Vector.hpp"
-#include <iostream>
+
 
 const int PREORDER = 0;
 const int POSTORDER = 1;
