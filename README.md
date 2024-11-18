@@ -16,7 +16,27 @@ g++ -I include main.cpp src/*.cpp -o main
 
 O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** presente en el directorio raíz.
 
-## Aclaraciones adicionales:
+## Justificación de la Selección de Estructuras de Datos y Algoritmos.
+
+* ### Cola de Prioridad en el Algoritmo de Camino Mínimo de Dijkstra
+  #### ¿Por qué una cola de prioridad?
+  * Eficiencia: Encuentra el siguiente nodo a explorar rápidamente.
+  * Orden: Mantiene los nodos ordenados por distancia.
+  * Optimización: Evita explorar caminos que claramente son más largos.
+  * En pocas palabras: En Dijkstra, nos asegura encontrar el camino más corto de manera eficiente, reduciendo la complejidad a O((a + v)log(v)).
+
+* ### Funcionalidad para Mostrar el cristal con mayor Poder
+  Para poder mostrar el cristal con mayor poder lo que se decide es ir almacenando en la bóveda los cristales de manera ordenada y asi el obtener el cristal de mayor poder tendrá un costo de O(1), esto porque se ordena de manera descendente lo que permite que el cristal con mayor poder este en la primera posición de la bóveda.
+* ### Funcionalidad para Equipar con un Cristal al Personaje
+
+
+
+## Aclaraciones Adicionales
+
+* ### Parametro Poder
+  El parámetro de poder de un cristal se representa mediante la suma de las estadísticas de un cristal es decir es la suma entre la fuerza, defensa y velociad.
+
+
 
 
 
