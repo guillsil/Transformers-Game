@@ -10,27 +10,20 @@ const std::string DIRECTORIO_BASE = "archivos";
 
 
 
-BovedaCristales::BovedaCristales(): cristales(TAMANIO_MAXIMO_DE_CRISTALES) {
+BovedaCristales::BovedaCristales(): cristales(TAMANIO_MAXIMO_DE_CRISTALES), tamanio_inicial(TAMANIO_INICIAL_VECTOR) {
+}
+
+BovedaCristales::BovedaCristales(size_t tamanio_inicial): cristales(tamanio_inicial){
+    this->tamanio_inicial = tamanio_inicial;
 }
 
 void BovedaCristales::almacenar_cristal(Cristal cristal_nuevo) {
-    if (cristales.tamanio() < TAMANIO_MAXIMO_DE_CRISTALES) {
-        /*if (cristal_mas_poderoso.obtener_poder() < cristal_nuevo.obtener_poder()) {
-            cristal_mas_poderoso = cristal_nuevo;
-        }
-        cristales.alta(cristal_nuevo);
-        */
-
+    if (cristales.tamanio() < tamanio_inicial) {
         size_t posicion = 0;
         while (posicion < cristales.tamanio() && cristales[posicion].obtener_poder() > cristal_nuevo.obtener_poder()) {
             posicion++;
         }
         cristales.alta(cristal_nuevo, posicion);
-        /*
-        if (cristal_nuevo.obtener_poder() > cristal_mas_poderoso.obtener_poder()) {
-            cristal_mas_poderoso = cristal_nuevo;
-        }
-        */
     }else {
         throw ExcepcionBovedaCristales(ERROR_LIMITE_DE_CRISTALES_EXCEDIDO);
     }

@@ -6,8 +6,9 @@
 
 const std::string ESTADO_INVALIDO;
 const std::string ERROR_ESTADO_INCORRECTO = "Error: Estado Ínvalido. Intente nuevamente.";
+const size_t TAMANIO_MAXIMO_CRISTALES_EQUIPADOS = 7;
 
-Personaje::Personaje(Protagonista personaje): indice_estado('0') {
+Personaje::Personaje(Protagonista personaje): indice_estado('0'), cristales_equipados(TAMANIO_MAXIMO_CRISTALES_EQUIPADOS) {
   this->personaje_jugando = personaje;
 }
 

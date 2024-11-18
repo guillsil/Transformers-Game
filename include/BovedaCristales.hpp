@@ -25,6 +25,11 @@ public:
     //Post: Crea una Bóveda con un TAMANIO_MAXIMO_DE_CRISTALES.
     BovedaCristales();
 
+    //Constructor con tamanio_inicial de la boveda
+    //Pre: -
+    //Post: Crea una Bóveda con un tamanio_inicial.
+    BovedaCristales(size_t tamanio_inicial);
+
     //Pre: La cantidad de cristales almacenados debe ser menor a TAMANIO_MAXIMO_DE_CRISTALES
     //Post: Almacena en la bóveda el cristal suministrado.
     void almacenar_cristal(Cristal cristal_nuevo);
@@ -65,7 +70,7 @@ public:
 private:
     Vector<Cristal> cristales;
 
-    // Cristal cristal_mas_poderoso;
+    size_t tamanio_inicial;
 
     Menu menu;
 

@@ -25,18 +25,23 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
   * Optimización: Evita explorar caminos que claramente son más largos.
   * En pocas palabras: En Dijkstra, nos asegura encontrar el camino más corto de manera eficiente, reduciendo la complejidad a O((a + v)log(v)).
 
-* ### Funcionalidad para Mostrar el cristal con mayor Poder
-  Para poder mostrar el cristal con mayor poder lo que se decide es ir almacenando en la bóveda los cristales de manera ordenada y asi el obtener el cristal de mayor poder tendrá un costo de O(1), esto porque se ordena de manera descendente lo que permite que el cristal con mayor poder este en la primera posición de la bóveda.
-* ### Funcionalidad para Equipar con un Cristal al Personaje
+
+
+
 
 
 
 ## Aclaraciones Adicionales
 
-* ### Parametro Poder
-  El parámetro de poder de un cristal se representa mediante la suma de las estadísticas de un cristal es decir es la suma entre la fuerza, defensa y velociad.
+* ### Parámetro Poder
+  * El parámetro de poder de un cristal se representa mediante la suma de las estadísticas de un cristal es decir es la suma entre la fuerza, defensa y velociad.
 
+* ### Funcionalidad para Mostrar el cristal con mayor Poder
+  * Para poder mostrar el cristal con mayor poder lo que se decide es ir almacenando en la bóveda los cristales de manera ordenada y asi el obtener el cristal de mayor poder tendrá un costo de O(1), esto porque se ordena de manera descendente lo que permite obtenerlo de una manera más rápida, ya que está en la primera posición.
 
+* ### Funcionalidad para Equipar con un Cristal al Personaje
+  * Para poder equipar con un cristal al personaje lo que se decidió es crearle una mini bóveda al personaje en la cual el mismo solo podrá equiparse con 7 cristales.
+  * Para la bóveda lo que hicimos es reutilizar la bóveda que teníamos creados, pero esta vez le redujimos la capacidad a solo 7 cristales, esto mediante una sobrecarga en el constructor de la bóveda.
 
 
 
