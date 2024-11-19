@@ -18,6 +18,8 @@ public:
     // Destructor.
     ~FloydWarshall() override;
 
+private:
+    Vector<size_t> reconstruir_camino(Matriz<int>& distancias, size_t origen, size_t destino);
 };
 
 #endif
