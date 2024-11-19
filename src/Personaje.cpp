@@ -49,7 +49,7 @@ void Personaje::obtener_sugerencia() {
 void Personaje::actualizar_estado(const char &indice) {
     indice_estado = indice;
     obtener_estados();
-    if (indice_estado == 1 || indice_estado == 2 || indice_estado == 3) {
+    if (indice_estado == '1' || indice_estado == '2' || indice_estado == '3') {
         if (personaje_jugando == MEGATRON) {
             megatron.cambiar_intencion(estado_personaje);
         }else {
