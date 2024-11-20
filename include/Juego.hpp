@@ -7,7 +7,7 @@
 #include "Menu.hpp"
 #include "BovedaCristales.hpp"
 #include "FusionadorEnergon.hpp"
-#include "Personaje.hpp"
+#include "Protagonista.hpp"
 
 
 class Juego {
@@ -30,7 +30,7 @@ public:
 
 
 private:
-    Personaje personaje;
+    Protagonista personaje;
     Menu menu;
     BovedaCristales boveda;
     FusionadorEnergon fusionador;

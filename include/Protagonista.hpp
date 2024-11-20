@@ -1,28 +1,27 @@
 //
-// Created by guille on 09/11/24.
+// Created by guille on 11/20/24.
 //
 
-#ifndef PERSONAJE_HPP
-#define PERSONAJE_HPP
-#include <BovedaCristales.hpp>
+#ifndef PROTAGONISTA_HPP
+#define PROTAGONISTA_HPP
 
+#include <BovedaCristales.hpp>
 #include "OptimusPrime.hpp"
 #include "Megatron.hpp"
-#include "Menu.hpp"
 
-class ExcepcionPersonaje : public std::runtime_error {
+class ExcepcionProtagonista : public std::runtime_error {
 public:
-    ExcepcionPersonaje(std::string mensaje): runtime_error(mensaje) {}
+    ExcepcionProtagonista(std::string mensaje): runtime_error(mensaje) {}
 
-    ExcepcionPersonaje(): runtime_error("") {}
+    ExcepcionProtagonista(): runtime_error("") {}
 
 };
 
-class Personaje {
+class Protagonista {
 public:
     //Pre:
     //Post: Se crea una instancia del Objeto Personaje con el Protagonista enviado
-    Personaje(Protagonista personaje);
+    Protagonista(Personaje personaje);
 
     //Pre: -
     //Post: Se genera una respuesta adecuada al mensaje, basada en el personaje actual y su estado.
@@ -38,7 +37,7 @@ public:
 
     //Pre: -
     //Post: Devuelve el personaje que está siendo jugable actualmente.
-    Protagonista obtener_personaje();
+    Personaje obtener_personaje();
 
     //Pre: -
     //Post: Equipa un cristal en la boveda del personaje a lo sumo solo podrá tener 20 cristales equipados.
@@ -47,7 +46,7 @@ public:
 private:
     OptimusPrime optimus;
     Megatron megatron;
-    Protagonista personaje_jugando;
+    Personaje personaje_jugando;
     char indice_estado;
     std::string estado_personaje;
     BovedaCristales cristales_equipados;
@@ -58,5 +57,4 @@ private:
 };
 
 
-
-#endif //PERSONAJE_HPP
+#endif //PROTAGONISTA_HPP

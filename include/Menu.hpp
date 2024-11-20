@@ -15,7 +15,7 @@ const char OPCION_6 = '6';
 const char OPCION_7 = '7';
 const char OPCION_8 = '8';
 
-enum Protagonista {
+enum Personaje {
     MEGATRON,
     OPTIMUS_PRIME,
     PERSONAJE_INVALIDO

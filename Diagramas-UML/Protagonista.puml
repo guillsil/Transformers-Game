@@ -3,28 +3,49 @@
 class Megatron
 class OptimusPrime
 class BovedaCristales
-class Personaje
+class Protagonista
+class Transformers
 
+class Transformers {
+    - const int ESTADISTICAS_AUMENTO = 10
+    - const int ESTADISTICAS_REDUCCION = -10
+    - const int CAMBIO_NORMAL = 2
+    - const int CAMBIO_MUCHO = 3
+    - const int CAMBIO_TOTALMENTE = 4
+    - std::string nombre
+    - std::string faccion
+    - std::string vehiculo
+    - int fuerza
+    - int defensa
+    - int velocidad
+    - bool transformado = false
 
-' enum Protagonista
-enum Protagonista {
-    MEGATRON,
-    OPTIMUS_PRIME,
-    PERSONAJE_INVALIDO
+    - void cambiar_estadisticas(int& estadistica_cambio, int numero_cambio)
+    - std::string chequear_transformado()
+    - void chequeo_vehiculo(bool al_reves)
+    - std::string obtener_faccion()
+    + Transformers(std::string nombre, int fuerza, int defensa, int velocidad, std::string faccion, std::string vehiculo, bool transformado)
+    + Transformers(std::string nombre, int fuerza, int defensa, int velocidad, std::string faccion, std::string vehiculo)
+    + std::string obtener_nombre()
+    + void cambiar_forma()
+    + bool operator==(const Transformers& otro_transformer)
+    + bool son_iguales_fuerza(Transformers& transformer1, Transformers& transformer2)
+    + bool es_mas_fuerte(Transformers& transformer1, Transformers& transformer2)
+    + friend std::ostream& operator<<(std::ostream& os, const Transformers& transformer)
 }
-
 ' Clase Personaje
-class Personaje {
-  +Personaje(Protagonista personaje)
+class Protagonista {
+  +Personaje(Personaje personaje)
   +void obtener_respuesta(const std::string &mensaje)
   +void obtener_sugerencia()
   +void actualizar_estado(const char &indice)
-  +Protagonista obtener_personaje()
+  +Personaje obtener_personaje()
   +void equipar_cristal(Cristal cristal)
 
   -OptimusPrime optimus
   -Megatron megatron
-  -Protagonista personaje_jugando
+  -Personaje personaje_jugando
+  -Transformers transformer
   -char indice_estado
   -std::string estado_personaje
   -BovedaCristales cristales_equipados
@@ -77,10 +98,10 @@ class Megatron {
 }
 
 
-Personaje *-- OptimusPrime
-Personaje *-- Megatron
-Personaje *-- BovedaCristales
-Personaje *-- Protagonista
+Protagonista *-- OptimusPrime
+Protagonista *-- Megatron
+Protagonista *-- BovedaCristales
+Protagonista *-- Transformers
 
 
 @enduml

@@ -343,7 +343,7 @@ void Juego::interactuar_con_personaje() {
                 try {
                     personaje.actualizar_estado(indice_estado);
                     menu.mostrar_mensaje(MENSAJE_ESTADO_MODIFICADO_CORRECTAMENTE);
-                } catch (ExcepcionPersonaje& e) {
+                } catch (ExcepcionProtagonista& e) {
                     menu.mostrar_mensaje(e.what());
                 }
                 break;

@@ -32,6 +32,8 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
 
 
 ## Aclaraciones Adicionales
+* ### Obsequio de un Cristal al Iniciar el juego
+  * Al iniciarse el juego se obsequiará un cristal de rareza común al jugador 
 
 * ### Parámetro Poder
   * El parámetro de poder de un cristal se representa mediante la suma de las estadísticas de un cristal es decir es la suma entre la fuerza, defensa y velociad.

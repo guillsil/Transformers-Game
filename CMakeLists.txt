@@ -40,7 +40,6 @@ set(ARCHIVOS_FUENTE
         src/FusionadorEnergon.cpp
         src/Cristal.cpp
         src/BovedaCristales.cpp
-        src/Personaje.cpp
         src/Juego.cpp
         src/Menu.cpp
         src/Utilidades.cpp
@@ -49,6 +48,8 @@ set(ARCHIVOS_FUENTE
         src/ManejadorDeMensajes.cpp
         src/Estadisticas.cpp
         src/Grafo/TuplaVerticeDistancia.cpp
+        src/Protagonista.cpp
+
 
 )
 
