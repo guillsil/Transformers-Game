@@ -53,8 +53,8 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
 
  <img src="image/menu_administrador_transformers.png" alt="TP1: Interacción con Transformers"> 
 
-| Administrador Transformers                                        | Pedir Nombre Transformers                                  |
-|-------------------------------------------------------------------|------------------------------------------------------------|
+| Escoger Facción                                                                  | Pedir Nombre Transformers                                  |
+|----------------------------------------------------------------------------------|------------------------------------------------------------|
 | <img src="image/menu_pedir_faccion.png" alt="TP1: Interacción con Transformers"> | <img src="image/menu_pedir_nombre_transformers.png" alt="TP1: Interacción con Transformers"> |
 
 | Escoger Vehiculo                                                              | Escoger Aeronave                                                               |
