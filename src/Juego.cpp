@@ -290,6 +290,7 @@ void Juego::manejar_administrar_transformers(){
                 administrador_transformers.eliminar_transformer(nombre_transformers);
                 break;
             case OPCION_5: // Transformar un Transformer
+                std::string nombre_transformers = pedir_nombre_transformers();
                 //??? como transformas?
                 break;
             case OPCION_6:
