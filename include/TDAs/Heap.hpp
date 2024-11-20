@@ -30,7 +30,7 @@ private:
 
     //Pre: -
     //Post: Se intercambia el elemento en la posición indice1 con el de la posición indice2.
-    void intercambiar(size_t indice1, size_t indice2);
+    void intercambiar(size_t indice_1, size_t indice_2);
 
     //Pre: Índice debe estar en el rango 0 y tamaño de los datos.
     //Post: El elemento en la posición índice (Sube) hacia su posición correcta en el heap
@@ -69,10 +69,10 @@ public:
 };
 
 template <typename T>
-void Heap<T>::intercambiar(size_t indice1, size_t indice2){
-    T aux = datos[indice1];
-    datos[indice1] = datos[indice2];
-    datos[indice2] = aux;
+void Heap<T>::intercambiar(size_t indice_1, size_t indice_2){
+    T aux = datos[indice_1];
+    datos[indice_1] = datos[indice_2];
+    datos[indice_2] = aux;
 }
 
 template <typename T>
@@ -99,30 +99,17 @@ T Heap<T>::baja_recursiva(bool maxima, size_t indice, size_t hijo_izquierdo, siz
     if(indice == 0){
         intercambiar(indice, tamanio() - 1);
     }
-    if(maxima){
-        if(hijo_izquierdo < tamanio() && hijo_izquierdo != tamanio() - 1){
-            if(hijo_derecho < tamanio() && hijo_derecho != tamanio() - 1){
-                if(datos[hijo_derecho] > datos[hijo_izquierdo]){
-                    intercambiar(indice, hijo_derecho);
-                    return baja_recursiva(maxima, hijo_derecho, hijo_derecho * 2 + 1, hijo_derecho * 2 + 2);
-                }
-                intercambiar(indice, hijo_izquierdo);
-                return baja_recursiva(maxima, hijo_izquierdo, hijo_izquierdo * 2 + 1, hijo_izquierdo * 2 + 2);
-            }
-            intercambiar(indice, hijo_izquierdo);
-            return baja_recursiva(maxima, hijo_izquierdo, hijo_izquierdo * 2 + 1, hijo_izquierdo * 2 + 2);
-        }
-        return datos.baja();
-    }
     if(hijo_izquierdo < tamanio() && hijo_izquierdo != tamanio() - 1){
         if(hijo_derecho < tamanio() && hijo_derecho != tamanio() - 1){
-            if(datos[hijo_derecho] < datos[hijo_izquierdo]){
-                intercambiar(indice, hijo_derecho);
-
-                return baja_recursiva(maxima, hijo_derecho, hijo_derecho * 2 + 1, hijo_derecho * 2 + 2);
+            if(datos[hijo_derecho] > datos[hijo_izquierdo]){
+                if(maxima){
+                    intercambiar(indice, hijo_derecho);
+                    return baja_recursiva(maxima, hijo_derecho, hijo_derecho * 2 + 1, hijo_derecho * 2 + 2);
+                }else{
+                    intercambiar(indice, hijo_izquierdo);
+                    return baja_recursiva(maxima, hijo_izquierdo, hijo_izquierdo * 2 + 1, hijo_izquierdo * 2 + 2);
+                }
             }
-            intercambiar(indice, hijo_izquierdo);
-            return baja_recursiva(maxima, hijo_izquierdo, hijo_izquierdo * 2 + 1, hijo_izquierdo * 2 + 2);
         }
         intercambiar(indice, hijo_izquierdo);
         return baja_recursiva(maxima, hijo_izquierdo, hijo_izquierdo * 2 + 1, hijo_izquierdo * 2 + 2);
