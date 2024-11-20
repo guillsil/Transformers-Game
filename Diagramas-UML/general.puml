@@ -1,0 +1,312 @@
+@startuml
+' Clases relacionadas
+class Utilidades
+class BovedaCristales
+class FusionadorEnergon
+class Personaje
+class Vector
+class Estadisticas
+
+' Enum Rareza
+enum Rareza {
+  COMUN
+  RARO
+  EPICO
+  LEGENDARIO
+}
+
+' Clase Utilidades
+class Utilidades {
+  +void convertir_a_minuscula(std::string &cadena)
+  +int generar_numero_aleatorio(const int &inicio, const int &fin)
+  +bool agregar_elemento_a_arreglo(std::string arreglo[], int &cantidad, const int &max, const std::string &elemento)
+}
+
+' Clase principal: Juego
+class Juego {
+  +Juego()
+  +void procesar_menu_principal(const char &opcion_menu, const std::string &nombre)
+  +bool jugando() const
+
+  -Personaje personaje
+  -Menu menu
+  -Utilidades utilidades
+  -BovedaCristales boveda
+  -FusionadorEnergon fusionador
+  -bool juego_en_curso
+  -std::string nombre_jugador
+
+  -void respuesta_personaje(const std::string &mensaje)
+  -void manejar_sugerencia_personaje()
+  -void manejar_opcion_escribir_mensaje()
+  -void fusionador_de_cristales(const int &entrada_1, const int &entrada_2)
+  -void manejar_fusionar_de_cristales()
+  -void manejar_de_almacenamiento_de_cristales()
+  -void manejar_mostrar_boveda()
+  -void manejar_exportar_boveda(std::string &ruta)
+  -void manejar_de_bodega_mostrar_tamanio()
+  -void manejar_de_bodega()
+  -void interactuar_con_personaje()
+  -bool verificar_entrada_del_cristal(const int &entrada)
+}
+
+' Clase BovedaCristales
+class BovedaCristales {
+  +BovedaCristales()
+  +BovedaCristales(size_t tamanio_inicial)
+  +void almacenar_cristal(Cristal cristal_nuevo)
+  +void mostrar_cristales()
+  +Cristal obtener_cristal(size_t posicion)
+  +void exportar_cristales(std::string ruta)
+  +bool esta_vacia()
+  +size_t tamanio()
+  +Cristal obtener_y_eliminar_cristal_mas_poderoso()
+  +Cristal obtener_cristal_mas_poderoso()
+
+  -Vector<Cristal> cristales
+  -size_t tamanio_inicial
+  -Menu menu
+
+  -std::string construir_ruta_completa(std::string& ruta)
+  -void crear_directorios(const std::string& ruta)
+  -void escribir_cristales_en_archivo(std::ofstream& archivo)
+}
+
+' Clase Cristal
+class Cristal {
+  +Cristal()
+  +Cristal(Rareza rareza)
+  +Cristal(const Rareza &rareza, const bool &exito)
+  +bool operator==(Rareza rareza)
+  +Rareza obtener_rareza()
+  +size_t obtener_fuerza()
+  +size_t obtener_defensa()
+  +size_t obtener_velocidad()
+  +std::string convertir_rareza_a_string()
+  +size_t obtener_poder()
+  +void mostrar()
+  +int obtener_porcentaje_exito()
+
+  -Rareza rareza
+  -Menu menu
+  -Estadisticas estadisticas
+  -Estadisticas inicializar_estadisticas()
+}
+
+' Clase Estadisticas
+class Estadisticas {
+  +Estadisticas(const size_t &fuerza, const size_t &defensa, const size_t &velocidad)
+  +void aplicar_bonificacion()
+  +size_t obtener_fuerza()
+  +size_t obtener_defensa()
+  +size_t obtener_velocidad()
+  +size_t obtener_poder()
+  +void mostrar()
+
+  -size_t fuerza
+  -size_t defensa
+  -size_t velocidad
+  -size_t poder
+  -Menu menu
+}
+
+' Clase Menu
+class Menu {
+  +void mostrar_menu_principal(const std::string &nombre)
+  +void mostrar_menu_personaje(const int &personaje_elejido)
+  +void mostrar_menu_ingresar_mensaje()
+  +void mostrar_menu_estado(const int &personaje_elejido)
+  +void mostrar_recuadro_superior()
+  +void mostrar_recuadro_inferior()
+  +void limpiar_menu()
+  +void mostrar_mensaje(const std::string &mensaje)
+  +void mostrar_menu_fusionar_cristales()
+  +void mostrar_menu_boveda()
+  +void mostrar_menu_almacenar_cristal()
+  +void mostrar_menu_exportar_archivo()
+  +void mostrar_ingresar_cristal(const int &cristal)
+  +void mostrar_estadisticas(const std::string &fuerza, const std::string &defensa, const std::string &velocidad)
+  +void mostrar_rareza(const std::string &rareza)
+  +void mostrar_menu_inicial()
+}
+
+' Clase FusionadorEnergon
+class FusionadorEnergon {
+  +FusionadorEnergon()
+  +Cristal fusionar(Cristal cristal_1, Cristal cristal_2)
+  +Cristal fusionar(Cristal cristal_1, Cristal cristal_2, GeneradorAleatorio& generador)
+  +Cristal fusionar_cristales(Cristal cristal_1, Cristal cristal_2, GeneradorAleatorio *generador)
+  +void verificar_rarezas_iguales(Cristal &cristal_1, Cristal &cristal_2)
+  +bool verificar_exito_de_fusion(const Rareza &rareza_actual, const int &porcentaje_exito, GeneradorAleatorio *generador)
+  +void verificar_fusion_prohibida(const Rareza &rareza)
+  +int obtener_proxima_rareza(const Rareza &rareza)
+  +int obtener_rareza_anterior(const Rareza &rareza)
+  +void resetear_fallos_por_nivel(const Rareza &rareza)
+  +bool dar_bonificacion(const int &probabilidad_bonificacion)
+
+  -int fallos_consecutivos[4]
+  -int ultima_rareza
+  -int probabilidad_bonificacion
+  -GeneradorAleatorio generador_bonificacion
+}
+' enum Protagonista
+enum Protagonista {
+    MEGATRON,
+    OPTIMUS_PRIME,
+    PERSONAJE_INVALIDO
+}
+
+' Clase Personaje
+class Personaje {
+  +Personaje(Protagonista personaje)
+  +void obtener_respuesta(const std::string &mensaje)
+  +void obtener_sugerencia()
+  +void actualizar_estado(const char &indice)
+  +Protagonista obtener_personaje()
+  +void equipar_cristal(Cristal cristal)
+
+  -OptimusPrime optimus
+  -Megatron megatron
+  -Protagonista personaje_jugando
+  -char indice_estado
+  -std::string estado_personaje
+  -BovedaCristales cristales_equipados
+  -void obtener_estados()
+}
+
+' Clase GeneradorAleatorio
+class GeneradorAleatorio {
+  +GeneradorAleatorio()
+  +bool generar_chance_porcentual(size_t porcentaje)
+  +~GeneradorAleatorio() : default
+
+  -std::default_random_engine generador
+  -std::uniform_int_distribution<> distribucion
+}
+
+' Clase OptimusPrime
+class OptimusPrime {
+  +OptimusPrime()
+  +void responder(std::string mensaje)
+  +void sugerir_fusion()
+  +void cambiar_animo(std::string animo)
+
+  -Utilidades utilidades
+  -int estado_de_animo
+}
+
+' Enum para representar el estado de ánimo
+enum EstadoDeAnimo {
+  SERENO
+  DETERMINADO
+  ENFURECIDO
+}
+' Clase Megatron
+class Megatron {
+  +Megatron()
+  +void responder(std::string mensaje)
+  +void sugerir_fusion()
+  +void cambiar_intencion(std::string intencion)
+
+  -Utilidades utilidades
+  -int estado_de_intencion
+}
+
+' Enum para representar los estados de intención
+enum EstadosDeIntencion {
+  DESPRECIO
+  MANIPULACION
+  AMENAZA
+}
+' Enumeración TipoDeRespuesta
+enum TipoDeRespuesta {
+  POR_PALABRA_CLAVE
+  ALEATOREAMENTE
+}
+
+' Clase ManejadorDeMensajes
+class ManejadorDeMensajes {
+  +ManejadorDeMensajes(ManejadorDePalabrasClaves& manejador_palabras, ManejadorDeRespuestas& manejador_respuestas)
+  +void procesar_mensajes(const std::string& mensaje)
+  +void mostrar_mensajes(TipoDeRespuesta tipo)
+
+  -ManejadorDePalabrasClaves& manejador_palabras
+  -ManejadorDeRespuestas& manejador_respuestas
+  -int primera_palabra_clave_hallada
+}
+
+' Clase ManejadorDePalabrasClaves
+class ManejadorDePalabrasClaves {
+  +ManejadorDePalabrasClaves()
+  +void agregar_palabras_clave(const std::string& palabra)
+  +int buscar_palabras_clave(const std::string& cadena)
+
+  -Utilidades utilidades
+  -std::string palabras_claves[MAX_PALABRAS_CLAVES]
+  -int cantidad_palabras_claves
+}
+' Clase ManejadorDeRespuestas
+class ManejadorDeRespuestas {
+  +ManejadorDeRespuestas()
+  +void agregar_respuesta(const std::string& respuesta)
+  +void agregar_respuesta_random(const std::string& respuesta_random)
+  +std::string obtener_respuesta_por_indice(const int& indice)
+  +std::string obtener_respuesta_random()
+
+  -Utilidades utilidades
+  -std::string respuestas[MAX_RESPUESTAS]
+  -std::string respuestas_random[MAX_RESPUESTAS]
+  -int cantidad_respuestas
+  -int cantidad_respuestas_random
+}
+
+' Clase Vector<T>
+class Vector<T> {
+  +Vector()
+  +Vector(size_t tamanio_inicial)
+  +Vector(size_t tamanio_inicial, T inicializador)
+  +Vector(const Vector<T>& vector)
+  +~Vector()
+  +Vector<T>& operator=(const Vector<T>& vector)
+  +T& operator[](size_t indice)
+  +void alta(T dato)
+  +void alta(T dato, size_t indice)
+  +T baja()
+  +T baja(size_t indice)
+  +bool vacio()
+  +size_t tamanio()
+  +void mostrar()
+  +void limpiar()
+  +void invertir()
+
+  -void redimensionar(const size_t &nuevo_tamanio)
+
+  -T* datos
+  -size_t tamanio_logico
+  -size_t tamanio_fisico
+  -const size_t tamanio_inicial
+}
+
+
+' Relaciones de composición
+Juego *-- Menu
+Juego *-- BovedaCristales
+Juego *-- FusionadorEnergon
+Juego *-- Utilidades
+Juego *-- Personaje
+
+
+Personaje *-- OptimusPrime
+Personaje *-- Megatron
+Personaje *-- Protagonista
+Personaje *-- BovedaCristales
+
+OptimusPrime *-- Utilidades
+Megatron *-- Utilidades
+
+
+
+
+
+
+@enduml

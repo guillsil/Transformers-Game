@@ -26,14 +26,13 @@ public:
     void procesar_menu_principal(const char &opcion_menu, const std::string &nombre);
 
     //Pre: -
-    //Post: Devuelve TRue si el juego está en curso o false en caso contrario.
+    //Post: Devuelve True si el juego está en curso o false en caso contrario.
     bool jugando() const;
 
 
 private:
     Personaje personaje;
     Menu menu;
-    Utilidades utilidades;
     BovedaCristales boveda;
     FusionadorEnergon fusionador;
     bool juego_en_curso;

@@ -1,0 +1,135 @@
+@startuml
+' Clases relacionadas
+class BovedaCristales
+class Vector
+class Estadisticas
+class Cristal
+
+' Enum Rareza
+enum Rareza {
+  COMUN
+  RARO
+  EPICO
+  LEGENDARIO
+}
+
+
+' Clase BovedaCristales
+class BovedaCristales {
+  +BovedaCristales()
+  +BovedaCristales(size_t tamanio_inicial)
+  +void almacenar_cristal(Cristal cristal_nuevo)
+  +void mostrar_cristales()
+  +Cristal obtener_cristal(size_t posicion)
+  +void exportar_cristales(std::string ruta)
+  +bool esta_vacia()
+  +size_t tamanio()
+  +Cristal obtener_y_eliminar_cristal_mas_poderoso()
+  +Cristal obtener_cristal_mas_poderoso()
+
+  -Vector<Cristal> cristales
+  -size_t tamanio_inicial
+  -Menu menu
+
+  -std::string construir_ruta_completa(std::string& ruta)
+  -void crear_directorios(const std::string& ruta)
+  -void escribir_cristales_en_archivo(std::ofstream& archivo)
+}
+
+' Clase Cristal
+class Cristal {
+  +Cristal()
+  +Cristal(Rareza rareza)
+  +Cristal(const Rareza &rareza, const bool &exito)
+  +bool operator==(Rareza rareza)
+  +Rareza obtener_rareza()
+  +size_t obtener_fuerza()
+  +size_t obtener_defensa()
+  +size_t obtener_velocidad()
+  +std::string convertir_rareza_a_string()
+  +size_t obtener_poder()
+  +void mostrar()
+  +int obtener_porcentaje_exito()
+
+  -Rareza rareza
+  -Menu menu
+  -Estadisticas estadisticas
+  -Estadisticas inicializar_estadisticas()
+}
+
+' Clase Estadisticas
+class Estadisticas {
+  +Estadisticas(const size_t &fuerza, const size_t &defensa, const size_t &velocidad)
+  +void aplicar_bonificacion()
+  +size_t obtener_fuerza()
+  +size_t obtener_defensa()
+  +size_t obtener_velocidad()
+  +size_t obtener_poder()
+  +void mostrar()
+
+  -size_t fuerza
+  -size_t defensa
+  -size_t velocidad
+  -size_t poder
+  -Menu menu
+}
+
+' Clase Menu
+class Menu {
+  +void mostrar_menu_principal(const std::string &nombre)
+  +void mostrar_menu_personaje(const int &personaje_elejido)
+  +void mostrar_menu_ingresar_mensaje()
+  +void mostrar_menu_estado(const int &personaje_elejido)
+  +void mostrar_recuadro_superior()
+  +void mostrar_recuadro_inferior()
+  +void limpiar_menu()
+  +void mostrar_mensaje(const std::string &mensaje)
+  +void mostrar_menu_fusionar_cristales()
+  +void mostrar_menu_boveda()
+  +void mostrar_menu_almacenar_cristal()
+  +void mostrar_menu_exportar_archivo()
+  +void mostrar_ingresar_cristal(const int &cristal)
+  +void mostrar_estadisticas(const std::string &fuerza, const std::string &defensa, const std::string &velocidad)
+  +void mostrar_rareza(const std::string &rareza)
+  +void mostrar_menu_inicial()
+}
+
+
+' Clase Vector<T>
+class Vector<T> {
+  +Vector()
+  +Vector(size_t tamanio_inicial)
+  +Vector(size_t tamanio_inicial, T inicializador)
+  +Vector(const Vector<T>& vector)
+  +~Vector()
+  +Vector<T>& operator=(const Vector<T>& vector)
+  +T& operator[](size_t indice)
+  +void alta(T dato)
+  +void alta(T dato, size_t indice)
+  +T baja()
+  +T baja(size_t indice)
+  +bool vacio()
+  +size_t tamanio()
+  +void mostrar()
+  +void limpiar()
+  +void invertir()
+
+  -void redimensionar(const size_t &nuevo_tamanio)
+
+  -T* datos
+  -size_t tamanio_logico
+  -size_t tamanio_fisico
+  -const size_t tamanio_inicial
+}
+
+BovedaCristales --> Vector
+BovedaCristales --> Menu
+
+Estadisticas --> Menu
+
+Cristal --> Estadisticas
+Cristal --> Rareza
+Cristal --> Menu
+
+
+@enduml

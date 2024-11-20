@@ -247,8 +247,6 @@ void Juego::interactuar_con_personaje() {
     }
 }
 
-
-
 bool Juego::verificar_entrada_del_cristal(const int &entrada) {
     return entrada == COMUN || entrada == RARO || entrada == EPICO;
 }

@@ -38,6 +38,7 @@ set(ARCHIVOS_FUENTE
         src/Cristal.cpp
         src/BovedaCristales.cpp
         src/Personaje.cpp
+        src/Juego.cpp
 )
 
 add_executable(AYED_TPG_2C2024
