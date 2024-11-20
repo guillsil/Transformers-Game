@@ -86,9 +86,11 @@ private:
     std::string convertir_faccion_string(const int& faccion);
 
     std::string convertir_automovil_string(const int& vehiculo);
+
     std::string convertir_aeronave_string(const int& vehiculo);
 
     void manejar_crear_transformers();
+
     std::string pedir_nombre_transformers();
 
     //Pre: -

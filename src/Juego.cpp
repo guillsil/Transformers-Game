@@ -225,7 +225,7 @@ std::string Juego::pedir_nombre_transformers(){
 void Juego::manejar_crear_transformers(){
     int tipo_vehiculo;
     int faccion;
-    std::string nombre = pedir_nombre_transformers();
+    const std::string nombre = pedir_nombre_transformers();
     menu.menu_ingregar_nombre_transformers();
     menu.menu_escoger_faccion();
     std::cin >> faccion;
@@ -281,16 +281,17 @@ void Juego::manejar_administrar_transformers(){
             case OPCION_2: // mostrar todos los transformers
                 administrador_transformers.mostrar_todos_tranformers();
                 break;
-            case OPCION_3: //Buscar un Transformer por nombre
-                std::string nombre = pedir_nombre_transformers();
-                administrador_transformers.buscar_transformer(nombre);
-                break;
-            case OPCION_4: // Eliminar un Transformer por nombre
-                std::string nombre_transformers = pedir_nombre_transformers();
-                administrador_transformers.eliminar_transformer(nombre_transformers);
-                break;
+            case OPCION_3: {   //Buscar un Transformer por nombre
+                    const std::string nombre = pedir_nombre_transformers();
+                    administrador_transformers.buscar_transformer(nombre);
+                    break;
+                }
+            case OPCION_4: {// Eliminar un Transformer por nombre
+                    const std::string nombre_transformers = pedir_nombre_transformers();
+                    administrador_transformers.eliminar_transformer(nombre_transformers);
+                    break;
+                }
             case OPCION_5: // Transformar un Transformer
-                std::string nombre_transformers = pedir_nombre_transformers();
                 //??? como transformas?
                 break;
             case OPCION_6:
