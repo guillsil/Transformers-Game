@@ -48,6 +48,18 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
 
 
 ## Imagenes del juego
+### Menu de Administrador Transformers
+
+
+ <img src="image/menu_administrador_transformers.png" alt="TP1: Interacción con Transformers"> 
+
+| Administrador Transformers                                        | Pedir Nombre Transformers                                  |
+|-------------------------------------------------------------------|------------------------------------------------------------|
+| <img src="image/menu_pedir_faccion.png" alt="TP1: Interacción con Transformers"> | <img src="image/menu_pedir_nombre_transformers.png" alt="TP1: Interacción con Transformers"> |
+
+| Escoger Vehiculo                                                              | Escoger Aeronave                                                               |
+|-------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| <img src="image/menu_pedir_auto.png" alt="TP1: Interacción con Transformers"> | <img src="image/menu_pedir_avion.png" alt="TP1: Interacción con Transformers"> |
 ### Menu de Nuevas Funcionalidades (Fusiondor - Boveda)
 | Menu Bóveda                                                               | Menu Fusionador                                                               |
 |---------------------------------------------------------------------------|-------------------------------------------------------------------------------|

@@ -239,6 +239,7 @@ void Juego::manejar_crear_transformers(){
     menu.limpiar_menu();
     menu.menu_escoger_faccion();
     std::cin >> faccion;
+    menu.limpiar_menu();
     switch (faccion){
     case AUTOBOTS:
         menu.menu_escoger_vehiculo();
