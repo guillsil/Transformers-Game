@@ -215,6 +215,7 @@ const std::string ADMINISTRADOR_TRANSFORMERS = R"(
 )";
 const std::string MENU_ESCOGER_NOMBRE_TRANSFORMERS= R"(
   ╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+  ║                                                                                                             ║
   ║        888                                   .d888                                                          ║
   ║        888                                  d88P"                                                           ║
   ║        888                                  888                                                             ║

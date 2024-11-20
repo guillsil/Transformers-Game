@@ -236,6 +236,7 @@ void Juego::manejar_crear_transformers(){
     int faccion;
     const std::string nombre = pedir_nombre_transformers();
     menu.menu_ingregar_nombre_transformers();
+    menu.limpiar_menu();
     menu.menu_escoger_faccion();
     std::cin >> faccion;
     switch (faccion){
@@ -253,27 +254,27 @@ void Juego::manejar_crear_transformers(){
                     menu.limpiar_menu();
                     menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
                 }
+            menu.mostrar_mensaje("Se creo Correctamente el Transformers");
         }
         break;
-    case DECEPTICONS:
-        menu.menu_escoger_aeronave();
-        std::cin >> tipo_vehiculo;
-        if (tipo_vehiculo){
-            switch (tipo_vehiculo){
-            case AVION:
-                //administrador_transformers.agregar_transformer(nombre, 10, 10, 10, convertir_faccion_string(faccion), convertir_aeronave_string(tipo_vehiculo));
-                break;
-            case TANQUE:
-                //administrador_transformers.agregar_transformer(nombre, 12, 12, 12, convertir_faccion_string(faccion), convertir_aeronave_string(tipo_vehiculo));
-            default:
-                menu.limpiar_menu();
-                menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
+        case DECEPTICONS:
+            menu.menu_escoger_aeronave();
+            std::cin >> tipo_vehiculo;
+            if (tipo_vehiculo){
+                switch (tipo_vehiculo){
+                case AVION:
+                    //administrador_transformers.agregar_transformer(nombre, 10, 10, 10, convertir_faccion_string(faccion), convertir_aeronave_string(tipo_vehiculo));
+                    break;
+                case TANQUE:
+                    //administrador_transformers.agregar_transformer(nombre, 12, 12, 12, convertir_faccion_string(faccion), convertir_aeronave_string(tipo_vehiculo));
+                default:
+
+                    menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
+                }
             }
+        default:
+            menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
         }
-    default:
-        menu.limpiar_menu();
-        menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
-    }
 }
 
 
@@ -281,26 +282,32 @@ void Juego::manejar_administrar_transformers(){
     bool continuar = true;
     char opcion_menu;
     while (continuar) {
+        menu.limpiar_menu();
         menu.mostrar_menu_administrador_transformers();
         std::cin >> opcion_menu;
         switch (opcion_menu) {
             case OPCION_1: //crear un transformers
+                menu.limpiar_menu();
                 manejar_crear_transformers();
                 break;
             case OPCION_2: // mostrar todos los transformers
+                menu.limpiar_menu();
                 //administrador_transformers.mostrar_todos_tranformers();
                 break;
             case OPCION_3: {   //Buscar un Transformer por nombre
+                    menu.limpiar_menu();
                     const std::string nombre = pedir_nombre_transformers();
                     //administrador_transformers.buscar_transformer(nombre);
                     break;
                 }
             case OPCION_4: {// Eliminar un Transformer por nombre
+                    menu.limpiar_menu();
                     const std::string nombre_transformers = pedir_nombre_transformers();
                     //administrador_transformers.eliminar_transformer(nombre_transformers);
                     break;
                 }
             case OPCION_5: // Transformar un Transformer
+                menu.limpiar_menu();
                 //??? como transformas?
                 break;
             case OPCION_6:
