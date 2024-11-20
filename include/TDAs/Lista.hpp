@@ -230,6 +230,7 @@ void Lista<T>::insertar(T dato, size_t posicion) {
     if(posicion > cantidad_datos){
         throw ExcepcionLista(ERROR_RANGO_POSICION);
     }
+
     if(posicion == 0){
         alta_principio(dato);
     }
@@ -261,6 +262,7 @@ T Lista<T>::eliminar(size_t posicion) {
     }
     else {
         NodoLista<T>* nodo_eliminar = obtener_nodo(posicion);
+
         dato_eliminado = nodo_eliminar->obtener_dato();
         nodo_eliminar->obtener_siguiente()->cambiar_anterior(nodo_eliminar->obtener_anterior());
         nodo_eliminar->obtener_anterior()->cambiar_siguiente(nodo_eliminar->obtener_siguiente());

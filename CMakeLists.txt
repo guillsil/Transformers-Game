@@ -24,13 +24,16 @@ set(ARCHIVOS_FUENTE
         include/TDAs/NodoDiccionario.hpp
         include/TDAs/Heap.hpp
         include/TDAs/Matriz.hpp
+
         include/TDAs/Grafo/CaminoMinimo.hpp
         include/TDAs/Grafo/Dijkstra.hpp
         include/TDAs/Grafo/FloydWarshall.hpp
         include/TDAs/Grafo/Grafo.hpp
+
         src/Grafo/Dijkstra.cpp
         src/Grafo/FloydWarshall.cpp
         src/Grafo/Grafo.cpp
+
         src/Megatron.cpp
         src/OptimusPrime.cpp
         src/GeneradorAleatorio.cpp
@@ -39,6 +42,13 @@ set(ARCHIVOS_FUENTE
         src/BovedaCristales.cpp
         src/Personaje.cpp
         src/Juego.cpp
+        src/Menu.cpp
+        src/Utilidades.cpp
+        src/ManejadorDeRespuestas.cpp
+        src/ManejadorDePalabrasClaves.cpp
+        src/ManejadorDeMensajes.cpp
+        src/Estadisticas.cpp
+        src/Grafo/TuplaVerticeDistancia.cpp
 )
 
 add_executable(AYED_TPG_2C2024
