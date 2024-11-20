@@ -4,9 +4,7 @@
 
 #ifndef JUEGO_HPP
 #define JUEGO_HPP
-#include "admin_transformers.hpp"
 #include "Menu.hpp"
-#include "Utilidades.hpp"
 #include "BovedaCristales.hpp"
 #include "FusionadorEnergon.hpp"
 #include "Personaje.hpp"
@@ -39,7 +37,7 @@ private:
     bool juego_en_curso;
     std::string nombre_jugador;
 
-    Administrador_Transformers administrador_transformers;
+    //Administrador_Transformers administrador_transformers;
 
     //Pre: -
     //Post: El personaje elegido responde al mensaje recibido.

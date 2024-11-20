@@ -4,7 +4,6 @@
 
 #include "Juego.hpp"
 
-#include "transformers.hpp"
 
 
 const std::string MENSAJE_ESTADO_MODIFICADO_CORRECTAMENTE = "Se Modifico Correctamente el estado" ;
@@ -220,6 +219,16 @@ std::string Juego::pedir_nombre_transformers(){
     std::cin >> nombre_transformers;
     return nombre_transformers;
 }
+enum Transformers {
+    AUTOBOTS,
+    DECEPTICONS
+};
+enum Vehiculos{
+    AUTO,
+    CAMION,
+    AVION,
+    TANQUE
+};
 
 
 void Juego::manejar_crear_transformers(){
@@ -236,10 +245,10 @@ void Juego::manejar_crear_transformers(){
         if (tipo_vehiculo){
             switch (tipo_vehiculo){
                 case AUTO:
-                    administrador_transformers.agregar_transformer(nombre, 10, 10, 10, convertir_faccion_string(faccion), convertir_automovil_string(tipo_vehiculo));
+                    //administrador_transformers.agregar_transformer(nombre, 10, 10, 10, convertir_faccion_string(faccion), convertir_automovil_string(tipo_vehiculo));
                     break;
                 case CAMION:
-                    administrador_transformers.agregar_transformer(nombre, 15, 15, 15, convertir_faccion_string(faccion), convertir_automovil_string(tipo_vehiculo));
+                    //administrador_transformers.agregar_transformer(nombre, 15, 15, 15, convertir_faccion_string(faccion), convertir_automovil_string(tipo_vehiculo));
                 default:
                     menu.limpiar_menu();
                     menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
@@ -252,10 +261,10 @@ void Juego::manejar_crear_transformers(){
         if (tipo_vehiculo){
             switch (tipo_vehiculo){
             case AVION:
-                administrador_transformers.agregar_transformer(nombre, 10, 10, 10, convertir_faccion_string(faccion), convertir_aeronave_string(tipo_vehiculo));
+                //administrador_transformers.agregar_transformer(nombre, 10, 10, 10, convertir_faccion_string(faccion), convertir_aeronave_string(tipo_vehiculo));
                 break;
             case TANQUE:
-                administrador_transformers.agregar_transformer(nombre, 12, 12, 12, convertir_faccion_string(faccion), convertir_aeronave_string(tipo_vehiculo));
+                //administrador_transformers.agregar_transformer(nombre, 12, 12, 12, convertir_faccion_string(faccion), convertir_aeronave_string(tipo_vehiculo));
             default:
                 menu.limpiar_menu();
                 menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
@@ -279,16 +288,16 @@ void Juego::manejar_administrar_transformers(){
                 manejar_crear_transformers();
                 break;
             case OPCION_2: // mostrar todos los transformers
-                administrador_transformers.mostrar_todos_tranformers();
+                //administrador_transformers.mostrar_todos_tranformers();
                 break;
             case OPCION_3: {   //Buscar un Transformer por nombre
                     const std::string nombre = pedir_nombre_transformers();
-                    administrador_transformers.buscar_transformer(nombre);
+                    //administrador_transformers.buscar_transformer(nombre);
                     break;
                 }
             case OPCION_4: {// Eliminar un Transformer por nombre
                     const std::string nombre_transformers = pedir_nombre_transformers();
-                    administrador_transformers.eliminar_transformer(nombre_transformers);
+                    //administrador_transformers.eliminar_transformer(nombre_transformers);
                     break;
                 }
             case OPCION_5: // Transformar un Transformer
