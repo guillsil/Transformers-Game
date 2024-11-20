@@ -4,6 +4,7 @@
 
 #ifndef JUEGO_HPP
 #define JUEGO_HPP
+#include "admin_transformers.hpp"
 #include "Menu.hpp"
 #include "Utilidades.hpp"
 #include "BovedaCristales.hpp"
@@ -37,6 +38,8 @@ private:
     FusionadorEnergon fusionador;
     bool juego_en_curso;
     std::string nombre_jugador;
+
+    Administrador_Transformers administrador_transformers;
 
     //Pre: -
     //Post: El personaje elegido responde al mensaje recibido.
@@ -80,6 +83,14 @@ private:
     //Post: Gestiona las opciones del menú de la bóveda (almacenar, mostrar, exportar cristales).
     void manejar_de_bodega();
 
+    std::string convertir_faccion_string(const int& faccion);
+
+    std::string convertir_automovil_string(const int& vehiculo);
+    std::string convertir_aeronave_string(const int& vehiculo);
+
+    void manejar_crear_transformers();
+    std::string pedir_nombre_transformers();
+
     //Pre: -
     //Post: Maneja el flujo del personaje hasta que el mismo decida salir.
     void interactuar_con_personaje();
@@ -87,6 +98,9 @@ private:
     //Pre: -
     //Post: Devuelve true si la entrada es alguno de estos valores (COMÚN, RARO, ÉPICO o LEGENDARIO), o false en caso contrario.
     bool verificar_entrada_del_cristal(const int &entrada);
+
+
+    void manejar_administrar_transformers();
 };
 
 

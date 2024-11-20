@@ -87,6 +87,15 @@ public:
     //Pre: -
     //Post: Imprime por consola el menu inicial del juego en el cual se pide al usuario que ingrese su nombre.
     void mostrar_menu_inicial();
+
+    void mostrar_menu_administrador_transformers();
+
+    void menu_escoger_faccion();
+
+    void menu_escoger_vehiculo();
+
+    void menu_escoger_aeronave();
+    void menu_ingregar_nombre_transformers();
 };
 
 

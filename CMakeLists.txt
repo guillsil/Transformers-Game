@@ -49,6 +49,10 @@ set(ARCHIVOS_FUENTE
         src/ManejadorDeMensajes.cpp
         src/Estadisticas.cpp
         src/Grafo/TuplaVerticeDistancia.cpp
+        include/transformers.hpp
+        include/admin_transformers.hpp
+        src/transformers.cpp
+        src/admin_transformers.cpp
 )
 
 add_executable(AYED_TPG_2C2024
