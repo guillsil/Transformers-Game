@@ -11,7 +11,7 @@
 El proyecto se puede compilar manualmente por terminal con la siguiente línea:
 
 ```bash
-g++ -I include main.cpp src/*.cpp -o main
+g++ -I include src/Grafo/*.cpp src/*.cpp main.cpp -o main
 ```
 
 O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** presente en el directorio raíz.
