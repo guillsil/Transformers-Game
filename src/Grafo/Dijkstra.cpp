@@ -1,8 +1,8 @@
-#include <queue>
 #include "../../include/TDAs/Grafo/Dijkstra.hpp"
 #include "../../include/TDAs/Matriz.hpp"
 #include "../../include/TDAs/Vector.hpp"
 #include "../../include/TDAs/Grafo/TuplaVerticeDistancia.hpp"
+#include "../include/TDAs/Heap.hpp"
 
 
 const int INICIALIZADOR_PADRE = 0;
@@ -16,12 +16,13 @@ Vector<size_t> Dijkstra::calcular_camino_minimo(Matriz<bool>& matriz_adyacencia,
     Vector<size_t> padre(vertices, INICIALIZADOR_PADRE);
     distancias[origen] = 0;
 
-    std::priority_queue<TuplaVerticeDistancia> cola_prioridad;
-    cola_prioridad.push(TuplaVerticeDistancia(origen, 0));
+    Heap<TuplaVerticeDistancia> cola_prioridad;
+    // std::priority_queue<TuplaVerticeDistancia> cola_prioridad;
+    cola_prioridad.alta(TuplaVerticeDistancia(origen, 0));
 
-    while (!cola_prioridad.empty()) {
-        TuplaVerticeDistancia actual = cola_prioridad.top();
-        cola_prioridad.pop();
+    while (!cola_prioridad.vacio()) {
+        TuplaVerticeDistancia actual = cola_prioridad.primero();
+        cola_prioridad.baja();
 
         size_t vertice_actual = actual.obtener_vertice();
 
@@ -35,7 +36,7 @@ Vector<size_t> Dijkstra::calcular_camino_minimo(Matriz<bool>& matriz_adyacencia,
                 if (nueva_distancia < distancias[v]) {
                     distancias[v] = nueva_distancia;
                     padre[v] = vertice_actual;
-                    cola_prioridad.push(TuplaVerticeDistancia(v, nueva_distancia));
+                    cola_prioridad.alta(TuplaVerticeDistancia(v, nueva_distancia));
                 }
             }
         }
