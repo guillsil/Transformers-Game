@@ -52,6 +52,10 @@ private:
     //Post: Se envia el mensaje a respuesta_personaje para que el personaje pueda responder al mensaje.
     void manejar_opcion_escribir_mensaje();
 
+    //Pre:
+    //Post
+    void manejar_cambiar_estado();
+
     //Pre: entrada_1 y entrada_2 deben ser entradas válidas para la rareza de un cristal.
     //Por ejemplo deben ser 0, 1, 2, 3.
     //Post:Fusiona dos cristales y almacena el cristal resultante en la bóveda.

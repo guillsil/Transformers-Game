@@ -73,6 +73,21 @@ void Juego::manejar_opcion_escribir_mensaje() {
     std::getline(std::cin ,mensaje);
     respuesta_personaje(mensaje);
 }
+
+void Juego::manejar_cambiar_estado(){
+    menu.limpiar_menu();
+    char indice_estado;
+    menu.mostrar_menu_estado(personaje.obtener_personaje());
+    std::cin >> indice_estado;
+    try {
+        menu.limpiar_menu();
+        personaje.actualizar_estado(indice_estado);
+        menu.mostrar_mensaje(MENSAJE_ESTADO_MODIFICADO_CORRECTAMENTE);
+    } catch (ExcepcionProtagonista& e) {
+        menu.mostrar_mensaje(e.what());
+    }
+}
+
 void Juego::fusionador_de_cristales(const int &entrada_1, const int &entrada_2) {
     try {
         Cristal cristal_1(static_cast<Rareza>(entrada_1));
@@ -83,6 +98,7 @@ void Juego::fusionador_de_cristales(const int &entrada_1, const int &entrada_2) 
         menu.limpiar_menu();
         menu.mostrar_mensaje(MENSAJE_CRISTAL_OBTENIDO + cristal_resultante.convertir_rareza_a_string());
     } catch (ExcepcionFusionadorEnergon& e) {
+        menu.limpiar_menu();
         menu.mostrar_mensaje(e.what());
     }
 }
@@ -348,16 +364,7 @@ void Juego::interactuar_con_personaje() {
                 manejar_sugerencia_personaje();
                 break;
             case OPCION_3:
-                menu.limpiar_menu();
-                char indice_estado;
-                menu.mostrar_menu_estado(personaje.obtener_personaje());
-                std::cin >> indice_estado;
-                try {
-                    personaje.actualizar_estado(indice_estado);
-                    menu.mostrar_mensaje(MENSAJE_ESTADO_MODIFICADO_CORRECTAMENTE);
-                } catch (ExcepcionProtagonista& e) {
-                    menu.mostrar_mensaje(e.what());
-                }
+                manejar_cambiar_estado();
                 break;
             case OPCION_4: // Fusionador
                 manejar_fusionar_de_cristales();
