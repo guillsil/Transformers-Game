@@ -49,6 +49,8 @@ set(ARCHIVOS_FUENTE
         src/Estadisticas.cpp
         src/Grafo/TuplaVerticeDistancia.cpp
         src/Protagonista.cpp
+        src/AdminTransformers.cpp
+        src/Transformers.cpp
 
 
 )

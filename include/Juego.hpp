@@ -8,6 +8,7 @@
 #include "BovedaCristales.hpp"
 #include "FusionadorEnergon.hpp"
 #include "Protagonista.hpp"
+#include "AdminTransformers.hpp"
 
 
 class Juego {
@@ -37,7 +38,7 @@ private:
     bool juego_en_curso;
     std::string nombre_jugador;
 
-    //Administrador_Transformers administrador_transformers;
+    AdministradorTransformers administrador_transformers;
 
     //Pre: -
     //Post: El personaje elegido responde al mensaje recibido.
@@ -94,6 +95,8 @@ private:
     void manejar_crear_transformers();
 
     std::string pedir_nombre_transformers();
+    void crear_transformers(std::string nombre, int fuerza, int defensa, int velocidad, int faccion,
+                            int vehiculo);
 
     //Pre: -
     //Post: Maneja el flujo del personaje hasta que el mismo decida salir.
