@@ -88,15 +88,19 @@ private:
 
     std::string convertir_faccion_string(const int& faccion);
 
-    std::string convertir_automovil_string(const int& vehiculo);
-
-    std::string convertir_aeronave_string(const int& vehiculo);
 
     void manejar_crear_transformers();
+    void manejar_buscar_transformers();
+    void manejar_eliminar_transformers();
+    void manejar_transformar();
 
     std::string pedir_nombre_transformers();
-    void crear_transformers(std::string nombre, int fuerza, int defensa, int velocidad, int faccion,
-                            int vehiculo);
+    std::string convertir_vehiculo_string(const int& vehiculo);
+
+    void agregar_transformers(std::string nombre, int fuerza, int defensa, int velocidad, std::string faccion,
+                              std::string vehiculo);
+    void crear_transformers(std::string nombre, int tipo_vehiculo);
+
 
     //Pre: -
     //Post: Maneja el flujo del personaje hasta que el mismo decida salir.

@@ -7,6 +7,9 @@
 
 
 const std::string MENSAJE_ESTADO_MODIFICADO_CORRECTAMENTE = "Se Modifico Correctamente el estado" ;
+const std::string MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE = "Se creo Correctamente el Transformers";
+const std::string MENSAJE_TRANSFORMERS_ENCONTRADO = "Se encontro al Transformers";
+const std::string MENSAJE_TRANSFORMERS_NO_ENCONTRADO = "No se encontro al Transformers";
 const std::string ERROR_ENTRADA_INVALIDA = "Error: Entrada Inválida. Intente nuevamente.";
 const std::string ERROR_BOVEDA_VACIA = "Error: La bóveda esta vaciá.";
 const std::string ERROR_LIMITE_EN_BOVEDA_EXCEDIDO = "Error: Limite en la Bóveda alcanzado";
@@ -17,6 +20,20 @@ const std::string MENSAJE_ALMACENADO_CON_EXITO = "Se almaceno con éxito el cris
 const std::string MENSAJE_ARCHIVO_CREADO_CORRECTAMENTE = "Se ha generado con éxito el archivo con la ruta suministrada.";
 const std::string CANTIDAD_CRISTALES_ALMACENADOS = "Cantidad de Cristales Almacenados: ";
 const std::string MENSAJE_CRISTAL_OBTENIDO = "EL cristal obtenido es: ";
+
+
+enum Faccion {
+    AUTOBOTS,
+    DECEPTICONS
+};
+enum Vehiculos{
+    AUTO,
+    CAMION,
+    AVION,
+    TANQUE
+};
+
+
 
 Juego::Juego(): personaje(PERSONAJE_INVALIDO), juego_en_curso(true) {
     Cristal cristal_regalo(COMUN);
@@ -230,91 +247,117 @@ std::string Juego::convertir_faccion_string(const int &faccion) {
     return "Decepticons";
 }
 
-std::string Juego::convertir_automovil_string(const int &vehiculo) {
-    if (vehiculo == 0) { return "Auto";}
-    return "Camion";
-}
-
-std::string Juego::convertir_aeronave_string(const int &vehiculo) {
-    if (vehiculo == 0) { return "Avion";}
-    return "Tanque";
-}
-
 std::string Juego::pedir_nombre_transformers(){
     std::string nombre_transformers;
     menu.menu_ingregar_nombre_transformers();
     std::cin >> nombre_transformers;
     return nombre_transformers;
 }
-enum Faccion {
-    AUTOBOTS,
-    DECEPTICONS
-};
-enum Vehiculos{
-    AUTO,
-    CAMION,
-    AVION,
-    TANQUE
-};
+std::string Juego::convertir_vehiculo_string(const int &vehiculo){
+    switch (vehiculo) {
+        case 0:
+            return "Auto";
+            break;
+        case 1:
+            return "Camion";
+            break;
+        case 2:
+            return "Avion";
+            break;
+        case 3:
+            return "Tanque";
+        default:
+            menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
+            return "";
+    }
+}
 
-void Juego::crear_transformers(std::string nombre, int fuerza, int defensa, int velocidad, int faccion, int vehiculo) {
+void Juego::agregar_transformers(std::string nombre, int fuerza, int defensa, int velocidad, std::string faccion, std::string vehiculo) {
     try{
-        administrador_transformers.agregar_transformer(nombre, fuerza, defensa, velocidad, convertir_faccion_string(faccion), convertir_automovil_string(vehiculo));
+        administrador_transformers.agregar_transformer(nombre, fuerza, defensa, velocidad, faccion, vehiculo);
     }catch (ExcepcionAdministradorTransformers& e){
         menu.limpiar_menu();
         menu.mostrar_mensaje(e.what());
     }
+}
 
-};
+void Juego::crear_transformers(std::string nombre, int tipo_vehiculo){
+    switch (tipo_vehiculo){
+    case AUTO:
+        agregar_transformers(nombre, 10, 10, 10, convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(tipo_vehiculo));
+        menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE);
+        break;
+    case CAMION:
+        agregar_transformers(nombre, 15, 15, 15, convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(tipo_vehiculo));
+        menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE);
+    case AVION:
+        agregar_transformers(nombre, 10, 10, 10, convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
+        menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE);
+        break;
+    case TANQUE:
+        agregar_transformers(nombre, 12, 12, 12, convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
+        menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE);
+    default:
+        menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
+    }
+}
+
 
 void Juego::manejar_crear_transformers(){
+    menu.limpiar_menu();
     int tipo_vehiculo;
     int faccion;
     const std::string nombre = pedir_nombre_transformers();
-    menu.limpiar_menu();
-    menu.menu_ingregar_nombre_transformers();
     menu.limpiar_menu();
     menu.menu_escoger_faccion();
     std::cin >> faccion;
     menu.limpiar_menu();
     switch (faccion){
-    case AUTOBOTS:
-        menu.menu_escoger_vehiculo();
-        std::cin >> tipo_vehiculo;
-        if (tipo_vehiculo){
-            switch (tipo_vehiculo){
-                case AUTO:
-                    administrador_transformers.agregar_transformer(nombre, 10, 10, 10, convertir_faccion_string(faccion), convertir_automovil_string(tipo_vehiculo));
-                    break;
-                case CAMION:
-                    administrador_transformers.agregar_transformer(nombre, 15, 15, 15, convertir_faccion_string(faccion), convertir_automovil_string(tipo_vehiculo));
-                default:
-                    menu.limpiar_menu();
-                    menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
-                }
-            menu.mostrar_mensaje("Se creo Correctamente el Transformers");
-        }
-        break;
+        case AUTOBOTS:
+            menu.menu_escoger_vehiculo();
+            std::cin >> tipo_vehiculo;
+            crear_transformers(nombre, tipo_vehiculo);
+            break;
         case DECEPTICONS:
             menu.menu_escoger_aeronave();
             std::cin >> tipo_vehiculo;
-            if (tipo_vehiculo){
-                switch (tipo_vehiculo){
-                case AVION:
-                    administrador_transformers.agregar_transformer(nombre, 10, 10, 10, convertir_faccion_string(faccion), convertir_aeronave_string(tipo_vehiculo));
-                    break;
-                case TANQUE:
-                    administrador_transformers.agregar_transformer(nombre, 12, 12, 12, convertir_faccion_string(faccion), convertir_aeronave_string(tipo_vehiculo));
-                default:
-                    menu.limpiar_menu();
-                    menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
-                }
-            }
+            crear_transformers(nombre, tipo_vehiculo);
         default:
             menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
-        }
+    }
 }
 
+void Juego::manejar_buscar_transformers(){
+    menu.limpiar_menu();
+    const std::string nombre = pedir_nombre_transformers();
+    if (administrador_transformers.buscar_transformer(nombre) != 1){
+        menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_ENCONTRADO);
+    }else{
+        menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_NO_ENCONTRADO);
+    }
+}
+
+void Juego::manejar_eliminar_transformers(){
+    menu.limpiar_menu();
+    const std::string nombre_transformers = pedir_nombre_transformers();
+    try{
+        administrador_transformers.eliminar_transformer(nombre_transformers);
+    }catch (ExcepcionAdministradorTransformers& e){
+        menu.limpiar_menu();
+        menu.mostrar_mensaje(e.what());
+    }
+}
+
+void Juego::manejar_transformar(){
+    menu.limpiar_menu();
+    std::string nombre_transformers = pedir_nombre_transformers();
+    try{
+        administrador_transformers.transformar_transformer(nombre_transformers);
+    } catch (ExcepcionAdministradorTransformers& e){
+        menu.limpiar_menu();
+        menu.mostrar_mensaje(e.what());
+    }
+}
 
 void Juego::manejar_administrar_transformers(){
     bool continuar = true;
@@ -325,45 +368,21 @@ void Juego::manejar_administrar_transformers(){
         std::cin >> opcion_menu;
         switch (opcion_menu) {
             case OPCION_1: //crear un transformers
-                menu.limpiar_menu();
                 manejar_crear_transformers();
                 break;
             case OPCION_2: // mostrar todos los transformers
                 menu.limpiar_menu();
                 administrador_transformers.mostrar_todos_transformers();
                 break;
-            case OPCION_3: {   //Buscar un Transformer por nombre
-                    menu.limpiar_menu();
-                    const std::string nombre = pedir_nombre_transformers();
-                    if (administrador_transformers.buscar_transformer(nombre) != 1){
-                        menu.mostrar_mensaje("El Transformers se encuentra");
-                    }else{
-                        menu.mostrar_mensaje("No se encontro al Transformers que esta buscando");
-                    }
-                    break;
-                }
-            case OPCION_4: {// Eliminar un Transformer por nombre
-                    menu.limpiar_menu();
-                    const std::string nombre_transformers = pedir_nombre_transformers();
-                    try{
-                        administrador_transformers.eliminar_transformer(nombre_transformers);
-                    }catch (ExcepcionAdministradorTransformers& e){
-                        menu.limpiar_menu();
-                        menu.mostrar_mensaje(e.what());
-                    }
-                    break;
-                }
-            case OPCION_5: { // Transformar un Transformer
-                    menu.limpiar_menu();
-                    std::string nombre_transformers = pedir_nombre_transformers();
-                    try{
-                        administrador_transformers.transformar_transformer(nombre_transformers);
-                    } catch (ExcepcionAdministradorTransformers& e){
-                        menu.limpiar_menu();
-                        menu.mostrar_mensaje(e.what());
-                    }
-                    break;
-            }
+            case OPCION_3: //Buscar un Transformer por nombre
+                manejar_buscar_transformers();
+                break;
+            case OPCION_4: // Eliminar un Transformer por nombre
+                manejar_eliminar_transformers();
+                break;
+            case OPCION_5: // Transformar un Transformer
+                manejar_transformar();
+                break;
             case OPCION_6:
                 menu.limpiar_menu();
                 continuar = false;
@@ -399,7 +418,7 @@ void Juego::interactuar_con_personaje() {
                 manejar_administrar_transformers();
                 break;
             case OPCION_6: // Aca se conecta lo de la batalla
-
+                //ACA DEBERIA LLAMARSE A INICIAR BATALLA
                 break;
             case OPCION_7: // Boveda
                 manejar_de_bodega();
