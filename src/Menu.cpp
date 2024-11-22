@@ -3,7 +3,7 @@
 //
 
 #include "Menu.hpp"
-const std::string TRANSFORMERS_LOGO = R"(
+const std::string TRANSFORMERS = R"(
   ╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
   ║                                                                                                             ║
   ║   ████████╗██████╗   █████╗ ███╗   ██╗███████╗██████╗ ██████╗ ██████╗ ███╗   ███╗███████╗██████╗ ███████╗   ║
@@ -11,7 +11,9 @@ const std::string TRANSFORMERS_LOGO = R"(
   ║      ██║   ██████╔╝ ███████║██╔██╗ ██║███████╗██████╗██║   ██║██████╔╝██╔████╔██║█████╗  ██████╔╝███████╗   ║
   ║      ██║   ██╔══██╗ ██╔══██║██║╚██╗██║╚════██║██╔═══╝██║   ██║██╔══██╗██║╚██╔╝██║██╔══╝  ██╔══██╗╚════██║   ║
   ║      ██║   ██║  ██║ ██║  ██║██║ ╚████║███████║██║    ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗██║  ██║███████║   ║
-  ║      ╚═╝   ╚═╝  ╚═╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝     ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝   ║
+  ║      ╚═╝   ╚═╝  ╚═╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝     ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝   ║)";
+
+const std::string TRANSFORMERS_LOGO = R"(
   ║              ██████╗ ███████╗██╗   ██╗███████╗███╗   ██╗██║   ██╗███████╗     ██████╗ ██████╗               ║
   ║              ██╔══██╗██╔════╝██║   ██║██╔════╝████╗  ██║██║   ██║██╔════╝    ██╔═══██╗██════╝               ║
   ║              ██████╔╝█████╗  ██║   ██║█████╗  ██╔██╗ ██║██║   ██║█████╗      ██║   ██║██████╗               ║
@@ -72,7 +74,7 @@ const std::string MENU_PERSONAJE_ASCII = R"(
   ║            ║                                                                                   ║            ║
   ║            ║      [1] Escribir un mensaje                  [5] Administrar Transformers        ║            ║
   ║            ║                                                                                   ║            ║
-  ║            ║      [2] Sugerir una fusión                   [6] Equipar con un Cristal          ║            ║
+  ║            ║      [2] Sugerir una fusión                   [6] Iniciar Batalla                 ║            ║
   ║            ║                                                                                   ║            ║
   ║            ║      [3] Modificar Estado                     [7] Bóveda                          ║            ║
   ║            ║                                                                                   ║            ║
@@ -178,11 +180,13 @@ const std::string MENU_BOVEDA= R"(
   ║                                                                                                             ║
   ║          ╔═══════════════════════════════════════════════════════════════════════════════════════╗          ║
   ║          ║                                                                                       ║          ║
-  ║          ║              [1]  Almacenar un Cristal           [4]  Cantidad Cristales              ║          ║
+  ║          ║        [1]  Almacenar un Cristal           [5]  Mostrar Crista con Mayor Poder        ║          ║
   ║          ║                                                                                       ║          ║
-  ║          ║              [2]  Mostrar Cristales              [5]  Mostrar Crista con Mayor Poder  ║          ║
+  ║          ║        [2]  Mostrar Cristales              [6]  Equiparse con un Cristal              ║          ║
   ║          ║                                                                                       ║          ║
-  ║          ║              [3]  Exportar Cristales             [6]  Salir                           ║          ║
+  ║          ║        [3]  Exportar Cristales             [7]  Ver Cristales Equipados               ║          ║
+  ║          ║                                                                                       ║          ║
+  ║          ║        [4]  Cantidad Cristales             [8]  Salir                                 ║          ║
   ║          ║                                                                                       ║          ║
   ║          ╚═══════════════════════════════════════════════════════════════════════════════════════╝          ║
   ╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
@@ -219,14 +223,6 @@ const std::string ADMINISTRADOR_TRANSFORMERS = R"(
   ╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 )";
 const std::string MENU_ESCOGER_NOMBRE_TRANSFORMERS= R"(
-  ╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-  ║                                                                                                             ║
-  ║   ████████╗██████╗   █████╗ ███╗   ██╗███████╗██████╗ ██████╗ ██████╗ ███╗   ███╗███████╗██████╗ ███████╗   ║
-  ║   ╚══██╔══╝██╔══██╗ ██╔══██╗████╗  ██║██╔════╝██════╝██╔═══██║██╔══██╗████╗ ████║██╔════╝██╔══██╗██╔════╝   ║
-  ║      ██║   ██████╔╝ ███████║██╔██╗ ██║███████╗██████╗██║   ██║██████╔╝██╔████╔██║█████╗  ██████╔╝███████╗   ║
-  ║      ██║   ██╔══██╗ ██╔══██║██║╚██╗██║╚════██║██╔═══╝██║   ██║██╔══██╗██║╚██╔╝██║██╔══╝  ██╔══██╗╚════██║   ║
-  ║      ██║   ██║  ██║ ██║  ██║██║ ╚████║███████║██║    ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗██║  ██║███████║   ║
-  ║      ╚═╝   ╚═╝  ╚═╝ ╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝     ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝   ║
   ║                                                                                                             ║
   ║ ════════════════════════════════════════════════════════════════════════════════════════════════════════════║
   ║                                                                                                             ║
@@ -318,7 +314,7 @@ const std::string MENU_INGRESAR_CRISTALES_BOVEDA= R"(
   ║                                                                                                             ║
   ║              ╔════════════════════════════════════════════════════════════════════════════════╗             ║
   ║              ║                                                                                ║             ║
-  ║              ║           [0] Común       [0] Raro      [0] Épico     [0] Legendario           ║             ║
+  ║              ║           [0] Común       [1] Raro      [2] Épico     [3] Legendario           ║             ║
   ║              ║                                                                                ║             ║
   ║              ╚════════════════════════════════════════════════════════════════════════════════╝             ║
   ╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
@@ -346,7 +342,7 @@ const std::string SIMBOLO_INGRESAR_MENSAJE = "-: ";
 
 void Menu::mostrar_menu_principal(const std::string &nombre) {
     mostrar_mensaje("Bienvenido " + nombre + " ¡prepárate para esta aventura!");
-    std::cout << TRANSFORMERS_LOGO;
+    std::cout << TRANSFORMERS;
     std::cout << MENU_PRINCIPAL << std::endl;
     std::cout<<SIMBOLO_INGRESAR_MENSAJE;
 }
@@ -438,6 +434,7 @@ void Menu::mostrar_rareza(const std::string &rareza) {
 }
 
 void Menu::mostrar_menu_inicial() {
+    std::cout << TRANSFORMERS;
     std::cout << TRANSFORMERS_LOGO;
     std::cout << MENU_INICIAL;
     std::cout << SIMBOLO_INGRESAR_MENSAJE;
@@ -465,6 +462,7 @@ void Menu::menu_escoger_aeronave(){
 }
 
 void Menu::menu_ingregar_nombre_transformers(){
+    std::cout << TRANSFORMERS;
     std::cout << MENU_ESCOGER_NOMBRE_TRANSFORMERS;
     std::cout << SIMBOLO_INGRESAR_MENSAJE;
 }

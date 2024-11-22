@@ -12,6 +12,7 @@ const std::string ERROR_BOVEDA_VACIA = "Error: La bóveda esta vaciá.";
 const std::string ERROR_LIMITE_EN_BOVEDA_EXCEDIDO = "Error: Limite en la Bóveda alcanzado";
 
 
+const std::string MENSAJE_EQUIPADO_CON_EXITO = "Se Equipo con éxito el cristal mas Fuerte.";
 const std::string MENSAJE_ALMACENADO_CON_EXITO = "Se almaceno con éxito el cristal.";
 const std::string MENSAJE_ARCHIVO_CREADO_CORRECTAMENTE = "Se ha generado con éxito el archivo con la ruta suministrada.";
 const std::string CANTIDAD_CRISTALES_ALMACENADOS = "Cantidad de Cristales Almacenados: ";
@@ -186,10 +187,20 @@ void Juego::manejar_de_bodega() {
                 manejar_de_bodega_mostrar_tamanio();
                 break;
             case OPCION_5://Mostrar cristal con mayor poder
+                menu.limpiar_menu();
                 boveda.obtener_cristal_mas_poderoso().mostrar();
                 break;
-            case OPCION_6:
-                continuar = false;
+            case OPCION_6:// Equipar un cristal al personaje
+                menu.limpiar_menu();
+                personaje.equipar_cristal(boveda.obtener_y_eliminar_cristal_mas_poderoso());
+                menu.mostrar_mensaje(MENSAJE_EQUIPADO_CON_EXITO);
+                break;
+            case OPCION_7:  // Ver Cristales Equipados
+                menu.limpiar_menu();
+                personaje.ver_cristales_equipados();
+                break;
+             case OPCION_8:
+                 continuar = false;
                 menu.limpiar_menu();
             default:
                 menu.limpiar_menu();
@@ -354,12 +365,8 @@ void Juego::interactuar_con_personaje() {
             case OPCION_5: //Administrador Transformers
                 manejar_administrar_transformers();
                 break;
-            case OPCION_6: // Equipar un cristal al personaje
-                try {
-                    personaje.equipar_cristal(boveda.obtener_y_eliminar_cristal_mas_poderoso());
-                } catch (ExcepcionBovedaCristales& e) {
-                    menu.mostrar_mensaje(e.what());
-                }
+            case OPCION_6: // Aca se conecta lo de la batalla
+
                 break;
             case OPCION_7: // Boveda
                 manejar_de_bodega();

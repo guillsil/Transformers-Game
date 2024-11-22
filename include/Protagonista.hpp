@@ -40,8 +40,12 @@ public:
     Personaje obtener_personaje();
 
     //Pre: -
-    //Post: Equipa un cristal en la boveda del personaje a lo sumo solo podrá tener 20 cristales equipados.
+    //Post: Equipa un cristal en la boveda del personaje a lo sumo solo podrá tener 7 cristales equipados.
     void equipar_cristal(Cristal cristal);
+
+    //Pre:
+    //Post:
+    void ver_cristales_equipados();
 
 private:
     OptimusPrime optimus;

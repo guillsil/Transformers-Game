@@ -61,3 +61,7 @@ Personaje Protagonista::obtener_personaje() { return personaje_jugando;}
 void Protagonista::equipar_cristal(Cristal cristal) {
     cristales_equipados.almacenar_cristal(cristal);
 }
+
+void Protagonista::ver_cristales_equipados(){
+    cristales_equipados.mostrar_cristales();
+}
