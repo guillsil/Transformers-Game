@@ -1,3 +1,5 @@
+//Alex Fariña 21/11/2024
+
 #include "SimulacionCombate.hpp"
 #include "Utilidades.hpp"
 

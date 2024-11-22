@@ -1,7 +1,9 @@
+//Alex Fariña 21/11/2024
+
 #ifndef SIMULACION_COMBATE_HPP
 #define SIMULACION_COMBATE_HPP
 
-#include "transformers.hpp"
+#include "Transformers.hpp"
 #include "Vector.hpp"
 
 enum Resultado_combate {
@@ -25,12 +27,14 @@ class SimulacionCombate {
         //Destructor
         ~SimulacionCombate();
         
-        //pre:-
+        //pre: El transformer en el encuentro actual no debe ser de la misma faccion
         //post:
         //Hara la comparacion de fuerza entre el personaje_principal y el transformer en posicion_actual:
         //  Si personaje_principal es mas fuerte, devuelve VICTORIA
         //  Si el transformer en posicion_actual es mas fuerte, devuelve DERROTA
-        //  Si tienen igual fuerza, devuelve EMPATE
+        //  Si tienen igual fuerza, devuelve EMPATe
+        //El combate con el jefe_final (ultimo encuentro) genera un numero aleatorio que 
+        //determina si el jefe final estara transformado para el combate
         Resultado_combate combatir(bool transformado);
 
         //pre: 
