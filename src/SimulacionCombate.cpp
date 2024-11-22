@@ -1,31 +1,41 @@
 #include "SimulacionCombate.hpp"
+#include "Utilidades.hpp"
 
 SimulacionCombate:: SimulacionCombate(Vector<Transformers> secuencia_combate){
     this->secuencia_combate = secuencia_combate;
     personaje_principal = secuencia_combate[0];
+    jefe_final = secuencia_combate[secuencia_combate.tamanio()-1];
     posicion_actual = 0;
 }
 
 SimulacionCombate:: ~SimulacionCombate(){};
 
-Resultado_combate SimulacionCombate:: combatir(){
+Resultado_combate SimulacionCombate:: combatir(bool transformado){
     Resultado_combate resultado_combate = EMPATE;
-    if(!combatio){
-        if(es_aliado()){
-            resultado_combate = DERRROTA;
-        }
-        else{
-            if(personaje_principal.es_mas_fuerte(secuencia_combate[posicion_actual])) resultado_combate = VICTORIA;
-            else if(personaje_principal.es_mas_fuerte(secuencia_combate[posicion_actual])) resultado_combate = DERRROTA;
-        }
+    if(transformado) personaje_principal.cambiar_forma();
+    
+    if(posicion_actual == (secuencia_combate.tamanio() - 1)){
+        Utilidades utilidad;
+        int valor_jefe_transformado = utilidad.generar_numero_aleatorio(0,1);
+        if(valor_jefe_transformado == 1) jefe_final.cambiar_forma();
+        
+        if(personaje_principal.es_mas_fuerte(jefe_final)) resultado_combate = VICTORIA;
+        else if(jefe_final.es_mas_fuerte(personaje_principal)) resultado_combate = DERRROTA;
+        
+        if(valor_jefe_transformado == 1) jefe_final.cambiar_forma();
     }
+    else {
+        if(personaje_principal.es_mas_fuerte(secuencia_combate[posicion_actual])) resultado_combate = VICTORIA;
+        else if(secuencia_combate[posicion_actual].es_mas_fuerte(personaje_principal)) resultado_combate = DERRROTA;
+    }
+    
+    if(transformado) personaje_principal.cambiar_forma();
 
     return resultado_combate;
 }
 
 void SimulacionCombate:: avanzar(){
     posicion_actual++;
-    combatio = false;
 }
 
 bool SimulacionCombate:: hay_avance(){
@@ -37,5 +47,5 @@ bool SimulacionCombate:: es_aliado(){
 }
 
 void SimulacionCombate:: mostrar_recorrido() {
-    
+    //A implementar
 }

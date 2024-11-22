@@ -12,11 +12,11 @@ enum Resultado_combate {
 
 class SimulacionCombate {
     private:
-        //Atributos
+
         Vector<Transformers> secuencia_combate; 
         Transformers personaje_principal;
+        Transformers jefe_final;
         size_t posicion_actual;
-        bool combatio;
         
     public:
         //Constructor
@@ -31,9 +31,7 @@ class SimulacionCombate {
         //  Si personaje_principal es mas fuerte, devuelve VICTORIA
         //  Si el transformer en posicion_actual es mas fuerte, devuelve DERROTA
         //  Si tienen igual fuerza, devuelve EMPATE
-        //Si combatio == true el resultado del combate siempre sera EMPATE
-        //Si intenta combatir un transformer_aliado, el resultado siempre sera DERROTA
-        Resultado_combate combatir();
+        Resultado_combate combatir(bool transformado);
 
         //pre: 
         //Posicion_actual + 1 debe ser una posicion valida
@@ -54,7 +52,7 @@ class SimulacionCombate {
         
         //pre:
         //post:
-        //Muestra por pantalla el recorrido del personaje_principal 
+        //Muestra por pantalla el recorrido del personaje_principal hasta el encuentro actual
         void mostrar_recorrido();
 
 };
