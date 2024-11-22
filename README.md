@@ -19,16 +19,18 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
 ## Justificación de la Selección de Estructuras de Datos y Algoritmos.
 
 * ### Cola de Prioridad en el Algoritmo de Camino Mínimo de Dijkstra
-  #### ¿Por qué una cola de prioridad?
-  * Eficiencia: Encuentra el siguiente nodo a explorar rápidamente.
-  * Orden: Mantiene los nodos ordenados por distancia.
-  * Optimización: Evita explorar caminos que claramente son más largos.
+  * El uso de un heap en Dijkstra permite que el algoritmo sea mucho más eficiente al seleccionar rápidamente el nodo con menor distancia, mantener actualizadas las prioridades, y evitar exploraciones innecesarias. Esto asegura un rendimiento óptimo, especialmente en grafos grandes o densos.
   * En pocas palabras: En Dijkstra, nos asegura encontrar el camino más corto de manera eficiente, reduciendo la complejidad a O((a + v)log(v)).
 
 
+* ### Uso de un vector para alamcenar los Transformers Secundarios
+  * Se emplea el TDA Vector para manejar la lista de transformers debido a su flexibilidad y eficiencia en operaciones comunes como insertar, búsqueda y eliminación. Al ser dinámico, el vector permite ajustar el tamaño según sea necesario, mientras mantiene un rendimiento óptimo para gestionar y mostrar la lista de manera ordenada. Esto facilita la implementación de funcionalidades como agregar, buscar o eliminar transformers de forma sencilla y eficaz.
 
+* ### Grafos en la generación de Combates
+  *
 
-
+* ### Dijkstra para obtener el camino Minimo en la Simulacion de la batalla
+  *
 
 
 ## Aclaraciones Adicionales
@@ -39,7 +41,7 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
   * El parámetro de poder de un cristal se representa mediante la suma de las estadísticas de un cristal es decir es la suma entre la fuerza, defensa y velociad.
 
 * ### Funcionalidad para Mostrar el cristal con mayor Poder
-  * Para poder mostrar el cristal con mayor poder lo que se decide es ir almacenando en la bóveda los cristales de manera ordenada y asi el obtener el cristal de mayor poder tendrá un costo de O(1), esto porque se ordena de manera descendente lo que permite obtenerlo de una manera más rápida, ya que está en la primera posición.
+  * Para poder mostrar el cristal con mayor poder lo que se decide es ir almacenando en la bóveda los cristales de manera ordenada (Inserción Ordenada) y asi el obtener el cristal de mayor poder tendrá un costo de O(1), esto porque se ordena de manera descendente lo que permite obtenerlo de una manera más rápida, ya que está en la primera posición.
 
 * ### Funcionalidad para Equipar con un Cristal al Personaje
   * Para poder equipar con un cristal al personaje lo que se decidió es crearle una mini bóveda al personaje en la cual el mismo solo podrá equiparse con 7 cristales.
