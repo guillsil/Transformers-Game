@@ -21,9 +21,11 @@ class SimulacionCombate {
         size_t posicion_actual;
         
     public:
-        //Constructor
+        //Constructores
+        SimulacionCombate(); //Diseñado a fin de porder usar el operador de asignacion
+
         SimulacionCombate(Vector<Transformers> secuencia_combate);
-        
+
         //Destructor
         ~SimulacionCombate();
         
@@ -39,7 +41,7 @@ class SimulacionCombate {
 
         //pre: 
         //Posicion_actual + 1 debe ser una posicion valida
-        //post: 
+        //post:
         //Avanza hasta el siguiente encuentro de la secuencia de combates
         void avanzar();
 
@@ -58,6 +60,11 @@ class SimulacionCombate {
         //post:
         //Muestra por pantalla el recorrido del personaje_principal hasta el encuentro actual
         void mostrar_recorrido();
+
+        std:: string nombre_encuentro_actual();
+
+        //Operador de asignacion
+        SimulacionCombate& operator=(const SimulacionCombate& simulacion_combate);
 
 };
 

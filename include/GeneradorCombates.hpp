@@ -17,7 +17,7 @@ class GeneradorCombates {
         //Atributos
         Grafo mapa_combates;
         Secuencia_combates secuencia_minima; 
-        Vector<Transformers> transformers_en_mapa; //Representa los vertices de mi grafo mapa_combates
+        Vector<Transformers> transformers_en_mapa; //Representa los vertices que tendra mi grafo mapa_combates
 
         //Metodos privados
         Grafo generar_mapa(Vector<Transformers>& transformers_en_mapa);
@@ -28,9 +28,13 @@ class GeneradorCombates {
 
         int costo_avanzar(Transformers& transformer_origen, Transformers& transformer_destino);
     public:
+        //Constructores
+
+        GeneradorCombates(); //Diseñado a fin de porder usar el operador de asignacion
 
         GeneradorCombates(Transformers& personaje_principal, Vector<Transformers>& transformers_secundarios);
 
+        //Destructor
         ~GeneradorCombates();
 
         Vector<Transformers> obtener_secuencia_minima();
@@ -40,6 +44,8 @@ class GeneradorCombates {
         void mostrar_mapa_combates();
 
         void mostrar_secuencia_minima();
+
+        GeneradorCombates& operator=(const GeneradorCombates& generador_combates);
 
 };
 

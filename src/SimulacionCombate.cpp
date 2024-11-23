@@ -3,6 +3,8 @@
 #include "SimulacionCombate.hpp"
 #include "Utilidades.hpp"
 
+SimulacionCombate:: SimulacionCombate(){};
+
 SimulacionCombate:: SimulacionCombate(Vector<Transformers> secuencia_combate){
     this->secuencia_combate = secuencia_combate;
     personaje_principal = secuencia_combate[0];
@@ -50,4 +52,17 @@ bool SimulacionCombate:: es_aliado(){
 
 void SimulacionCombate:: mostrar_recorrido() {
     //A implementar
+}
+
+std::string SimulacionCombate:: nombre_encuentro_actual(){
+    return secuencia_combate[posicion_actual].obtener_nombre();
+}
+
+SimulacionCombate& SimulacionCombate:: operator=(const SimulacionCombate& simulacion_combate){
+    if(this != &simulacion_combate){
+        secuencia_combate = simulacion_combate.secuencia_combate;
+        personaje_principal = simulacion_combate.personaje_principal;
+        posicion_actual = 0;
+    }
+    return *this;
 }

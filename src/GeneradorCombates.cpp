@@ -77,6 +77,8 @@ int GeneradorCombates:: costo_avanzar(Transformers& transformer_origen, Transfor
     return costo_avance;
 }
 
+GeneradorCombates:: GeneradorCombates(){};
+
 GeneradorCombates:: GeneradorCombates(Transformers& personaje_principal, Vector<Transformers>& transformers_secundarios){
     transformers_en_mapa = transformers_secundarios;
     transformers_en_mapa.alta(personaje_principal, 0);
@@ -102,4 +104,13 @@ void GeneradorCombates:: mostrar_mapa_combates(){
 
 void GeneradorCombates:: mostrar_secuencia_minima(){
     //A implementar
+}
+
+GeneradorCombates& GeneradorCombates:: operator=(const GeneradorCombates& generador_combates){
+    if(this != &generador_combates){
+        mapa_combates = generador_combates.mapa_combates;
+        secuencia_minima = generador_combates.secuencia_minima;
+        transformers_en_mapa = generador_combates.transformers_en_mapa;
+    }   
+    return *this;
 }
