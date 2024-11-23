@@ -8,6 +8,7 @@
 
 const std::string MENSAJE_ESTADO_MODIFICADO_CORRECTAMENTE = "Se Modifico Correctamente el estado" ;
 const std::string MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE = "Se creo Correctamente el Transformers";
+const std::string MENSAJE_ELIMINADADO_CORRECTAMENTE ="Se Elimino Correctamente el Transformers" ;
 const std::string MENSAJE_TRANSFORMERS_ENCONTRADO = "Se encontro al Transformers";
 const std::string MENSAJE_TRANSFORMERS_NO_ENCONTRADO = "No se encontro al Transformers";
 const std::string ERROR_ENTRADA_INVALIDA = "Error: Entrada Inválida. Intente nuevamente.";
@@ -257,13 +258,10 @@ std::string Juego::convertir_vehiculo_string(const int &vehiculo){
     switch (vehiculo) {
         case 0:
             return "Auto";
-            break;
         case 1:
             return "Camion";
-            break;
         case 2:
             return "Avion";
-            break;
         case 3:
             return "Tanque";
         default:
@@ -285,18 +283,14 @@ void Juego::crear_transformers(std::string nombre, int tipo_vehiculo){
     switch (tipo_vehiculo){
     case AUTO:
         agregar_transformers(nombre, 10, 10, 10, convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(tipo_vehiculo));
-        menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE);
         break;
     case CAMION:
         agregar_transformers(nombre, 15, 15, 15, convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(tipo_vehiculo));
-        menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE);
     case AVION:
         agregar_transformers(nombre, 10, 10, 10, convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
-        menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE);
         break;
     case TANQUE:
         agregar_transformers(nombre, 12, 12, 12, convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
-        menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE);
     default:
         menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
     }
@@ -325,16 +319,24 @@ void Juego::manejar_crear_transformers(){
         default:
             menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
     }
+
 }
 
 void Juego::manejar_buscar_transformers(){
     menu.limpiar_menu();
     const std::string nombre = pedir_nombre_transformers();
-    if (administrador_transformers.buscar_transformer(nombre) != 1){
-        menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_ENCONTRADO);
-    }else{
-        menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_NO_ENCONTRADO);
+    try{
+        if (administrador_transformers.buscar_transformer(nombre) != 1){
+            menu.limpiar_menu();
+            menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_ENCONTRADO);
+        }else{
+            menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_NO_ENCONTRADO);
+        }
+    }catch (ExcepcionAdministradorTransformers& e){
+        menu.limpiar_menu();
+        menu.mostrar_mensaje(e.what());
     }
+
 }
 
 void Juego::manejar_eliminar_transformers(){
@@ -342,6 +344,8 @@ void Juego::manejar_eliminar_transformers(){
     const std::string nombre_transformers = pedir_nombre_transformers();
     try{
         administrador_transformers.eliminar_transformer(nombre_transformers);
+        menu.limpiar_menu();
+        menu.mostrar_mensaje(MENSAJE_ELIMINADADO_CORRECTAMENTE);
     }catch (ExcepcionAdministradorTransformers& e){
         menu.limpiar_menu();
         menu.mostrar_mensaje(e.what());
@@ -363,21 +367,26 @@ void Juego::manejar_administrar_transformers(){
     bool continuar = true;
     char opcion_menu;
     while (continuar) {
-        menu.limpiar_menu();
         menu.mostrar_menu_administrador_transformers();
         std::cin >> opcion_menu;
         switch (opcion_menu) {
             case OPCION_1: //crear un transformers
                 manejar_crear_transformers();
+                menu.limpiar_menu();
+                menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE);
                 break;
             case OPCION_2: // mostrar todos los transformers
                 menu.limpiar_menu();
+                menu.mostrar_recuadro_superior();
                 administrador_transformers.mostrar_todos_transformers();
+                menu.mostrar_recuadro_inferior();
                 break;
             case OPCION_3: //Buscar un Transformer por nombre
+                menu.limpiar_menu();
                 manejar_buscar_transformers();
                 break;
             case OPCION_4: // Eliminar un Transformer por nombre
+                menu.limpiar_menu();
                 manejar_eliminar_transformers();
                 break;
             case OPCION_5: // Transformar un Transformer
@@ -415,6 +424,7 @@ void Juego::interactuar_con_personaje() {
                 manejar_fusionar_de_cristales();
                 break;
             case OPCION_5: //Administrador Transformers
+                menu.limpiar_menu();
                 manejar_administrar_transformers();
                 break;
             case OPCION_6: // Aca se conecta lo de la batalla

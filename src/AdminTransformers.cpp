@@ -42,10 +42,11 @@ size_t AdministradorTransformers::buscar_transformer(std::string nombre){
 void AdministradorTransformers::mostrar_todos_transformers(){
     if (lista_transformers.vacio()){
         throw ExcepcionAdministradorTransformers(MENSAJE_ERROR_VACIO);
-    } else {
-        for (size_t i = 0; i < lista_transformers.tamanio(); i++){
-            std::cout << (i+1) << ") " << (lista_transformers[i]) << std::endl;
-        }
+    }
+    std::cout << std::endl;
+    for (size_t i = 0; i < lista_transformers.tamanio(); i++){
+        std::cout << "      " << (i+1) << ") " << (lista_transformers[i]) << std::endl;
+        std::cout << std::endl;
     }
 }
 
