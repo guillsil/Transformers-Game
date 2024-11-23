@@ -11,18 +11,18 @@ void AdministradorTransformers::agregar_transformer(std::string nombre, int fuer
 
 Transformers AdministradorTransformers::eliminar_transformer(std::string nombre){
     if (lista_transformers.vacio()){
-       throw ExcepcionAdministradorTransformers(MENSAJE_ERROR_VACIO); //Ver si no se hace un Excepcion solo para Admin_transf
+       throw ExcepcionAdministradorTransformers(ERROR_LISTA_TRANSFORMERS_VACIO); //Ver si no se hace un Excepcion solo para Admin_transf
     }
     size_t eliminado_posicion = buscar_transformer(nombre);
     if (eliminado_posicion == NO_ENCONTRADO){ //ver caso no encuentra el transformer posicion = -1
-        throw ExcepcionAdministradorTransformers(MENSAJE_ERROR_NO_ENCONTRADO);   
+        throw ExcepcionAdministradorTransformers(ERROR_TRANSFORMER_NO_ENCONTRADO);   
     }
     return lista_transformers.baja(buscar_transformer(nombre)); 
 }
 
 size_t AdministradorTransformers::buscar_transformer(std::string nombre){
     if (lista_transformers.vacio()){
-       throw ExcepcionAdministradorTransformers(MENSAJE_ERROR_VACIO); //Ver si no se hace un Excepcion solo para Admin_transf
+       throw ExcepcionAdministradorTransformers(ERROR_LISTA_TRANSFORMERS_VACIO); //Ver si no se hace un Excepcion solo para Admin_transf
     }
     size_t buscado = NO_ENCONTRADO; //si devuelve -1 no lo encontró
     bool encontrado = false;
@@ -41,8 +41,9 @@ size_t AdministradorTransformers::buscar_transformer(std::string nombre){
 
 void AdministradorTransformers::mostrar_todos_transformers(){
     if (lista_transformers.vacio()){
-        throw ExcepcionAdministradorTransformers(MENSAJE_ERROR_VACIO);
+        throw ExcepcionAdministradorTransformers(ERROR_LISTA_TRANSFORMERS_VACIO);
     }
+    std::cout << "-- NOMBRE, FUERZA, DEFENZA, VELOCIDAD, FACCION, VEHICULO, TRANSFOMADO" << std::endl;
     std::cout << std::endl;
     for (size_t i = 0; i < lista_transformers.tamanio(); i++){
         std::cout << "      " << (i+1) << ") " << (lista_transformers[i]) << std::endl;
@@ -52,12 +53,12 @@ void AdministradorTransformers::mostrar_todos_transformers(){
 
 void AdministradorTransformers::transformar_transformer(std::string nombre){
     if(lista_transformers.vacio()){
-        throw ExcepcionAdministradorTransformers(MENSAJE_ERROR_VACIO);
+        throw ExcepcionAdministradorTransformers(ERROR_LISTA_TRANSFORMERS_VACIO);
     }
     size_t indice_transformado = buscar_transformer(nombre);
     //ver caso no encuentra el transformer -1
     if (indice_transformado == NO_ENCONTRADO){
-        throw ExcepcionAdministradorTransformers(MENSAJE_ERROR_NO_ENCONTRADO);
+        throw ExcepcionAdministradorTransformers(ERROR_TRANSFORMER_NO_ENCONTRADO);
     } else {
         lista_transformers[indice_transformado].cambiar_forma();
     }
@@ -65,7 +66,7 @@ void AdministradorTransformers::transformar_transformer(std::string nombre){
 
 Transformers AdministradorTransformers::operator[](size_t indice){
     if (indice >= lista_transformers.tamanio()){
-        throw ExcepcionAdministradorTransformers(MENSAJE_FUERA_RANGO);
+        throw ExcepcionAdministradorTransformers(ERROR_INDICE_FUERA_DE_RANGO);
     }
     return lista_transformers[indice];
 }
