@@ -24,17 +24,20 @@ size_t AdministradorTransformers::buscar_transformer(std::string nombre){
     if (lista_transformers.vacio()){
        throw ExcepcionAdministradorTransformers(MENSAJE_ERROR_VACIO); //Ver si no se hace un Excepcion solo para Admin_transf
     }
-    size_t buscado = NO_ENCONTRADO; //si devuelve -1 no lo encontró
+    size_t buscado = (lista_transformers.tamanio() + 1); //si no lo encuentra generea un fuera de rango
     bool encontrado = false;
-    size_t indice = (lista_transformers.tamanio() - 1);
-    //Recorre el vector de atras para adelante. Se pude cambiar si deseado.
-    while(encontrado == false || indice < 0){
+    size_t indice = 0;
+    while((encontrado == false) && (indice < lista_transformers.tamanio())){
+        //std::cout << indice << std::endl;
         if (lista_transformers[indice].obtener_nombre() == nombre){
             encontrado = true;
             buscado = indice;
         } else {
-            indice = indice - 1;
+            indice = indice + 1;
         }
+    }
+    if (encontrado == false){
+        buscado = NO_ENCONTRADO;
     }
     return buscado;
 }
