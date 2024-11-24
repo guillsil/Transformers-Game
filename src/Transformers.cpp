@@ -1,16 +1,5 @@
 #include "Transformers.hpp"
 
-//No se si es necesario para el constructor al sacarlos de csv probablemente
-bool pase_texto_bool_transformado(std::string texto_transformado){
-    bool estado_actual;
-    if (texto_transformado == "Si"){
-        estado_actual = true;
-    } else {
-        estado_actual = false;
-    }
-    return estado_actual;
-}
-
 Transformers::Transformers(std::string nombre, int fuerza, int defensa, int velocidad,
                            std::string faccion, std::string vehiculo, bool transformado){
     this->nombre = nombre;
@@ -30,6 +19,24 @@ Transformers::Transformers(std::string nombre, int fuerza, int defensa, int velo
     this->velocidad = velocidad;
     this->faccion = faccion;
     this->vehiculo = vehiculo;
+    this->transformado = false;
+}
+
+Transformers::Transformers(std::string nombre, int fuerza, int defensa, int velocidad, std::string faccion, std::string vehiculo, std::string transformado){
+    this->nombre = nombre;
+    this->fuerza = fuerza;
+    this->defensa = defensa;
+    this->velocidad = velocidad;
+    this->faccion = faccion;
+    this->vehiculo = vehiculo;
+    this->transformado = pase_texto_bool_transformado(transformado);
+}
+
+Transformers::Transformers(std::string jugador, int puntaje, std::string personaje) {
+    this->nombre = "Sparkling";
+    this->fuerza = 5; this->defensa = 5; this->velocidad = 5;
+    this->faccion = FACCION_AUTOBOTS;
+    this->vehiculo = VEHICULO_AUTO;
     this->transformado = false;
 }
 
@@ -148,6 +155,17 @@ void Transformers::chequeo_vehiculo(bool al_reves){
             this->velocidad = velocidad + interruptor_incremento_reduccion*(ESTADISTICAS_REDUCCION* CAMBIO_TOTALMENTE);
         }
     }
+}
+
+//No se si es necesario para el constructor al sacarlos de csv probablemente
+bool Transformers::pase_texto_bool_transformado(std::string texto_transformado){
+    bool estado_actual;
+    if (texto_transformado == "Si"){
+        estado_actual = true;
+    } else {
+        estado_actual = false;
+    }
+    return estado_actual;
 }
 
 std::ostream &operator<<(std::ostream &os, const Transformers &transformer){
