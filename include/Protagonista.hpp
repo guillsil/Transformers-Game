@@ -44,8 +44,10 @@ public:
     void equipar_cristal(Cristal cristal);
 
     //Pre:
-    //Post:
+    //Post: Muestra los cristales con el que se encuentra equipados el Protagonista.
     void ver_cristales_equipados();
+
+    size_t obtener_cantidad_cristales_equipados();
 
 private:
     OptimusPrime optimus;

@@ -4,15 +4,12 @@
 
 #include "Juego.hpp"
 
-
-
 const std::string MENSAJE_ESTADO_MODIFICADO_CORRECTAMENTE = "Se Modifico Correctamente el estado" ;
 const std::string MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE = "Se creo Correctamente el Transformers";
 const std::string MENSAJE_ELIMINADADO_CORRECTAMENTE ="Se Elimino Correctamente el Transformers" ;
 const std::string MENSAJE_TRANSFORMERS_ENCONTRADO = "Se encontro al Transformers";
 const std::string MENSAJE_TRANSFORMERS_NO_ENCONTRADO = "No se encontro al Transformers";
 const std::string ERROR_ENTRADA_INVALIDA = "Error: Entrada Inválida. Intente nuevamente.";
-const std::string ERROR_BOVEDA_VACIA = "Error: La bóveda esta vaciá.";
 const std::string ERROR_LIMITE_EN_BOVEDA_EXCEDIDO = "Error: Limite en la Bóveda alcanzado";
 
 
@@ -22,6 +19,7 @@ const std::string MENSAJE_ARCHIVO_CREADO_CORRECTAMENTE = "Se ha generado con éx
 const std::string CANTIDAD_CRISTALES_ALMACENADOS = "Cantidad de Cristales Almacenados: ";
 const std::string MENSAJE_CRISTAL_OBTENIDO = "EL cristal obtenido es: ";
 
+const int POSICION_CRISTAL_MAS_PODEROSO = 0;
 
 enum Faccion {
     AUTOBOTS,
@@ -35,8 +33,7 @@ enum Vehiculos{
 };
 
 
-
-Juego::Juego(): personaje(PERSONAJE_INVALIDO), juego_en_curso(true) {
+Juego::Juego(): protagonista(PERSONAJE_INVALIDO), juego_en_curso(true) {
     Cristal cristal_regalo(COMUN);
     boveda.almacenar_cristal(cristal_regalo);
 }
@@ -47,12 +44,12 @@ void Juego::procesar_menu_principal(const char& opcion_menu, const std::string &
     switch (opcion_menu) {
         case OPCION_1:
             menu.limpiar_menu();
-            personaje = Personaje(MEGATRON);
+            protagonista = Personaje(MEGATRON);
             interactuar_con_personaje();
         break;
         case OPCION_2:
             menu.limpiar_menu();
-            personaje = Personaje(OPTIMUS_PRIME);
+            protagonista = Personaje(OPTIMUS_PRIME);
             interactuar_con_personaje();
         break;
         case OPCION_3:
@@ -71,7 +68,7 @@ bool Juego::jugando() const {
 void Juego::respuesta_personaje(const std::string &mensaje) {
     menu.limpiar_menu();
     menu.mostrar_recuadro_superior();
-    personaje.obtener_respuesta(mensaje);
+    protagonista.obtener_respuesta(mensaje);
     menu.mostrar_recuadro_inferior();
 }
 
@@ -79,7 +76,7 @@ void Juego::respuesta_personaje(const std::string &mensaje) {
 void Juego::manejar_sugerencia_personaje() {
     menu.limpiar_menu();
     menu.mostrar_recuadro_superior();
-    personaje.obtener_sugerencia();
+    protagonista.obtener_sugerencia();
     menu.mostrar_recuadro_inferior();
 }
 
@@ -95,11 +92,11 @@ void Juego::manejar_opcion_escribir_mensaje() {
 void Juego::manejar_cambiar_estado(){
     menu.limpiar_menu();
     char indice_estado;
-    menu.mostrar_menu_estado(personaje.obtener_personaje());
+    menu.mostrar_menu_estado(protagonista.obtener_personaje());
     std::cin >> indice_estado;
     try {
         menu.limpiar_menu();
-        personaje.actualizar_estado(indice_estado);
+        protagonista.actualizar_estado(indice_estado);
         menu.mostrar_mensaje(MENSAJE_ESTADO_MODIFICADO_CORRECTAMENTE);
     } catch (ExcepcionProtagonista& e) {
         menu.mostrar_mensaje(e.what());
@@ -174,32 +171,38 @@ void Juego::manejar_mostrar_boveda() {
 
 void Juego::manejar_exportar_boveda(std::string &ruta) {
     menu.limpiar_menu();
-    if (boveda.esta_vacia()) {
-        menu.mostrar_mensaje(ERROR_BOVEDA_VACIA);
-    }else {
-        try {
-            menu.mostrar_menu_exportar_archivo();
-            std::cin >> ruta;
-            boveda.exportar_cristales(ruta);
-            menu.limpiar_menu();
-            menu.mostrar_mensaje(MENSAJE_ARCHIVO_CREADO_CORRECTAMENTE);
-        } catch (ExcepcionBovedaCristales& e) {
-            menu.limpiar_menu();
-            menu.mostrar_mensaje(e.what());
-        }
+    try {
+        menu.mostrar_menu_exportar_archivo();
+        std::cin >> ruta;
+        boveda.exportar_cristales(ruta);
+        menu.limpiar_menu();
+        menu.mostrar_mensaje(MENSAJE_ARCHIVO_CREADO_CORRECTAMENTE);
+    } catch (ExcepcionBovedaCristales& e) {
+        menu.limpiar_menu();
+        menu.mostrar_mensaje(e.what());
     }
 }
 
 void Juego::manejar_de_bodega_mostrar_tamanio() {
     menu.limpiar_menu();
-    if (!boveda.esta_vacia()) {
+    try{
         menu.mostrar_mensaje(CANTIDAD_CRISTALES_ALMACENADOS + std::to_string(boveda.tamanio()));
-    }else {
-        menu.mostrar_mensaje(ERROR_BOVEDA_VACIA);
+    }catch (ExcepcionBovedaCristales& e){
+        menu.mostrar_mensaje(e.what());
     }
 }
 
-void Juego::manejar_de_bodega() {
+void Juego::manejar_equipar_un_cristal(){
+    menu.limpiar_menu();
+    try{
+        protagonista.equipar_cristal(boveda.eliminar_cristal(POSICION_CRISTAL_MAS_PODEROSO));
+        menu.mostrar_mensaje(MENSAJE_EQUIPADO_CON_EXITO);
+    }catch (ExcepcionProtagonista& e){
+        menu.mostrar_mensaje(e.what());
+    }
+}
+
+void Juego::manejador_de_bodega() {
     menu.limpiar_menu();
     char opcion;
     bool continuar = true;
@@ -220,20 +223,26 @@ void Juego::manejar_de_bodega() {
             case OPCION_4:
                 manejar_de_bodega_mostrar_tamanio();
                 break;
-            case OPCION_5://Mostrar cristal con mayor poder
+            case OPCION_5:
+                menu.limpiar_menu();
+                menu.mostrar_mensaje(std::to_string(protagonista.obtener_cantidad_cristales_equipados()));
+                break;
+            case OPCION_6://Mostrar cristal con mayor poder
                 menu.limpiar_menu();
                 boveda.obtener_cristal_mas_poderoso().mostrar();
                 break;
-            case OPCION_6:// Equipar un cristal al personaje
-                menu.limpiar_menu();
-                personaje.equipar_cristal(boveda.obtener_y_eliminar_cristal_mas_poderoso());
-                menu.mostrar_mensaje(MENSAJE_EQUIPADO_CON_EXITO);
+            case OPCION_7:// Equipar un cristal al personaje
+                manejar_equipar_un_cristal();
                 break;
-            case OPCION_7:  // Ver Cristales Equipados
+            case OPCION_8:  // Ver Cristales Equipados
                 menu.limpiar_menu();
-                personaje.ver_cristales_equipados();
+                try{
+                    protagonista.ver_cristales_equipados();
+                }catch (ExcepcionBovedaCristales& e){
+                    menu.mostrar_mensaje(e.what());
+                }
                 break;
-             case OPCION_8:
+             case OPCION_9:
                  continuar = false;
                 menu.limpiar_menu();
             default:
@@ -408,7 +417,7 @@ void Juego::interactuar_con_personaje() {
     bool continuar = true;
     char opcion_menu;
     while (continuar) {
-        menu.mostrar_menu_personaje(personaje.obtener_personaje());
+        menu.mostrar_menu_personaje(protagonista.obtener_personaje());
         std::cin >> opcion_menu;
         switch (opcion_menu) {
             case OPCION_1:
@@ -431,7 +440,7 @@ void Juego::interactuar_con_personaje() {
                 //ACA DEBERIA LLAMARSE A INICIAR BATALLA
                 break;
             case OPCION_7: // Boveda
-                manejar_de_bodega();
+                manejador_de_bodega();
                 break;
             case OPCION_8:
                 menu.limpiar_menu();

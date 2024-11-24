@@ -31,7 +31,7 @@ public:
 
 
 private:
-    Protagonista personaje;
+    Protagonista protagonista;
     Menu menu;
     BovedaCristales boveda;
     FusionadorEnergon fusionador;
@@ -81,10 +81,11 @@ private:
     //Pre: -
     //Post: Muestra por consola el tamaño de la bóveda.
     void manejar_de_bodega_mostrar_tamanio();
+    void manejar_equipar_un_cristal();
 
     //Pre: -
     //Post: Gestiona las opciones del menú de la bóveda (almacenar, mostrar, exportar cristales).
-    void manejar_de_bodega();
+    void manejador_de_bodega();
 
     std::string convertir_faccion_string(const int& faccion);
 

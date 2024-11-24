@@ -1,7 +1,9 @@
 #include "Protagonista.hpp"
 
 const std::string ESTADO_INVALIDO;
-const std::string ERROR_ESTADO_INCORRECTO = "Error: Estado Ínvalido. Intente nuevamente.";
+const std::string ERROR_ESTADO_INCORRECTO = "Error:: Estado Ínvalido. Intente nuevamente.";
+const std::string ERROR_BOVEDA_CRISTALES_EQUIPADOS_VACIA = "Error:: La Bóveda de Cristales Equipados esta vaciá";
+const std::string ERROR_ALCANZO_EL_LIMITE_CRISTALES_EQUIPADOS = "Error:: Alcanzo el limite de cristales equipados(TAMANIO_MAXIMO_CRISTALES_EQUIPADOS = 7)";
 const size_t TAMANIO_MAXIMO_CRISTALES_EQUIPADOS = 7;
 
 
@@ -59,9 +61,21 @@ void Protagonista::actualizar_estado(const char &indice) {
 Personaje Protagonista::obtener_personaje() { return personaje_jugando;}
 
 void Protagonista::equipar_cristal(Cristal cristal) {
-    cristales_equipados.almacenar_cristal(cristal);
+    try{
+        cristales_equipados.almacenar_cristal(cristal);
+    }catch (ExcepcionBovedaCristales& e){
+        throw ExcepcionProtagonista(ERROR_ALCANZO_EL_LIMITE_CRISTALES_EQUIPADOS);
+    }
 }
 
 void Protagonista::ver_cristales_equipados(){
-    cristales_equipados.mostrar_cristales();
+    try{
+        cristales_equipados.mostrar_cristales();
+    }catch (ExcepcionVector & e){
+        throw ExcepcionProtagonista(ERROR_BOVEDA_CRISTALES_EQUIPADOS_VACIA);
+    }
+}
+
+size_t Protagonista::obtener_cantidad_cristales_equipados(){
+    return cristales_equipados.tamanio();
 }

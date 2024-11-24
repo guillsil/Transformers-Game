@@ -184,19 +184,21 @@ const std::string BOVEDA= R"(
 const std::string MENU_BOVEDA= R"(
   ║ ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════║
   ║                                                                                                                                              ║
-  ║                                                               Bóveda de Almacenamiento                                                       ║
+  ║                                                           Bóveda de Almacenamiento                                                           ║
   ║                                                                                                                                              ║
-  ║                            ╔═══════════════════════════════════════════════════════════════════════════════════════╗                         ║
-  ║                            ║                                                                                       ║                         ║
-  ║                            ║        [1]  Almacenar un Cristal           [5]  Mostrar Crista con Mayor Poder        ║                         ║
-  ║                            ║                                                                                       ║                         ║
-  ║                            ║        [2]  Mostrar Cristales              [6]  Equiparse con un Cristal              ║                         ║
-  ║                            ║                                                                                       ║                         ║
-  ║                            ║        [3]  Exportar Cristales             [7]  Ver Cristales Equipados               ║                         ║
-  ║                            ║                                                                                       ║                         ║
-  ║                            ║        [4]  Cantidad Cristales             [8]  Salir                                 ║                         ║
-  ║                            ║                                                                                       ║                         ║
-  ║                            ╚═══════════════════════════════════════════════════════════════════════════════════════╝                         ║
+  ║                          ╔═══════════════════════════════════════════════════════════════════════════════════════╗                           ║
+  ║                          ║                                                                                       ║                           ║
+  ║                          ║     [1]  Almacenar un Cristal                 [6]  Mostrar Crista con Mayor Poder     ║                           ║
+  ║                          ║                                                                                       ║                           ║
+  ║                          ║     [2]  Mostrar Cristales                    [7]  Equiparse con un Cristal           ║                           ║
+  ║                          ║                                                                                       ║                           ║
+  ║                          ║     [3]  Exportar Cristales                   [8]  Ver Cristales Equipados            ║                           ║
+  ║                          ║                                                                                       ║                           ║
+  ║                          ║     [4]  Cantidad Cristales                   [9]  Salir                              ║                           ║
+  ║                          ║                                                                                       ║                           ║
+  ║                          ║     [5]  Cantidad Cristales Equipados                                                 ║                           ║
+  ║                          ║                                                                                       ║                           ║
+  ║                          ╚═══════════════════════════════════════════════════════════════════════════════════════╝                           ║
   ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 )";
 
@@ -328,18 +330,14 @@ const std::string MENU_INGRESAR_RUTA_ARCHIVO= R"(
   ║                                                                                                                                              ║
   ║                                      Ingrese la ruta en la cual quieres exportar el archivo:                                                 ║
   ║                                                                                                                                              ║
-  ║                          ╔═══════════════════════════════════════════════════════════════════════════════════════╗                           ║
-  ║                          ║                                                                                       ║                           ║
-  ║                          ║  Recuerda que solo podes ingresar ya sea el nombre del archivo, Por ejemplo:          ║                           ║
-  ║                          ║                                                                                       ║                           ║
-  ║                          ║      •Ingrese la ruta: pepe -> entonces se creara un archivo llamado pepe en el       ║                           ║
-  ║                          ║      directorio raíz llamado /archivos.                                               ║                           ║
-  ║                          ║      También podrás ingresar con una ruta y el nombre del archivo, Por ejemplo:       ║                           ║
-  ║                          ║                                                                                       ║                           ║
-  ║                          ║      •Ingrese la ruta: /pepe/quiere_aprobar.csv  -> entonces se guardara este         ║                           ║
-  ║                          ║       directorio con el archivo en el directorio raíz llamado /archivos               ║                           ║
-  ║                          ║                                                                                       ║                           ║
-  ║                          ╚═══════════════════════════════════════════════════════════════════════════════════════╝                           ║
+  ║                        ╔════════════════════════════════════════════════════════════════════════════════════════════╗                        ║
+  ║                        ║                                                                                            ║                        ║
+  ║                        ║  Recuerda que solo podes ingresar ya sea el nombre del archivo, Por ejemplo:               ║                        ║
+  ║                        ║                                                                                            ║                        ║
+  ║                        ║  •Ingrese la ruta: pepe -> entonces se creara un archivo llamado pepe en el directorio     ║                        ║
+  ║                        ║  raíz llamado /archivos.                                                                   ║                        ║
+  ║                        ║                                                                                            ║                        ║
+  ║                        ╚════════════════════════════════════════════════════════════════════════════════════════════╝                        ║
   ║                                                                                                                                              ║
   ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 )";

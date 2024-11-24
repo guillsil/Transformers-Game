@@ -60,7 +60,7 @@ public:
 
     //Pre:
     //Post:
-    Cristal obtener_y_eliminar_cristal_mas_poderoso();
+    Cristal eliminar_cristal(const int &indice);
 
     //Pre: -
     //Post: Devuelve el Cristal más poderoso que se encuentra en la bóveda que siempre se encontrara en la primera posición de

@@ -14,6 +14,7 @@ const char OPCION_5 = '5';
 const char OPCION_6 = '6';
 const char OPCION_7 = '7';
 const char OPCION_8 = '8';
+const char OPCION_9 = '9';
 
 enum Personaje {
     MEGATRON,
