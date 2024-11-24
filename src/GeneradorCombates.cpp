@@ -6,6 +6,7 @@ Grafo GeneradorCombates:: generar_mapa(Vector<Transformers>& transformers_en_map
     size_t cantidad_transformers = transformers_en_mapa.tamanio();
     Grafo mapa_combates(cantidad_transformers);
     bool primer_vertice_nivel = true;
+    Transformers personaje_principal = transformers_en_mapa[0];
     for(size_t i = 0; i < cantidad_transformers-1; i++){
         size_t j = i;
 
@@ -27,7 +28,7 @@ Grafo GeneradorCombates:: generar_mapa(Vector<Transformers>& transformers_en_map
 
         size_t vertice_limite = j + 3; //Solo queremos agregar la arista desde i hasta, como mucho, el ultimo vertice del siguiente nivel
         while(j <= vertice_limite && j < cantidad_transformers-1){
-            mapa_combates.agregar_arista(i, j, costo_avanzar(transformers_en_mapa[i], transformers_en_mapa[j]));
+            mapa_combates.agregar_arista(i, j, costo_avanzar(personaje_principal, transformers_en_mapa[j]));
             j++;
         }
     }

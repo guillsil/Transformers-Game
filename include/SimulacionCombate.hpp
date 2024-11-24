@@ -61,6 +61,9 @@ class SimulacionCombate {
         //Muestra por pantalla el recorrido del personaje_principal hasta el encuentro actual
         void mostrar_recorrido();
 
+        //Pre:-
+        //Post:
+        //Devuleve el nombre del transformer que se encuentra en posicion_actual dentro de la secuencia de combates
         std:: string nombre_encuentro_actual();
 
         //Operador de asignacion

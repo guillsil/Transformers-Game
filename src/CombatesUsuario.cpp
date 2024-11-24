@@ -134,7 +134,7 @@ void CombatesUsuario:: iniciar_partida_combates(){
     cout << "\n\tBIENVENIDO A LA BATALLA FINAL" << endl;
     gestion_generador_combate();
     cout << "Emocionante ese mapa, eh, pero mas emocionante sera empezar el proceso de combates en el campo de batalla!!" << endl;
-    cout << "PRESIONA UNA TECLA PARA CONTINUAR AL CAMPO DE BATALLA..." << endl;
+    cout << "PRESIONA UNA TECLA PARA DIRIGIRTE AL CAMPO DE BATALLA..." << endl;
     gestion_simulacion_batalla();
 }
 
