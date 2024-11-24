@@ -47,19 +47,19 @@ public:
     //Post: Muestra los cristales con el que se encuentra equipados el Protagonista.
     void ver_cristales_equipados();
 
+    //Pre:-
+    //Post: Devuelve la cantidad de Cristales equipados.
     size_t obtener_cantidad_cristales_equipados();
 
 private:
     OptimusPrime optimus;
     Megatron megatron;
     Personaje personaje_jugando;
-    char indice_estado;
-    std::string estado_personaje;
     BovedaCristales cristales_equipados;
 
     //Pre: -
-    //Post: Actualiza el estado_personaje según el índice de estado del mismo.
-    void obtener_estados();
+    //Post: Devuelve el estado en formato cadena teniendo en cuenta el índice suministrado.
+    std::string obtener_estado(const char &indice);
 };
 
 

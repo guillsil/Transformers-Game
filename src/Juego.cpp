@@ -202,7 +202,7 @@ void Juego::manejar_equipar_un_cristal(){
     }
 }
 
-void Juego::manejador_de_bodega() {
+void Juego::manejar_boveda() {
     menu.limpiar_menu();
     char opcion;
     bool continuar = true;
@@ -437,7 +437,6 @@ void Juego::manejar_interactuar_con_el_personaje(){
                 menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
         }
     }
-
 }
 
 void Juego::interactuar_con_personaje() {
@@ -454,7 +453,7 @@ void Juego::interactuar_con_personaje() {
                 manejar_fusionar_de_cristales();
                 break;
             case OPCION_3: // Bóveda
-                manejador_de_bodega();
+                manejar_boveda();
                 break;
             case OPCION_4: // Administrador
                 menu.limpiar_menu();
@@ -465,11 +464,11 @@ void Juego::interactuar_con_personaje() {
                 menu.limpiar_menu();
                 break;
             case OPCION_6: // Tabla Clasificación
+                //tabla_clasificacion.mostrar_top10_jugadores();
                 break;
              case OPCION_7:
                 menu.limpiar_menu();
                 continuar = false;
-
             default:
                 menu.limpiar_menu();
                 menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);

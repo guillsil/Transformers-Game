@@ -58,8 +58,8 @@ public:
     //Post: Devuelve el tamaño de la bóveda.
     size_t tamanio();
 
-    //Pre:
-    //Post:
+    //Pre: -
+    //Post: Elimina el Cristal en el inidice pasado.
     Cristal eliminar_cristal(const int &indice);
 
     //Pre: -
