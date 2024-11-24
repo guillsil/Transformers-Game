@@ -113,6 +113,7 @@ private:
 
 
     void manejar_administrar_transformers();
+    void manejar_interactuar_con_el_personaje();
 };
 
 

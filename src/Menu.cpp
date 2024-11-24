@@ -52,7 +52,6 @@ const std::string MENU_PRINCIPAL = R"(
   ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
     )";
 const std::string MEGATRON_ASCII = R"(
-  ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
   ║                                                                                                                                              ║
   ║                                                                                                                                              ║
   ║                                   ███╗   ███╗███████╗ ██████╗  █████╗ ████████╗██████╗  ██████╗ ███╗   ██╗                                   ║
@@ -62,7 +61,6 @@ const std::string MEGATRON_ASCII = R"(
   ║                                   ██║ ╚═╝ ██║███████╗╚██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝██║ ╚████║                                   ║
   ║                                   ╚═╝     ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝                                   ║)";
 const std::string OPTIMUS_ASCII = R"(
-  ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
   ║                                                                                                                                              ║
   ║                                                                                                                                              ║
   ║                     ██████╗ ██████╗ ████████╗██╗███╗   ███╗██╗   ██╗███████╗        ██████╗ ██████╗ ██╗███╗   ███╗███████╗                   ║
@@ -77,15 +75,42 @@ const std::string MENU_PERSONAJE_ASCII = R"(
   ║                                                              Selecciona una opción:                                                          ║
   ║                             ╔═══════════════════════════════════════════════════════════════════════════════════╗                            ║
   ║                             ║                                                                                   ║                            ║
-  ║                             ║      [1] Escribir un mensaje                  [5] Administrar Transformers        ║                            ║
+  ║                             ║      [1] Interactuar                          [5] Iniciar Batalla                 ║                            ║
   ║                             ║                                                                                   ║                            ║
-  ║                             ║      [2] Sugerir una fusión                   [6] Iniciar Batalla                 ║                            ║
+  ║                             ║      [2] Fusionar Cristales                   [6] Tabla Clasificación             ║                            ║
   ║                             ║                                                                                   ║                            ║
-  ║                             ║      [3] Modificar Estado                     [7] Bóveda                          ║                            ║
+  ║                             ║      [3] Bóveda                               [7] Salir                           ║                            ║
   ║                             ║                                                                                   ║                            ║
-  ║                             ║      [4] Fusionar Cristales                   [8] Salir                           ║                            ║
+  ║                             ║      [4] Administrar Transformers                                                 ║                            ║
   ║                             ║                                                                                   ║                            ║
   ║                             ╚═══════════════════════════════════════════════════════════════════════════════════╝                            ║
+  ║                                                                                                                                              ║
+  ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+    )";
+
+const std::string MENU_INTERACTUAR_CON = R"(
+  ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+  ║                                                                                                                                              ║
+  ║                                                                                                                                              ║
+  ║          ██╗███╗   ██╗████████╗███████╗██████╗  █████╗  ██████╗████████╗██╗   ██╗ █████╗ ██████╗         ██████╗ ██████╗ ███╗   ██╗          ║
+  ║          ██║████╗  ██║╚══██╔══╝██╔════╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██║   ██║██╔══██╗██╔══██╗       ██╔════╝██╔═══██╗████╗  ██║          ║
+  ║          ██║██╔██╗ ██║   ██║   █████╗  ██████╔╝███████║██║        ██║   ██║   ██║███████║██████╔╝       ██║     ██║   ██║██╔██╗ ██║          ║
+  ║          ██║██║╚██╗██║   ██║   ██╔══╝  ██╔══██╗██╔══██║██║        ██║   ██║   ██║██╔══██║██╔══██╗       ██║     ██║   ██║██║╚██╗██║          ║
+  ║          ██║██║ ╚████║   ██║   ███████╗██║  ██║██║  ██║╚██████╗   ██║   ╚██████╔╝██║  ██║██║  ██║       ╚██████╗╚██████╔╝██║ ╚████║          ║
+  ║          ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝        ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝          ║)";
+
+
+
+const std::string MENU_OPCIONES_INTERACTUAR = R"(
+  ║                                                                                                                                              ║
+  ║                                                            Selecciona una opción:                                                            ║
+  ║                                        ╔═══════════════════════════════════════════════════════════╗                                         ║
+  ║                                        ║                                                           ║                                         ║
+  ║                                        ║    [1] Escribir un mensaje      [3] Modificar Estado      ║                                         ║
+  ║                                        ║                                                           ║                                         ║
+  ║                                        ║    [2] Sugerir una fusión       [4] Salir                 ║                                         ║
+  ║                                        ║                                                           ║                                         ║
+  ║                                        ╚═══════════════════════════════════════════════════════════╝                                         ║
   ║                                                                                                                                              ║
   ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
     )";
@@ -144,6 +169,8 @@ const std::string MENU_INGRESAR_ESTADO_MEGATRON = R"(
   ║                                                     ╚═════════════════════════════════╝                                                      ║
   ║                                                                                                                                              ║)";
 
+const std::string PARTE_SUPERIOR_RECUADRO_OPCION_2 = R"(
+  ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗)";
 const std::string PARTE_SUPERIOR_RECUADRO = R"(
   ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
     )";
@@ -352,8 +379,10 @@ void Menu::mostrar_menu_principal(const std::string &nombre) {
 
 void Menu::mostrar_menu_personaje(const int &personaje_elejido) {
     if (personaje_elejido == MEGATRON) {
+        std::cout << PARTE_SUPERIOR_RECUADRO_OPCION_2;
         std::cout << MEGATRON_ASCII;
     }else {
+        std::cout << PARTE_SUPERIOR_RECUADRO_OPCION_2;
         std::cout << OPTIMUS_ASCII;
     }
     std::cout << MENU_PERSONAJE_ASCII;
@@ -468,4 +497,18 @@ void Menu::menu_ingregar_nombre_transformers(){
     std::cout << TRANSFORMERS;
     std::cout << MENU_ESCOGER_NOMBRE_TRANSFORMERS;
     std::cout << SIMBOLO_INGRESAR_MENSAJE;
+}
+
+void Menu::menu_interactuar_con_personaje(const int& personaje_elejido){
+    if (personaje_elejido == MEGATRON){
+        std::cout << MENU_INTERACTUAR_CON;
+        std::cout << MEGATRON_ASCII;
+        std::cout << MENU_OPCIONES_INTERACTUAR;
+        std::cout << SIMBOLO_INGRESAR_MENSAJE;
+    }else{
+        std::cout << MENU_INTERACTUAR_CON;
+        std::cout << OPTIMUS_ASCII;
+        std::cout << MENU_OPCIONES_INTERACTUAR;
+        std::cout << SIMBOLO_INGRESAR_MENSAJE;
+    }
 }

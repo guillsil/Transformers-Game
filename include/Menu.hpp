@@ -96,7 +96,10 @@ public:
     void menu_escoger_vehiculo();
 
     void menu_escoger_aeronave();
+
     void menu_ingregar_nombre_transformers();
+
+    void menu_interactuar_con_personaje(const int &personaje_elejido);
 };
 
 

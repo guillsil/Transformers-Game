@@ -412,12 +412,12 @@ void Juego::manejar_administrar_transformers(){
     }
 }
 
-
-void Juego::interactuar_con_personaje() {
+void Juego::manejar_interactuar_con_el_personaje(){
+    menu.limpiar_menu();
     bool continuar = true;
     char opcion_menu;
-    while (continuar) {
-        menu.mostrar_menu_personaje(protagonista.obtener_personaje());
+    while (continuar){
+        menu.menu_interactuar_con_personaje(protagonista.obtener_personaje());
         std::cin >> opcion_menu;
         switch (opcion_menu) {
             case OPCION_1:
@@ -429,22 +429,47 @@ void Juego::interactuar_con_personaje() {
             case OPCION_3:
                 manejar_cambiar_estado();
                 break;
-            case OPCION_4: // Fusionador
+            case OPCION_4:
+                menu.limpiar_menu();
+                continuar = false;
+            default:
+                menu.limpiar_menu();
+                menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
+        }
+    }
+
+}
+
+void Juego::interactuar_con_personaje() {
+    bool continuar = true;
+    char opcion_menu;
+    while (continuar) {
+        menu.mostrar_menu_personaje(protagonista.obtener_personaje());
+        std::cin >> opcion_menu;
+        switch (opcion_menu) {
+            case OPCION_1: // Interactuar con el personaje
+                manejar_interactuar_con_el_personaje();
+               break;
+            case OPCION_2: // Fusionador
                 manejar_fusionar_de_cristales();
                 break;
-            case OPCION_5: //Administrador Transformers
+            case OPCION_3: // Bóveda
+                manejador_de_bodega();
+                break;
+            case OPCION_4: // Administrador
                 menu.limpiar_menu();
                 manejar_administrar_transformers();
                 break;
-            case OPCION_6: // Aca se conecta lo de la batalla
-                //ACA DEBERIA LLAMARSE A INICIAR BATALLA
+            case OPCION_5: // Simulacion de Batalla
+                //acá va lo de la simulación de la batalla
+                menu.limpiar_menu();
                 break;
-            case OPCION_7: // Boveda
-                manejador_de_bodega();
+            case OPCION_6: // Tabla Clasificación
                 break;
-            case OPCION_8:
+             case OPCION_7:
                 menu.limpiar_menu();
                 continuar = false;
+
             default:
                 menu.limpiar_menu();
                 menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
