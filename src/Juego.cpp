@@ -334,14 +334,14 @@ void Juego::manejar_crear_transformers(){
 void Juego::manejar_buscar_transformers(){
     menu.limpiar_menu();
     const std::string nombre = pedir_nombre_transformers();
-    try{
-        if (administrador_transformers.buscar_transformer(nombre) != 1){
+    try {
+        if (administrador_transformers.buscar_transformer(nombre) != NO_ENCONTRADO){
             menu.limpiar_menu();
             menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_ENCONTRADO);
-        }else{
+        } else {
             menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_NO_ENCONTRADO);
         }
-    }catch (ExcepcionAdministradorTransformers& e){
+    } catch (ExcepcionAdministradorTransformers& e){
         menu.limpiar_menu();
         menu.mostrar_mensaje(e.what());
     }
