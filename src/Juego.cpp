@@ -45,12 +45,12 @@ void Juego::procesar_menu_principal(const char& opcion_menu, const std::string &
         case OPCION_1:
             menu.limpiar_menu();
             protagonista = Personaje(MEGATRON);
-            interactuar_con_personaje();
+            manejar_flujo_juego_principal();
         break;
         case OPCION_2:
             menu.limpiar_menu();
             protagonista = Personaje(OPTIMUS_PRIME);
-            interactuar_con_personaje();
+            manejar_flujo_juego_principal();
         break;
         case OPCION_3:
             juego_en_curso = false;
@@ -439,7 +439,7 @@ void Juego::manejar_interactuar_con_el_personaje(){
     }
 }
 
-void Juego::interactuar_con_personaje() {
+void Juego::manejar_flujo_juego_principal() {
     bool continuar = true;
     char opcion_menu;
     while (continuar) {

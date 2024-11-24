@@ -131,7 +131,7 @@ private:
 
     //Pre: -
     //Post: Maneja el flujo del personaje hasta que el mismo decida salir.
-    void interactuar_con_personaje();
+    void manejar_flujo_juego_principal();
 
     //Pre: -
     //Post: Devuelve true si la entrada es alguno de estos valores (COMÚN, RARO, ÉPICO o LEGENDARIO), o false en caso contrario.
