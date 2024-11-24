@@ -83,6 +83,9 @@ private:
     //Pre: -
     //Post: Muestra por consola el tamaño de la bóveda.
     void manejar_de_bodega_mostrar_tamanio();
+
+    //Pre: -
+    //Post: Equipa con un Crital al personaje.
     void manejar_equipar_un_cristal();
 
     //Pre: -

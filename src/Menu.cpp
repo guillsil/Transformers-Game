@@ -512,3 +512,8 @@ void Menu::menu_interactuar_con_personaje(const int& personaje_elejido){
         std::cout << SIMBOLO_INGRESAR_MENSAJE;
     }
 }
+
+void Menu::limpiar_y_mostrar_mensaje(const std::string& mensaje){
+    limpiar_menu();
+    mostrar_mensaje(mensaje);
+}

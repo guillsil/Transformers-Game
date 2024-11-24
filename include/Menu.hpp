@@ -100,6 +100,8 @@ public:
     void menu_ingregar_nombre_transformers();
 
     void menu_interactuar_con_personaje(const int &personaje_elejido);
+
+    void limpiar_y_mostrar_mensaje(const std::string& mensaje);
 };
 
 
