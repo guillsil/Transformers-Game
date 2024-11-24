@@ -152,6 +152,7 @@ void Juego::manejar_de_almacenamiento_de_cristales() {
             menu.limpiar_menu();
             menu.mostrar_mensaje(MENSAJE_ALMACENADO_CON_EXITO);
         } catch (ExcepcionBovedaCristales& e) {
+            menu.limpiar_menu();
             menu.mostrar_mensaje(e.what());
         }
     }else {
@@ -279,7 +280,8 @@ std::string Juego::convertir_vehiculo_string(const int &vehiculo){
     }
 }
 
-void Juego::agregar_transformers(std::string nombre, int fuerza, int defensa, int velocidad, std::string faccion, std::string vehiculo) {
+void Juego::manejar_agregar_transformers(const std::string &nombre,const int &fuerza,const int &defensa,const int &velocidad,const std::string &faccion,const
+                              std::string &vehiculo) {
     try{
         administrador_transformers.agregar_transformer(nombre, fuerza, defensa, velocidad, faccion, vehiculo);
     }catch (ExcepcionAdministradorTransformers& e){
@@ -291,15 +293,15 @@ void Juego::agregar_transformers(std::string nombre, int fuerza, int defensa, in
 void Juego::crear_transformers(std::string nombre, int tipo_vehiculo){
     switch (tipo_vehiculo){
     case AUTO:
-        agregar_transformers(nombre, 10, 10, 10, convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(tipo_vehiculo));
+        manejar_agregar_transformers(nombre, 20, 20, 40, convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(tipo_vehiculo));
         break;
     case CAMION:
-        agregar_transformers(nombre, 15, 15, 15, convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(tipo_vehiculo));
+        manejar_agregar_transformers(nombre, 30, 30, 20, convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(tipo_vehiculo));
     case AVION:
-        agregar_transformers(nombre, 10, 10, 10, convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
+        manejar_agregar_transformers(nombre, 20, 20, 40, convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
         break;
     case TANQUE:
-        agregar_transformers(nombre, 12, 12, 12, convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
+        manejar_agregar_transformers(nombre, 30, 40, 10, convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
     default:
         menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
     }
