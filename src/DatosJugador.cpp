@@ -1,17 +1,77 @@
 #include "DatosJugador.hpp"
 
-DatosJugador::DatosJugador(std::string nombre_jugador, int puntaje/*, Protagonista o Personaje personaje_usado */){
-    this->nombre_jugador = nombre_jugador;
-    this->puntaje = puntaje;
+DatosJugador::DatosJugador(){
+    this-> nombre_jugador = "ERROR";
+    this-> puntaje = 0;
+    this-> personaje_usado = PERSONAJE_INVALIDO;
 }
 
-// void DatosJugador::actualizar_puntaje(int nuevo_puntaje){
-//     this->puntaje = nuevo_puntaje;
-// }
+DatosJugador::DatosJugador(std::string nombre_jugador, int puntaje, Personaje personaje_usado){
+    this->nombre_jugador = nombre_jugador;
+    this->puntaje = puntaje;
+    this->personaje_usado = personaje_usado;
+}
+
+DatosJugador::DatosJugador(std::string nombre_jugador, int puntaje, std::string nombre_personaje){
+    this->nombre_jugador = nombre_jugador;
+    this->puntaje = puntaje;
+    this->personaje_usado = obtener_personaje_desde_texto(nombre_personaje);
+}
+
+DatosJugador::DatosJugador(std::string nombre, int f, int d, int v, std::string faccion, std::string vehiculo, std::string transformado){
+    this-> nombre_jugador = "ERROR";
+    this-> puntaje = 0;
+    this-> personaje_usado = PERSONAJE_INVALIDO;
+}
+
+Personaje DatosJugador::obtener_personaje_desde_texto(std::string nombre_personaje){
+    Personaje auxiliar = PERSONAJE_INVALIDO;
+    if (nombre_personaje == TEXTO_MEGATRON){
+        auxiliar = MEGATRON;
+    } else if (nombre_personaje == TEXTO_OPTIMUS_PRIME) {
+        auxiliar = OPTIMUS_PRIME;
+    }
+    return auxiliar;
+}
+
+int DatosJugador::obtener_puntaje() {
+    return puntaje;
+}
+
+std::string DatosJugador::obtener_personaje_usado() {
+    std::string nombre_personaje = "personaje invalido";
+    switch (personaje_usado) {
+        case MEGATRON:
+            nombre_personaje = TEXTO_MEGATRON;
+            break;
+        case OPTIMUS_PRIME:
+            nombre_personaje = TEXTO_OPTIMUS_PRIME;
+            break;
+        case PERSONAJE_INVALIDO:
+            throw ExcepcionDatosJugador(ERROR_PERSONAJE_INVALIDO);
+            break;
+    }
+    return nombre_personaje;
+}
 
 std::ostream &operator<<(std::ostream &os, const DatosJugador &datos_jugador) {
     os << datos_jugador.nombre_jugador
-    << "," << datos_jugador.puntaje /*
-    << "," << datos_jugador.personje_usado */;            
+    << "," << datos_jugador.puntaje 
+    << ",";
+    //Problema con const -> Duplicado de codigo no se encontró solución 
+    std::string nombre_personaje = "personaje invalido";
+    switch (datos_jugador.personaje_usado) {
+        case MEGATRON:
+            nombre_personaje = TEXTO_MEGATRON;
+            break;
+        case OPTIMUS_PRIME:
+            nombre_personaje = TEXTO_OPTIMUS_PRIME;
+            break;
+        case PERSONAJE_INVALIDO:
+            throw ExcepcionDatosJugador(ERROR_PERSONAJE_INVALIDO);
+            break;
+    }
+    os << nombre_personaje;
+
     return os;
 }
