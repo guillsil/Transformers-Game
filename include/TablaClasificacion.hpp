@@ -3,9 +3,8 @@
 #include <iostream>
 #include <string>
 #include "ControlArchivo.hpp"
-#include "Vector.hpp"
+#include "TDAs/Vector.hpp"
 #include "DatosJugador.hpp"
-//#include donde esté el enum personaje
 
 class ExcepcionTablaClasificacion : public std::runtime_error {
 public:
@@ -25,7 +24,7 @@ private:
     ControlArchivo<DatosJugador> control_archivo_tabla;
 public:
     //Constructor
-    TablaClasificacion(/* args */);
+    TablaClasificacion();
 
     //Pre:
     //Post:
@@ -34,6 +33,10 @@ public:
     //Pre:
     //Post: Es una insersion ordenada.
     void agregar_jugador(DatosJugador jugador_nuevo);
+
+    //Pre:
+    //Post:
+    void agregar_jugador(std::string nombre_jugador, int puntaje, Personaje personaje_usado);
 
     //Destructor
     ~TablaClasificacion();

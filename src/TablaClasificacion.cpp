@@ -18,11 +18,24 @@ void TablaClasificacion::mostrar_top10_jugadores(){
             std::cout << (i + 1) << ") " << lista_jugadores[i] << std::endl;
         }
     }
-    //Hacer algo que muestre los el top10 solo si hay más de 10
 }
 
 void TablaClasificacion::agregar_jugador(DatosJugador jugador_nuevo){
-    lista_jugadores.alta(jugador_nuevo);
+    //Modularizar == que almacenar en boveda
+    size_t posicion = 0;
+    while (posicion < lista_jugadores.tamanio() && lista_jugadores[posicion].obtener_puntaje() > jugador_nuevo.obtener_puntaje()) {
+        posicion++;
+    }
+    lista_jugadores.alta(jugador_nuevo, posicion);
+}
+
+void TablaClasificacion::agregar_jugador(std::string nombre_jugador, int puntaje, Personaje personaje_usado){
+    DatosJugador nuevo(nombre_jugador, puntaje, personaje_usado);
+    size_t posicion = 0;
+    while (posicion < lista_jugadores.tamanio() && lista_jugadores[posicion].obtener_puntaje() > nuevo.obtener_puntaje()) {
+        posicion++;
+    }
+    lista_jugadores.alta(nuevo, posicion);   
 }
 
 TablaClasificacion::~TablaClasificacion(){
