@@ -87,6 +87,9 @@ private:
     //Pre: -
     //Post: Equipa con un Crital al personaje.
     void manejar_equipar_un_cristal();
+
+    //Pre: -
+    //Post: Muestra la cantidad de Cristales equipados por el personaje.
     void mostrar_cantidad_cristales_equipados();
 
     //Pre: -
@@ -113,12 +116,21 @@ private:
     //Pre: -
     //Post: Solicita un nombre y transforma el Transformer correspondiente.
     void manejar_transformar();
+
+    //Pre: -
+    //Post: Muestra por terminal los personajes secundarios que se encuentren ene le archivo de transformers secundarios.
     void mostrar_transformers_secundarios();
 
     //Pre: -
     //Post: Solicita al usuario el nombre del Transformer y lo devuelve como una cadena.
     std::string solicitar_nombre_transformers();
+
+    //Pre: (faccion) debe ser un valor comprendindo entre (0=AUTOBOTS y 1=DECEPTICONS)
+    //Post:
     int solicitar_vehiculo(const int& faccion);
+
+    //Pre: -
+    //Post: Solicita al usuario que ingrese la faccion y lo devuelve.
     int solicitar_faccion();
 
     //Pre: -
@@ -133,7 +145,13 @@ private:
     //Pre: (nombre) no debe estar vacío. (tipo_vehiculo) debe ser un valor válido entre 0 y 3.
     //Post: Crea un Transformer y lo agrega al administrador según el tipo de vehículo especificado.
     void crear_transformers(std::string nombre, int tipo_vehiculo);
+
+    //Pre: -
+    //Post: Crea un Autobots en base nombre y tipo de vehículo.
     void manejar_crear_autobots(const int& faccion, const std::string& nombre);
+
+    //Pre: -
+    //Post: Crea un Decepticons en base nombre y tipo de vehículo.
     void manejar_crear_decepticons(const int& faccion, const std::string& nombre);
 
 
