@@ -148,11 +148,11 @@ private:
 
     //Pre: -
     //Post: Crea un Autobots en base nombre y tipo de vehículo.
-    void manejar_crear_autobots(const int& faccion, const std::string& nombre);
+    void manejar_crear_autobots(const std::string& nombre);
 
     //Pre: -
     //Post: Crea un Decepticons en base nombre y tipo de vehículo.
-    void manejar_crear_decepticons(const int& faccion, const std::string& nombre);
+    void manejar_crear_decepticons(const std::string& nombre);
 
 
     //Pre: -

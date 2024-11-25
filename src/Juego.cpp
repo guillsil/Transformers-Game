@@ -316,8 +316,8 @@ void Juego::crear_transformers(std::string nombre, int tipo_vehiculo){
     }
 }
 
-void Juego::manejar_crear_autobots(const int &faccion, const std::string &nombre){
-    int tipo_vehiculo = solicitar_vehiculo(faccion);
+void Juego::manejar_crear_autobots(const std::string &nombre){
+    int tipo_vehiculo = solicitar_vehiculo(AUTOBOTS);
     if (tipo_vehiculo == AUTO || tipo_vehiculo == CAMION){
         crear_transformers(nombre, tipo_vehiculo);
         menu.limpiar_y_mostrar_mensaje(MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE);
@@ -326,8 +326,8 @@ void Juego::manejar_crear_autobots(const int &faccion, const std::string &nombre
     }
 }
 
-void Juego::manejar_crear_decepticons(const int &faccion, const std::string &nombre){
-    int tipo_vehiculo = solicitar_vehiculo(faccion);
+void Juego::manejar_crear_decepticons(const std::string &nombre){
+    int tipo_vehiculo = solicitar_vehiculo(DECEPTICONS);
     if (tipo_vehiculo == AVION || tipo_vehiculo == TANQUE){
         crear_transformers(nombre, tipo_vehiculo);
         menu.limpiar_y_mostrar_mensaje(MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE);
@@ -341,9 +341,9 @@ void Juego::manejar_crear_transformers(){
     std::string nombre = solicitar_nombre_transformers();
     int faccion = solicitar_faccion();
     if (faccion == AUTOBOTS){
-        manejar_crear_autobots(faccion, nombre);
+        manejar_crear_autobots(nombre);
     }else if (faccion == DECEPTICONS){
-        manejar_crear_decepticons(faccion, nombre);
+        manejar_crear_decepticons(nombre);
     }else{
         menu.limpiar_y_mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
     }
