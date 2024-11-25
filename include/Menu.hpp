@@ -90,27 +90,27 @@ public:
     void mostrar_menu_inicial();
 
     //Pre: -
-    //Post:
+    //Post: Muestra por consola el menú del Administrador de Transformers
     void mostrar_menu_administrador_transformers();
 
-    //Pre:
-    //Post:
+    //Pre: -
+    //Post: Imprime por la terminal el menú para que el usuario pueda escoger la facción.
     void menu_escoger_faccion();
 
-    //Pre:
-    //Post:
+    //Pre: (faccion) solo puede ser (0=Autobots, 1=Decepticons)
+    //Post: Muestra por la terminal el menú para que el usuario pueda escoger el tipo de vehículo.
     void menu_escoger_vehiculo(const int& faccion);
 
-    //Pre:
-    //Post:
+    //Pre:-
+    //Post: Imprime por consola el menú para ingresar el nombre del transformers.
     void menu_ingregar_nombre_transformers();
 
-    //Pre:
-    //Post:
+    //Pre: (personaje_elejido) solo puede adquirir estos dos valores (MEGATRON=0 Y OPTIMUS=1)
+    //Post: Muestra por consola el menú para interactuar con el personaje según el personaje elejido
     void menu_interactuar_con_personaje(const int &personaje_elejido);
 
-    //Pre:
-    //Post:
+    //Pre: -
+    //Post: Limpia la terminal y muestra un mensaje con recuadro por terminal.
     void limpiar_y_mostrar_mensaje(const std::string& mensaje);
 };
 
