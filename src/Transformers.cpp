@@ -1,16 +1,5 @@
 #include "Transformers.hpp"
 
-//No se si es necesario para el constructor al sacarlos de csv probablemente
-bool pase_texto_bool_transformado(std::string texto_transformado){
-    bool estado_actual;
-    if (texto_transformado == "Si"){
-        estado_actual = true;
-    } else {
-        estado_actual = false;
-    }
-    return estado_actual;
-}
-
 Transformers::Transformers(std::string nombre, int fuerza, int defensa, int velocidad,
                            std::string faccion, std::string vehiculo, bool transformado){
     this->nombre = nombre;
@@ -158,6 +147,17 @@ void Transformers::chequeo_vehiculo(bool al_reves){
             this->velocidad = velocidad + interruptor_incremento_reduccion*(ESTADISTICAS_REDUCCION* CAMBIO_TOTALMENTE);
         }
     }
+}
+
+//No se si es necesario para el constructor al sacarlos de csv probablemente
+bool Transformers::pase_texto_bool_transformado(std::string texto_transformado){
+    bool estado_actual;
+    if (texto_transformado == "Si"){
+        estado_actual = true;
+    } else {
+        estado_actual = false;
+    }
+    return estado_actual;
 }
 
 std::ostream &operator<<(std::ostream &os, const Transformers &transformer){
