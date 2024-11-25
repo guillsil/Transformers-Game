@@ -476,7 +476,7 @@ void Juego::manejar_flujo_juego_principal() {
                 menu.limpiar_menu();
                 break;
             case OPCION_6: // Tabla Clasificación
-                //tabla_clasificacion.mostrar_top10_jugadores();
+                tabla_clasificacion.mostrar_top10_jugadores();
                 break;
              case OPCION_7:
                 menu.limpiar_menu();

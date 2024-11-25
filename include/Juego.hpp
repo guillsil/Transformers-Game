@@ -11,6 +11,7 @@
 #include "FusionadorEnergon.hpp"
 #include "Protagonista.hpp"
 #include "AdminTransformers.hpp"
+#include "TablaClasificacion.hpp"
 
 
 class Juego {
@@ -40,7 +41,7 @@ private:
     bool juego_en_curso;
     std::string nombre_jugador;
     AdministradorTransformers administrador_transformers;
-    //TablaClasificacion tabla_clasificacion;
+    TablaClasificacion tabla_clasificacion;
 
 
     //Pre: -

@@ -36,6 +36,10 @@ set(ARCHIVOS_FUENTE
 
         src/Megatron.cpp
         src/OptimusPrime.cpp
+        src/ManejadorDeRespuestas.cpp
+        src/ManejadorDePalabrasClaves.cpp
+        src/ManejadorDeMensajes.cpp
+
         src/GeneradorAleatorio.cpp
         src/FusionadorEnergon.cpp
         src/Cristal.cpp
@@ -43,14 +47,10 @@ set(ARCHIVOS_FUENTE
         src/Juego.cpp
         src/Menu.cpp
         src/Utilidades.cpp
-        src/ManejadorDeRespuestas.cpp
-        src/ManejadorDePalabrasClaves.cpp
-        src/ManejadorDeMensajes.cpp
+
         src/Estadisticas.cpp
         src/Grafo/TuplaVerticeDistancia.cpp
         src/Protagonista.cpp
-        src/AdminTransformers.cpp
-        src/Transformers.cpp
 )
 
 add_executable(AYED_TPG_2C2024
