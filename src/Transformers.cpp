@@ -33,6 +33,16 @@ Transformers::Transformers(std::string nombre, int fuerza, int defensa, int velo
     this->transformado = false;
 }
 
+Transformers::Transformers(Vector<std::string>& elementos){
+    this->nombre = elementos[0];
+    this->fuerza = std::stoi(elementos[1]);
+    this->defensa = std::stoi(elementos[2]);
+    this->velocidad = std::stoi(elementos[3]);
+    this->faccion = elementos[4];
+    this->vehiculo = elementos[5];
+    this->transformado = pase_texto_bool_transformado(elementos[6]);
+}
+
 Transformers::Transformers(){
     this->nombre = "Sparkling";
     this->fuerza = 5; this->defensa = 5; this->velocidad = 5;
