@@ -2,6 +2,7 @@
 #define CONTROL_ARCHIVO_HPP
 #include "TDAs/Vector.hpp"
 #include "Transformers.hpp"
+#include "DatosJugador.hpp"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -20,7 +21,9 @@ public:
 
 template<typename T>
 class ControlArchivo {
-    const std::string ERROR_ABRIR_ARCHIVO = "Error al abrir el archivo";
+    const std::string ERROR_NO_SE_PUDO_ABRIR_ARCHIVO = "ERROR:: La ruta suministrada no es Correcta. Por favor intentalo nuevamente. ";
+    const size_t NUMERO_CREAR_TRANSFORMER = 7;
+    const size_t NUMERO_CREAR_DATOS_JUGADOR = 3;
     std::string ruta;
 
     //Pre:
@@ -29,7 +32,11 @@ class ControlArchivo {
 
     //Pre:
     //Post:
-    Transformers crear_transformer(Vector<std::string>& elementos);
+    T crear_transformer(Vector<std::string>& elementos);
+
+    //Pre:
+    //Post:
+    T crear_datos_jugador(Vector<std::string>& elementos);
 public:
     //Constructor
     ControlArchivo();
@@ -73,7 +80,7 @@ void ControlArchivo<T>::guardar_en_archivo(Vector<T> vector_guardar){
         }
         miArchivo.close();
     }else{
-        throw ExcepcionControlArchivo(ERROR_ABRIR_ARCHIVO);
+        throw ExcepcionControlArchivo(ERROR_NO_SE_PUDO_ABRIR_ARCHIVO);
     }
 }
 
@@ -87,7 +94,7 @@ void ControlArchivo<T>::sobreescribir_en_archivo(Vector<T> vector_guardar){
         }
         miArchivo.close();
     }else{
-        throw ExcepcionControlArchivo(ERROR_ABRIR_ARCHIVO);
+        throw ExcepcionControlArchivo(ERROR_NO_SE_PUDO_ABRIR_ARCHIVO);
     }
 }
 
@@ -95,7 +102,7 @@ template <typename T>
 Vector<T> ControlArchivo<T>::leer_archivo(){
     std::ifstream archivo(ruta);
     if (!archivo.is_open()) {
-        throw ExcepcionControlArchivo(ERROR_ABRIR_ARCHIVO);
+        throw ExcepcionControlArchivo(ERROR_NO_SE_PUDO_ABRIR_ARCHIVO);
     }
 
     std::string linea;
@@ -103,7 +110,12 @@ Vector<T> ControlArchivo<T>::leer_archivo(){
     Vector<T> lista_nueva;
     while (std::getline(archivo, linea)) {
         elementos = dividir_linea(linea, ',');
-        lista_nueva.alta(crear_transformer(elementos));
+        if (elementos.tamanio() == NUMERO_CREAR_TRANSFORMER){
+            lista_nueva.alta(crear_transformer(elementos));
+        } else if (elementos.tamanio() == NUMERO_CREAR_DATOS_JUGADOR){
+            lista_nueva.alta(crear_datos_jugador(elementos));
+        }
+        //Faltaria hacer para la boveda de cristaless
     }
 
     archivo.close();
@@ -122,17 +134,23 @@ Vector<std::string> ControlArchivo<T>::dividir_linea(const std::string& linea, c
 }
 
 template <typename T>
-Transformers ControlArchivo<T>::crear_transformer(Vector<std::string>& elementos){
+T ControlArchivo<T>::crear_transformer(Vector<std::string>& elementos){
     std::string nombre = elementos[0];
     int fuerza = std::stoi(elementos[1]);
     int defensa = std::stoi(elementos[2]);
     int velocidad = std::stoi(elementos[3]);
     std::string faccion = elementos[4];
     std::string vehiculo = elementos[5];
-    bool transformado = pase_texto_bool_transformado(elementos[6]);
-    Transformers nuevo(nombre, fuerza, defensa, velocidad, faccion, vehiculo, transformado);
-    //std::cout << nuevo << std::endl;
-    return nuevo;
+    std::string transformado = elementos[6];
+    return T(nombre, fuerza, defensa, velocidad, faccion, vehiculo, transformado);
+}
+
+template <typename T>
+T ControlArchivo<T>::crear_datos_jugador(Vector<std::string>& elementos){
+    std::string nombre = elementos[0];
+    int puntaje = std::stoi(elementos[1]);
+    std::string personaje = elementos[2];
+    return T(nombre, puntaje , personaje);
 }
 
 #endif

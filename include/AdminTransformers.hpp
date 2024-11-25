@@ -21,9 +21,10 @@ public:
 class AdministradorTransformers{
 private:
     const std::string RUTA_ARCHIVO_TRANSFORMERS = "transformers.csv";
-    const std::string MENSAJE_ERROR_NO_ENCONTRADO = "No se encontró el transformer buscado";
-    const std::string MENSAJE_ERROR_VACIO = "No hay transformers para administrar.";
-    const std::string MENSAJE_FUERA_RANGO = "Fuera de rango";
+    const std::string ERROR_TRANSFORMER_NO_ENCONTRADO = "RESULTADO:: No se encontró el transformer buscado";
+    const std::string ERROR_LISTA_TRANSFORMERS_VACIO = "ERROR:: No hay Transformers secundarios , no hay nada para mostrar";
+    const std::string ERROR_INDICE_FUERA_DE_RANGO = "ERROR:: Posición fuera de rango.";
+    const size_t NO_ENCONTRADO = -1;
 
     Vector<Transformers> lista_transformers;
     ControlArchivo<Transformers> control_archivo_transformers;
