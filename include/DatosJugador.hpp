@@ -2,6 +2,7 @@
 #define DATOSJUGADOR_HPP
 #include <iostream>
 #include <string>
+#include "TDAs/Vector.hpp"
 #include "Menu.hpp" //Preguntar si se puede cambiar a DatosJugador
 
 class ExcepcionDatosJugador : public std::runtime_error {
@@ -37,11 +38,8 @@ public:
     //Constructor
     DatosJugador(std::string nombre_jugador, int puntaje, Personaje personaje_usado);
 
-    //Constructor para archivo
-    DatosJugador(std::string nombre_jugador, int puntaje, std::string nombre_personaje);
-
-    //Constructor para salvar un error en control archivo
-    DatosJugador(std::string nombre, int f, int d, int v, std::string faccion, std::string vehiculo, std::string transformado);
+    //Contructor para crear en ControlArchivo
+    DatosJugador(Vector<std::string>& elementos);
 
     //Pre:
     //Post: Devuelve el puntaje del jugador

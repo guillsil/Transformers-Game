@@ -12,16 +12,10 @@ DatosJugador::DatosJugador(std::string nombre_jugador, int puntaje, Personaje pe
     this->personaje_usado = personaje_usado;
 }
 
-DatosJugador::DatosJugador(std::string nombre_jugador, int puntaje, std::string nombre_personaje){
-    this->nombre_jugador = nombre_jugador;
-    this->puntaje = puntaje;
-    this->personaje_usado = obtener_personaje_desde_texto(nombre_personaje);
-}
-
-DatosJugador::DatosJugador(std::string nombre, int f, int d, int v, std::string faccion, std::string vehiculo, std::string transformado){
-    this-> nombre_jugador = "ERROR";
-    this-> puntaje = 0;
-    this-> personaje_usado = PERSONAJE_INVALIDO;
+DatosJugador::DatosJugador(Vector<std::string>& elementos){
+    this-> nombre_jugador = elementos[0];
+    this-> puntaje = std::stoi(elementos[1]);
+    this-> personaje_usado = obtener_personaje_desde_texto(elementos[2]);
 }
 
 Personaje DatosJugador::obtener_personaje_desde_texto(std::string nombre_personaje){
