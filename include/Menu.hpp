@@ -14,6 +14,7 @@ const char OPCION_5 = '5';
 const char OPCION_6 = '6';
 const char OPCION_7 = '7';
 const char OPCION_8 = '8';
+const char OPCION_9 = '9';
 
 enum Personaje {
     MEGATRON,
@@ -88,14 +89,29 @@ public:
     //Post: Imprime por consola el menu inicial del juego en el cual se pide al usuario que ingrese su nombre.
     void mostrar_menu_inicial();
 
+    //Pre: -
+    //Post: Muestra por consola el menú del Administrador de Transformers
     void mostrar_menu_administrador_transformers();
 
+    //Pre: -
+    //Post: Imprime por la terminal el menú para que el usuario pueda escoger la facción.
     void menu_escoger_faccion();
 
-    void menu_escoger_vehiculo();
+    //Pre: (faccion) solo puede ser (0=Autobots, 1=Decepticons)
+    //Post: Muestra por la terminal el menú para que el usuario pueda escoger el tipo de vehículo.
+    void menu_escoger_vehiculo(const int& faccion);
 
-    void menu_escoger_aeronave();
+    //Pre:-
+    //Post: Imprime por consola el menú para ingresar el nombre del transformers.
     void menu_ingregar_nombre_transformers();
+
+    //Pre: (personaje_elejido) solo puede adquirir estos dos valores (MEGATRON=0 Y OPTIMUS=1)
+    //Post: Muestra por consola el menú para interactuar con el personaje según el personaje elejido
+    void menu_interactuar_con_personaje(const int &personaje_elejido);
+
+    //Pre: -
+    //Post: Limpia la terminal y muestra un mensaje con recuadro por terminal.
+    void limpiar_y_mostrar_mensaje(const std::string& mensaje);
 };
 
 

@@ -51,8 +51,6 @@ set(ARCHIVOS_FUENTE
         src/Protagonista.cpp
         src/AdminTransformers.cpp
         src/Transformers.cpp
-
-
 )
 
 add_executable(AYED_TPG_2C2024

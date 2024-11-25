@@ -3,6 +3,7 @@
 //
 
 #include "Menu.hpp"
+const int AUTOBOTS = 0;
 const std::string TRANSFORMERS = R"(
   ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
   ║                                                                                                                                              ║
@@ -52,7 +53,6 @@ const std::string MENU_PRINCIPAL = R"(
   ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
     )";
 const std::string MEGATRON_ASCII = R"(
-  ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
   ║                                                                                                                                              ║
   ║                                                                                                                                              ║
   ║                                   ███╗   ███╗███████╗ ██████╗  █████╗ ████████╗██████╗  ██████╗ ███╗   ██╗                                   ║
@@ -62,7 +62,6 @@ const std::string MEGATRON_ASCII = R"(
   ║                                   ██║ ╚═╝ ██║███████╗╚██████╔╝██║  ██║   ██║   ██║  ██║╚██████╔╝██║ ╚████║                                   ║
   ║                                   ╚═╝     ╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝                                   ║)";
 const std::string OPTIMUS_ASCII = R"(
-  ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
   ║                                                                                                                                              ║
   ║                                                                                                                                              ║
   ║                     ██████╗ ██████╗ ████████╗██╗███╗   ███╗██╗   ██╗███████╗        ██████╗ ██████╗ ██╗███╗   ███╗███████╗                   ║
@@ -77,15 +76,42 @@ const std::string MENU_PERSONAJE_ASCII = R"(
   ║                                                              Selecciona una opción:                                                          ║
   ║                             ╔═══════════════════════════════════════════════════════════════════════════════════╗                            ║
   ║                             ║                                                                                   ║                            ║
-  ║                             ║      [1] Escribir un mensaje                  [5] Administrar Transformers        ║                            ║
+  ║                             ║      [1] Interactuar                          [5] Iniciar Batalla                 ║                            ║
   ║                             ║                                                                                   ║                            ║
-  ║                             ║      [2] Sugerir una fusión                   [6] Iniciar Batalla                 ║                            ║
+  ║                             ║      [2] Fusionar Cristales                   [6] Tabla Clasificación             ║                            ║
   ║                             ║                                                                                   ║                            ║
-  ║                             ║      [3] Modificar Estado                     [7] Bóveda                          ║                            ║
+  ║                             ║      [3] Bóveda                               [7] Salir                           ║                            ║
   ║                             ║                                                                                   ║                            ║
-  ║                             ║      [4] Fusionar Cristales                   [8] Salir                           ║                            ║
+  ║                             ║      [4] Administrar Transformers                                                 ║                            ║
   ║                             ║                                                                                   ║                            ║
   ║                             ╚═══════════════════════════════════════════════════════════════════════════════════╝                            ║
+  ║                                                                                                                                              ║
+  ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+    )";
+
+const std::string MENU_INTERACTUAR_CON = R"(
+  ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+  ║                                                                                                                                              ║
+  ║                                                                                                                                              ║
+  ║          ██╗███╗   ██╗████████╗███████╗██████╗  █████╗  ██████╗████████╗██╗   ██╗ █████╗ ██████╗         ██████╗ ██████╗ ███╗   ██╗          ║
+  ║          ██║████╗  ██║╚══██╔══╝██╔════╝██╔══██╗██╔══██╗██╔════╝╚══██╔══╝██║   ██║██╔══██╗██╔══██╗       ██╔════╝██╔═══██╗████╗  ██║          ║
+  ║          ██║██╔██╗ ██║   ██║   █████╗  ██████╔╝███████║██║        ██║   ██║   ██║███████║██████╔╝       ██║     ██║   ██║██╔██╗ ██║          ║
+  ║          ██║██║╚██╗██║   ██║   ██╔══╝  ██╔══██╗██╔══██║██║        ██║   ██║   ██║██╔══██║██╔══██╗       ██║     ██║   ██║██║╚██╗██║          ║
+  ║          ██║██║ ╚████║   ██║   ███████╗██║  ██║██║  ██║╚██████╗   ██║   ╚██████╔╝██║  ██║██║  ██║       ╚██████╗╚██████╔╝██║ ╚████║          ║
+  ║          ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝        ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝          ║)";
+
+
+
+const std::string MENU_OPCIONES_INTERACTUAR = R"(
+  ║                                                                                                                                              ║
+  ║                                                            Selecciona una opción:                                                            ║
+  ║                                        ╔═══════════════════════════════════════════════════════════╗                                         ║
+  ║                                        ║                                                           ║                                         ║
+  ║                                        ║    [1] Escribir un mensaje      [3] Modificar Estado      ║                                         ║
+  ║                                        ║                                                           ║                                         ║
+  ║                                        ║    [2] Sugerir una fusión       [4] Salir                 ║                                         ║
+  ║                                        ║                                                           ║                                         ║
+  ║                                        ╚═══════════════════════════════════════════════════════════╝                                         ║
   ║                                                                                                                                              ║
   ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
     )";
@@ -144,6 +170,8 @@ const std::string MENU_INGRESAR_ESTADO_MEGATRON = R"(
   ║                                                     ╚═════════════════════════════════╝                                                      ║
   ║                                                                                                                                              ║)";
 
+const std::string PARTE_SUPERIOR_RECUADRO_OPCION_2 = R"(
+  ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗)";
 const std::string PARTE_SUPERIOR_RECUADRO = R"(
   ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
     )";
@@ -184,19 +212,21 @@ const std::string BOVEDA= R"(
 const std::string MENU_BOVEDA= R"(
   ║ ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════║
   ║                                                                                                                                              ║
-  ║                                                               Bóveda de Almacenamiento                                                       ║
+  ║                                                           Bóveda de Almacenamiento                                                           ║
   ║                                                                                                                                              ║
-  ║                            ╔═══════════════════════════════════════════════════════════════════════════════════════╗                         ║
-  ║                            ║                                                                                       ║                         ║
-  ║                            ║        [1]  Almacenar un Cristal           [5]  Mostrar Crista con Mayor Poder        ║                         ║
-  ║                            ║                                                                                       ║                         ║
-  ║                            ║        [2]  Mostrar Cristales              [6]  Equiparse con un Cristal              ║                         ║
-  ║                            ║                                                                                       ║                         ║
-  ║                            ║        [3]  Exportar Cristales             [7]  Ver Cristales Equipados               ║                         ║
-  ║                            ║                                                                                       ║                         ║
-  ║                            ║        [4]  Cantidad Cristales             [8]  Salir                                 ║                         ║
-  ║                            ║                                                                                       ║                         ║
-  ║                            ╚═══════════════════════════════════════════════════════════════════════════════════════╝                         ║
+  ║                          ╔═══════════════════════════════════════════════════════════════════════════════════════╗                           ║
+  ║                          ║                                                                                       ║                           ║
+  ║                          ║     [1]  Almacenar un Cristal                 [6]  Mostrar Crista con Mayor Poder     ║                           ║
+  ║                          ║                                                                                       ║                           ║
+  ║                          ║     [2]  Mostrar Cristales                    [7]  Equiparse con un Cristal           ║                           ║
+  ║                          ║                                                                                       ║                           ║
+  ║                          ║     [3]  Exportar Cristales                   [8]  Ver Cristales Equipados            ║                           ║
+  ║                          ║                                                                                       ║                           ║
+  ║                          ║     [4]  Cantidad Cristales                   [9]  Salir                              ║                           ║
+  ║                          ║                                                                                       ║                           ║
+  ║                          ║     [5]  Cantidad Cristales Equipados                                                 ║                           ║
+  ║                          ║                                                                                       ║                           ║
+  ║                          ╚═══════════════════════════════════════════════════════════════════════════════════════╝                           ║
   ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 )";
 
@@ -328,18 +358,14 @@ const std::string MENU_INGRESAR_RUTA_ARCHIVO= R"(
   ║                                                                                                                                              ║
   ║                                      Ingrese la ruta en la cual quieres exportar el archivo:                                                 ║
   ║                                                                                                                                              ║
-  ║                          ╔═══════════════════════════════════════════════════════════════════════════════════════╗                           ║
-  ║                          ║                                                                                       ║                           ║
-  ║                          ║  Recuerda que solo podes ingresar ya sea el nombre del archivo, Por ejemplo:          ║                           ║
-  ║                          ║                                                                                       ║                           ║
-  ║                          ║      •Ingrese la ruta: pepe -> entonces se creara un archivo llamado pepe en el       ║                           ║
-  ║                          ║      directorio raíz llamado /archivos.                                               ║                           ║
-  ║                          ║      También podrás ingresar con una ruta y el nombre del archivo, Por ejemplo:       ║                           ║
-  ║                          ║                                                                                       ║                           ║
-  ║                          ║      •Ingrese la ruta: /pepe/quiere_aprobar.csv  -> entonces se guardara este         ║                           ║
-  ║                          ║       directorio con el archivo en el directorio raíz llamado /archivos               ║                           ║
-  ║                          ║                                                                                       ║                           ║
-  ║                          ╚═══════════════════════════════════════════════════════════════════════════════════════╝                           ║
+  ║                        ╔════════════════════════════════════════════════════════════════════════════════════════════╗                        ║
+  ║                        ║                                                                                            ║                        ║
+  ║                        ║  Recuerda que solo podes ingresar ya sea el nombre del archivo, Por ejemplo:               ║                        ║
+  ║                        ║                                                                                            ║                        ║
+  ║                        ║  •Ingrese la ruta: pepe -> entonces se creara un archivo llamado pepe en el directorio     ║                        ║
+  ║                        ║  raíz llamado /archivos.                                                                   ║                        ║
+  ║                        ║                                                                                            ║                        ║
+  ║                        ╚════════════════════════════════════════════════════════════════════════════════════════════╝                        ║
   ║                                                                                                                                              ║
   ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 )";
@@ -354,8 +380,10 @@ void Menu::mostrar_menu_principal(const std::string &nombre) {
 
 void Menu::mostrar_menu_personaje(const int &personaje_elejido) {
     if (personaje_elejido == MEGATRON) {
+        std::cout << PARTE_SUPERIOR_RECUADRO_OPCION_2;
         std::cout << MEGATRON_ASCII;
     }else {
+        std::cout << PARTE_SUPERIOR_RECUADRO_OPCION_2;
         std::cout << OPTIMUS_ASCII;
     }
     std::cout << MENU_PERSONAJE_ASCII;
@@ -455,19 +483,37 @@ void Menu::menu_escoger_faccion(){
     std::cout << SIMBOLO_INGRESAR_MENSAJE;
 }
 
-
-void Menu::menu_escoger_vehiculo(){
-    std::cout << MENU_ESCOGER_VEHICULO;
-    std::cout << SIMBOLO_INGRESAR_MENSAJE;
-}
-
-void Menu::menu_escoger_aeronave(){
-    std::cout << MENU_ESCOGER_AERONAVE;
-    std::cout << SIMBOLO_INGRESAR_MENSAJE;
+void Menu::menu_escoger_vehiculo(const int &faccion){
+    if (faccion == AUTOBOTS){
+        std::cout << MENU_ESCOGER_VEHICULO;
+        std::cout << SIMBOLO_INGRESAR_MENSAJE;
+    }else{
+        std::cout << MENU_ESCOGER_AERONAVE;
+        std::cout << SIMBOLO_INGRESAR_MENSAJE;
+    }
 }
 
 void Menu::menu_ingregar_nombre_transformers(){
     std::cout << TRANSFORMERS;
     std::cout << MENU_ESCOGER_NOMBRE_TRANSFORMERS;
     std::cout << SIMBOLO_INGRESAR_MENSAJE;
+}
+
+void Menu::menu_interactuar_con_personaje(const int& personaje_elejido){
+    if (personaje_elejido == MEGATRON){
+        std::cout << MENU_INTERACTUAR_CON;
+        std::cout << MEGATRON_ASCII;
+        std::cout << MENU_OPCIONES_INTERACTUAR;
+        std::cout << SIMBOLO_INGRESAR_MENSAJE;
+    }else{
+        std::cout << MENU_INTERACTUAR_CON;
+        std::cout << OPTIMUS_ASCII;
+        std::cout << MENU_OPCIONES_INTERACTUAR;
+        std::cout << SIMBOLO_INGRESAR_MENSAJE;
+    }
+}
+
+void Menu::limpiar_y_mostrar_mensaje(const std::string& mensaje){
+    limpiar_menu();
+    mostrar_mensaje(mensaje);
 }

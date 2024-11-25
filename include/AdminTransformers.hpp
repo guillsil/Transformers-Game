@@ -7,6 +7,8 @@
 #include "Transformers.hpp"
 #include "ControlArchivo.hpp"
 
+const size_t NO_ENCONTRADO = -1;
+
 class ExcepcionAdministradorTransformers : public std::runtime_error {
 public:
     ExcepcionAdministradorTransformers(std::string mensaje): runtime_error(mensaje) {
@@ -40,8 +42,8 @@ public:
     Transformers eliminar_transformer(std::string nombre);
     
     //Pre:
-    //Post: Buscar un transformer segun el nombre, devuelve su posicion en lista_transformers. Si devuelve -1, no lo encontró;
-    //Pensar que debe devolver (posicion? = size_t)
+    //Post: Buscar un transformer segun el nombre, devuelve su posicion en lista_transformers.
+    // Si no lo encuentra devuelve un numero fuera de rango
     size_t buscar_transformer(std::string nombre);
     
     //Pre:

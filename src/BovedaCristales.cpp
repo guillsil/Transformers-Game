@@ -56,11 +56,11 @@ size_t BovedaCristales::tamanio() {
     return cristales.tamanio();
 }
 
-Cristal BovedaCristales::obtener_y_eliminar_cristal_mas_poderoso() {
+Cristal BovedaCristales::eliminar_cristal(const int &indice) {
     try {
-        Cristal cristal_mas_poderoso = cristales[0];
-        cristales.baja(0);
-        return cristal_mas_poderoso;
+        Cristal cristal = cristales[indice];
+        cristales.baja(indice);
+        return cristal;
     } catch (ExcepcionVector& e) {
         throw ExcepcionBovedaCristales(ERROR_CRISTALES_VACIO);
     }

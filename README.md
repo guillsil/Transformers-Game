@@ -1,6 +1,6 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/SOoPfuVL)
 # AYED - TPG 2c2024
-### SILVA GUILLERMO ANDRES - 109777 - RIVERO ARDISSONE, CANDELA BELÉN - 110339 - NARVÁEZ YAGUANA, GABRIEL ALEJANDRO - 111432 - 109948 - FARIÑA GONCALVES, ALEX JAVIER  - 112438
+### SILVA GUILLERMO ANDRES - 109777 - 110339 - NARVÁEZ YAGUANA, GABRIEL ALEJANDRO - 111432 - 109948 - FARIÑA GONCALVES, ALEX JAVIER  - 112438 - RIVERO ARDISSONE, CANDELA BELÉN
 <p align="center">
    <img src="image/Banner.png" alt="TP1: Interacción con Transformers"><br>
 </p>
@@ -27,11 +27,13 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
   * Se emplea el TDA Vector para manejar la lista de transformers debido a su flexibilidad y eficiencia en operaciones comunes como insertar, búsqueda y eliminación. Al ser dinámico, el vector permite ajustar el tamaño según sea necesario, mientras mantiene un rendimiento óptimo para gestionar y mostrar la lista de manera ordenada. Esto facilita la implementación de funcionalidades como agregar, buscar o eliminar transformers de forma sencilla y eficaz.
 
 * ### Grafos en la generación de Combates
-  *
+  * Elegimos usar un grafo para representar el mapa de batalla en nuestro juego porque ofrece una estructura flexible y dinámica ideal para simular el avance estratégico del personaje. 
+  * En el grafo, cada nodo representa un punto en el mapa y cada arista una conexión posible, permitiendo así la búsqueda de rutas óptimas para que el personaje se desplace hacia sus objetivos. Además, el grafo maneja de forma eficiente las interacciones del personaje con rivales de diferentes facciones, permitiendo saltar o enfrentar enemigos. 
+  * También facilita la modularidad y escalabilidad del mapa, añadiendo y eliminando puntos de batalla fácilmente para adaptarse a diferentes niveles y escenarios. 
 
 * ### Dijkstra para obtener el camino Minimo en la Simulacion de la batalla
-  *
-
+  *  Usamos el algoritmo de camino mínimo de ***Dijkstra*** en la simulación de batalla porque es altamente eficiente para encontrar la ruta más corta en un grafo, lo cual es esencial para el desplazamiento estratégico del personaje en el mapa de batalla. 
+  * Una vez generado el mapa, Dijkstra permite identificar el camino mínimo entre el personaje y su objetivo rápidamente. Esto asegura que el personaje pueda avanzar de manera óptima.
 
 ## Aclaraciones Adicionales
 * ### Obsequio de un Cristal al Iniciar el juego
@@ -43,9 +45,9 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
 * ### Funcionalidad para Mostrar el cristal con mayor Poder
   * Para poder mostrar el cristal con mayor poder lo que se decide es ir almacenando en la bóveda los cristales de manera ordenada (Inserción Ordenada) y asi el obtener el cristal de mayor poder tendrá un costo de O(1), esto porque se ordena de manera descendente lo que permite obtenerlo de una manera más rápida, ya que está en la primera posición.
 
-* ### Funcionalidad para Equipar con un Cristal al Personaje
-  * Para poder equipar con un cristal al personaje lo que se decidió es crearle una mini bóveda al personaje en la cual el mismo solo podrá equiparse con 7 cristales.
-  * Para la bóveda lo que hicimos es reutilizar la bóveda que teníamos creados, pero esta vez le redujimos la capacidad a solo 7 cristales, esto mediante una sobrecarga en el constructor de la bóveda.
+* ### Funcionalidad Equipar Cristal al Personaje
+  * Para poder equipar con un cristal al personaje lo que se decidió es crearle una bóveda de cristales al personaje en la cual el mismo solo podrá equiparse con hasta 7 cristales.
+  * Siempre se equipara con el cristal de mayor poder.
 
 
 
