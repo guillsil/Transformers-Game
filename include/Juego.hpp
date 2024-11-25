@@ -74,7 +74,7 @@ private:
 
     //Pre: -
     //Post: Muestra los cristales almacenados en la bóveda y si ocurre un error devuelve una excepción.
-    void manejar_mostrar_boveda();
+    void mostrar_boveda();
 
     //Pre: (ruta) debe ser una cadena no vacía.
     //Post:Exporta los cristales de la bóveda en la ruta proporcionada.
@@ -87,6 +87,7 @@ private:
     //Pre: -
     //Post: Equipa con un Crital al personaje.
     void manejar_equipar_un_cristal();
+    void mostrar_cantidad_cristales_equipados();
 
     //Pre: -
     //Post: Gestiona las opciones del menú de la bóveda (almacenar, mostrar, exportar cristales).
@@ -112,10 +113,13 @@ private:
     //Pre: -
     //Post: Solicita un nombre y transforma el Transformer correspondiente.
     void manejar_transformar();
+    void mostrar_transformers_secundarios();
 
     //Pre: -
     //Post: Solicita al usuario el nombre del Transformer y lo devuelve como una cadena.
-    std::string pedir_nombre_transformers();
+    std::string solicitar_nombre_transformers();
+    int solicitar_vehiculo(const int& faccion);
+    int solicitar_faccion();
 
     //Pre: -
     //Post: Devuelve una cadena que representa el tipo de vehículo correspondiente
@@ -129,6 +133,8 @@ private:
     //Pre: (nombre) no debe estar vacío. (tipo_vehiculo) debe ser un valor válido entre 0 y 3.
     //Post: Crea un Transformer y lo agrega al administrador según el tipo de vehículo especificado.
     void crear_transformers(std::string nombre, int tipo_vehiculo);
+    void manejar_crear_autobots(const int& faccion, const std::string& nombre);
+    void manejar_crear_decepticons(const int& faccion, const std::string& nombre);
 
 
     //Pre: -

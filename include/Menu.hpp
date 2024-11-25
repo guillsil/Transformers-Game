@@ -89,18 +89,28 @@ public:
     //Post: Imprime por consola el menu inicial del juego en el cual se pide al usuario que ingrese su nombre.
     void mostrar_menu_inicial();
 
+    //Pre: -
+    //Post:
     void mostrar_menu_administrador_transformers();
 
+    //Pre:
+    //Post:
     void menu_escoger_faccion();
 
-    void menu_escoger_vehiculo();
+    //Pre:
+    //Post:
+    void menu_escoger_vehiculo(const int& faccion);
 
-    void menu_escoger_aeronave();
-
+    //Pre:
+    //Post:
     void menu_ingregar_nombre_transformers();
 
+    //Pre:
+    //Post:
     void menu_interactuar_con_personaje(const int &personaje_elejido);
 
+    //Pre:
+    //Post:
     void limpiar_y_mostrar_mensaje(const std::string& mensaje);
 };
 

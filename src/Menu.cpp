@@ -3,6 +3,7 @@
 //
 
 #include "Menu.hpp"
+const int AUTOBOTS = 0;
 const std::string TRANSFORMERS = R"(
   ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
   ║                                                                                                                                              ║
@@ -482,15 +483,14 @@ void Menu::menu_escoger_faccion(){
     std::cout << SIMBOLO_INGRESAR_MENSAJE;
 }
 
-
-void Menu::menu_escoger_vehiculo(){
-    std::cout << MENU_ESCOGER_VEHICULO;
-    std::cout << SIMBOLO_INGRESAR_MENSAJE;
-}
-
-void Menu::menu_escoger_aeronave(){
-    std::cout << MENU_ESCOGER_AERONAVE;
-    std::cout << SIMBOLO_INGRESAR_MENSAJE;
+void Menu::menu_escoger_vehiculo(const int &faccion){
+    if (faccion == AUTOBOTS){
+        std::cout << MENU_ESCOGER_VEHICULO;
+        std::cout << SIMBOLO_INGRESAR_MENSAJE;
+    }else{
+        std::cout << MENU_ESCOGER_AERONAVE;
+        std::cout << SIMBOLO_INGRESAR_MENSAJE;
+    }
 }
 
 void Menu::menu_ingregar_nombre_transformers(){
