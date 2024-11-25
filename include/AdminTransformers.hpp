@@ -24,7 +24,6 @@ private:
     const std::string ERROR_TRANSFORMER_NO_ENCONTRADO = "RESULTADO:: No se encontró el transformer buscado";
     const std::string ERROR_LISTA_TRANSFORMERS_VACIO = "ERROR:: No hay Transformers secundarios , no hay nada para mostrar";
     const std::string ERROR_INDICE_FUERA_DE_RANGO = "ERROR:: Posición fuera de rango.";
-    const size_t NO_ENCONTRADO = -1;
 
     Vector<Transformers> lista_transformers;
     ControlArchivo<Transformers> control_archivo_transformers;
