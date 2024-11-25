@@ -26,10 +26,6 @@ class ControlArchivo {
     //Pre:
     //Post:
     Vector<std::string> dividir_linea(const std::string& linea, char delimitador);
-
-    //Pre:
-    //Post:
-    Transformers crear_transformer(Vector<std::string>& elementos);
 public:
     //Constructor
     ControlArchivo();
@@ -103,7 +99,9 @@ Vector<T> ControlArchivo<T>::leer_archivo(){
     Vector<T> lista_nueva;
     while (std::getline(archivo, linea)) {
         elementos = dividir_linea(linea, ',');
-        lista_nueva.alta(crear_transformer(elementos));
+        lista_nueva.alta(T(elementos));
+
+        //Faltaria hacer para la boveda de cristaless
     }
 
     archivo.close();
@@ -119,20 +117,6 @@ Vector<std::string> ControlArchivo<T>::dividir_linea(const std::string& linea, c
         elementos.alta(item);
     }
     return elementos;
-}
-
-template <typename T>
-Transformers ControlArchivo<T>::crear_transformer(Vector<std::string>& elementos){
-    std::string nombre = elementos[0];
-    int fuerza = std::stoi(elementos[1]);
-    int defensa = std::stoi(elementos[2]);
-    int velocidad = std::stoi(elementos[3]);
-    std::string faccion = elementos[4];
-    std::string vehiculo = elementos[5];
-    bool transformado = pase_texto_bool_transformado(elementos[6]);
-    Transformers nuevo(nombre, fuerza, defensa, velocidad, faccion, vehiculo, transformado);
-    //std::cout << nuevo << std::endl;
-    return nuevo;
 }
 
 #endif
