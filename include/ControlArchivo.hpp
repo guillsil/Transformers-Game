@@ -3,6 +3,7 @@
 #include "TDAs/Vector.hpp"
 #include "Transformers.hpp"
 #include "DatosJugador.hpp"
+#include "Cristal.hpp"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -36,11 +37,6 @@ public:
     //Constructor
     ControlArchivo(std::string ruta);
     
-    //Pre: Recibe un vector no vacio. Sino existe el archivo, lo crea. 
-    //Post: Guarda la informacion del vector de forma ordenada en el archivo indicado por atributo ruta.
-    //      Del primer indice al ultimo, agragandose al final de la informacion del archivo si existe.
-    //void guardar_en_archivo(Vector<T> vector_guardar);
-
     //Pre: Recibe un vector no vacio. Sino existe el archivo, lo crea.
     //Post: Guarda la informacion del vector de forma ordenada en el archivo indicado por atributo ruta.
     //      Del primer indice al ultimo, desde el principio del archivo. Si exite información previa, borra y escribe sobre ella.
@@ -64,20 +60,6 @@ ControlArchivo<T>::ControlArchivo(std::string ruta_archivo){
     this->ruta = ruta_archivo;
     std::cout << "Abriendo archivo " << ruta << " ..." << std::endl; 
 }
-
-// template <typename T>
-// void ControlArchivo<T>::guardar_en_archivo(Vector<T> vector_guardar){
-//     std::ofstream miArchivo (ruta, std::ofstream::app);
-//     if (miArchivo.is_open()){
-//         size_t cantidad_datos = vector_guardar.tamanio();
-//         for(size_t i = 0; i < cantidad_datos; i++){
-//             miArchivo << vector_guardar.baja(0) << std::endl;
-//         }
-//         miArchivo.close();
-//     }else{
-//         throw ExcepcionControlArchivo(ERROR_NO_SE_PUDO_ABRIR_ARCHIVO);
-//     }
-// }
 
 template <typename T>
 void ControlArchivo<T>::sobreescribir_en_archivo(Vector<T> vector_guardar){
