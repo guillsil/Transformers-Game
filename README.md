@@ -61,7 +61,7 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
 
 
 ## Imagenes del juego
-### Menu de Administrador Transformers
+### Menú de Administrador Transformers
 
 
  <img src="image/menu_administrador_transformers.png" alt="TP1: Interacción con Transformers"> 
@@ -73,23 +73,36 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
 | Escoger Vehiculo                                                              | Escoger Aeronave                                                               |
 |-------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
 | <img src="image/menu_pedir_auto.png" alt="TP1: Interacción con Transformers"> | <img src="image/menu_pedir_avion.png" alt="TP1: Interacción con Transformers"> |
-### Menu de Nuevas Funcionalidades (Fusiondor - Boveda)
+### Tabla de clasificación y Simulador de Batalla
+
+
+
+| Tabla De Clasificaión                                                                    | Simulador de batalla                                                          |
+|------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| <img src="image/mostrar_tabla_clasificaion.png" alt="TP1: Interacción con Transformers"> | <img src="image/mostrar_tabla_clasificaion.png" alt="TP1: Interacción con Transformers"> |
+
+### Menú de Nuevas Funcionalidades (Fusiondor - Boveda)
 | Menu Bóveda                                                               | Menu Fusionador                                                               |
 |---------------------------------------------------------------------------|-------------------------------------------------------------------------------|
 | <img src="image/menu_boveda.png" alt="TP1: Interacción con Transformers"> | <img src="image/menu_fusionador.png" alt="TP1: Interacción con Transformers"> |
-### Menus de la Bóveda
+
+### Menú para interactuar con Megatron y Optimus
+| Interactuar con Megatron                                                            | Interactuar con Optimus                                                            |
+|-------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| <img src="image/menu_interactuar_con_megatron.png" alt="TP1: Interacción con Transformers"> | <img src="image/menu_interactuar_con_optimus.png" alt="TP1: Interacción con Transformers"> |
+### Menú de la Bóveda
 | Menu Bóveda para Almacenar                                                          | Menu Bóveda para Exportar                                                          |
 |-------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
 | <img src="image/menu_boveda_almacenar.png" alt="TP1: Interacción con Transformers"> | <img src="image/menu_boveda_exportar.png" alt="TP1: Interacción con Transformers"> |
-### Menu de Personajes
+### Menú de Personajes
 | Menu Personaje Optimus                                                     | Menu Personaje Megatron                                                     |
 |----------------------------------------------------------------------------|-----------------------------------------------------------------------------|
 | <img src="image/menu_optimus.png" alt="TP1: Interacción con Transformers"> | <img src="image/menu_megatron.png" alt="TP1: Interacción con Transformers"> |
 
-### Menu para elegir el estado
-| Elegir Estados para Optimus                                                         | Elegir Estados para Megatron                                                          |
-|-------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
-| <img src="image/menu_modificar_estado.png" alt="TP1: Interacción con Transformers"> | <img src="image/menu_modificar_estado_2.png" alt="TP1: Interacción con Transformers"> |
+### Menú para elegir el estado y Hacer Pregunta
+| Elegir Estados para Optimus                                                         | Hacer una pregunta                                                                  |
+|-------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
+| <img src="image/menu_modificar_estado.png" alt="TP1: Interacción con Transformers"> | <img src="image/menu_escribir_mensaje.png" alt="TP1: Interacción con Transformers"> |
 
 
 ### Respuestas que se da a distintos cambios
