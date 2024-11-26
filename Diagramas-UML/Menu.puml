@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Menu {
+    - mostrar_menu_principal(nombre: string)
+    - mostrar_menu_personaje(personaje_elejido: int)
+    - mostrar_menu_ingresar_mensaje()
+    - mostrar_menu_estado(personaje_elejido: int)
+    - mostrar_recuadro_superior()
+    - mostrar_recuadro_inferior()
+    - limpiar_menu()
+    - mostrar_mensaje(mensaje: string)
+    - mostrar_menu_fusionar_cristales()
+    - mostrar_menu_boveda()
+    - mostrar_menu_almacenar_cristal()
+    - mostrar_menu_exportar_archivo()
+    - mostrar_ingresar_cristal(cristal: int)
+    - mostrar_estadisticas(fuerza: string, defensa: string, velocidad: string)
+    - mostrar_rareza(rareza: string)
+    - mostrar_menu_inicial()
+    - mostrar_menu_administrador_transformers()
+    - menu_escoger_faccion()
+    - menu_escoger_vehiculo(faccion: int)
+    - menu_ingregar_nombre_transformers()
+    - menu_interactuar_con_personaje(personaje_elejido: int)
+    - limpiar_y_mostrar_mensaje(mensaje: string)
+}
+
+@enduml
