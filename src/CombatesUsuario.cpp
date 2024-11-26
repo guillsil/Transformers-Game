@@ -34,27 +34,27 @@ void CombatesUsuario:: realizar_enfrentamiento(){
     bool transformado = false;
     Resultado_combate resultado_combate;
 
-    cout << "¿Combatir transformado? [y]/[n]: ";
+    cout << COMBATIR_TRANSFORMADO;
     cin >> respuesta;
     while(respuesta != 'y' && respuesta != 'n'){
-        cout << "¿Combatir transformado? [y]/[n]: ";
+        cout << COMBATIR_TRANSFORMADO;
         cin >> respuesta;
     }
     if(respuesta == 'y') {
         transformado = true;
-        cout << "\nPelearas transformado -10 pts" << endl;;
+        cout << TRANSFORMADO_PTS << endl;;
     }
     resultado_combate = simulacion_combate.combatir(transformado);
     establecer_puntaje_combate(resultado_combate, transformado);
     switch (resultado_combate) {
     case VICTORIA:
-        cout << "VICTORIA, felicidades!! +50 pts" << endl;
+        cout << VICTORIA_MENSAJE << endl;
         break;
     case DERRROTA:
-        cout << "DERRORA :(, suerte para la proxima -50 pts" << endl;
+        cout << DERROTA_MENSAJE << endl;
         break;
     default:
-        cout << "EMPATE, tus puntos se mantendran iguales" << endl;
+        cout << EMPATE_MENSAJE << endl;
         break;
     }
     cout << "PUNTAJE ACTUAL: " << puntos_partida << endl;
@@ -62,12 +62,8 @@ void CombatesUsuario:: realizar_enfrentamiento(){
 }
 
 void CombatesUsuario::batalla_jefe_final(){
-    cout << "\n\tCOMBATE FINAL" << endl;
-    cout << "TE ENFRENTARAS A " << simulacion_combate.nombre_encuentro_actual() << endl;
-    cout << "\n\tCARACTERISTICAS DEL COMBATE" << endl;
-    cout << "--Este enfrentamiento a diferencia del resto, se hara 3 veces" << endl
-    <<  "--Entre cada enfrentamiento tendras la posibilidad de transformarte" << endl
-    << "--" + simulacion_combate.nombre_encuentro_actual() + "tambien tendra la posibilidad de transformarse" << endl;
+    cout << COMBATE_FINAL_INTRO << simulacion_combate.nombre_encuentro_actual() << endl;
+    cout << CARACTERISTICAS_COMBATE_FINAL << endl;
 
     for (size_t i = 0; i < 3; i++) {
         realizar_enfrentamiento();
@@ -75,66 +71,60 @@ void CombatesUsuario::batalla_jefe_final(){
 }
 
 void CombatesUsuario::batalla_generica(){
-    cout << "Te has topado con " << simulacion_combate.nombre_encuentro_actual() << endl
-    << "Tendras que enfrentarlo..." << endl;
+    cout << ENEMIGO_ENCUENTRO << simulacion_combate.nombre_encuentro_actual() << endl;
     realizar_enfrentamiento();
 }
 
 void CombatesUsuario::encuentro_aliado(){
-    cout << "Mira con quien te encontraste, " + simulacion_combate.nombre_encuentro_actual() 
-    +", un aliado!!" << endl;
-    cout << "Obtuviste +25 pts" << endl;
+    cout << simulacion_combate.nombre_encuentro_actual() + "?";
+    cout << ALIADO_ENCUENTRO << endl;
     puntos_partida += 25;
 }
 
 void CombatesUsuario::gestion_simulacion_batalla(){
 
-    cout << "\tBienvenido al campo de battalla" << endl;
-    cout << "Preparate para un serie de combates que te llevaran al enfrentamiento final..." << endl 
+    cout << BIENVENIDA_CAMPO_BATALLA << endl;
+    cout << PREPARACION_SERIE_COMBATES << endl 
     << "Estos son los encuentros que debes realizar:" << endl;
     generador_combate.mostrar_secuencia_minima();
-    cout << "\nComencemos!!" << endl;
+    cout << "\n\tComencemos!!" << endl;
 
     while(simulacion_combate.hay_avance()){
-        cout << "PRESIONE UNA TECLA PARA AVANZAR AL SIGUIENTE ENCUENTRO...";
+        cout << PRESIONE_TECLA_AVANZAR;
         getchar();
         simulacion_combate.avanzar();
         if(simulacion_combate.es_aliado()){
             encuentro_aliado();
-            cout << "Continuemos con el siguiente encuentro!!" << endl;
+            cout << CONTINUAR_ENCUENTROS << endl;
         }
         else if(!simulacion_combate.hay_avance()){
             batalla_jefe_final();
-            cout << "Este fue el combate final..." << endl;
         }
         else {
             batalla_generica();
-            cout << "Continuemos con el siguiente encuentro!!" << endl;
+            cout << CONTINUAR_ENCUENTROS << endl;
         }
     }
 
-    cout << "\n\tPartida finalizada" << endl;
-    cout << "PUNTAJE FINAL: " << puntos_partida << endl;
-    cout << "PRESIONE UNA TECLA PARA SALIR..." << endl;
+    cout << PUNTUACION_FINAL << puntos_partida << endl;
+    cout << SALIDA << endl;
     getchar();
 }
 
 void CombatesUsuario::gestion_generador_combate(){
-    cout << "Con tu personaje principal y los transformers almacenados, se genero un mapa de posibles \ncombates que desencadenaran siempre a una Batalla final" <<
-    endl << "A continuacion el mapa de combates:" << endl;
+    cout << PRESENTACION_MAPA_COMBATES << endl;
     generador_combate.mostrar_mapa_combates();
-    cout << "\nCon este mapa podremos obtener el recorrido con menos gasto de energon a la batalla final" << endl;
-    cout << "PRESIONE UNA TECLA PARA OBTENER EL CAMINO QUE GASTARA MENOS ENERGON..." << endl;
+    cout << OBTENER_SECUENCIA_MINIMA << endl;
     getchar();
     generador_combate.mostrar_secuencia_minima();
     cout << "El gasto total de este camino es: " << generador_combate.costo_energon_secuencia() << " ENERGON" << endl;
 }
 
 void CombatesUsuario:: iniciar_partida_combates(){
-    cout << "\n\tBIENVENIDO A LA BATALLA FINAL" << endl;
+    cout << BIENVENIDA_BATALLA_FINAL << endl;
     gestion_generador_combate();
-    cout << "Emocionante ese mapa, eh, pero mas emocionante sera empezar el proceso de combates en el campo de batalla!!" << endl;
-    cout << "PRESIONA UNA TECLA PARA DIRIGIRTE AL CAMPO DE BATALLA..." << endl;
+    cout << EMOCION_MAPA << endl;
+    cout << PRESIONE_TECLA_CAMPO_BATALLA << endl;
     gestion_simulacion_batalla();
 }
 
