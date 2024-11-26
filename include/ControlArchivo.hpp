@@ -3,6 +3,7 @@
 #include "TDAs/Vector.hpp"
 #include "Transformers.hpp"
 #include "DatosJugador.hpp"
+#include "Cristal.hpp"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -26,8 +27,8 @@ class ControlArchivo {
     const size_t NUMERO_CREAR_DATOS_JUGADOR = 3;
     std::string ruta;
 
-    //Pre:
-    //Post:
+    //Pre: linea y delimitador deben ser distintos de null(vacio)
+    //Post: Separa el string linea por donde pasa el char delimitador indicando, lo devuelve como TDA Vector clase string.
     Vector<std::string> dividir_linea(const std::string& linea, char delimitador);
 public:
     //Constructor
@@ -36,17 +37,15 @@ public:
     //Constructor
     ControlArchivo(std::string ruta);
     
-    //Precondiciones: Recibe un vector no vacio. Sino existe el archivo, lo crea. 
-    //Postcondiciones: Guarda la informacion del vector de forma ordenada en el archivo RUTA_ARCHIVO.
-    //                 Del primer indice al ultimo, agragandose al final de la informacion del archivo si existe.
-    void guardar_en_archivo(Vector<T> vector_guardar);
-
     //Pre: Recibe un vector no vacio. Sino existe el archivo, lo crea.
-    //Post:
+    //Post: Guarda la informacion del vector de forma ordenada en el archivo indicado por atributo ruta.
+    //      Del primer indice al ultimo, desde el principio del archivo. Si exite información previa, borra y escribe sobre ella.
     void sobreescribir_en_archivo(Vector<T> vector_guardar);
 
-    //Pre:
-    //Post:
+    //Pre: Atributo std::string ruta de ControlArchivo debe apuntar a un archivo existente.
+    //     La clase T indicada debe tener un constructor T(Vector<std::string>& arg).
+    //Post: Extrae la informacion existente en el archivo indicado por el atributo ruta. Esta se extrae linea por linea
+    //      y se la devuelve como un vector T donde T es la clase del Template.
     Vector<T> leer_archivo();
 };
 
@@ -60,20 +59,6 @@ template <typename T>
 ControlArchivo<T>::ControlArchivo(std::string ruta_archivo){
     this->ruta = ruta_archivo;
     std::cout << "Abriendo archivo " << ruta << " ..." << std::endl; 
-}
-
-template <typename T>
-void ControlArchivo<T>::guardar_en_archivo(Vector<T> vector_guardar){
-    std::ofstream miArchivo (ruta, std::ofstream::app);
-    if (miArchivo.is_open()){
-        size_t cantidad_datos = vector_guardar.tamanio();
-        for(size_t i = 0; i < cantidad_datos; i++){
-            miArchivo << vector_guardar.baja(0) << std::endl;
-        }
-        miArchivo.close();
-    }else{
-        throw ExcepcionControlArchivo(ERROR_NO_SE_PUDO_ABRIR_ARCHIVO);
-    }
 }
 
 template <typename T>

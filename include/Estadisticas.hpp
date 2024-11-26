@@ -39,6 +39,11 @@ public:
     //Post: Imprimé por consola las estadísticas (fuerza, defensa, velocidad)
     void mostrar();
 
+    // Pre: -
+    // Post: Carga la información al stream de salida.
+    friend std::ostream& operator<<(std::ostream& os, const Estadisticas& estadisticas);
+
+
 private:
     size_t fuerza;
     size_t defensa;

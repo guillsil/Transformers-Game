@@ -55,7 +55,6 @@ Rareza Cristal::obtener_rareza() {
     return this->rareza;
 }
 
-
 size_t Cristal::obtener_fuerza() {
     return estadisticas.obtener_fuerza();
 }
@@ -86,8 +85,6 @@ std::string Cristal::convertir_rareza_a_string() {
     }
 }
 
-
-
 void Cristal::mostrar() {
     menu.mostrar_rareza(convertir_rareza_a_string());
     estadisticas.mostrar();
@@ -117,3 +114,19 @@ Estadisticas Cristal::inicializar_estadisticas() {
     }
 }
 
+std::ostream &operator<<(std::ostream &os, const Cristal& cristal){
+    switch (cristal.rareza) {
+        case COMUN:
+            os << COMUN_CADENA; break;
+        case RARO:
+            os << RARO_CADENA; break;
+        case EPICO:
+            os << EPICO_CADENA; break;
+        case LEGENDARIO:
+            os <<  LEGENDARIO_CADENA; break;
+        default: 
+            os << DESCONOCIDO_CADENA; break;
+    }
+    os << "," << cristal.estadisticas;
+    return os;
+}
