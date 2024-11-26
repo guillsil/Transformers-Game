@@ -13,9 +13,11 @@ void TablaClasificacion::mostrar_top10_jugadores(){
         if (lista_jugadores.tamanio() > 10){
             numero_jugadores_mostrados = 10;
         }
-        std::cout << "-- NOMBRE JUGADOR, PUNTAJE, PERSONAJE USADO" << std::endl;
+        std::cout << "Tabla de Clasificacion: " << std::endl;
+        //std::cout << "-- NOMBRE JUGADOR, PUNTAJE, PERSONAJE USADO" << std::endl;
         for (size_t i = 0; i < numero_jugadores_mostrados; i++){
-            std::cout << "    " << (i + 1) << ") " << lista_jugadores[i] << std::endl;
+            std::cout << "    " << (i + 1) << ") ";
+            lista_jugadores[i].mostrar();
         }
     }
 }

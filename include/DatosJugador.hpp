@@ -45,6 +45,10 @@ public:
     //Post: Devuelve el puntaje del jugador
     int obtener_puntaje();
 
+    //Pre: -
+    //Post: Muestra los datos del jugador por terminal
+    void mostrar();
+
     // Pre: -
     // Post: Carga la información al stream de salida.
     friend std::ostream& operator<<(std::ostream& os, const DatosJugador& datos_jugador);

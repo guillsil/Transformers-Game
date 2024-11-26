@@ -32,6 +32,12 @@ int DatosJugador::obtener_puntaje() {
     return puntaje;
 }
 
+void DatosJugador::mostrar(){
+    std::cout << "Nombre del Jugador: " << nombre_jugador << "        ";
+    std::cout << "Puntaje: " << puntaje << "      ";
+    std::cout << "Personaje Usado: " << obtener_personaje_usado() << std::endl;
+}
+
 std::string DatosJugador::obtener_personaje_usado() {
     std::string nombre_personaje = "personaje invalido";
     switch (personaje_usado) {
