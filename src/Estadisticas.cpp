@@ -28,6 +28,13 @@ size_t Estadisticas::obtener_velocidad() {return velocidad;}
 
 size_t Estadisticas::obtener_poder() { return poder;}
 
+Estadisticas& Estadisticas::operator=(const Estadisticas &otras_estadisticas){
+    this-> fuerza = otras_estadisticas.fuerza;
+    this-> defensa = otras_estadisticas.defensa;
+    this-> velocidad = otras_estadisticas.velocidad;
+    this-> poder = fuerza + defensa + velocidad;
+}
+
 void Estadisticas::mostrar() {
     menu.mostrar_estadisticas(std::to_string(fuerza), std::to_string(defensa), std::to_string(velocidad));
 }
