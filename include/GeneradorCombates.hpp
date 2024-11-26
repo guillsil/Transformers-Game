@@ -16,16 +16,20 @@ class GeneradorCombates {
     private:
         //Atributos
         Grafo mapa_combates;
-        Secuencia_combates secuencia_minima; 
+        Camino secuencia_minima_numerica; 
         Vector<Transformers> transformers_en_mapa; //Representa los vertices que tendra mi grafo mapa_combates
-
+        Vector<Transformers> secuencia_minima_transformers;
+    
         //Metodos privados
+        //pre: 
+        //El vector debe contener en la primera posicion el personaje principal y en la ultima el jefe final
+        //post:
+        //Crea un mapa en base al vector de transformers ingresado
+        //El mapa se genera respetando el orden de la lista, siendo el primer elemento el personaje principal y el ultimo el jefe final
+        //El avance desde el principio es siempre hacia adelante
+        //Por cada avance siempre se tendra la posibilidad de avanzar hasta a tres transformers diferentes
+        //El encuentro final no permite mas avances
         Grafo generar_mapa(Vector<Transformers>& transformers_en_mapa);
-
-        //pre:-
-        //post: 
-        //Devuelve un struc que contiene el la secuencia de combates minima y el costo de esta
-        Secuencia_combates generar_secuencia_minima();
 
         //pre: 
         //post:

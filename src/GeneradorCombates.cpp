@@ -10,7 +10,7 @@ Grafo GeneradorCombates:: generar_mapa(Vector<Transformers>& transformers_en_map
     for(size_t i = 0; i < cantidad_transformers-1; i++){
         size_t j = i;
 
-        //Caso donde el vertice es el primero del grafo o el tercero de los niveles entre medio del primero y ultimo
+        //Caso donde el vertice es el primero del grafo o el tercero de los niveles medios 
         if(i % 3 == 0){
            j++;
            primer_vertice_nivel = true;
@@ -34,20 +34,6 @@ Grafo GeneradorCombates:: generar_mapa(Vector<Transformers>& transformers_en_map
     }
 
     return mapa_combates;
-}
-
-Secuencia_combates GeneradorCombates:: generar_secuencia_minima(){
-    mapa_combates.usar_dijkstra();
-
-    Camino camino_minimo = mapa_combates.obtener_camino_minimo(0, transformers_en_mapa.tamanio() - 1);
-    Secuencia_combates secuencia_combate_minima;
-
-    for(size_t i = 0; i < camino_minimo.camino.tamanio(); i++){
-        secuencia_combate_minima.secuencia_combate[i] = transformers_en_mapa[camino_minimo.camino[i]];
-    }
-    secuencia_combate_minima.total_energon_secuencia = camino_minimo.costo_total;
-
-    return secuencia_combate_minima;
 }
 
 Transformers GeneradorCombates:: obtener_jefe_final(Transformers& personaje_principal){
@@ -86,21 +72,27 @@ GeneradorCombates:: GeneradorCombates(Transformers& personaje_principal, Vector<
     transformers_en_mapa.alta(obtener_jefe_final(personaje_principal),transformers_en_mapa.tamanio());
 
     mapa_combates = generar_mapa(transformers_en_mapa);
-    secuencia_minima = generar_secuencia_minima();
+    mapa_combates.usar_dijkstra();
+    secuencia_minima_numerica = mapa_combates.obtener_camino_minimo(0,transformers_en_mapa.tamanio()-1);
 }
 
 GeneradorCombates:: ~GeneradorCombates(){};
 
 Vector<Transformers> GeneradorCombates:: obtener_secuencia_minima(){
-    return secuencia_minima.secuencia_combate;
+    if(secuencia_minima_transformers.tamanio() > 0){
+        for(size_t i = 0; i < secuencia_minima_numerica.camino.tamanio(); i++){
+            secuencia_minima_transformers[i] = transformers_en_mapa[secuencia_minima_numerica.camino[i]];
+        }
+    }
+    return secuencia_minima_transformers;
 }
 
 int GeneradorCombates:: costo_energon_secuencia(){
-    return secuencia_minima.total_energon_secuencia;
+    return secuencia_minima_numerica.costo_total;
 }
 
 void GeneradorCombates:: mostrar_mapa_combates(){
-    //A implementar
+    
 }
 
 void GeneradorCombates:: mostrar_secuencia_minima(){
@@ -110,7 +102,8 @@ void GeneradorCombates:: mostrar_secuencia_minima(){
 GeneradorCombates& GeneradorCombates:: operator=(const GeneradorCombates& generador_combates){
     if(this != &generador_combates){
         mapa_combates = generador_combates.mapa_combates;
-        secuencia_minima = generador_combates.secuencia_minima;
+        secuencia_minima_numerica = generador_combates.secuencia_minima_numerica;
+        secuencia_minima_transformers = generador_combates.secuencia_minima_transformers;
         transformers_en_mapa = generador_combates.transformers_en_mapa;
     }   
     return *this;
