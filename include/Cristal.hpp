@@ -67,6 +67,11 @@ public:
     //Post: Devuelve el porcentaje de éxito que tiene el cristal para poder fusionar a uno de mejor nivel.
     int obtener_porcentaje_exito();
 
+    // Pre: -
+    // Post: Carga la información al stream de salida.
+    friend std::ostream& operator<<(std::ostream& os, const Cristal& cristal);
+
+
 private:
     //Rareza del Cristal
     Rareza rareza;

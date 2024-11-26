@@ -216,7 +216,7 @@ const std::string MENU_BOVEDA= R"(
   ║                                                                                                                                              ║
   ║                          ╔═══════════════════════════════════════════════════════════════════════════════════════╗                           ║
   ║                          ║                                                                                       ║                           ║
-  ║                          ║     [1]  Almacenar un Cristal                 [6]  Mostrar Crista con Mayor Poder     ║                           ║
+  ║                          ║     [1]  Almacenar un Cristal                 [6]  Mostrar Cristal con Mayor Poder    ║                           ║
   ║                          ║                                                                                       ║                           ║
   ║                          ║     [2]  Mostrar Cristales                    [7]  Equiparse con un Cristal           ║                           ║
   ║                          ║                                                                                       ║                           ║

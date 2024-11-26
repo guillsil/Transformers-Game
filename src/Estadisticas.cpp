@@ -31,3 +31,10 @@ size_t Estadisticas::obtener_poder() { return poder;}
 void Estadisticas::mostrar() {
     menu.mostrar_estadisticas(std::to_string(fuerza), std::to_string(defensa), std::to_string(velocidad));
 }
+
+std::ostream &operator<<(std::ostream &os, const Estadisticas &estadisticas){
+    os << estadisticas.fuerza 
+       << "," << estadisticas.defensa
+       << "," << estadisticas.velocidad;
+    return os;
+}
