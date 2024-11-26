@@ -1,40 +1,30 @@
 #include "Transformers.hpp"
 
 Transformers::Transformers(std::string nombre, int fuerza, int defensa, int velocidad,
-                           std::string faccion, std::string vehiculo, bool transformado){
+                           std::string faccion, std::string vehiculo, bool transformado): estadisticas(fuerza, defensa, velocidad){
     this->nombre = nombre;
-    this->fuerza = fuerza;
-    this->defensa = defensa;
-    this->velocidad = velocidad;
     this->faccion = faccion;
     this->vehiculo = vehiculo;
     this->transformado = transformado;
 }
 
 Transformers::Transformers(std::string nombre, int fuerza, int defensa, int velocidad,
-                           std::string faccion, std::string vehiculo){
+                           std::string faccion, std::string vehiculo): estadisticas(fuerza, defensa, velocidad){
     this->nombre = nombre;
-    this->fuerza = fuerza;
-    this->defensa = defensa;
-    this->velocidad = velocidad;
     this->faccion = faccion;
     this->vehiculo = vehiculo;
     this->transformado = false;
 }
 
-Transformers::Transformers(Vector<std::string>& elementos){
+Transformers::Transformers(Vector<std::string>& elementos): estadisticas( std::stoi(elementos[1]), std::stoi(elementos[2]), std::stoi(elementos[3])){
     this->nombre = elementos[0];
-    this->fuerza = std::stoi(elementos[1]);
-    this->defensa = std::stoi(elementos[2]);
-    this->velocidad = std::stoi(elementos[3]);
     this->faccion = elementos[4];
     this->vehiculo = elementos[5];
     this->transformado = pase_texto_bool_transformado(elementos[6]);
 }
 
-Transformers::Transformers(){
+Transformers::Transformers(): estadisticas(5,5,5){
     this->nombre = "Sparkling";
-    this->fuerza = 5; this->defensa = 5; this->velocidad = 5;
     this->faccion = FACCION_AUTOBOTS;
     this->vehiculo = VEHICULO_AUTO;
     this->transformado = false;  
@@ -45,8 +35,7 @@ std::string Transformers::obtener_nombre(){
 }
 
 int Transformers::obtener_poder(){
-    //implementar con estadisticas
-    return fuerza + defensa + velocidad;
+    return estadisticas.obtener_poder();
 }
 
 void Transformers::cambiar_forma(){
@@ -67,9 +56,7 @@ void Transformers::cambiar_forma(){
 Transformers& Transformers::operator=(const Transformers &otro_transformer){
     if (this != &otro_transformer){
         this->nombre = otro_transformer.nombre;
-        this->fuerza = otro_transformer.fuerza;
-        this->defensa = otro_transformer.defensa;
-        this->velocidad = otro_transformer.velocidad;
+        this->estadisticas = otro_transformer.estadisticas;
         this->faccion = otro_transformer.faccion;
         this->vehiculo = otro_transformer.vehiculo;
         this->transformado = otro_transformer.transformado;
@@ -89,9 +76,9 @@ bool Transformers::son_iguales_fuerza(Transformers otro_transformer){
     bool transformers_iguales = false;
     int contador_estaditicas_iguales = 0;
 
-    if (this->fuerza == otro_transformer.fuerza) {contador_estaditicas_iguales++;  /*std::cout << "Fuerza igual "; */}
-    if (this->defensa == otro_transformer.defensa) {contador_estaditicas_iguales++; /*std::cout << "Defensa igual ";*/}
-    if (this->velocidad == otro_transformer.velocidad) {contador_estaditicas_iguales++; /*std::cout << "Velocidad igual ";*/}
+    if (this->estadisticas.obtener_fuerza() == otro_transformer.estadisticas.obtener_fuerza()) {contador_estaditicas_iguales++;  /*std::cout << "Fuerza igual "; */}
+    if (this->estadisticas.obtener_defensa() == otro_transformer.estadisticas.obtener_defensa()) {contador_estaditicas_iguales++; /*std::cout << "Defensa igual ";*/}
+    if (this->estadisticas.obtener_velocidad() == otro_transformer.estadisticas.obtener_velocidad()) {contador_estaditicas_iguales++; /*std::cout << "Velocidad igual ";*/}
     
     if (contador_estaditicas_iguales >= 2){
         transformers_iguales = true;
@@ -103,9 +90,9 @@ bool Transformers::es_mas_fuerte(Transformers otro_transformer){
     bool transformer_actual_es_mas_fuerte = false;
     int contador_estadidicas_mas_altas = 0;
 
-    if (this->fuerza > otro_transformer.fuerza) {contador_estadidicas_mas_altas++; /*std::cout << "Fuerza superior ";*/}
-    if (this->defensa > otro_transformer.defensa) {contador_estadidicas_mas_altas++; /*std::cout << "Defensa superior ";*/}
-    if (this->velocidad > otro_transformer.velocidad) {contador_estadidicas_mas_altas++; /*std::cout << "Velocidad superior "*/ }
+    if (this->estadisticas.obtener_fuerza() > otro_transformer.estadisticas.obtener_fuerza()) {contador_estadidicas_mas_altas++; /*std::cout << "Fuerza superior ";*/}
+    if (this->estadisticas.obtener_defensa() > otro_transformer.estadisticas.obtener_defensa()) {contador_estadidicas_mas_altas++; /*std::cout << "Defensa superior ";*/}
+    if (this->estadisticas.obtener_velocidad() > otro_transformer.estadisticas.obtener_velocidad()) {contador_estadidicas_mas_altas++; /*std::cout << "Velocidad superior "*/ }
     
     if (contador_estadidicas_mas_altas >= 2){
         transformer_actual_es_mas_fuerte = true;
@@ -160,11 +147,16 @@ bool Transformers::pase_texto_bool_transformado(std::string texto_transformado){
     return estado_actual;
 }
 
+void Transformers::mostrar(){
+    std::cout << "  Nombre del Transformer: " << nombre;
+    std::cout << "  Faccion: " << faccion;
+    std::cout << "  Vehiculo: " << vehiculo << std::endl; 
+    estadisticas.mostrar();
+}
+
 std::ostream &operator<<(std::ostream &os, const Transformers &transformer){
     os << transformer.nombre
-        << "," << transformer.fuerza
-        << "," << transformer.defensa
-        << "," << transformer.velocidad
+        << "," << transformer.estadisticas
         << "," << transformer.faccion
         << "," << transformer.vehiculo
         << ",";

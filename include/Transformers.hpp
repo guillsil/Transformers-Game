@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "TDAs/Vector.hpp"
+#include "Estadisticas.hpp"
 
 //Constantes que podrian ser globales para todo el tp
 const std::string FACCION_AUTOBOTS = "Autobots";
@@ -24,7 +25,8 @@ const int CAMBIO_TOTALMENTE = 4;
 class Transformers {
 private:
     std::string nombre, faccion, vehiculo;
-    int fuerza, defensa, velocidad;
+    Estadisticas estadisticas;
+    //int fuerza, defensa, velocidad;
     bool transformado = false;
 
     //Pre:
@@ -79,6 +81,10 @@ public:
     //Pre:
     //Post: Devuelve true si un transformer es más fuerte que el otro. Condicion: 2 de sus estadisticas deben ser mayores que el otro.
     bool es_mas_fuerte(Transformers otro_transformer);
+
+    //Pre: -
+    //Post: Muestra los datos de Transformers por terminal
+    void mostrar();
 
     // Pre: -
     // Post: Carga la información al stream de salida.
