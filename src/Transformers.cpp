@@ -22,22 +22,14 @@ Transformers::Transformers(std::string nombre, int fuerza, int defensa, int velo
     this->transformado = false;
 }
 
-Transformers::Transformers(std::string nombre, int fuerza, int defensa, int velocidad, std::string faccion, std::string vehiculo, std::string transformado){
-    this->nombre = nombre;
-    this->fuerza = fuerza;
-    this->defensa = defensa;
-    this->velocidad = velocidad;
-    this->faccion = faccion;
-    this->vehiculo = vehiculo;
-    this->transformado = pase_texto_bool_transformado(transformado);
-}
-
-Transformers::Transformers(std::string jugador, int puntaje, std::string personaje) {
-    this->nombre = "Sparkling";
-    this->fuerza = 5; this->defensa = 5; this->velocidad = 5;
-    this->faccion = FACCION_AUTOBOTS;
-    this->vehiculo = VEHICULO_AUTO;
-    this->transformado = false;
+Transformers::Transformers(Vector<std::string>& elementos){
+    this->nombre = elementos[0];
+    this->fuerza = std::stoi(elementos[1]);
+    this->defensa = std::stoi(elementos[2]);
+    this->velocidad = std::stoi(elementos[3]);
+    this->faccion = elementos[4];
+    this->vehiculo = elementos[5];
+    this->transformado = pase_texto_bool_transformado(elementos[6]);
 }
 
 Transformers::Transformers(){

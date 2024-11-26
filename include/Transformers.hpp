@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include "TDAs/Vector.hpp"
 
 //Constantes que podrian ser globales para todo el tp
 const std::string FACCION_AUTOBOTS = "Autobots";
@@ -48,11 +49,8 @@ public:
     //Constructor sin transformado
     Transformers(std::string nombre, int fuerza, int defensa, int velocidad, std::string faccion, std::string vehiculo);
     
-    //Constructor para crear en el control archivo
-    Transformers(std::string nombre, int fuerza, int defensa, int velocidad, std::string faccion, std::string vehiculo, std::string transformado);
-
-    //Constructor para atrapar error de crear jugador de control archivo
-    Transformers(std::string jugador, int puntaje, std::string personaje);
+    //Constructor para crear en el ControlArchivo
+    Transformers(Vector<std::string>& elementos);
 
     //Pre:
     //Post: Devuelve el nombre del transformer

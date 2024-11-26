@@ -4,7 +4,6 @@
 
 #ifndef JUEGO_HPP
 #define JUEGO_HPP
-//#include <TablaClasificacion.hpp>
 
 #include "Menu.hpp"
 #include "BovedaCristales.hpp"
@@ -42,7 +41,6 @@ private:
     std::string nombre_jugador;
     AdministradorTransformers administrador_transformers;
     TablaClasificacion tabla_clasificacion;
-
 
     //Pre: -
     //Post: El personaje elegido responde al mensaje recibido.

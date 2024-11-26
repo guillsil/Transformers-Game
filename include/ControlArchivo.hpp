@@ -29,14 +29,6 @@ class ControlArchivo {
     //Pre:
     //Post:
     Vector<std::string> dividir_linea(const std::string& linea, char delimitador);
-
-    //Pre:
-    //Post:
-    T crear_transformer(Vector<std::string>& elementos);
-
-    //Pre:
-    //Post:
-    T crear_datos_jugador(Vector<std::string>& elementos);
 public:
     //Constructor
     ControlArchivo();
@@ -110,12 +102,7 @@ Vector<T> ControlArchivo<T>::leer_archivo(){
     Vector<T> lista_nueva;
     while (std::getline(archivo, linea)) {
         elementos = dividir_linea(linea, ',');
-        if (elementos.tamanio() == NUMERO_CREAR_TRANSFORMER){
-            lista_nueva.alta(crear_transformer(elementos));
-        } else if (elementos.tamanio() == NUMERO_CREAR_DATOS_JUGADOR){
-            lista_nueva.alta(crear_datos_jugador(elementos));
-        }
-        //Faltaria hacer para la boveda de cristaless
+        lista_nueva.alta(T(elementos));
     }
 
     archivo.close();
@@ -133,24 +120,5 @@ Vector<std::string> ControlArchivo<T>::dividir_linea(const std::string& linea, c
     return elementos;
 }
 
-template <typename T>
-T ControlArchivo<T>::crear_transformer(Vector<std::string>& elementos){
-    std::string nombre = elementos[0];
-    int fuerza = std::stoi(elementos[1]);
-    int defensa = std::stoi(elementos[2]);
-    int velocidad = std::stoi(elementos[3]);
-    std::string faccion = elementos[4];
-    std::string vehiculo = elementos[5];
-    std::string transformado = elementos[6];
-    return T(nombre, fuerza, defensa, velocidad, faccion, vehiculo, transformado);
-}
-
-template <typename T>
-T ControlArchivo<T>::crear_datos_jugador(Vector<std::string>& elementos){
-    std::string nombre = elementos[0];
-    int puntaje = std::stoi(elementos[1]);
-    std::string personaje = elementos[2];
-    return T(nombre, puntaje , personaje);
-}
 
 #endif
