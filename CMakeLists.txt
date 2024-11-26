@@ -51,6 +51,12 @@ set(ARCHIVOS_FUENTE
         src/Estadisticas.cpp
         src/Grafo/TuplaVerticeDistancia.cpp
         src/Protagonista.cpp
+
+        include/ControlArchivo.hpp
+        src/Transformers.cpp
+        src/AdminTransformers.cpp
+        src/DatosJugador.cpp
+        src/TablaClasificacion.cpp
 )
 
 add_executable(AYED_TPG_2C2024
