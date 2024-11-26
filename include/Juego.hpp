@@ -169,6 +169,7 @@ private:
     //Pre: -
     //Post: Maneja interacciones con el personaje, como enviar mensajes, modificar estado o recibir sugerencias.
     void manejar_interactuar_con_el_personaje();
+    void mostrar_tabla_clasificacion();
 };
 
 

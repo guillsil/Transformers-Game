@@ -452,6 +452,13 @@ void Juego::manejar_interactuar_con_el_personaje(){
     }
 }
 
+void Juego::mostrar_tabla_clasificacion(){
+    menu.limpiar_menu();
+    menu.mostrar_recuadro_superior();
+    tabla_clasificacion.mostrar_top10_jugadores();
+    menu.mostrar_recuadro_inferior();
+}
+
 void Juego::manejar_flujo_juego_principal() {
     bool continuar = true;
     char opcion_menu;
@@ -476,7 +483,7 @@ void Juego::manejar_flujo_juego_principal() {
                 menu.limpiar_menu();
                 break;
             case OPCION_6: // Tabla Clasificación
-                tabla_clasificacion.mostrar_top10_jugadores();
+                mostrar_tabla_clasificacion();
                 break;
              case OPCION_7:
                 menu.limpiar_menu();
