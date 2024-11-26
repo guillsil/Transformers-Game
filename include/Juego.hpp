@@ -11,6 +11,7 @@
 #include "Protagonista.hpp"
 #include "AdminTransformers.hpp"
 #include "TablaClasificacion.hpp"
+#include "Utilidades.hpp"
 
 
 class Juego {
@@ -30,7 +31,6 @@ public:
     //Pre: -
     //Post: Devuelve True si el juego está en curso o false en caso contrario.
     bool jugando() const;
-
 
 private:
     Protagonista protagonista;
@@ -170,6 +170,10 @@ private:
     //Post: Maneja interacciones con el personaje, como enviar mensajes, modificar estado o recibir sugerencias.
     void manejar_interactuar_con_el_personaje();
     void mostrar_tabla_clasificacion();
+
+    //Pre:
+    //Post: Genera 2 números random y dependiendo de ellos suma o resta un multiplo de 10 (10-30)
+    int calcular_estadistica(int estadistica_base);
 };
 
 
