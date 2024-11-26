@@ -122,16 +122,12 @@ void GraficadorCombates:: mostrar_mapa_combates(Vector<Transformers>& transforme
     vertice_individual(acotar_nombre(transformers_en_mapa[transformers_en_mapa.tamanio()-1].obtener_nombre()));
 }
 
-void GraficadorCombates:: mostrar_secuencia(Vector<int>& secuencia, Transformers& p_principal, Transformers& j_final, size_t limite){
+void GraficadorCombates:: mostrar_secuencia(Vector<size_t>& secuencia, Transformers& p_principal, Transformers& j_final){
 	vertice_individual(acotar_nombre(p_principal.obtener_nombre()));
-	for(size_t i = 1; i <= limite; i++){
-        if(i == secuencia.tamanio() - 1){
-            cout << union_unica << endl; 
-            vertice_individual(acotar_nombre(j_final.obtener_nombre()));
-        }
-        else{
-            cout << union_unica << endl;
-		    vertice_individual(secuencia[i]);
-        }
+	for(size_t i = 1; i < secuencia.tamanio()-1; i++){
+        cout << union_unica << endl;
+        vertice_individual(secuencia[i]);
 	}
+    cout << union_unica << endl; 
+    vertice_individual(acotar_nombre(j_final.obtener_nombre()));
 }

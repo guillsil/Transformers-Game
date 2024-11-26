@@ -135,14 +135,10 @@ class GraficadorCombates {
         //pre:
         //secuencia debe representar un camino, donde del primero voy al segundo, del segundo al tercero, etc
         //El primero y ultimo elemento debe representar el personaje principal y jefe final respectivamente
-        // 0 <= limite < secuencia.tamanio()
         //post:
         //Grafica por pantalla la secuencia mediante vertices y conexiones
         //Se reemplaza el primer y ultimo numero por los nombres acotados del personaje principal y jefe final respectivamente
-        //El limite establece hasta que elemento inclusive mostrar
-        //limite == 0 --> mostrara unicamente el vertice con personaje_principal
-        //limite == secuencia.tamanio()-1 mostrara toda la secuencia
-        void mostrar_secuencia(Vector<int>& secuencia, Transformers& p_principal, Transformers& j_final, size_t limite);
+        void mostrar_secuencia(Vector<size_t>& secuencia, Transformers& p_principal, Transformers& j_final);
 };
 
 #endif
