@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Estadisticas
+class Menu
+
+enum Rareza {
+    COMUN
+    RARO
+    EPICO
+    LEGENDARIO
+}
+
+class Cristal {
+    - Rareza rareza
+    - Menu menu
+    - Estadisticas estadisticas
+
+    + Cristal()
+    + Cristal(Rareza rareza)
+    + Cristal(const Rareza &rareza, const bool &exito)
+    + bool operator==(Rareza rareza)
+    + Rareza obtener_rareza()
+    + size_t obtener_fuerza()
+    + size_t obtener_defensa()
+    + size_t obtener_velocidad()
+    + std::string convertir_rareza_a_string()
+    + size_t obtener_poder()
+    + void mostrar()
+    + int obtener_porcentaje_exito()
+
+    - Estadisticas inicializar_estadisticas()
+}
+
+' Relaciones
+Cristal --> Menu
+Cristal --> Estadisticas
+Cristal --> Rareza
+@enduml

@@ -44,7 +44,6 @@ private:
     size_t defensa;
     size_t velocidad;
     size_t poder;
-
     Menu menu;
 };
 

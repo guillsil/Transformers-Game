@@ -15,7 +15,7 @@ void TablaClasificacion::mostrar_top10_jugadores(){
         }
         std::cout << "-- NOMBRE JUGADOR, PUNTAJE, PERSONAJE USADO" << std::endl;
         for (size_t i = 0; i < numero_jugadores_mostrados; i++){
-            std::cout << (i + 1) << ") " << lista_jugadores[i] << std::endl;
+            std::cout << "    " << (i + 1) << ") " << lista_jugadores[i] << std::endl;
         }
     }
 }

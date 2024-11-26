@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Cristal
+class Vector
+class Menu
+
+class BovedaCristales {
+    - Vector<Cristal> cristales
+    - size_t tamanio_inicial
+    - Menu menu
+
+    + BovedaCristales()
+    + BovedaCristales(size_t tamanio_inicial)
+    + void almacenar_cristal(Cristal cristal_nuevo)
+    + void mostrar_cristales()
+    + Cristal obtener_cristal(size_t posicion)
+    + void exportar_cristales(std::string ruta)
+    + bool esta_vacia()
+    + size_t tamanio()
+    + Cristal eliminar_cristal(const int &indice)
+    + Cristal obtener_cristal_mas_poderoso()
+
+    - std::string construir_ruta_completa(std::string& ruta)
+    - void crear_directorios(const std::string& ruta)
+    - void escribir_cristales_en_archivo(std::ofstream& archivo)
+}
+
+' Relaciones
+BovedaCristales  -->  Cristal : "contiene"
+BovedaCristales  --> Vector : "utiliza"
+BovedaCristales  -->  Menu : "usa"
+@enduml
