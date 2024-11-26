@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Utilidades
+class ManejadorDeRespuestas
+class ManejadorDeMensajes
+class ManejadorPalabrasClave
+
+class Megatron {
+    - Utilidades utilidades
+    - int estado_de_intencion
+
+    + Megatron()
+    + void responder(std::string mensaje)
+    + void sugerir_fusion()
+    + void cambiar_intencion(std::string intencion)
+}
+
+' Relaciones
+Megatron --> Utilidades : "utiliza"
+Megatron --> ManejadorDeMensajes : "utiliza"
+Megatron --> ManejadorPalabrasClave : "utiliza"
+Megatron --> ManejadorDeRespuestas : "utiliza"
+
+
+@enduml

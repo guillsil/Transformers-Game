@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Utilidades
+class ManejadorDeRespuestas
+class ManejadorDeMensajes
+class ManejadorPalabrasClave
+
+class OptimusPrime {
+    - Utilidades utilidades
+    - int estado_de_animo
+
+    + OptimusPrime()
+    + void responder(std::string mensaje)
+    + void sugerir_fusion()
+    + void cambiar_animo(std::string animo)
+}
+
+' Relaciones
+OptimusPrime --> Utilidades : "utiliza"
+OptimusPrime --> ManejadorDeMensajes : "utiliza"
+OptimusPrime --> ManejadorPalabrasClave : "utiliza"
+OptimusPrime --> ManejadorDeRespuestas : "utiliza"
+
+@enduml

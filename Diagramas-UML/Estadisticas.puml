@@ -18,6 +18,7 @@ class Estadisticas {
     + void mostrar()
 }
 
+' Relaciones
 Estadisticas --> Menu
 
 @enduml

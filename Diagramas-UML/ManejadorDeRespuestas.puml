@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Utilidades
+
+class ManejadorDeRespuestas {
+    - std::string respuestas[MAX_RESPUESTAS]
+    - std::string respuestas_random[MAX_RESPUESTAS]
+    - int cantidad_respuestas
+    - int cantidad_respuestas_random
+    - Utilidades utilidades
+
+    + ManejadorDeRespuestas()
+    + void agregar_respuesta(const std::string& respuesta)
+    + void agregar_respuesta_random(const std::string& respuesta_random)
+    + std::string obtener_respuesta_por_indice(const int &indice)
+    + std::string obtener_respuesta_random()
+}
+
+' Relaciones
+ManejadorDeRespuestas --> Utilidades : "utiliza"
+
+@enduml

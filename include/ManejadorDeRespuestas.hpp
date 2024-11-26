@@ -33,11 +33,11 @@ public:
   std::string obtener_respuesta_random();
 
 private:
-  Utilidades utilidades;
   std::string respuestas[MAX_RESPUESTAS];
   std::string respuestas_random[MAX_RESPUESTAS];
   int cantidad_respuestas;
   int cantidad_respuestas_random;
+  Utilidades utilidades;
 };
 
 

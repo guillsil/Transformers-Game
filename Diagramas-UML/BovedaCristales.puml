@@ -25,7 +25,8 @@ class BovedaCristales {
     - void escribir_cristales_en_archivo(std::ofstream& archivo)
 }
 
-BovedaCristales --> Cristal
-BovedaCristales --> Vector
-BovedaCristales --> Menu
+' Relaciones
+BovedaCristales  -->  Cristal : "contiene"
+BovedaCristales  --> Vector : "utiliza"
+BovedaCristales  -->  Menu : "usa"
 @enduml
