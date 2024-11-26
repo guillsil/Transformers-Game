@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <string>
 #include "TDAs/Vector.hpp"
+#include "ControlArchivo.hpp"
 #include <filesystem>
 
 
@@ -81,10 +82,6 @@ private:
     //Pre: La ruta debe ser no vaciá.
     //Post: Crea los directorios necesarios para almacenar el archivo en la ruta especificada.
     void crear_directorios(const std::string& ruta);
-
-    //Pre: -
-    //Post: Escribe en el objeto archivo suministrado el nivel de rareza y las estadísticas del cristal.
-    void escribir_cristales_en_archivo(std::ofstream& archivo);
 };
 
 #endif
