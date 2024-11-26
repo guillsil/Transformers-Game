@@ -323,11 +323,13 @@ void Juego::crear_transformers(std::string nombre, int tipo_vehiculo){
         break;
     case CAMION:
         manejar_agregar_transformers(nombre, calcular_estadistica(CAMION_FUERZA_INCIAL), calcular_estadistica(CAMION_DEFENSA_INCIAL), calcular_estadistica(CAMION_VELOCIDAD_INCIAL), convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(tipo_vehiculo));
+        break;
     case AVION:
         manejar_agregar_transformers(nombre,calcular_estadistica(AVION_FUERZA_INCIAL), calcular_estadistica(AVION_DEFENSA_INCIAL), calcular_estadistica(AVION_VELOCIDAD_INCIAL), convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
         break;
     case TANQUE:
         manejar_agregar_transformers(nombre,calcular_estadistica(TANQUE_FUERZA_INCIAL), calcular_estadistica(TANQUE_DEFENSA_INCIAL), calcular_estadistica(TANQUE_VELOCIDAD_INCIAL), convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
+        break;
     default:
         menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
     }
