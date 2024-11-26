@@ -21,6 +21,22 @@ const std::string MENSAJE_CRISTAL_OBTENIDO = "EL cristal obtenido es: ";
 
 const int POSICION_CRISTAL_MAS_PODEROSO = 0;
 
+const int AUTO_FUERZA_INCIAL = 50;
+const int AUTO_DEFENSA_INCIAL = 60;
+const int AUTO_VELOCIDAD_INCIAL = 100;
+
+const int CAMION_FUERZA_INCIAL = 120;
+const int CAMION_DEFENSA_INCIAL = 80;
+const int CAMION_VELOCIDAD_INCIAL = 60;
+
+const int AVION_FUERZA_INCIAL = 60;
+const int AVION_DEFENSA_INCIAL = 50;
+const int AVION_VELOCIDAD_INCIAL = 100;
+
+const int TANQUE_FUERZA_INCIAL = 90;
+const int TANQUE_DEFENSA_INCIAL = 110;
+const int TANQUE_VELOCIDAD_INCIAL = 30;
+
 enum Faccion {
     AUTOBOTS,
     DECEPTICONS
@@ -299,18 +315,19 @@ void Juego::manejar_agregar_transformers(const std::string &nombre,const int &fu
     }
 }
 
+
 void Juego::crear_transformers(std::string nombre, int tipo_vehiculo){
     switch (tipo_vehiculo){
     case AUTO:
-        manejar_agregar_transformers(nombre, 20, 20, 40, convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(tipo_vehiculo));
+        manejar_agregar_transformers(nombre, AUTO_FUERZA_INCIAL, AUTO_DEFENSA_INCIAL, AUTO_VELOCIDAD_INCIAL, convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(tipo_vehiculo));
         break;
     case CAMION:
-        manejar_agregar_transformers(nombre, 30, 30, 20, convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(tipo_vehiculo));
+        manejar_agregar_transformers(nombre, CAMION_FUERZA_INCIAL, CAMION_DEFENSA_INCIAL, CAMION_VELOCIDAD_INCIAL, convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(tipo_vehiculo));
     case AVION:
-        manejar_agregar_transformers(nombre, 20, 20, 40, convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
+        manejar_agregar_transformers(nombre, AVION_FUERZA_INCIAL, AVION_DEFENSA_INCIAL, AVION_VELOCIDAD_INCIAL, convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
         break;
     case TANQUE:
-        manejar_agregar_transformers(nombre, 30, 40, 10, convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
+        manejar_agregar_transformers(nombre, TANQUE_FUERZA_INCIAL, TANQUE_DEFENSA_INCIAL, TANQUE_VELOCIDAD_INCIAL, convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
     default:
         menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
     }

@@ -19,12 +19,12 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
 ## Justificación de la Selección de Estructuras de Datos y Algoritmos.
 
 * ### Cola de Prioridad en el Algoritmo de Camino Mínimo de Dijkstra
-  * El uso de un heap en Dijkstra permite que el algoritmo sea mucho más eficiente al seleccionar rápidamente el nodo con menor distancia, mantener actualizadas las prioridades, y evitar exploraciones innecesarias. Esto asegura un rendimiento óptimo, especialmente en grafos grandes o densos.
-  * En pocas palabras: En Dijkstra, nos asegura encontrar el camino más corto de manera eficiente, reduciendo la complejidad a O((a + v)log(v)).
+  * El uso de un ***heap*** en ***Dijkstra*** permite que el algoritmo sea mucho más eficiente al seleccionar rápidamente el nodo con menor distancia, mantener actualizadas las prioridades, y evitar exploraciones innecesarias. Esto asegura un rendimiento óptimo, especialmente en grafos grandes o densos.
+  * En pocas palabras: En Dijkstra, nos asegura encontrar el camino más corto de manera eficiente, reduciendo la complejidad a ***O((a + v)log(v))***.
 
 
 * ### Uso de un vector para alamcenar los Transformers Secundarios
-  * Se emplea el TDA Vector para manejar la lista de transformers debido a su flexibilidad y eficiencia en operaciones comunes como insertar, búsqueda y eliminación. Al ser dinámico, el vector permite ajustar el tamaño según sea necesario, mientras mantiene un rendimiento óptimo para gestionar y mostrar la lista de manera ordenada. Esto facilita la implementación de funcionalidades como agregar, buscar o eliminar transformers de forma sencilla y eficaz.
+  * Se emplea el ***TDA Vector*** para manejar la lista de transformers debido a su flexibilidad y eficiencia en operaciones comunes como insertar, búsqueda y eliminación. Al ser dinámico, el vector permite ajustar el tamaño según sea necesario, mientras mantiene un rendimiento óptimo para gestionar y mostrar la lista de manera ordenada. Esto facilita la implementación de funcionalidades como agregar, buscar o eliminar transformers de forma sencilla y eficaz.
 
 * ### Grafos en la generación de Combates
   * Elegimos usar un grafo para representar el mapa de batalla en nuestro juego porque ofrece una estructura flexible y dinámica ideal para simular el avance estratégico del personaje. 
@@ -43,11 +43,20 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
   * El parámetro de poder de un cristal se representa mediante la suma de las estadísticas de un cristal es decir es la suma entre la fuerza, defensa y velociad.
 
 * ### Funcionalidad para Mostrar el cristal con mayor Poder
-  * Para poder mostrar el cristal con mayor poder lo que se decide es ir almacenando en la bóveda los cristales de manera ordenada (Inserción Ordenada) y asi el obtener el cristal de mayor poder tendrá un costo de O(1), esto porque se ordena de manera descendente lo que permite obtenerlo de una manera más rápida, ya que está en la primera posición.
+  * Para poder mostrar el cristal con mayor poder lo que se decide es ir almacenando en la bóveda los cristales de manera ordenada (****Inserción Ordenada***) y asi el obtener el cristal de mayor poder tendrá un costo de ***O(1)***, esto porque se ordena de manera descendente lo que permite obtenerlo de una manera más rápida, ya que está en la primera posición.
 
 * ### Funcionalidad Equipar Cristal al Personaje
-  * Para poder equipar con un cristal al personaje lo que se decidió es crearle una bóveda de cristales al personaje en la cual el mismo solo podrá equiparse con hasta 7 cristales.
+  * Para poder equipar con un cristal al personaje lo que se decidió es crearle una bóveda de cristales al personaje en la cual el mismo solo podrá equiparse con hasta ***7 cristales***.
   * Siempre se equipara con el cristal de mayor poder.
+
+* ### Con que Estadisticas se crearan los Transformers
+  * A la hora de crear los transformers lo que opto por hacer es que todos tengas un máximo de hasta ***300*** de estadísticas sumadas entre cada una de ellas.
+  * También que todos los transformers creado desde el Administrador de Transformers se creen sin transformar.
+  * La division para cada uno de los transformers es la siguiente:
+    * ***Auto:*** fuerza: 50; defensa: 60; velocidad: 100. 
+    * ***Camion:*** fuerza: 120; defensa: 80; velocidad: 60.
+    * ***Avion:*** fuerza: 60; defensa: 50; velocidad: 100.
+    * ***Tanque:*** fuerza: 90; defensa: 110; velocidad: 30.
 
 
 
