@@ -11,13 +11,13 @@ class ManejadorDeRespuestas {
     - Utilidades utilidades
 
     + ManejadorDeRespuestas()
-    + void agregar_respuesta(const std::string& respuesta)
-    + void agregar_respuesta_random(const std::string& respuesta_random)
-    + std::string obtener_respuesta_por_indice(const int &indice)
+    + void agregar_respuesta(respuesta : const string&)
+    + void agregar_respuesta_random(respuesta_random : const string&)
+    + std::string obtener_respuesta_por_indice(indice : const int&)
     + std::string obtener_respuesta_random()
 }
 
 ' Relaciones
-ManejadorDeRespuestas *-- Utilidades : "composición"
+ManejadorDeRespuestas --> Utilidades : "usa"
 
 @enduml

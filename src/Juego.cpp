@@ -316,7 +316,7 @@ void Juego::manejar_agregar_transformers(const std::string &nombre,const int &fu
 }
 
 
-void Juego::crear_transformers(std::string nombre, int tipo_vehiculo){
+void Juego::crear_transformers(const std::string &nombre, const int &tipo_vehiculo){
     switch (tipo_vehiculo){
     case AUTO:
         manejar_agregar_transformers(nombre, calcular_estadistica(AUTO_FUERZA_INCIAL), calcular_estadistica(AUTO_DEFENSA_INCIAL), calcular_estadistica(AUTO_VELOCIDAD_INCIAL), convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(tipo_vehiculo));
@@ -517,7 +517,7 @@ bool Juego::verificar_entrada_del_cristal(const int &entrada) {
     return entrada == COMUN || entrada == RARO || entrada == EPICO;
 }
 
-int Juego::calcular_estadistica(int estadistica_base){
+int Juego::calcular_estadistica(const int &estadistica_base){
     Utilidades generador;
     int cantidad_estadistica_extra = 10*(generador.generar_numero_aleatorio(1,3));
     int suma_resta = generador.generar_numero_aleatorio(1,2);

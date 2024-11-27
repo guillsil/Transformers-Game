@@ -2,7 +2,7 @@
 'https://plantuml.com/class-diagram
 
 class ExcepcionProtagonista {
-    + ExcepcionProtagonista(std::string mensaje)
+    + ExcepcionProtagonista(mensaje : string)
     + ExcepcionProtagonista()
 }
 
@@ -18,15 +18,15 @@ class Protagonista {
     - Personaje personaje_jugando
     - BovedaCristales cristales_equipados
 
-    + Protagonista(Personaje personaje)
-    + void obtener_respuesta(const std::string &mensaje)
+    + Protagonista(personaje : Personaje)
+    + void obtener_respuesta(mensaje : const string&)
     + void obtener_sugerencia()
-    + void actualizar_estado(const char &indice)
+    + void actualizar_estado(indice : const char&)
     + Personaje obtener_personaje()
-    + void equipar_cristal(Cristal cristal)
+    + void equipar_cristal(cristal : Cristal)
     + void ver_cristales_equipados()
     + size_t obtener_cantidad_cristales_equipados()
-    - std::string obtener_estado(const char &indice)
+    - std::string obtener_estado(indice : const char&)
 }
 
 ' Relaciones

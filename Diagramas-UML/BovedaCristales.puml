@@ -3,28 +3,34 @@
 class Vector
 class Menu
 
+class ExcepcionBovedaCristales {
+    + ExcepcionBovedaCristales(mensaje : string )
+    + ExcepcionBovedaCristales()
+}
+
 class BovedaCristales {
     - Vector<Cristal> cristales
     - size_t tamanio_inicial
     - Menu menu
 
     + BovedaCristales()
-    + BovedaCristales(size_t tamanio_inicial)
-    + void almacenar_cristal(Cristal cristal_nuevo)
+    + BovedaCristales(tamanio_inicial : size_t)
+    + void almacenar_cristal(cristal_nuevo : Cristal)
     + void mostrar_cristales()
-    + Cristal obtener_cristal(size_t posicion)
-    + void exportar_cristales(std::string ruta)
+    + Cristal obtener_cristal(posicion : size_t)
+    + void exportar_cristales(ruta : string)
     + bool esta_vacia()
     + size_t tamanio()
-    + Cristal eliminar_cristal(const int &indice)
+    + Cristal eliminar_cristal(indice : const int&)
     + Cristal obtener_cristal_mas_poderoso()
 
-    - std::string construir_ruta_completa(std::string& ruta)
-    - void crear_directorios(const std::string& ruta)
-    - void escribir_cristales_en_archivo(std::ofstream& archivo)
+    - std::string construir_ruta_completa(ruta : string&)
+    - void crear_directorios(ruta : const string&)
+    - void escribir_cristales_en_archivo(archivo : ofstream&)
 }
 
 ' Relaciones
-BovedaCristales *-- Vector : "composición"
-BovedaCristales *-- Menu : "composición"
+BovedaCristales --> Vector : "usa"
+BovedaCristales --> Menu : "usa"
+BovedaCristales ..> ExcepcionBovedaCristales : "lanza"
 @enduml

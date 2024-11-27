@@ -10,13 +10,13 @@ class OptimusPrime {
     - int estado_de_animo
 
     + OptimusPrime()
-    + void responder(std::string mensaje)
+    + void responder(mensaje : string)
     + void sugerir_fusion()
-    + void cambiar_animo(std::string animo)
+    + void cambiar_animo(animo : string)
 }
 
 ' Relaciones
-OptimusPrime *-- Utilidades : "composición"
+OptimusPrime --> Utilidades : "usa"
 OptimusPrime --> ManejadorDeMensajes : "depende"
 OptimusPrime --> ManejadorPalabrasClave : "depende"
 OptimusPrime --> ManejadorDeRespuestas : "depende"

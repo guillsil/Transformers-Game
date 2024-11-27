@@ -16,9 +16,9 @@ class Cristal {
     - Estadisticas estadisticas
 
     + Cristal()
-    + Cristal(Rareza rareza)
-    + Cristal(const Rareza &rareza, const bool &exito)
-    + bool operator==(Rareza rareza)
+    + Cristal(rareza : Rareza)
+    + Cristal(rareza : const Rareza&, exito : const bool&)
+    + bool operator==(rareza : Rareza)
     + Rareza obtener_rareza()
     + size_t obtener_fuerza()
     + size_t obtener_defensa()
@@ -27,13 +27,13 @@ class Cristal {
     + size_t obtener_poder()
     + void mostrar()
     + int obtener_porcentaje_exito()
-    + static std::ostream& operator<<(std::ostream &os, const Cristal &cristal)
+    + static std::ostream& operator<<(os : ostream&, cristal : const Cristal&)
 
     - Estadisticas inicializar_estadisticas()
 }
 
 ' Relaciones
-Cristal *-- Menu : "composición"
-Cristal *-- Estadisticas : "composición"
+Cristal --> Menu : "usa"
+Cristal --> Estadisticas : "usa"
 Cristal --> Rareza : "usa"
 @enduml

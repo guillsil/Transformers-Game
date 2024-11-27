@@ -143,7 +143,7 @@ private:
 
     //Pre: (nombre) no debe estar vacío. (tipo_vehiculo) debe ser un valor válido entre 0 y 3.
     //Post: Crea un Transformer y lo agrega al administrador según el tipo de vehículo especificado.
-    void crear_transformers(std::string nombre, int tipo_vehiculo);
+    void crear_transformers(const std::string& nombre, const int& tipo_vehiculo);
 
     //Pre: -
     //Post: Crea un Autobots en base nombre y tipo de vehículo.
@@ -176,7 +176,7 @@ private:
 
     //Pre:
     //Post: Genera 2 números random y dependiendo de ellos suma o resta un multiplo de 10 (10-30)
-    int calcular_estadistica(int estadistica_base);
+    int calcular_estadistica(const int& estadistica_base);
 };
 
 

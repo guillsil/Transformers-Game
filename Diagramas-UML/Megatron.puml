@@ -11,13 +11,13 @@ class Megatron {
     - int estado_de_intencion
 
     + Megatron()
-    + void responder(std::string mensaje)
+    + void responder(mensaje : string)
     + void sugerir_fusion()
-    + void cambiar_intencion(std::string intencion)
+    + void cambiar_intencion(intencion : string)
 }
 
 ' Relaciones
-Megatron *-- Utilidades : "composición"
+Megatron --> Utilidades : "usa"
 Megatron --> ManejadorDeMensajes : "depende"
 Megatron --> ManejadorPalabrasClave : "depende"
 Megatron --> ManejadorDeRespuestas : "depende"

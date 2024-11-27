@@ -5,6 +5,10 @@ class Cristal
 class GeneradorAleatorio
 
 
+class ExcepcionFusionadorEnergon {
+    + ExcepcionFusionadorEnergon(mensaje : string)
+    + ExcepcionFusionadorEnergon()
+}
 
 class FusionadorEnergon {
     - int fallos_consecutivos[4]
@@ -13,21 +17,22 @@ class FusionadorEnergon {
     - GeneradorAleatorio generador_bonificacion
 
     + FusionadorEnergon()
-    + Cristal fusionar(Cristal cristal_1, Cristal cristal_2)
-    + Cristal fusionar(Cristal cristal_1, Cristal cristal_2, GeneradorAleatorio& generador)
+    + Cristal fusionar(cristal_1 : Cristal, cristal_2 : Cristal)
+    + Cristal fusionar(cristal_1 : Cristal, cristal_2 : Cristal, generador : GeneradorAleatorio&)
 
-    - Cristal fusionar_cristales(Cristal cristal_1, Cristal cristal_2, GeneradorAleatorio *generador)
-    - void verificar_rarezas_iguales(Cristal &cristal_1, Cristal &cristal_2)
-    - bool verificar_exito_de_fusion(const Rareza &rareza_actual, const int &porcentaje_exito, GeneradorAleatorio *generador)
-    - void verificar_fusion_prohibida(const Rareza &rareza)
-    - int obtener_proxima_rareza(const Rareza &rareza)
-    - int obtener_rareza_anterior(const Rareza &rareza)
-    - void resetear_fallos_por_nivel(const Rareza &rareza)
-    - bool dar_bonificacion(const int &probabilidad_bonificacion)
+    - Cristal fusionar_cristales(cristal_1 : Cristal, cristal_2 : Cristal, generador : GeneradorAleatorio*)
+    - void verificar_rarezas_iguales(cristal_1 : Cristal&, cristal_2 : Cristal&)
+    - bool verificar_exito_de_fusion(rareza_actual : const Rareza&, porcentaje_exito : const int&, generador : GeneradorAleatorio*)
+    - void verificar_fusion_prohibida(rareza : const Rareza&)
+    - int obtener_proxima_rareza(rareza : const Rareza&)
+    - int obtener_rareza_anterior(rareza : const Rareza&)
+    - void resetear_fallos_por_nivel(rareza : const Rareza&)
+    - bool dar_bonificacion(probabilidad_bonificacion : const int&)
 }
 ' Relaciones
 FusionadorEnergon --> Cristal : "fusiona"
-FusionadorEnergon *-- GeneradorAleatorio : "composición"
+FusionadorEnergon --> GeneradorAleatorio : "usa"
+FusionadorEnergon ..> ExcepcionFusionadorEnergon : "lanza"
 
 
 @enduml

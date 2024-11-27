@@ -9,17 +9,17 @@ class Estadisticas {
     - size_t poder
     - Menu menu
 
-    + Estadisticas(const size_t &fuerza, const size_t &defensa, const size_t &velocidad)
+    + Estadisticas(fuerza : const size_t&, defensa : const size_t&, velocidad : const size_t&)
     + void aplicar_bonificacion()
     + size_t obtener_fuerza()
     + size_t obtener_defensa()
     + size_t obtener_velocidad()
     + size_t obtener_poder()
     + void mostrar()
-    + static std::ostream& operator<<(std::ostream &os, const Estadisticas &estadisticas)
+    + static std::ostream& operator<<(os : ostream&, estadisticas : const Estadisticas&)
 }
 
 ' Relaciones
-Estadisticas *-- Menu : "composición"
+Estadisticas --> Menu : "usa"
 
 @enduml

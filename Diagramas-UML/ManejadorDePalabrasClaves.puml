@@ -9,11 +9,11 @@ class ManejadorDePalabrasClaves {
     - Utilidades utilidades
 
     + ManejadorDePalabrasClaves()
-    + void agregar_palabras_clave(const std::string& palabra)
-    + int buscar_palabras_clave(const std::string& cadena)
+    + void agregar_palabras_clave(palabra : const string&)
+    + int buscar_palabras_clave(cadena : const std::string&)
 }
 
 ' Relaciones
-ManejadorDePalabrasClaves *-- Utilidades : "composición"
+ManejadorDePalabrasClaves --> Utilidades : "usa"
 
 @enduml

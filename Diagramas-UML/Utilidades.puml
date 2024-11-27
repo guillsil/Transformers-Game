@@ -2,9 +2,9 @@
 'https://plantuml.com/class-diagram
 
 class Utilidades {
-    + void convertir_a_minuscula(std::string &cadena)
-    + int generar_numero_aleatorio(const int &inicio, const int &fin)
-    + bool agregar_elemento_a_arreglo(std::string arreglo[], int &cantidad, const int &max, const std::string &elemento)
+    + void convertir_a_minuscula(cadena : string &)
+    + int generar_numero_aleatorio(inicio : const int&, fin : const int&)
+    + bool agregar_elemento_a_arreglo(arreglo[] : string, cantidad : int&, max : const int&, elemento : const string&)
 }
 
 @enduml

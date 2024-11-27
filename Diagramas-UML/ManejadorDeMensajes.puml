@@ -11,17 +11,17 @@ class ManejadorDeMensajes {
     - ManejadorDeRespuestas& manejador_respuestas
     - int primera_palabra_clave_hallada
 
-    + ManejadorDeMensajes(ManejadorDePalabrasClaves& manejador_palabras, ManejadorDeRespuestas& manejador_respuestas)
-    + void procesar_mensajes(const std::string& mensaje)
-    + void mostrar_mensajes(TipoDeRespuesta tipo)
+    + ManejadorDeMensajes(manejador_palabras : ManejadorDePalabrasClaves&, manejador_respuestas : ManejadorDeRespuestas&)
+    + void procesar_mensajes(mensaje : const string&)
+    + void mostrar_mensajes(tipo : TipoDeRespuesta)
 }
 
 class ManejadorDePalabrasClaves
 class ManejadorDeRespuestas
 
 ' Relaciones
-ManejadorDeMensajes *-- ManejadorDePalabrasClaves : "composición"
-ManejadorDeMensajes *-- ManejadorDeRespuestas : "composición"
+ManejadorDeMensajes --> ManejadorDePalabrasClaves : "usa"
+ManejadorDeMensajes --> ManejadorDeRespuestas : "usa"
 ManejadorDeMensajes ..> TipoDeRespuesta : "utiliza"
 
 @enduml

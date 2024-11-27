@@ -5,12 +5,12 @@ class GeneradorAleatorio {
     - std::uniform_int_distribution<> distribucion
 
     + GeneradorAleatorio()
-    + virtual bool generar_chance_porcentual(size_t porcentaje)
+    + virtual bool generar_chance_porcentual(porcentaje : size_t)
     + virtual ~GeneradorAleatorio()
 }
 
 class ExcepcionPorcentajeNoValido {
-    + ExcepcionPorcentajeNoValido(std::string mensaje)
+    + ExcepcionPorcentajeNoValido(mensaje : string)
 }
 
 ' Relaciones
