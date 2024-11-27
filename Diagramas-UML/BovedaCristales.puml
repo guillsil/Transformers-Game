@@ -26,7 +26,6 @@ class BovedaCristales {
 
     - std::string construir_ruta_completa(ruta : string&)
     - void crear_directorios(ruta : const string&)
-    - void escribir_cristales_en_archivo(archivo : ofstream&)
 }
 
 ' Relaciones
