@@ -43,15 +43,18 @@ size_t AdministradorTransformers::buscar_transformer(std::string nombre){
 }
 
 void AdministradorTransformers::mostrar_todos_transformers(){
-    if (lista_transformers.vacio()){
-        throw ExcepcionAdministradorTransformers(ERROR_LISTA_TRANSFORMERS_VACIO);
-    }
-    std::cout << "-- NOMBRE, FUERZA, DEFENZA, VELOCIDAD, FACCION, VEHICULO, TRANSFOMADO" << std::endl;
+    //std::cout << "-- NOMBRE, FUERZA, DEFENZA, VELOCIDAD, FACCION, VEHICULO, TRANSFOMADO" << std::endl;
+    std::cout << "  Lista de Transformers Secundarios" << std::endl;
     std::cout << std::endl;
     for (size_t i = 0; i < lista_transformers.tamanio(); i++){
-        std::cout << "      " << (i+1) << ") " << (lista_transformers[i]) << std::endl;
+        std::cout << "      " << (i+1) << ") ";
+        (lista_transformers[i]).mostrar();
         std::cout << std::endl;
     }
+}
+
+Vector<Transformers> AdministradorTransformers::obtener_transformers_secundarios(){
+    return lista_transformers;
 }
 
 void AdministradorTransformers::transformar_transformer(std::string nombre){
