@@ -16,9 +16,10 @@ class Estadisticas {
     + size_t obtener_velocidad()
     + size_t obtener_poder()
     + void mostrar()
+    + static std::ostream& operator<<(std::ostream &os, const Estadisticas &estadisticas)
 }
 
 ' Relaciones
-Estadisticas --> Menu
+Estadisticas *-- Menu : "composición"
 
 @enduml

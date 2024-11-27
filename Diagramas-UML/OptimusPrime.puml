@@ -16,9 +16,9 @@ class OptimusPrime {
 }
 
 ' Relaciones
-OptimusPrime --> Utilidades : "utiliza"
-OptimusPrime --> ManejadorDeMensajes : "utiliza"
-OptimusPrime --> ManejadorPalabrasClave : "utiliza"
-OptimusPrime --> ManejadorDeRespuestas : "utiliza"
-
+OptimusPrime *-- Utilidades : "composición"
+OptimusPrime --> ManejadorDeMensajes : "depende"
+OptimusPrime --> ManejadorPalabrasClave : "depende"
+OptimusPrime --> ManejadorDeRespuestas : "depende"
+' depende porque no son atributos de optimus si no que los uso en su implementación
 @enduml

@@ -27,7 +27,7 @@ class FusionadorEnergon {
 }
 ' Relaciones
 FusionadorEnergon --> Cristal : "fusiona"
-FusionadorEnergon --> GeneradorAleatorio : "utiliza"
+FusionadorEnergon *-- GeneradorAleatorio : "composición"
 
 
 @enduml

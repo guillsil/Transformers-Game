@@ -17,10 +17,10 @@ class Megatron {
 }
 
 ' Relaciones
-Megatron --> Utilidades : "utiliza"
-Megatron --> ManejadorDeMensajes : "utiliza"
-Megatron --> ManejadorPalabrasClave : "utiliza"
-Megatron --> ManejadorDeRespuestas : "utiliza"
+Megatron *-- Utilidades : "composición"
+Megatron --> ManejadorDeMensajes : "depende"
+Megatron --> ManejadorPalabrasClave : "depende"
+Megatron --> ManejadorDeRespuestas : "depende"
 
 
 @enduml

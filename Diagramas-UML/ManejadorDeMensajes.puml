@@ -20,8 +20,8 @@ class ManejadorDePalabrasClaves
 class ManejadorDeRespuestas
 
 ' Relaciones
-ManejadorDeMensajes --> ManejadorDePalabrasClaves : usa
-ManejadorDeMensajes --> ManejadorDeRespuestas : usa
-ManejadorDeMensajes ..> TipoDeRespuesta : utiliza
+ManejadorDeMensajes *-- ManejadorDePalabrasClaves : "composición"
+ManejadorDeMensajes *-- ManejadorDeRespuestas : "composición"
+ManejadorDeMensajes ..> TipoDeRespuesta : "utiliza"
 
 @enduml

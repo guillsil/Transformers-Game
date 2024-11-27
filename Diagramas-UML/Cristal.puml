@@ -27,12 +27,13 @@ class Cristal {
     + size_t obtener_poder()
     + void mostrar()
     + int obtener_porcentaje_exito()
+    + static std::ostream& operator<<(std::ostream &os, const Cristal &cristal)
 
     - Estadisticas inicializar_estadisticas()
 }
 
 ' Relaciones
-Cristal --> Menu
-Cristal --> Estadisticas
-Cristal --> Rareza
+Cristal *-- Menu : "composición"
+Cristal *-- Estadisticas : "composición"
+Cristal --> Rareza : "usa"
 @enduml
