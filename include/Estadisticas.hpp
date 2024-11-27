@@ -36,6 +36,18 @@ public:
     size_t obtener_poder();
 
     //Pre: -
+    //Post: Actualiza el poder total
+    void actualizar_poder();
+
+    //Pre: Los numeros pueden ser positivos o negativos. Depende de si se desea sumar o restar;
+    //Post: Suma las bonoficaciones pasadas a las estadisticas preexistentes
+    void aplicar_bonificacion_distintas(int bono_fuerza, int bono_defensa, int bono_velocidad);
+
+    //Pre:
+    //Post: Copia las otras estadisticas en las estadisticas que llama al operador;
+    Estadisticas& operator=(const Estadisticas &otras_estadisticas);
+
+    //Pre: -
     //Post: Imprimé por consola las estadísticas (fuerza, defensa, velocidad)
     void mostrar();
 

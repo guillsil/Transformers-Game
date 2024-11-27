@@ -407,7 +407,6 @@ void Juego::mostrar_transformers_secundarios(){
     menu.limpiar_menu();
     menu.mostrar_recuadro_superior();
     administrador_transformers.mostrar_todos_transformers();
-    menu.mostrar_recuadro_inferior();
 }
 
 void Juego::manejar_administrar_transformers(){

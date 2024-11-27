@@ -87,7 +87,9 @@ Vector<T> ControlArchivo<T>::leer_archivo(){
     Vector<T> lista_nueva;
     while (std::getline(archivo, linea)) {
         elementos = dividir_linea(linea, ',');
-        lista_nueva.alta(T(elementos));
+        if (elementos.vacio() != true){
+            lista_nueva.alta(T(elementos));
+        }
     }
 
     archivo.close();
@@ -99,8 +101,10 @@ Vector<std::string> ControlArchivo<T>::dividir_linea(const std::string& linea, c
     Vector<std::string> elementos;
     std::stringstream ss(linea);
     std::string item;
-    while (std::getline(ss, item, delimitador)) {
-        elementos.alta(item);
+    if(linea != ""){
+        while (std::getline(ss, item, delimitador)) {
+            elementos.alta(item);
+        }
     }
     return elementos;
 }
