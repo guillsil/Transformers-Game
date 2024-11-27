@@ -51,7 +51,7 @@ public:
 
     //Pre: -
     //Post: Devuelve la lista_transformers
-    Vector<Transformers> obtener_transformers_secundarios();
+    Vector<Transformers>& obtener_transformers_secundarios();
 
     //Pre:
     //Post: Devuelve el trasformer en la posicion indice del vector lista_transformers

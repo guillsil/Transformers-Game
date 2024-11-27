@@ -53,7 +53,7 @@ void AdministradorTransformers::mostrar_todos_transformers(){
     }
 }
 
-Vector<Transformers> AdministradorTransformers::obtener_transformers_secundarios(){
+Vector<Transformers>& AdministradorTransformers::obtener_transformers_secundarios(){
     return lista_transformers;
 }
 
