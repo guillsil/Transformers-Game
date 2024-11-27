@@ -44,6 +44,7 @@ Estadisticas& Estadisticas::operator=(const Estadisticas &otras_estadisticas){
     this-> defensa = otras_estadisticas.defensa;
     this-> velocidad = otras_estadisticas.velocidad;
     actualizar_poder();
+    return *this;
 }
 
 void Estadisticas::mostrar() {
