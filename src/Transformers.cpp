@@ -152,7 +152,14 @@ bool Transformers::pase_texto_bool_transformado(std::string texto_transformado){
 void Transformers::mostrar(){
     std::cout << "  Nombre del Transformer: " << nombre;
     std::cout << "  Faccion: " << faccion;
-    std::cout << "  Vehiculo: " << vehiculo << std::endl; 
+    std::cout << "  Vehiculo: " << vehiculo; 
+    std::cout << "  Transformado: ";
+    if (transformado){
+        std::cout << "Si";
+    } else {
+        std::cout << "No";
+    }
+    std::cout << std::endl;
     estadisticas.mostrar();
 }
 
