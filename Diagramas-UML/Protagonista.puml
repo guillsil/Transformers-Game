@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class ExcepcionProtagonista {
+    + ExcepcionProtagonista(std::string mensaje)
+    + ExcepcionProtagonista()
+}
+
+enum Personaje {
+    MEGATRON,
+    OPTIMUS_PRIME,
+    PERSONAJE_INVALIDO
+}
+
+class Protagonista {
+    - OptimusPrime optimus
+    - Megatron megatron
+    - Personaje personaje_jugando
+    - BovedaCristales cristales_equipados
+
+    + Protagonista(Personaje personaje)
+    + void obtener_respuesta(const std::string &mensaje)
+    + void obtener_sugerencia()
+    + void actualizar_estado(const char &indice)
+    + Personaje obtener_personaje()
+    + void equipar_cristal(Cristal cristal)
+    + void ver_cristales_equipados()
+    + size_t obtener_cantidad_cristales_equipados()
+    - std::string obtener_estado(const char &indice)
+}
+
+' Relaciones
+Protagonista --> OptimusPrime : "usa"
+Protagonista --> Megatron : "usa"
+Protagonista --> BovedaCristales : "contiene"
+Protagonista --> Personaje : "usa"
+Protagonista ..> ExcepcionProtagonista : "lanza"
+@enduml
