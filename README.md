@@ -1,10 +1,14 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/SOoPfuVL)
 # AYED - TPG 2c2024
-### SILVA GUILLERMO ANDRES - 109777 - 110339 - NARVÁEZ YAGUANA, GABRIEL ALEJANDRO - 111432 - 109948 - FARIÑA GONCALVES, ALEX JAVIER  - 112438 - RIVERO ARDISSONE, CANDELA BELÉN
-<p align="center">
-   <img src="image/Banner.png" alt="TP1: Interacción con Transformers"><br>
-</p>
 
+## Authors
+
+- [@SILVA GUILLERMO ANDRES - 109777](https://www.github.com/guillsil)
+- [@RIVERO ARDISSONE CANDELA BELÉN - 110339](https://www.github.com/CandelaRiveroA)
+- [@FARIÑA GONCALVES ALEX JAVIER  - 112438](https://www.github.com/AlexFari2004)
+- [@NARVÁEZ YAGUANA GABRIEL ALEJANDRO - 111432](https://www.github.com/Gabosawn)
+
+![Logo](image/Banner.png)
 
 ## Compilación
 
@@ -60,9 +64,9 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
 
 
 
-## Imagenes del juego
-### Menú de Administrador Transformers
+## Screenshots
 
+### Menú de Administrador Transformers
 
  <img src="image/menu_administrador_transformers.png" alt="TP1: Interacción con Transformers"> 
 
