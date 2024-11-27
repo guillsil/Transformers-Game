@@ -10,7 +10,7 @@ Estadisticas::Estadisticas(const size_t &fuerza, const size_t &defensa, const si
     this->fuerza = fuerza;
     this->defensa = defensa;
     this->velocidad = velocidad;
-    this->poder = fuerza + defensa + velocidad;
+    actualizar_poder();
 }
 
 void Estadisticas::aplicar_bonificacion() {
@@ -18,6 +18,13 @@ void Estadisticas::aplicar_bonificacion() {
     defensa += FACTOR_BONIFICACION;
     velocidad += FACTOR_BONIFICACION;
     poder += FACTOR_BONIFICACION * 3;
+}
+
+void Estadisticas::aplicar_bonificacion_distintas(int bono_fuerza, int bono_defensa, int bono_velocidad){
+    this->fuerza = fuerza + bono_fuerza;
+    this->defensa = defensa + bono_defensa;
+    this->velocidad = velocidad + bono_velocidad; 
+    actualizar_poder();
 }
 
 size_t Estadisticas::obtener_fuerza() {return fuerza;}
@@ -28,11 +35,15 @@ size_t Estadisticas::obtener_velocidad() {return velocidad;}
 
 size_t Estadisticas::obtener_poder() { return poder;}
 
+void Estadisticas::actualizar_poder(){
+    this-> poder = fuerza + defensa + velocidad;  
+}
+
 Estadisticas& Estadisticas::operator=(const Estadisticas &otras_estadisticas){
     this-> fuerza = otras_estadisticas.fuerza;
     this-> defensa = otras_estadisticas.defensa;
     this-> velocidad = otras_estadisticas.velocidad;
-    this-> poder = fuerza + defensa + velocidad;
+    actualizar_poder();
 }
 
 void Estadisticas::mostrar() {
