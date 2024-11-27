@@ -34,7 +34,7 @@ std::string Transformers::obtener_nombre(){
     return this->nombre;
 }
 
-int Transformers::obtener_poder(){
+size_t Transformers::obtener_poder(){
     return estadisticas.obtener_poder();
 }
 

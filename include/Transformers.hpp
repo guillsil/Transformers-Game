@@ -64,7 +64,7 @@ public:
 
     //Pre:
     //Post: Devuelve la suma de las estadisticas
-    int obtener_poder();
+    size_t obtener_poder();
 
     //Pre:
     //Post: Devuelve true si los transformers son de la misma faccion.
