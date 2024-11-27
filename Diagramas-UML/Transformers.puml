@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Vector
+class Estadisticas
+
+class Transformers {
+    - string nombre
+    - string faccion
+    - string vehiculo
+    - Estadisticas estadisticas
+    - int fuerza
+    - int defensa
+    - int velocidad
+    - bool transformado
+    - int calcular_bonificacion(estadistica_base : int, multiplicador : int, indicador_aumento_reduccion : int)
+    - void chequeo_vehiculo(al_reves : bool)
+    - bool pase_texto_bool_transformado(texto_transformado : string)
+    + Transformers()
+    + Transformers(nombre : string, fuerza : int, defensa : int, velocidad : int, faccion : string, vehiculo : string, transformado : bool)
+    + Transformers(nombre : string, fuerza : int, defensa : int, velocidad : int, faccion : string, vehiculo : string)
+    + Transformers(elementos : Vector<string>&)
+    + string obtener_nombre()
+    + void cambiar_forma()
+    + size_t obtener_poder()
+    + bool operator==(otro_transformer : const Transformers&)
+    + Transformers& operator=(otro_transformer : const Transformers&)
+    + bool son_iguales_fuerza(otro_transformer : Transformers)
+    + bool es_mas_fuerte(otro_transformer : Transformers)
+    + void mostrar()
+    + friend ostream& operator<<(os : ostream&, transformer : const Transformers&)
+}
+
+' Relaciones
+Transformers --> Vector : "conoce para constructor"
+Transformers --> Estadisticas : "usa"
+@enduml
