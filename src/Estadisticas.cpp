@@ -40,10 +40,12 @@ void Estadisticas::actualizar_poder(){
 }
 
 Estadisticas& Estadisticas::operator=(const Estadisticas &otras_estadisticas){
-    this-> fuerza = otras_estadisticas.fuerza;
-    this-> defensa = otras_estadisticas.defensa;
-    this-> velocidad = otras_estadisticas.velocidad;
-    actualizar_poder();
+    if (this != &otras_estadisticas){
+        this-> fuerza = otras_estadisticas.fuerza;
+        this-> defensa = otras_estadisticas.defensa;
+        this-> velocidad = otras_estadisticas.velocidad;
+        actualizar_poder();
+    }    
     return *this;
 }
 
