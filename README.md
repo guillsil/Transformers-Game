@@ -20,6 +20,11 @@ g++ -I include src/Grafo/*.cpp src/*.cpp main.cpp -o main
 
 O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** presente en el directorio raíz.
 
+## Informe de complejidad algorítmica
+
+[Informe de complejidad algorítmica](./Informe_complejidad_algoritmica.md)
+
+
 ## Justificación de la Selección de Estructuras de Datos y Algoritmos.
 
 * ### Cola de Prioridad en el Algoritmo de Camino Mínimo de Dijkstra
