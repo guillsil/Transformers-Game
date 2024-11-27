@@ -54,27 +54,27 @@ public:
     //Constructor para crear en el ControlArchivo
     Transformers(Vector<std::string>& elementos);
 
-    //Pre:
+    //Pre: -
     //Post: Devuelve el nombre del transformer
     std::string obtener_nombre();
 
-    //Pre:
+    //Pre: -
     //Post: Cambia el estado del transformado.
     void cambiar_forma();
 
-    //Pre:
+    //Pre: -
     //Post: Devuelve la suma de las estadisticas
     size_t obtener_poder();
 
-    //Pre:
+    //Pre: -
     //Post: Devuelve true si los transformers son de la misma faccion.
     bool operator==(const Transformers& otro_transformer);
 
-    //Pre:
+    //Pre: -
     //Post: Copia un trasformer en otro transformer
     Transformers& operator=(const Transformers& otro_transformer);
 
-    //Pre:
+    //Pre: -
     //Post: Devuelve true si los transformers son igual de fuertes. Condicion: 2 de sus estadisticas deben ser iguales.
     bool son_iguales_fuerza(Transformers otro_transformer);
 
@@ -89,8 +89,6 @@ public:
     // Pre: -
     // Post: Carga la información al stream de salida.
     friend std::ostream& operator<<(std::ostream& os, const Transformers& transformer);
-
-    //~Transformers();
 };
 
 #endif

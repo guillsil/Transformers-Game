@@ -64,7 +64,6 @@ public:
 
     //Destructor
     ~AdministradorTransformers();
-
 };
 
 #endif

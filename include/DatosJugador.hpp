@@ -24,12 +24,12 @@ private:
     int puntaje;
     Personaje personaje_usado;
 
-    //Pre:
-    //Post:
+    //Pre: -
+    //Post: Devuelve el Personaje usado desde texto
     Personaje obtener_personaje_desde_texto(std::string nombre_personaje);
 
-    //Pre:
-    //Post:
+    //Pre: -
+    //Post: Devuelve en texto el personaje usado
     std::string obtener_personaje_usado();
 public:
     //Constructor para error vector;
@@ -41,7 +41,7 @@ public:
     //Contructor para crear en ControlArchivo
     DatosJugador(Vector<std::string>& elementos);
 
-    //Pre:
+    //Pre: -
     //Post: Devuelve el puntaje del jugador
     int obtener_puntaje();
 
@@ -52,8 +52,6 @@ public:
     // Pre: -
     // Post: Carga la información al stream de salida.
     friend std::ostream& operator<<(std::ostream& os, const DatosJugador& datos_jugador);
-
-    //~DatosJugador();
 };
 
 #endif
