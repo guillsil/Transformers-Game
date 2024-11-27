@@ -6,7 +6,7 @@ class Cristal
 class DatosJugador
 
 class ExcepcionControlArchivo {
-    + ExcepcionControlArchivo(mensaje : string )
+    + ExcepcionControlArchivo(mensaje : string)
     + ExcepcionControlArchivo()
 }
 

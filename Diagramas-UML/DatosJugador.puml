@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Vector
+class Menu
+
+class ExcepcionControlArchivo {
+    + ExcepcionControlArchivo(mensaje : string)
+    + ExcepcionControlArchivo()
+}
+
+class DatosJugador{
+    - String nombre_jugador
+    - int puntaje
+    - Personaje personaje_usado
+    - Personaje obtener_personaje_desde_texto(nombre_personaje : string)
+    - String obtener_personaje_usado()
+    + DatosJugador()
+    + DatosJugador(nombre_jugador : string, puntaje : int, personaje_usado : Personaje)
+    + DatosJugador(elementos : Vector<String>&)
+    + int obtener_puntaje()
+    + void mostrar()
+    + friend ostream& operator<<(os : ostream&, datos_jugador : const DatosJugador&)
+}
+
+' Relaciones
+DatosJugador --> Vector : "conoce para el constructor"
+DatosJugador --> Menu : "acceso a enum Personaje"
+@enduml
