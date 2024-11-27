@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Vector
+class Transformers
+class ControlArchivo
+
+class ExcepcionAdministradorTransformers {
+    + ExcepcionAdministradorTransformers(mensaje : string)
+    + ExcepcionAdministradorTransformers()
+}
+
+class AdministradorTransformers{
+    - Vector<Transformers> lista_transformers
+    - ControlArchivo<Transformers> control_archivo_transformers
+    + AdministradorTransformers()
+    + void agregar_transformer(nombre : string, fuerza : int, defensa : int, velocidad : int, faccion : string, vehiculo : string)
+    + Transformers eliminar_transformer(nombre : string)
+    + size_t buscar_transformer(nombre : string)
+    + void mostrar_todos_transformers()
+    + Vector<Transformers>& obtener_transformers_secundarios()
+    + Transformers operator[](indice : size_t)
+    + void transformar_transformer(nombre : string)
+    + ~AdministradorTransformers()
+
+}
+
+' Relaciones
+AdministradorTransformers --> Vector : "usa"
+AdministradorTransformers --> Transformers : "usa"
+AdministradorTransformers --> ControlArchivo : "usa"
+@enduml
