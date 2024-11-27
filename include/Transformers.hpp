@@ -31,7 +31,7 @@ private:
 
     //Pre:
     //Post: Cambia la estadistica pasada por puntero segun el numero de cambio
-    int cambiar_estadisticas(int estadistica_base, int multiplicador, int indicador_aumento_reduccion);
+    int calcular_bonificacion(int estadistica_base, int multiplicador, int indicador_aumento_reduccion);
 
     //Pre:
     //Post: Cambia las estadisticas dependiendo del vehiculo que es el transformer. Se usa luego de la transformacion.

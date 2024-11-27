@@ -100,8 +100,7 @@ bool Transformers::es_mas_fuerte(Transformers otro_transformer){
     return transformer_actual_es_mas_fuerte;
 }
 
-//Cambiar para poder usar como modulacion para cambio de estadisticas
-int Transformers::cambiar_estadisticas(int estadistica_base, int multiplicador, int indicador_aumento_reduccion){
+int Transformers::calcular_bonificacion(int estadistica_base, int multiplicador, int indicador_aumento_reduccion){
     return estadistica_base*multiplicador*indicador_aumento_reduccion;
 }
 
@@ -115,28 +114,31 @@ void Transformers::chequeo_vehiculo(bool al_reves){
     //Estructura de la suma: Estaditica_a_cambiar = estadistica_a_cambiar + (1 ó -1)*(aumento/reduccion base * multiplicador)
     if (this->faccion == FACCION_AUTOBOTS){
         if(this->vehiculo == VEHICULO_AUTO){ // F- D- V++
-            this->fuerza = fuerza + interruptor_incremento_reduccion*(ESTADISTICAS_REDUCCION* CAMBIO_NORMAL);
-            this->defensa = defensa + interruptor_incremento_reduccion*(ESTADISTICAS_REDUCCION* CAMBIO_NORMAL);
-            this->velocidad = velocidad + interruptor_incremento_reduccion*(ESTADISTICAS_AUMENTO* CAMBIO_MUCHO);
+            this-> estadisticas.aplicar_bonificacion_distintas(
+                calcular_bonificacion(ESTADISTICAS_REDUCCION,CAMBIO_NORMAL,interruptor_incremento_reduccion),
+                calcular_bonificacion(ESTADISTICAS_REDUCCION,CAMBIO_NORMAL,interruptor_incremento_reduccion),
+                calcular_bonificacion(ESTADISTICAS_AUMENTO,CAMBIO_MUCHO,interruptor_incremento_reduccion));
         } else { //Caso Camion // F+ D+ V-
-            this->fuerza = fuerza + interruptor_incremento_reduccion*(ESTADISTICAS_AUMENTO* CAMBIO_NORMAL);
-            this->defensa = defensa + interruptor_incremento_reduccion*(ESTADISTICAS_AUMENTO* CAMBIO_NORMAL);
-            this->velocidad = velocidad + interruptor_incremento_reduccion*(ESTADISTICAS_REDUCCION* CAMBIO_NORMAL);
+        this-> estadisticas.aplicar_bonificacion_distintas(
+                calcular_bonificacion(ESTADISTICAS_AUMENTO,CAMBIO_NORMAL,interruptor_incremento_reduccion),
+                calcular_bonificacion(ESTADISTICAS_AUMENTO,CAMBIO_NORMAL,interruptor_incremento_reduccion),
+                calcular_bonificacion(ESTADISTICAS_REDUCCION,CAMBIO_NORMAL,interruptor_incremento_reduccion));
         }
     } else { //Caso Decepticons
         if (this->vehiculo == VEHICULO_AVION){ // F++ D--- V++
-            this->fuerza = fuerza + interruptor_incremento_reduccion*(ESTADISTICAS_AUMENTO* CAMBIO_MUCHO);
-            this->defensa = defensa + interruptor_incremento_reduccion*(ESTADISTICAS_REDUCCION* CAMBIO_TOTALMENTE);
-            this->velocidad = velocidad + interruptor_incremento_reduccion*(ESTADISTICAS_AUMENTO* CAMBIO_MUCHO);
+        this-> estadisticas.aplicar_bonificacion_distintas(
+                calcular_bonificacion(ESTADISTICAS_AUMENTO,CAMBIO_MUCHO,interruptor_incremento_reduccion),
+                calcular_bonificacion(ESTADISTICAS_REDUCCION,CAMBIO_TOTALMENTE,interruptor_incremento_reduccion),
+                calcular_bonificacion(ESTADISTICAS_AUMENTO,CAMBIO_MUCHO,interruptor_incremento_reduccion));
         } else { //Caso tanque // F++ D++ V---
-            this->fuerza = fuerza + interruptor_incremento_reduccion*(ESTADISTICAS_AUMENTO* CAMBIO_MUCHO);
-            this->defensa = defensa + interruptor_incremento_reduccion*(ESTADISTICAS_AUMENTO* CAMBIO_MUCHO);
-            this->velocidad = velocidad + interruptor_incremento_reduccion*(ESTADISTICAS_REDUCCION* CAMBIO_TOTALMENTE);
+        this-> estadisticas.aplicar_bonificacion_distintas(
+                calcular_bonificacion(ESTADISTICAS_AUMENTO,CAMBIO_MUCHO,interruptor_incremento_reduccion),
+                calcular_bonificacion(ESTADISTICAS_AUMENTO,CAMBIO_MUCHO,interruptor_incremento_reduccion),
+                calcular_bonificacion(ESTADISTICAS_REDUCCION,CAMBIO_TOTALMENTE,interruptor_incremento_reduccion));
         }
     }
 }
 
-//No se si es necesario para el constructor al sacarlos de csv probablemente
 bool Transformers::pase_texto_bool_transformado(std::string texto_transformado){
     bool estado_actual;
     if (texto_transformado == "Si"){
@@ -165,10 +167,6 @@ std::ostream &operator<<(std::ostream &os, const Transformers &transformer){
         os << "Si";
     } else {
         os << "No";
-    }
-    // problema llamando a la funcion chequear_transformado debido a que transformer es CONST
-    // std::string palabra_transformado = transformer.chequear_transformado();
-    // os << ", Trasformado: " << ;
-            
+    }            
     return os;
 }
