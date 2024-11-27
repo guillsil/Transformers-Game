@@ -4,8 +4,8 @@
 class Utilidades
 
 class ManejadorDeRespuestas {
-    - std::string respuestas[MAX_RESPUESTAS]
-    - std::string respuestas_random[MAX_RESPUESTAS]
+    - string respuestas[MAX_RESPUESTAS]
+    - string respuestas_random[MAX_RESPUESTAS]
     - int cantidad_respuestas
     - int cantidad_respuestas_random
     - Utilidades utilidades
@@ -13,8 +13,8 @@ class ManejadorDeRespuestas {
     + ManejadorDeRespuestas()
     + void agregar_respuesta(respuesta : const string&)
     + void agregar_respuesta_random(respuesta_random : const string&)
-    + std::string obtener_respuesta_por_indice(indice : const int&)
-    + std::string obtener_respuesta_random()
+    + string obtener_respuesta_por_indice(indice : const int&)
+    + string obtener_respuesta_random()
 }
 
 ' Relaciones

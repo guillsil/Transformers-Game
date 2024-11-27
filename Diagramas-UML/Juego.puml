@@ -7,7 +7,7 @@ class Juego {
     - BovedaCristales boveda
     - FusionadorEnergon fusionador
     - bool juego_en_curso
-    - std::string nombre_jugador
+    - string nombre_jugador
     - AdministradorTransformers administrador_transformers
     - TablaClasificacion tabla_clasificacion
 
@@ -33,10 +33,10 @@ class Juego {
     + void manejar_eliminar_transformers()
     + void manejar_transformar()
     + void mostrar_transformers_secundarios()
-    + std::string solicitar_nombre_transformers()
+    + string solicitar_nombre_transformers()
     + int solicitar_vehiculo(faccion : const int&)
     + int solicitar_faccion()
-    + std::string convertir_vehiculo_string(vehiculo : const int&)
+    + string convertir_vehiculo_string(vehiculo : const int&)
     + void manejar_agregar_transformers(nombre : const string&, fuerza : const int&, defensa : const int&, velocidad : const int&, faccion : const string&, vehiculo : const string&)
     + void crear_transformers(nombre : const string&, tipo_vehiculo : const int&)
     + void manejar_crear_autobots(nombre : const string&)

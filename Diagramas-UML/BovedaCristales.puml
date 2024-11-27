@@ -24,7 +24,7 @@ class BovedaCristales {
     + Cristal eliminar_cristal(indice : const int&)
     + Cristal obtener_cristal_mas_poderoso()
 
-    - std::string construir_ruta_completa(ruta : string&)
+    - string construir_ruta_completa(ruta : string&)
     - void crear_directorios(ruta : const string&)
 }
 

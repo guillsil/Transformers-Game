@@ -19,7 +19,7 @@ class Estadisticas {
     + void mostrar()
     + void actualizar_poder()
     + Estadisticas& operator=(otras_estadisticas : const Estadisticas&)
-    + static std::ostream& operator<<(os : ostream&, estadisticas : const Estadisticas&)
+    + static ostream& operator<<(os : ostream&, estadisticas : const Estadisticas&)
 }
 
 ' Relaciones

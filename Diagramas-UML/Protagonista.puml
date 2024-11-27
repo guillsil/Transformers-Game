@@ -26,7 +26,7 @@ class Protagonista {
     + void equipar_cristal(cristal : Cristal)
     + void ver_cristales_equipados()
     + size_t obtener_cantidad_cristales_equipados()
-    - std::string obtener_estado(indice : const char&)
+    - string obtener_estado(indice : const char&)
 }
 
 ' Relaciones

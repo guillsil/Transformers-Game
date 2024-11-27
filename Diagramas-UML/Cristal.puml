@@ -23,11 +23,11 @@ class Cristal {
     + size_t obtener_fuerza()
     + size_t obtener_defensa()
     + size_t obtener_velocidad()
-    + std::string convertir_rareza_a_string()
+    + string convertir_rareza_a_string()
     + size_t obtener_poder()
     + void mostrar()
     + int obtener_porcentaje_exito()
-    + static std::ostream& operator<<(os : ostream&, cristal : const Cristal&)
+    + static ostream& operator<<(os : ostream&, cristal : const Cristal&)
 
     - Estadisticas inicializar_estadisticas()
 }
