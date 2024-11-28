@@ -635,6 +635,6 @@ void Menu::menu_cerranco_boveda(){
 void Menu::mostrar_menu_inicial() {
     imprimir_con_animacion(TRANSFORMERS, 1);
     imprimir_con_animacion(TRANSFORMERS_LOGO, 1);
-    imprimir_con_animacion(MENU_INICIAL, 1);
+    std::cout << MENU_INICIAL;
     std::cout << SIMBOLO_INGRESAR_MENSAJE;
 }
