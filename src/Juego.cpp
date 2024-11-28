@@ -223,6 +223,7 @@ void Juego::manejar_boveda() {
     char opcion;
     bool continuar = true;
     std::string ruta;
+    menu.menu_abriendo_boveda();
     while (continuar) {
         menu.mostrar_menu_boveda();
         std::cin >> opcion;
@@ -255,6 +256,8 @@ void Juego::manejar_boveda() {
              case OPCION_9:
                  continuar = false;
                 menu.limpiar_menu();
+                menu.menu_cerranco_boveda();
+                break;
             default:
                 menu.limpiar_y_mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
         }

@@ -115,6 +115,8 @@ public:
     void limpiar_y_mostrar_mensaje(const std::string& mensaje);
     void menu_transformers_encontrado();
     void menu_transformers_no_encontrado();
+    void menu_abriendo_boveda();
+    void menu_cerranco_boveda();
 };
 
 
