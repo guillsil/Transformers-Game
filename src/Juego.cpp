@@ -373,9 +373,11 @@ void Juego::manejar_buscar_transformers(){
     const std::string nombre = solicitar_nombre_transformers();
     try {
         if (administrador_transformers.buscar_transformer(nombre) != NO_ENCONTRADO){
-            menu.limpiar_y_mostrar_mensaje(MENSAJE_TRANSFORMERS_ENCONTRADO);
+            menu.limpiar_menu();
+            menu.menu_transformers_encontrado();
         } else {
-            menu.mostrar_mensaje(MENSAJE_TRANSFORMERS_NO_ENCONTRADO);
+            menu.limpiar_menu();
+            menu.menu_transformers_no_encontrado();
         }
     } catch (ExcepcionAdministradorTransformers& e){
         menu.limpiar_y_mostrar_mensaje(e.what());

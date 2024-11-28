@@ -5,7 +5,8 @@
 #ifndef MENU_HPP
 #define MENU_HPP
 #include <iostream>
-
+#include <chrono>
+#include <thread>
 const char OPCION_1 = '1';
 const char OPCION_2 = '2';
 const char OPCION_3 = '3';
@@ -112,6 +113,8 @@ public:
     //Pre: -
     //Post: Limpia la terminal y muestra un mensaje con recuadro por terminal.
     void limpiar_y_mostrar_mensaje(const std::string& mensaje);
+    void menu_transformers_encontrado();
+    void menu_transformers_no_encontrado();
 };
 
 
