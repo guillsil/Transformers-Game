@@ -12,7 +12,9 @@ class ExcepcionControlArchivo {
 
 class ControlArchivo {
     - string ruta
+    ---
     - Vector<string> dividir_linea(linea : const string&, delimitador : char)
+    ---
     + ControlArchivo()
     + ControlArchivo(string ruta)
     + void sobreescribir_en_archivo(Vector<T> vector_guardar)
