@@ -458,7 +458,6 @@ void Menu::mostrar_ingresar_cristal(const int &cristal) {
 
 void Menu::mostrar_estadisticas(const std::string &fuerza, const std::string &defensa, const std::string &velocidad) {
     std::cout << "                Fuerza: " << fuerza << "                    Defensa: " << defensa << "                      Velocidad: " << velocidad << std::endl;
-    std::cout << PARTE_INFERIOR_RECUADRO;
 }
 
 void Menu::mostrar_rareza(const std::string &rareza) {

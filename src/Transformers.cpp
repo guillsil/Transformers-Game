@@ -160,6 +160,7 @@ void Transformers::mostrar(){
         std::cout << "No";
     }
     std::cout << std::endl;
+    std::cout << std::endl;
     estadisticas.mostrar();
 }
 

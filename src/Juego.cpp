@@ -405,7 +405,6 @@ void Juego::manejar_transformar(){
 
 void Juego::mostrar_transformers_secundarios(){
     menu.limpiar_menu();
-    menu.mostrar_recuadro_superior();
     administrador_transformers.mostrar_todos_transformers();
 }
 

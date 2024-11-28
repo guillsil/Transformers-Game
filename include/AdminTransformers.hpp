@@ -27,6 +27,7 @@ private:
 
     Vector<Transformers> lista_transformers;
     ControlArchivo<Transformers> control_archivo_transformers;
+    Menu menu;
 public:
     //Constructor
     AdministradorTransformers();
