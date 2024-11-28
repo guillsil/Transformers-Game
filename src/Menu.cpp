@@ -466,10 +466,10 @@ void Menu::mostrar_menu_principal(const std::string &nombre) {
 void Menu::mostrar_menu_personaje(const int &personaje_elejido) {
     if (personaje_elejido == MEGATRON) {
         std::cout << PARTE_SUPERIOR_RECUADRO_OPCION_2;
-        std::cout << MEGATRON_ASCII;
+        imprimir_con_animacion(MEGATRON_ASCII, 3);
     }else {
         std::cout << PARTE_SUPERIOR_RECUADRO_OPCION_2;
-        std::cout << OPTIMUS_ASCII;
+        imprimir_con_animacion(OPTIMUS_ASCII, 2);
     }
     std::cout << MENU_PERSONAJE_ASCII;
     std::cout<<SIMBOLO_INGRESAR_MENSAJE;
@@ -549,13 +549,13 @@ void Menu::mostrar_rareza(const std::string &rareza) {
     std::cout << PARTE_SUPERIOR_RECUADRO;
     std::cout << "Rareza: " << rareza << std::endl;
 }
-
-void Menu::mostrar_menu_inicial() {
-    std::cout << TRANSFORMERS;
-    std::cout << TRANSFORMERS_LOGO;
-    std::cout << MENU_INICIAL;
-    std::cout << SIMBOLO_INGRESAR_MENSAJE;
+void Menu::imprimir_con_animacion(const std::string& texto, int retraso_ms = 50) {
+    for (char c : texto) {
+        std::cout << c << std::flush;  // Imprime carácter por carácter y asegura que se muestre de inmediato
+        std::this_thread::sleep_for(std::chrono::milliseconds(retraso_ms));  // Espera entre caracteres
+    }
 }
+
 
 void Menu::mostrar_menu_administrador_transformers(){
     std::cout << ADMINISTRADOR_TRANSFORMERS;
@@ -630,4 +630,11 @@ void Menu::menu_cerranco_boveda(){
     std::cout << CERRANDO_BOVEDA;
     std::this_thread::sleep_for(std::chrono::seconds(3));
     system("clear");
+}
+
+void Menu::mostrar_menu_inicial() {
+    imprimir_con_animacion(TRANSFORMERS, 2);
+    imprimir_con_animacion(TRANSFORMERS_LOGO, 2);
+    imprimir_con_animacion(MENU_INICIAL, 2);
+    std::cout << SIMBOLO_INGRESAR_MENSAJE;
 }

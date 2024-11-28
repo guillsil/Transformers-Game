@@ -85,6 +85,7 @@ public:
     //Pre: rareza debe ser una cadena no vaciá y alguno de los siguientes valores (común, raro, épico, legendario).
     //Post: Muestra por consola la rareza de un cristial.
     void mostrar_rareza(const std::string &rareza);
+    void imprimir_con_animacion(const std::string& texto, int retraso_ms);
 
     //Pre: -
     //Post: Imprime por consola el menu inicial del juego en el cual se pide al usuario que ingrese su nombre.
