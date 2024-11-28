@@ -68,6 +68,9 @@ void AdministradorTransformers::transformar_transformer(std::string nombre){
         throw ExcepcionAdministradorTransformers(ERROR_TRANSFORMER_NO_ENCONTRADO);
     } else {
         lista_transformers[indice_transformado].cambiar_forma();
+        menu.mostrar_recuadro_superior();
+        lista_transformers[indice_transformado].mostrar();
+        menu.mostrar_recuadro_inferior();
     }
 }
 

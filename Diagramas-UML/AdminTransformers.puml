@@ -13,6 +13,7 @@ class ExcepcionAdministradorTransformers {
 class AdministradorTransformers{
     - Vector<Transformers> lista_transformers
     - ControlArchivo<Transformers> control_archivo_transformers
+    - Menu menu
     ---
     + AdministradorTransformers()
     + void agregar_transformer(nombre : string, fuerza : int, defensa : int, velocidad : int, faccion : string, vehiculo : string)
