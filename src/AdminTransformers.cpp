@@ -44,12 +44,13 @@ size_t AdministradorTransformers::buscar_transformer(std::string nombre){
 
 void AdministradorTransformers::mostrar_todos_transformers(){
     //std::cout << "-- NOMBRE, FUERZA, DEFENZA, VELOCIDAD, FACCION, VEHICULO, TRANSFOMADO" << std::endl;
-    std::cout << "  Lista de Transformers Secundarios" << std::endl;
     std::cout << std::endl;
+    std::cout << "  Lista de Transformers Secundarios" << std::endl;
     for (size_t i = 0; i < lista_transformers.tamanio(); i++){
+        menu.mostrar_recuadro_superior();
         std::cout << "      " << (i+1) << ") ";
         (lista_transformers[i]).mostrar();
-        std::cout << std::endl;
+        menu.mostrar_recuadro_inferior();
     }
 }
 

@@ -86,8 +86,10 @@ std::string Cristal::convertir_rareza_a_string() {
 }
 
 void Cristal::mostrar() {
+    menu.mostrar_recuadro_superior();
     menu.mostrar_rareza(convertir_rareza_a_string());
     estadisticas.mostrar();
+    menu.mostrar_recuadro_inferior();
 }
 
 int Cristal::obtener_porcentaje_exito() {
