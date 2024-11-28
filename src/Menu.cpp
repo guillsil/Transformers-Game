@@ -466,10 +466,10 @@ void Menu::mostrar_menu_principal(const std::string &nombre) {
 void Menu::mostrar_menu_personaje(const int &personaje_elejido) {
     if (personaje_elejido == MEGATRON) {
         std::cout << PARTE_SUPERIOR_RECUADRO_OPCION_2;
-        imprimir_con_animacion(MEGATRON_ASCII, 2);
+        imprimir_con_animacion(MEGATRON_ASCII, 1);
     }else {
         std::cout << PARTE_SUPERIOR_RECUADRO_OPCION_2;
-        imprimir_con_animacion(OPTIMUS_ASCII, 2);
+        imprimir_con_animacion(OPTIMUS_ASCII, 1);
     }
     std::cout << MENU_PERSONAJE_ASCII;
     std::cout<<SIMBOLO_INGRESAR_MENSAJE;
