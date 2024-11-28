@@ -8,7 +8,7 @@ class Estadisticas {
     - size_t velocidad
     - size_t poder
     - Menu menu
-
+    ---
     + Estadisticas(fuerza : const size_t&, defensa : const size_t&, velocidad : const size_t&)
     + void aplicar_bonificacion()
     + void aplicar_bonificacion_distintas(bono_fuerza : int, bono_defensa : int, bono_velocidad : int)

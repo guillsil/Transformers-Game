@@ -10,7 +10,7 @@ class Juego {
     - string nombre_jugador
     - AdministradorTransformers administrador_transformers
     - TablaClasificacion tabla_clasificacion
-
+    ---
     + Juego()
     + void procesar_menu_principal(opcion_menu : const char&,  nombre : const &string)
     + bool jugando() const

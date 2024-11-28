@@ -14,7 +14,7 @@ class Cristal {
     - Rareza rareza
     - Menu menu
     - Estadisticas estadisticas
-
+    ---
     + Cristal()
     + Cristal(rareza : Rareza)
     + Cristal(rareza : const Rareza&, exito : const bool&)
@@ -28,7 +28,6 @@ class Cristal {
     + void mostrar()
     + int obtener_porcentaje_exito()
     + static ostream& operator<<(os : ostream&, cristal : const Cristal&)
-
     - Estadisticas inicializar_estadisticas()
 }
 

@@ -9,7 +9,7 @@ class ManejadorDeRespuestas {
     - int cantidad_respuestas
     - int cantidad_respuestas_random
     - Utilidades utilidades
-
+    ---
     + ManejadorDeRespuestas()
     + void agregar_respuesta(respuesta : const string&)
     + void agregar_respuesta_random(respuesta_random : const string&)

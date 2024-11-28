@@ -12,7 +12,7 @@ class BovedaCristales {
     - Vector<Cristal> cristales
     - size_t tamanio_inicial
     - Menu menu
-
+    ---
     + BovedaCristales()
     + BovedaCristales(tamanio_inicial : size_t)
     + void almacenar_cristal(cristal_nuevo : Cristal)
@@ -23,7 +23,6 @@ class BovedaCristales {
     + size_t tamanio()
     + Cristal eliminar_cristal(indice : const int&)
     + Cristal obtener_cristal_mas_poderoso()
-
     - string construir_ruta_completa(ruta : string&)
     - void crear_directorios(ruta : const string&)
 }

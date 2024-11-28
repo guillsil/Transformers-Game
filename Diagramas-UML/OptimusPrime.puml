@@ -8,7 +8,7 @@ class ManejadorPalabrasClave
 class OptimusPrime {
     - Utilidades utilidades
     - int estado_de_animo
-
+    --
     + OptimusPrime()
     + void responder(mensaje : string)
     + void sugerir_fusion()

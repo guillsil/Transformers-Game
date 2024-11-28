@@ -17,7 +17,7 @@ class Protagonista {
     - Megatron megatron
     - Personaje personaje_jugando
     - BovedaCristales cristales_equipados
-
+    ---
     + Protagonista(personaje : Personaje)
     + void obtener_respuesta(mensaje : const string&)
     + void obtener_sugerencia()

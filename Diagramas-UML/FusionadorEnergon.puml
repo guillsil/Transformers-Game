@@ -15,11 +15,10 @@ class FusionadorEnergon {
     - int ultima_rareza
     - int probabilidad_bonificacion
     - GeneradorAleatorio generador_bonificacion
-
+    ---
     + FusionadorEnergon()
     + Cristal fusionar(cristal_1 : Cristal, cristal_2 : Cristal)
     + Cristal fusionar(cristal_1 : Cristal, cristal_2 : Cristal, generador : GeneradorAleatorio&)
-
     - Cristal fusionar_cristales(cristal_1 : Cristal, cristal_2 : Cristal, generador : GeneradorAleatorio*)
     - void verificar_rarezas_iguales(cristal_1 : Cristal&, cristal_2 : Cristal&)
     - bool verificar_exito_de_fusion(rareza_actual : const Rareza&, porcentaje_exito : const int&, generador : GeneradorAleatorio*)

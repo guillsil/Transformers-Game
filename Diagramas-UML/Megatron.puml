@@ -9,7 +9,7 @@ class ManejadorPalabrasClave
 class Megatron {
     - Utilidades utilidades
     - int estado_de_intencion
-
+    ---
     + Megatron()
     + void responder(mensaje : string)
     + void sugerir_fusion()
