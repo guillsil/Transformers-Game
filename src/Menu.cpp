@@ -549,7 +549,7 @@ void Menu::mostrar_rareza(const std::string &rareza) {
     std::cout << PARTE_SUPERIOR_RECUADRO;
     std::cout << "Rareza: " << rareza << std::endl;
 }
-void Menu::imprimir_con_animacion(const std::string& texto, int retraso_ms = 50) {
+void Menu::imprimir_con_animacion(const std::string& texto, const int &retraso_ms = 50) {
     for (char c : texto) {
         std::cout << c << std::flush;  // Imprime carácter por carácter y asegura que se muestre de inmediato
         std::this_thread::sleep_for(std::chrono::milliseconds(retraso_ms));  // Espera entre caracteres

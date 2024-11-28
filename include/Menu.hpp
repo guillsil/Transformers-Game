@@ -86,10 +86,6 @@ public:
     //Post: Muestra por consola la rareza de un cristial.
     void mostrar_rareza(const std::string &rareza);
 
-    //Pre: El texto debe ser no vacio.
-    //Post: Imprime por consola una cadena caracter por caracter dado el retraso suministrado
-    void imprimir_con_animacion(const std::string& texto, int retraso_ms);
-
     //Pre: -
     //Post: Imprime por consola el menu inicial del juego en el cual se pide al usuario que ingrese su nombre.
     void mostrar_menu_inicial();
@@ -117,6 +113,10 @@ public:
     //Pre: -
     //Post: Limpia la terminal y muestra un mensaje con recuadro por terminal.
     void limpiar_y_mostrar_mensaje(const std::string& mensaje);
+
+    //Pre: El texto debe ser no vacio.
+    //Post: Imprime por consola una cadena caracter por caracter dado el retraso suministrado
+    void imprimir_con_animacion(const std::string& texto,const int &retraso_ms);
 
     //Pre: -
     //Post: Muestra por pantalla una menu para indicar que el transformers fue encontrado.
