@@ -12,6 +12,7 @@ class ExcepcionTablaClasificacion {
 class TablaClasificacion{
     - Vector<DatosJugador> lista_jugadores
     - ControlArchivo<DatosJugador> control_archivo_tabla
+    ---
     + TablaClasificacion()
     + void mostrar_top10_jugadores()
     + void agregar_jugador(DatosJugador jugador_nuevo);

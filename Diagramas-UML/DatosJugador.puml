@@ -12,8 +12,10 @@ class DatosJugador{
     - String nombre_jugador
     - int puntaje
     - Personaje personaje_usado
+    ---
     - Personaje obtener_personaje_desde_texto(nombre_personaje : string)
     - String obtener_personaje_usado()
+    ---
     + DatosJugador()
     + DatosJugador(nombre_jugador : string, puntaje : int, personaje_usado : Personaje)
     + DatosJugador(elementos : Vector<String>&)

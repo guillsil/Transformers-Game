@@ -3,6 +3,7 @@
 class Vector
 class Transformers
 class ControlArchivo
+class Menu
 
 class ExcepcionAdministradorTransformers {
     + ExcepcionAdministradorTransformers(mensaje : string)
@@ -12,6 +13,8 @@ class ExcepcionAdministradorTransformers {
 class AdministradorTransformers{
     - Vector<Transformers> lista_transformers
     - ControlArchivo<Transformers> control_archivo_transformers
+    - Menu menu
+    ---
     + AdministradorTransformers()
     + void agregar_transformer(nombre : string, fuerza : int, defensa : int, velocidad : int, faccion : string, vehiculo : string)
     + Transformers eliminar_transformer(nombre : string)
@@ -28,4 +31,5 @@ class AdministradorTransformers{
 AdministradorTransformers --> Vector : "usa"
 AdministradorTransformers --> Transformers : "usa"
 AdministradorTransformers --> ControlArchivo : "usa"
+AdministradorTransformers --> Menu : "usa"
 @enduml
