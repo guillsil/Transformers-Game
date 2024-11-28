@@ -466,7 +466,7 @@ void Menu::mostrar_menu_principal(const std::string &nombre) {
 void Menu::mostrar_menu_personaje(const int &personaje_elejido) {
     if (personaje_elejido == MEGATRON) {
         std::cout << PARTE_SUPERIOR_RECUADRO_OPCION_2;
-        imprimir_con_animacion(MEGATRON_ASCII, 3);
+        imprimir_con_animacion(MEGATRON_ASCII, 2);
     }else {
         std::cout << PARTE_SUPERIOR_RECUADRO_OPCION_2;
         imprimir_con_animacion(OPTIMUS_ASCII, 2);
@@ -633,8 +633,8 @@ void Menu::menu_cerranco_boveda(){
 }
 
 void Menu::mostrar_menu_inicial() {
-    imprimir_con_animacion(TRANSFORMERS, 2);
-    imprimir_con_animacion(TRANSFORMERS_LOGO, 2);
-    imprimir_con_animacion(MENU_INICIAL, 2);
+    imprimir_con_animacion(TRANSFORMERS, 1);
+    imprimir_con_animacion(TRANSFORMERS_LOGO, 1);
+    imprimir_con_animacion(MENU_INICIAL, 1);
     std::cout << SIMBOLO_INGRESAR_MENSAJE;
 }
