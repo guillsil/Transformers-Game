@@ -85,6 +85,9 @@ public:
     //Pre: rareza debe ser una cadena no vaciá y alguno de los siguientes valores (común, raro, épico, legendario).
     //Post: Muestra por consola la rareza de un cristial.
     void mostrar_rareza(const std::string &rareza);
+
+    //Pre: El texto debe ser no vacio.
+    //Post: Imprime por consola una cadena caracter por caracter dado el retraso suministrado
     void imprimir_con_animacion(const std::string& texto, int retraso_ms);
 
     //Pre: -
@@ -114,9 +117,21 @@ public:
     //Pre: -
     //Post: Limpia la terminal y muestra un mensaje con recuadro por terminal.
     void limpiar_y_mostrar_mensaje(const std::string& mensaje);
+
+    //Pre: -
+    //Post: Muestra por pantalla una menu para indicar que el transformers fue encontrado.
     void menu_transformers_encontrado();
+
+    //Pre: -
+    //Post: Muestra por pantalla una menu para indicar que el transformers no fue encontrado.
     void menu_transformers_no_encontrado();
+
+    //Pre: -
+    //Post: Muestra un menu de Carga con el Mensaje de que se está abriendo la Bóveda.
     void menu_abriendo_boveda();
+
+    //Pre: -
+    //Post: Muestra un menu de Carga con el Mensaje de que se está cerrando la Bóveda.
     void menu_cerranco_boveda();
 };
 
