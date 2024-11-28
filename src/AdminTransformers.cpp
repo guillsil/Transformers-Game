@@ -16,6 +16,10 @@ Transformers AdministradorTransformers::eliminar_transformer(std::string nombre)
     size_t eliminado_posicion = buscar_transformer(nombre);
     if (eliminado_posicion == NO_ENCONTRADO){ //ver caso no encuentra el transformer posicion = -1
         throw ExcepcionAdministradorTransformers(ERROR_TRANSFORMER_NO_ENCONTRADO);   
+    } else {
+        menu.mostrar_recuadro_superior();
+        lista_transformers[eliminado_posicion].mostrar();
+        menu.mostrar_recuadro_inferior();
     }
     return lista_transformers.baja(buscar_transformer(nombre)); 
 }
