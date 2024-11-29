@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <string>
 #include "TDAs/Vector.hpp"
+#include "ControlArchivo.hpp"
 #include <filesystem>
 
 
@@ -58,9 +59,9 @@ public:
     //Post: Devuelve el tamaño de la bóveda.
     size_t tamanio();
 
-    //Pre:
-    //Post:
-    Cristal obtener_y_eliminar_cristal_mas_poderoso();
+    //Pre: -
+    //Post: Elimina el Cristal en el inidice pasado.
+    Cristal eliminar_cristal(const int &indice);
 
     //Pre: -
     //Post: Devuelve el Cristal más poderoso que se encuentra en la bóveda que siempre se encontrara en la primera posición de
@@ -81,10 +82,6 @@ private:
     //Pre: La ruta debe ser no vaciá.
     //Post: Crea los directorios necesarios para almacenar el archivo en la ruta especificada.
     void crear_directorios(const std::string& ruta);
-
-    //Pre: -
-    //Post: Escribe en el objeto archivo suministrado el nivel de rareza y las estadísticas del cristal.
-    void escribir_cristales_en_archivo(std::ofstream& archivo);
 };
 
 #endif

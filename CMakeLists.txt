@@ -36,24 +36,33 @@ set(ARCHIVOS_FUENTE
 
         src/Megatron.cpp
         src/OptimusPrime.cpp
+        src/ManejadorDeRespuestas.cpp
+        src/ManejadorDePalabrasClaves.cpp
+        src/ManejadorDeMensajes.cpp
+
         src/GeneradorAleatorio.cpp
         src/FusionadorEnergon.cpp
         src/Cristal.cpp
         src/BovedaCristales.cpp
-        src/Personaje.cpp
         src/Juego.cpp
         src/Menu.cpp
         src/Utilidades.cpp
-        src/ManejadorDeRespuestas.cpp
-        src/ManejadorDePalabrasClaves.cpp
-        src/ManejadorDeMensajes.cpp
+
         src/Estadisticas.cpp
         src/Grafo/TuplaVerticeDistancia.cpp
+
+        src/Protagonista.cpp
+
         src/GraficadorCombates.cpp
         src/SimulacionCombate.cpp
         src/GeneradorCombates.cpp
         src/CombatesUsuario.cpp
 
+        include/ControlArchivo.hpp
+        src/Transformers.cpp
+        src/AdminTransformers.cpp
+        src/DatosJugador.cpp
+        src/TablaClasificacion.cpp
 )
 
 add_executable(AYED_TPG_2C2024

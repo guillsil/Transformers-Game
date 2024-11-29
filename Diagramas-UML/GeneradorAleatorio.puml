@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/class-diagram
+class GeneradorAleatorio {
+    - std::default_random_engine generador
+    - std::uniform_int_distribution<> distribucion
+
+    + GeneradorAleatorio()
+    + virtual bool generar_chance_porcentual(porcentaje : size_t)
+    + virtual ~GeneradorAleatorio()
+}
+
+class ExcepcionPorcentajeNoValido {
+    + ExcepcionPorcentajeNoValido(mensaje : string)
+}
+
+' Relaciones
+GeneradorAleatorio ..> ExcepcionPorcentajeNoValido : "lanza"
+
+
+@enduml

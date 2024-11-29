@@ -56,11 +56,11 @@ size_t BovedaCristales::tamanio() {
     return cristales.tamanio();
 }
 
-Cristal BovedaCristales::obtener_y_eliminar_cristal_mas_poderoso() {
+Cristal BovedaCristales::eliminar_cristal(const int &indice) {
     try {
-        Cristal cristal_mas_poderoso = cristales[0];
-        cristales.baja(0);
-        return cristal_mas_poderoso;
+        Cristal cristal = cristales[indice];
+        cristales.baja(indice);
+        return cristal;
     } catch (ExcepcionVector& e) {
         throw ExcepcionBovedaCristales(ERROR_CRISTALES_VACIO);
     }
@@ -72,12 +72,14 @@ Cristal BovedaCristales::obtener_cristal_mas_poderoso() {
 
 void BovedaCristales::exportar_cristales(std::string ruta) {
     std::string ruta_completa = construir_ruta_completa(ruta);
-    std::ofstream archivo_cristales(ruta_completa);
-    if (!archivo_cristales) {
-        throw ExcepcionBovedaCristales(ERROR_NO_SE_PUDO_ABRIR_ARCHIVO);
-    }
-    escribir_cristales_en_archivo(archivo_cristales);
-    archivo_cristales.close();
+    // std::ofstream archivo_cristales(ruta_completa);
+    // if (!archivo_cristales) {
+    //     throw ExcepcionBovedaCristales(ERROR_NO_SE_PUDO_ABRIR_ARCHIVO);
+    // }
+    // escribir_cristales_en_archivo(archivo_cristales);
+    // archivo_cristales.close();
+    ControlArchivo<Cristal> control_archivo_cristales(ruta_completa);
+    control_archivo_cristales.sobreescribir_en_archivo(cristales);
 }
 
 
@@ -98,14 +100,4 @@ std::string BovedaCristales::construir_ruta_completa(std::string &ruta) {
 void BovedaCristales::crear_directorios(const std::string &ruta) {
     std::filesystem::path directorios = std::filesystem::path(ruta).parent_path();
     create_directories(directorios);
-}
-
-void BovedaCristales::escribir_cristales_en_archivo(std::ofstream &archivo_cristales) {
-    for (size_t i = 0; i < cristales.tamanio(); i++) {
-        std::string nivel_rareza = cristales[i].convertir_rareza_a_string();
-        size_t fuerza = cristales[i].obtener_fuerza();
-        size_t defenza = cristales[i].obtener_defensa();
-        size_t velocidad = cristales[i].obtener_velocidad();
-        archivo_cristales << nivel_rareza << "," << fuerza << "," << defenza << "," <<velocidad << std::endl;
-    }
 }

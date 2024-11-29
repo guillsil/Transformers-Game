@@ -1,74 +1,24 @@
 @startuml
-' Clases relacionadas
+'https://plantuml.com/class-diagram
 class Utilidades
-class OptimusPrime
-class ManejadorDePalabrasClaves
 class ManejadorDeRespuestas
 class ManejadorDeMensajes
+class ManejadorPalabrasClave
 
-
-
-' Clase Utilidades
-class Utilidades {
-  +void convertir_a_minuscula(std::string &cadena)
-  +int generar_numero_aleatorio(const int &inicio, const int &fin)
-  +bool agregar_elemento_a_arreglo(std::string arreglo[], int &cantidad, const int &max, const std::string &elemento)
-}
-
-
-' Clase OptimusPrime
 class OptimusPrime {
-  +OptimusPrime()
-  +void responder(std::string mensaje)
-  +void sugerir_fusion()
-  +void cambiar_animo(std::string animo)
-
-  -Utilidades utilidades
-  -int estado_de_animo
+    - Utilidades utilidades
+    - int estado_de_animo
+    --
+    + OptimusPrime()
+    + void responder(mensaje : string)
+    + void sugerir_fusion()
+    + void cambiar_animo(animo : string)
 }
 
-
-
-' Clase ManejadorDeMensajes
-class ManejadorDeMensajes {
-  +ManejadorDeMensajes(ManejadorDePalabrasClaves& manejador_palabras, ManejadorDeRespuestas& manejador_respuestas)
-  +void procesar_mensajes(const std::string& mensaje)
-  +void mostrar_mensajes(TipoDeRespuesta tipo)
-
-  -ManejadorDePalabrasClaves& manejador_palabras
-  -ManejadorDeRespuestas& manejador_respuestas
-  -int primera_palabra_clave_hallada
-}
-
-' Clase ManejadorDePalabrasClaves
-class ManejadorDePalabrasClaves {
-  +ManejadorDePalabrasClaves()
-  +void agregar_palabras_clave(const std::string& palabra)
-  +int buscar_palabras_clave(const std::string& cadena)
-
-  -Utilidades utilidades
-  -std::string palabras_claves[MAX_PALABRAS_CLAVES]
-  -int cantidad_palabras_claves
-}
-' Clase ManejadorDeRespuestas
-class ManejadorDeRespuestas {
-  +ManejadorDeRespuestas()
-  +void agregar_respuesta(const std::string& respuesta)
-  +void agregar_respuesta_random(const std::string& respuesta_random)
-  +std::string obtener_respuesta_por_indice(const int& indice)
-  +std::string obtener_respuesta_random()
-
-  -Utilidades utilidades
-  -std::string respuestas[MAX_RESPUESTAS]
-  -std::string respuestas_random[MAX_RESPUESTAS]
-  -int cantidad_respuestas
-  -int cantidad_respuestas_random
-}
-
-
-OptimusPrime *-- Utilidades
-OptimusPrime *-- ManejadorDeMensajes
-OptimusPrime *-- ManejadorDeRespuestas
-OptimusPrime *-- ManejadorDePalabrasClaves
-
+' Relaciones
+OptimusPrime --> Utilidades : "usa"
+OptimusPrime --> ManejadorDeMensajes : "depende"
+OptimusPrime --> ManejadorPalabrasClave : "depende"
+OptimusPrime --> ManejadorDeRespuestas : "depende"
+' depende porque no son atributos de optimus si no que los uso en su implementación
 @enduml

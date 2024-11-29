@@ -31,7 +31,7 @@ private:
     //Post: Calcula el ancho
     void ancho_recursivo(NodoDiccionario<Clave, T>* nodo, Vector<T>& vector, int nivel, int nivel_actual);
     
-    int obtenerAltura(NodoDiccionario<Clave, T>* nodo);
+    int obtener_altura(NodoDiccionario<Clave, T>* nodo);
     
     //Post: Da de alta un dato
     void alta_recursiva(NodoDiccionario<Clave, T>* nodo, Clave clave, T dato);
@@ -149,7 +149,7 @@ Vector<T> Diccionario<Clave, T>::postorder() {
 template<typename Clave, typename T>
 Vector<T> Diccionario<Clave, T>::ancho() {
     Vector<T> vector;
-    int altura = obtenerAltura(raiz);
+    int altura = obtener_altura(raiz);
     for(int i = 1; i <= altura + 1; i++){
         ancho_recursivo(raiz, vector, 1, i);
     }
@@ -285,10 +285,10 @@ void Diccionario<Clave, T>::ancho_recursivo(NodoDiccionario<Clave, T>* nodo, Vec
 }
 
 template<typename Clave, typename T>
-int Diccionario<Clave, T>::obtenerAltura(NodoDiccionario<Clave, T>* nodo) {
+int Diccionario<Clave, T>::obtener_altura(NodoDiccionario<Clave, T>* nodo) {
     if(!nodo)
         return -1;
-    return std::max(obtenerAltura(nodo->obtener_hijo_izquierdo()), obtenerAltura(nodo->obtener_hijo_derecho())) + 1;
+    return std::max(obtener_altura(nodo->obtener_hijo_izquierdo()), obtener_altura(nodo->obtener_hijo_derecho())) + 1;
 }
 
 #endif

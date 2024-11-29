@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Utilidades {
+    + void convertir_a_minuscula(cadena : string &)
+    + int generar_numero_aleatorio(inicio : const int&, fin : const int&)
+    + bool agregar_elemento_a_arreglo(arreglo[] : string, cantidad : int&, max : const int&, elemento : const string&)
+}
+
+@enduml

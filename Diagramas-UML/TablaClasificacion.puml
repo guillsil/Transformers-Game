@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+class ControlArchivo
+class Vector
+class DatosJugador
+
+class ExcepcionTablaClasificacion {
+    + ExcepcionTablaClasificacion(mensaje : string)
+    + ExcepcionTablaClasificacion()
+}
+
+class TablaClasificacion{
+    - Vector<DatosJugador> lista_jugadores
+    - ControlArchivo<DatosJugador> control_archivo_tabla
+    ---
+    + TablaClasificacion()
+    + void mostrar_top10_jugadores()
+    + void agregar_jugador(DatosJugador jugador_nuevo);
+    + void agregar_jugador(std::string nombre_jugador, int puntaje, Personaje personaje_usado)
+    + ~TablaClasificacion()
+};    
+}
+
+' Relaciones
+TablaClasificacion --> Vector : "usa"
+TablaClasificacion --> ControlArchivo : "usa"
+TablaClasificacion --> DatosJugador : "usa"
+@enduml
