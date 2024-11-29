@@ -4,8 +4,9 @@
 #define GENERADOR_COMBATES_HPP
 
 #include "Transformers.hpp"
-#include "Vector.hpp"
+#include "TDAs/Vector.hpp"
 #include "Grafo.hpp"
+#include "GraficadorCombates.hpp"
 
 struct Secuencia_combates {
     Vector<Transformers> secuencia_combate;
@@ -16,7 +17,8 @@ class GeneradorCombates {
     private:
         //Atributos
         Grafo mapa_combates;
-        Camino secuencia_minima_numerica; 
+        Camino secuencia_minima_numerica;
+        GraficadorCombates graficador;
         Vector<Transformers> transformers_en_mapa; //Representa los vertices que tendra mi grafo mapa_combates
         Vector<Transformers> secuencia_minima_transformers;
     

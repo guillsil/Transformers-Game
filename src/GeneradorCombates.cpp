@@ -2,6 +2,8 @@
 
 #include "../include/GeneradorCombates.hpp"
 
+GeneradorCombates:: ~GeneradorCombates(){}
+
 Grafo GeneradorCombates:: generar_mapa(Vector<Transformers>& transformers_en_mapa){
     size_t cantidad_transformers = transformers_en_mapa.tamanio();
     Grafo mapa_combates(cantidad_transformers);
@@ -10,6 +12,7 @@ Grafo GeneradorCombates:: generar_mapa(Vector<Transformers>& transformers_en_map
     for(size_t i = 0; i < cantidad_transformers-1; i++){
         size_t j = i;
 
+        //Con solo el vertice sabemos el nivel en el que estamos
         //Caso donde el vertice es el primero del grafo o el tercero de los niveles medios 
         if(i % 3 == 0){
            j++;
@@ -76,8 +79,6 @@ GeneradorCombates:: GeneradorCombates(Transformers& personaje_principal, Vector<
     secuencia_minima_numerica = mapa_combates.obtener_camino_minimo(0,transformers_en_mapa.tamanio()-1);
 }
 
-GeneradorCombates:: ~GeneradorCombates(){};
-
 Vector<Transformers> GeneradorCombates:: obtener_secuencia_minima(){
     if(secuencia_minima_transformers.tamanio() > 0){
         for(size_t i = 0; i < secuencia_minima_numerica.camino.tamanio(); i++){
@@ -92,11 +93,13 @@ int GeneradorCombates:: costo_energon_secuencia(){
 }
 
 void GeneradorCombates:: mostrar_mapa_combates(){
-    
+    graficador.mostrar_mapa_combates(transformers_en_mapa);
 }
 
 void GeneradorCombates:: mostrar_secuencia_minima(){
-    //A implementar
+    graficador.mostrar_secuencia(secuencia_minima_numerica.camino,
+                                transformers_en_mapa[0],
+                                transformers_en_mapa[transformers_en_mapa.tamanio()-1]);
 }
 
 GeneradorCombates& GeneradorCombates:: operator=(const GeneradorCombates& generador_combates){
