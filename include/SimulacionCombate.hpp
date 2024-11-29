@@ -4,7 +4,7 @@
 #define SIMULACION_COMBATE_HPP
 
 #include "Transformers.hpp"
-#include "Vector.hpp"
+#include "TDAs/Vector.hpp"
 
 enum Resultado_combate {
     VICTORIA,

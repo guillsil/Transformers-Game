@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class ExcepcionVector {
+    +ExcepcionVector(mensaje : string)
+    +ExcepcionVector()
+}
+
+class Vector<T> {
+    -T* datos
+    -size_t tamanio_logico
+    -size_t tamanio_fisico
+    -const size_t tamanio_inicial
+    ---
+    +Vector()
+    +Vector(tamanio_inicial: size_t)
+    +Vector(tamanio_inicial: size_t, inicializador: T)
+    +Vector(vector : const Vector&)
+    +~Vector()
+    + Vector& operator=(vector : const Vector& )
+    + T& operator[](indice: size_t)
+    +alta(dato: T)
+    +alta(dato: T, indice: size_t)
+    + T baja()
+    + T baja(indice: size_t)
+    + bool vacio()
+    + size_t tamanio()
+    +mostrar()
+    +limpiar()
+    +invertir()
+    ---
+    -redimensionar(nuevo_tamanio: const size_t)
+}
+
+Vector ..>  ExcepcionVector : "lanza"
+
+@enduml

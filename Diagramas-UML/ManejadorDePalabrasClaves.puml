@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Utilidades
+
+class ManejadorDePalabrasClaves {
+    - string palabras_claves[MAX_PALABRAS_CLAVES]
+    - int cantidad_palabras_claves
+    - Utilidades utilidades
+    ---
+    + ManejadorDePalabrasClaves()
+    + void agregar_palabras_clave(palabra : const string&)
+    + int buscar_palabras_clave(cadena : const string&)
+}
+
+' Relaciones
+ManejadorDePalabrasClaves --> Utilidades : "usa"
+
+@enduml

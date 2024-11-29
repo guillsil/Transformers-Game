@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Menu
+
+class Estadisticas {
+    - size_t fuerza
+    - size_t defensa
+    - size_t velocidad
+    - size_t poder
+    - Menu menu
+    ---
+    + Estadisticas(fuerza : const size_t&, defensa : const size_t&, velocidad : const size_t&)
+    + void aplicar_bonificacion()
+    + void aplicar_bonificacion_distintas(bono_fuerza : int, bono_defensa : int, bono_velocidad : int)
+    + size_t obtener_fuerza()
+    + size_t obtener_defensa()
+    + size_t obtener_velocidad()
+    + size_t obtener_poder()
+    + void mostrar()
+    + void actualizar_poder()
+    + Estadisticas& operator=(otras_estadisticas : const Estadisticas&)
+    + static ostream& operator<<(os : ostream&, estadisticas : const Estadisticas&)
+}
+
+' Relaciones
+Estadisticas --> Menu : "usa"
+
+@enduml

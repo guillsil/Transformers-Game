@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Cristal
+class GeneradorAleatorio
+
+
+class ExcepcionFusionadorEnergon {
+    + ExcepcionFusionadorEnergon(mensaje : string)
+    + ExcepcionFusionadorEnergon()
+}
+
+class FusionadorEnergon {
+    - int fallos_consecutivos[4]
+    - int ultima_rareza
+    - int probabilidad_bonificacion
+    - GeneradorAleatorio generador_bonificacion
+    ---
+    + FusionadorEnergon()
+    + Cristal fusionar(cristal_1 : Cristal, cristal_2 : Cristal)
+    + Cristal fusionar(cristal_1 : Cristal, cristal_2 : Cristal, generador : GeneradorAleatorio&)
+    - Cristal fusionar_cristales(cristal_1 : Cristal, cristal_2 : Cristal, generador : GeneradorAleatorio*)
+    - void verificar_rarezas_iguales(cristal_1 : Cristal&, cristal_2 : Cristal&)
+    - bool verificar_exito_de_fusion(rareza_actual : const Rareza&, porcentaje_exito : const int&, generador : GeneradorAleatorio*)
+    - void verificar_fusion_prohibida(rareza : const Rareza&)
+    - int obtener_proxima_rareza(rareza : const Rareza&)
+    - int obtener_rareza_anterior(rareza : const Rareza&)
+    - void resetear_fallos_por_nivel(rareza : const Rareza&)
+    - bool dar_bonificacion(probabilidad_bonificacion : const int&)
+}
+' Relaciones
+FusionadorEnergon --> Cristal : "fusiona"
+FusionadorEnergon --> GeneradorAleatorio : "usa"
+FusionadorEnergon ..> ExcepcionFusionadorEnergon : "lanza"
+
+
+@enduml

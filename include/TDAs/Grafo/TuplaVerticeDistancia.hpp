@@ -4,21 +4,26 @@
 
 #ifndef TUPLAVERTICEDISTANCIA_HPP
 #define TUPLAVERTICEDISTANCIA_HPP
-#include "iostream"
+#include <iostream>
 
 class TuplaVerticeDistancia {
 public:
+    TuplaVerticeDistancia();
+
     TuplaVerticeDistancia(size_t vertice, size_t distancia);
 
+    bool operator>(const TuplaVerticeDistancia &otra) const;
+
     bool operator<(const TuplaVerticeDistancia &otra) const;
+
 
     size_t obtener_vertice() const;
 
     size_t obtener_distancia() const;
 
 private:
-    size_t vertice;
-    size_t distancia;
+    size_t vertice{};
+    size_t distancia{};
 };
 
 #endif //TUPLAVERTICEDISTANCIA_HPP

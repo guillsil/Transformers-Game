@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Menu {
+    + void mostrar_menu_principal(nombre: const string&)
+    + void mostrar_menu_personaje(personaje_elejido: const int&)
+    + void mostrar_menu_ingresar_mensaje()
+    + void mostrar_menu_estado(personaje_elejido: const int&)
+    + void mostrar_recuadro_superior()
+    + void mostrar_recuadro_inferior()
+    + void limpiar_menu()
+    + void mostrar_mensaje(mensaje: const string&)
+    + void mostrar_menu_fusionar_cristales()
+    + void mostrar_menu_boveda()
+    + void mostrar_menu_almacenar_cristal()
+    + void mostrar_menu_exportar_archivo()
+    + void mostrar_ingresar_cristal(cristal: const int&)
+    + void mostrar_estadisticas(fuerza: const string&, defensa: const string&, velocidad: const string&)
+    + void mostrar_rareza(rareza: const string&)
+    + void mostrar_menu_inicial()
+    + void mostrar_menu_administrador_transformers()
+    + void menu_escoger_faccion()
+    + void menu_escoger_vehiculo(faccion: const int&)
+    + void menu_ingregar_nombre_transformers()
+    + void menu_interactuar_con_personaje(personaje_elejido: const int&)
+    + void limpiar_y_mostrar_mensaje(mensaje: const string&)
+    + void imprimir_con_animacion(texto : const string&,retraso_ms : const int&)
+    + void menu_transformers_encontrado()
+    + void menu_transformers_no_encontrado()
+    + void menu_abriendo_boveda()
+    + void menu_cerranco_boveda()
+}
+
+@enduml

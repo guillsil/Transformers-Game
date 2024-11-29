@@ -33,9 +33,7 @@ public:
 
 private:
     int fallos_consecutivos[4];
-
     int ultima_rareza;
-
     int probabilidad_bonificacion;
 
     //Generador que permite consultar si se da la bonificación extra o no.

@@ -5,7 +5,7 @@
 
 #include "Transformers.hpp"
 #include "TDAs/Vector.hpp"
-#include "Grafo.hpp"
+#include "TDAs/Grafo/Grafo.hpp"
 #include "GraficadorCombates.hpp"
 
 struct Secuencia_combates {

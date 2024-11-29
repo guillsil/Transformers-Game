@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+class Vector
+class Menu
+
+class ExcepcionBovedaCristales {
+    + ExcepcionBovedaCristales(mensaje : string )
+    + ExcepcionBovedaCristales()
+}
+
+class BovedaCristales {
+    - Vector<Cristal> cristales
+    - size_t tamanio_inicial
+    - Menu menu
+    ---
+    + BovedaCristales()
+    + BovedaCristales(tamanio_inicial : size_t)
+    + void almacenar_cristal(cristal_nuevo : Cristal)
+    + void mostrar_cristales()
+    + Cristal obtener_cristal(posicion : size_t)
+    + void exportar_cristales(ruta : string)
+    + bool esta_vacia()
+    + size_t tamanio()
+    + Cristal eliminar_cristal(indice : const int&)
+    + Cristal obtener_cristal_mas_poderoso()
+    - string construir_ruta_completa(ruta : string&)
+    - void crear_directorios(ruta : const string&)
+}
+
+' Relaciones
+BovedaCristales --> Vector : "usa"
+BovedaCristales --> Menu : "usa"
+BovedaCristales ..> ExcepcionBovedaCristales : "lanza"
+@enduml
