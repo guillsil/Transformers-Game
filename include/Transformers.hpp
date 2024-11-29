@@ -27,9 +27,8 @@ const int CAMBIO_TOTALMENTE = 4;
 class Transformers {
 private:
     std::string nombre, faccion, vehiculo;
-    Estadisticas estadisticas;
-    //int fuerza, defensa, velocidad;
-
+    Estadisticas estadisticas; //int fuerza, defensa, velocidad;
+    bool transformado;
 
     //Pre:
     //Post: Cambia la estadistica pasada por puntero segun el numero de cambio

@@ -5,7 +5,6 @@ Transformers::Transformers(std::string nombre, int fuerza, int defensa, int velo
     this->nombre = nombre;
     this->faccion = faccion;
     this->vehiculo = vehiculo;
-    this->transformado = transformado;
 }
 
 Transformers::Transformers(std::string nombre, int fuerza, int defensa, int velocidad,
@@ -29,7 +28,7 @@ Transformers::Transformers(): estadisticas(5,5,5){
 
     this->faccion = FACCION_AUTOBOTS;
     this->vehiculo = VEHICULO_AUTO;
-    this->transformado = false;  
+    this->transformado = false;
 }
 
 std::string Transformers::obtener_nombre(){
