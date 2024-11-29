@@ -49,6 +49,10 @@ set(ARCHIVOS_FUENTE
         src/ManejadorDeMensajes.cpp
         src/Estadisticas.cpp
         src/Grafo/TuplaVerticeDistancia.cpp
+        src/GraficadorCombates.cpp
+        src/SimulacionCombate.cpp
+        src/GeneradorCombates.cpp
+        src/CombatesUsuario.cpp
 
 )
 

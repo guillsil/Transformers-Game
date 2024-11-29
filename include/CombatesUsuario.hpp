@@ -3,7 +3,7 @@
 #ifndef COMBATES_USUARIO_HPP
 #define COMBATES_USUARIO_HPP
 #include "Transformers.hpp"
-#include "Vector.hpp"
+#include "TDAs/Vector.hpp"
 #include "SimulacionCombate.hpp"
 #include "GeneradorCombates.hpp"
 

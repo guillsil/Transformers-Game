@@ -4,8 +4,8 @@
 #define GENERADOR_COMBATES_HPP
 
 #include "Transformers.hpp"
-#include "Vector.hpp"
-#include "Grafo.hpp"
+#include "TDAs/Vector.hpp"
+#include "TDAs/Grafo/Grafo.hpp"
 
 struct Secuencia_combates {
     Vector<Transformers> secuencia_combate;
