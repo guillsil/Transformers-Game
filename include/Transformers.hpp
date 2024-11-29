@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+
 #include "TDAs/Vector.hpp"
 #include "Estadisticas.hpp"
 
@@ -22,16 +23,19 @@ const int CAMBIO_TOTALMENTE = 4;
 
 //NOMBRE,FUERZA,DEFENSA,VELOCIDAD,FACCIÓN,VEHÍCULO,TRANSFORMADO
 
+
 class Transformers {
 private:
     std::string nombre, faccion, vehiculo;
     Estadisticas estadisticas;
     //int fuerza, defensa, velocidad;
-    bool transformado = false;
+
 
     //Pre:
     //Post: Cambia la estadistica pasada por puntero segun el numero de cambio
+
     int calcular_bonificacion(int estadistica_base, int multiplicador, int indicador_aumento_reduccion);
+
 
     //Pre:
     //Post: Cambia las estadisticas dependiendo del vehiculo que es el transformer. Se usa luego de la transformacion.
@@ -41,6 +45,7 @@ private:
     //Pre:
     //Post: Chequea el estado de transformado del transformer pasado y devuele un string que contiene Si o No
     bool pase_texto_bool_transformado(std::string texto_transformado);
+
 public:
     //Constructor auxiliar para que funcione el programa
     Transformers();
@@ -89,6 +94,7 @@ public:
     // Pre: -
     // Post: Carga la información al stream de salida.
     friend std::ostream& operator<<(std::ostream& os, const Transformers& transformer);
+
 };
 
 #endif
