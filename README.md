@@ -51,14 +51,14 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
 * ### Parámetro Poder
   * El parámetro de poder de un cristal se representa mediante la suma de las estadísticas de un cristal es decir es la suma entre la fuerza, defensa y velociad.
 
-* ### Funcionalidad para Mostrar el cristal con mayor Poder
+* ### Como se muestra el cristal con mayor Poder
   * Para poder mostrar el cristal con mayor poder lo que se decide es ir almacenando en la bóveda los cristales de manera ordenada (****Inserción Ordenada***) y asi el obtener el cristal de mayor poder tendrá un costo de ***O(1)***, esto porque se ordena de manera descendente lo que permite obtenerlo de una manera más rápida, ya que está en la primera posición.
 
-* ### Funcionalidad Equipar Cristal al Personaje
+* ### Como se Equipa un Cristal al Personaje
   * Para poder equipar con un cristal al personaje lo que se decidió es crearle una bóveda de cristales al personaje en la cual el mismo solo podrá equiparse con hasta ***7 cristales***.
   * Siempre se equipara con el cristal de mayor poder.
 
-* ### Con que Estadisticas se crearan los Transformers
+* ### Estadisticas con la que se crearan los Transformers
   * A la hora de crear los transformers lo que opto por hacer es que todos tengas un máximo de hasta ***300*** de estadísticas sumadas entre cada una de ellas.
   * También que todos los transformers creado desde el Administrador de Transformers se creen sin transformar.
   * La division para cada uno de los transformers es la siguiente:
@@ -67,6 +67,10 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
     * ***Avion:*** fuerza: 60; defensa: 50; velocidad: 100.
     * ***Tanque:*** fuerza: 90; defensa: 110; velocidad: 30.
 
+* ### Estadisticas de Optimus y Megatron
+  * Para las estadísticas de los protagonistas del juego lo inicilaizamos de la siguiente manera:
+    *  ***Megatron***: fuerza: 60, defensa: 70, velocidad: 90.
+    *  ***Optimus***: fuerza: 70, defensa: 90, velocidad: 50.
 
 
 ## Screenshots
