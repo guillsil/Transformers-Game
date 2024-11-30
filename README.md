@@ -68,8 +68,8 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
     * ***Tanque:*** fuerza: 90; defensa: 110; velocidad: 30.
 
 * ### Estadisticas de Optimus y Megatron
-  * Para las estadísticas de los protagonistas del juego lo inicilaizamos de la siguiente manera:
-    *  ***Megatron***: fuerza: 60, defensa: 70, velocidad: 90.
+  * Para las estadísticas de los protagonistas del juego lo inicializamos de la siguiente manera:
+    *  ***Megatron***: fuerza: 60, defensa: 70, velocidad: 100.
     *  ***Optimus***: fuerza: 70, defensa: 90, velocidad: 50.
 
 
