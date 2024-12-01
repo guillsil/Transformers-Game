@@ -41,18 +41,13 @@ size_t Transformers::obtener_poder(){
 }
 
 void Transformers::cambiar_forma(){
-    bool cambiar = transformado;
-    if (cambiar){ //Si el estado anterior a transformado es true, pasa a ser false; 
+    if (transformado){ //Si el estado anterior a transformado es true, pasa a ser false; 
         this->transformado = false;
     } else { //Si el estado anterior a transformado es false, pasa a true.
         this->transformado = true;
     }
-    //Se hace el cambio de estadisticas
-    if (this->transformado){ //Si es true, esta transformado se realiza el cambio de estadisticas (al_reves = false)
-        chequeo_vehiculo(false);
-    } else { //Entonces no esta transformado no se deshace el cambio de estadisticas (al_reves = true)
-        chequeo_vehiculo(true);
-    }
+    chequeo_vehiculo();
+    
 }
 
 Transformers& Transformers::operator=(const Transformers &otro_transformer){
@@ -105,10 +100,10 @@ int Transformers::calcular_bonificacion(int estadistica_base, int multiplicador,
     return estadistica_base*multiplicador*indicador_aumento_reduccion;
 }
 
-void Transformers::chequeo_vehiculo(bool al_reves){
+void Transformers::chequeo_vehiculo(){
     //El caso normal = incremento = 1;
     int interruptor_incremento_reduccion = 1;
-    if (al_reves == true){
+    if (!transformado){
         //El caso al reves = reduccion = -1
         interruptor_incremento_reduccion = -1;
     } 

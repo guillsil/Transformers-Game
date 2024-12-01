@@ -39,7 +39,7 @@ private:
     //Pre:
     //Post: Cambia las estadisticas dependiendo del vehiculo que es el transformer. Se usa luego de la transformacion.
     //Agregar mejor descripcion
-    void chequeo_vehiculo(bool al_reves);
+    void chequeo_vehiculo();
 
     //Pre:
     //Post: Chequea el estado de transformado del transformer pasado y devuele un string que contiene Si o No
