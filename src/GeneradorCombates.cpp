@@ -7,33 +7,33 @@ GeneradorCombates:: ~GeneradorCombates(){}
 Grafo GeneradorCombates:: generar_mapa(Vector<Transformers>& transformers_en_mapa){
     size_t cantidad_transformers = transformers_en_mapa.tamanio();
     Grafo mapa_combates(cantidad_transformers);
-    bool primer_vertice_nivel = true;
-    Transformers personaje_principal = transformers_en_mapa[0];
-    for(size_t i = 0; i < cantidad_transformers-1; i++){
-        size_t j = i;
+    Transformers personaje_principal = transformers_en_mapa[0];   
+    size_t vertice_actual = 0;
+    size_t siguiente_vertice = 1;
+    size_t ultimo_vertice = cantidad_transformers - 1;
 
-        //Con solo el vertice sabemos el nivel en el que estamos
-        //Caso donde el vertice es el primero del grafo o el tercero de los niveles medios 
-        if(i % 3 == 0){
-           j++;
-           primer_vertice_nivel = true;
-        }
-        //Caso donde mi vertice es el primero de un nivel medio
-        else if(primer_vertice_nivel){
-            j += 3;
-            primer_vertice_nivel = false;
-            
-        }
-        //Caso donde mi vertice sea el segundo de un nivel medio
-        else {
-            j += 2;
+    // Conectar el primer vértice al segundo nivel
+    while (siguiente_vertice < min((size_t)4, cantidad_transformers)) {
+        mapa_combates.agregar_arista(vertice_actual, siguiente_vertice, costo_avanzar(personaje_principal,transformers_en_mapa[siguiente_vertice]) );
+        siguiente_vertice++;
+    }
+    // Conexion a niveles intermedios de hasta 3 vertices
+    while (siguiente_vertice < ultimo_vertice) {
+        size_t nivel_inicio = siguiente_vertice; //Proximo vertice a conectar
+        size_t nivel_fin = min(siguiente_vertice + 3, ultimo_vertice);
+
+        for (size_t i = vertice_actual + 1; i < nivel_inicio; ++i) {
+            for (size_t j = nivel_inicio; j < nivel_fin; ++j) {
+                mapa_combates.agregar_arista(i, j, costo_avanzar(personaje_principal,transformers_en_mapa[j]));
+            }
         }
 
-        size_t vertice_limite = j + 3; //Solo queremos agregar la arista desde i hasta, como mucho, el ultimo vertice del siguiente nivel
-        while(j <= vertice_limite && j < cantidad_transformers-1){
-            mapa_combates.agregar_arista(i, j, costo_avanzar(personaje_principal, transformers_en_mapa[j]));
-            j++;
-        }
+        vertice_actual = nivel_inicio - 1;
+        siguiente_vertice = nivel_fin;
+    }
+    // Conectar los últimos vértices al vértice final
+    for (size_t i = vertice_actual + 1; i < ultimo_vertice; ++i) {
+        mapa_combates.agregar_arista(i, ultimo_vertice, costo_avanzar(personaje_principal,transformers_en_mapa[ultimo_vertice]));
     }
 
     return mapa_combates;
@@ -42,16 +42,16 @@ Grafo GeneradorCombates:: generar_mapa(Vector<Transformers>& transformers_en_map
 Transformers GeneradorCombates:: obtener_jefe_final(Transformers& personaje_principal){
     Transformers jefe_final;
     if(personaje_principal.obtener_nombre() == "Optimus Prime"){
-        jefe_final = Transformers("Optimus Prime",1,1,1,"Autobots","Camion");
+        jefe_final = Transformers("Megatron",60,70,100,"Autobots","Camion");
     }
     else {
-        jefe_final = Transformers("Megatron",1,1,1,"Decepticons","Tanque");
+        jefe_final = Transformers("Optimus Prime",70,90,50,"Decepticons","Tanque");
     }
     return jefe_final;
 }
 
 int GeneradorCombates:: costo_avanzar(Transformers& transformer_origen, Transformers& transformer_destino){
-    int costo_avance = 30;
+    int costo_avance = 30; //Lo definimos como un encuentro aliado
     
     if(!(transformer_origen == transformer_destino)){
         int comparacion_poderes = transformer_destino.obtener_poder() - transformer_origen.obtener_poder();
@@ -80,11 +80,12 @@ GeneradorCombates:: GeneradorCombates(Transformers& personaje_principal, Vector<
 }
 
 Vector<Transformers> GeneradorCombates:: obtener_secuencia_minima(){
-    if(secuencia_minima_transformers.tamanio() > 0){
+    if(secuencia_minima_transformers.tamanio() == 0){
         for(size_t i = 0; i < secuencia_minima_numerica.camino.tamanio(); i++){
-            secuencia_minima_transformers[i] = transformers_en_mapa[secuencia_minima_numerica.camino[i]];
+            secuencia_minima_transformers.alta(transformers_en_mapa[secuencia_minima_numerica.camino[i]]);
         }
     }
+    
     return secuencia_minima_transformers;
 }
 
