@@ -790,18 +790,18 @@ void Menu::menu_estara_transformado(){
 	std::cout << SIMBOLO_INGRESAR_MENSAJE;
 }
 
-void Menu::mostrar_vs_combate_final(bool megatron){
+void Menu::mostrar_vs_combate_final(bool jefe_final_megatron){
 	limpiar_menu();
 	imprimir_con_animacion(PARTE_SUPERIOR_RECUADRO, 1);
-	if(megatron){
-		imprimir_con_animacion(MEGATRON_ASCII, 1);
-		imprimir_con_animacion(SIMBOLO_VS, 1);
+	if(jefe_final_megatron){
 		imprimir_con_animacion(OPTIMUS_ASCII, 1);
+		imprimir_con_animacion(SIMBOLO_VS, 1);
+		imprimir_con_animacion(MEGATRON_ASCII, 1);
 	}
 	else{
-		imprimir_con_animacion(OPTIMUS_ASCII, 1);
-		imprimir_con_animacion(SIMBOLO_VS, 1);
 		imprimir_con_animacion(MEGATRON_ASCII, 1);
+		imprimir_con_animacion(SIMBOLO_VS, 1);
+		imprimir_con_animacion(OPTIMUS_ASCII, 1);
 	}
 	imprimir_con_animacion(PARTE_INFERIOR_RECUADRO,1);
 

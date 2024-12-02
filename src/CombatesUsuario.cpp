@@ -101,8 +101,8 @@ void CombatesUsuario:: realizar_enfrentamiento(){
 void CombatesUsuario::batalla_jefe_final(){
     cout << PRESIONE_TECLA_COMBATE_FINAL;
     cin.get();
-    bool es_megatron = simulacion_combate.transformer_encuentro_actual().obtener_nombre() == "Megatron";
-    menu.mostrar_vs_combate_final(es_megatron);
+    bool jefe_final_megatron = simulacion_combate.transformer_encuentro_actual().obtener_nombre() == "Megatron";
+    menu.mostrar_vs_combate_final(jefe_final_megatron);
     cout << PRESIONE_TECLA_CONTINUAR;
     cin.get();
     system("clear");

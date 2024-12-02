@@ -134,18 +134,32 @@ public:
     //Post: Muestra un menu de Carga con el Mensaje de que se está cerrando la Bóveda.
     void menu_cerranco_boveda();
 
+    //Pre:-
+    //Post: Muestra el menu de batalla final, si con_carga es verdadero, mostrara el menu con retraso
     void menu_batalla_final(bool con_carga);
 
+    //Pre:-
+    //Post: Muestra el menu de combates
     void menu_combates();
 
+    //Pre:-
+    //Post: Muestra el menu para seleccionar si combatira transformado
     void menu_estara_transformado();
 
-    void mostrar_vs_combate_final(bool megatron);
+    //Pre:-
+    //Post:Si megatron es verdadero mostrara megatron vs optimus prime, caso falso lo hara al reves
+    void mostrar_vs_combate_final(bool jefe_final_megatron);
 
+    //Pre:-
+    //Post:Muestra por pantalla la plantilla de resultado de combate victoria
     void mostrar_victoria_combate();
-    
-    void mostrar_derrota_combate();
 
+    //Pre:-
+    //Post:Muestra por pantalla la plantilla de resultado de combate derrota
+    void mostrar_derrota_combate();
+    
+    //Pre:-
+    //Post:Muestra por pantalla la plantilla de resultado de combate empate
     void mostrar_empate_combate();
 };
 
