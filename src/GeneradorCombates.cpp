@@ -54,7 +54,7 @@ int GeneradorCombates:: costo_avanzar(Transformers& transformer_origen, Transfor
     int costo_avance = 30; //Lo definimos como un encuentro aliado
     
     if(!(transformer_origen == transformer_destino)){
-        int comparacion_poderes = transformer_destino.obtener_poder() - transformer_origen.obtener_poder();
+        int comparacion_poderes = (int)transformer_destino.obtener_poder() - (int)transformer_origen.obtener_poder();
         costo_avance = 50 + comparacion_poderes;
         if(costo_avance > 100){
             costo_avance = 100;
