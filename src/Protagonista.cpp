@@ -6,13 +6,20 @@ const std::string ERROR_ALCANZO_EL_LIMITE_CRISTALES_EQUIPADOS = "Error:: Alcanzo
 const size_t TAMANIO_MAXIMO_CRISTALES_EQUIPADOS = 7;
 
 
-Protagonista::Protagonista(Personaje personaje): cristales_equipados(TAMANIO_MAXIMO_CRISTALES_EQUIPADOS) {
+Protagonista::Protagonista(Personaje personaje): cristales_equipados(TAMANIO_MAXIMO_CRISTALES_EQUIPADOS){
     this->personaje_jugando = personaje;
+    if(personaje_jugando == OPTIMUS_PRIME){
+        this->transformer_principal = Transformers(TEXTO_OPTIMUS_PRIME, 70, 90, 50, FACCION_AUTOBOTS, VEHICULO_CAMION);
+    } else if (personaje_jugando == MEGATRON){
+        this->transformer_principal = Transformers(TEXTO_MEGATRON, 60, 70, 100, FACCION_DECEPTICONS, VEHICULO_TANQUE);
+    } else {
+        this->transformer_principal = Transformers();
+    }
 }
 
 void Protagonista::obtener_respuesta(const std::string &mensaje) {
-    if (personaje_jugando == MEGATRON) {    megatron.responder(mensaje);
-    }else { optimus.responder(mensaje);}
+    if (personaje_jugando == MEGATRON) { megatron.responder(mensaje);
+    } else { optimus.responder(mensaje);}
 }
 
 std::string Protagonista::obtener_estado(const char &indice) {
@@ -55,6 +62,10 @@ void Protagonista::actualizar_estado(const char &indice) {
 }
 
 Personaje Protagonista::obtener_personaje() { return personaje_jugando;}
+
+Transformers Protagonista::obtener_transformer_principal(){
+    return transformer_principal;
+}
 
 void Protagonista::equipar_cristal(Cristal cristal) {
     try{
