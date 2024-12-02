@@ -133,6 +133,8 @@ public:
     //Pre: -
     //Post: Muestra un menu de Carga con el Mensaje de que se está cerrando la Bóveda.
     void menu_cerranco_boveda();
+
+    void mostrar_presentacion_batalla_final();
 };
 
 
