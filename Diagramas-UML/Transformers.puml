@@ -11,14 +11,14 @@ class Transformers {
     - int fuerza
     - int defensa
     - int velocidad
-    - bool transformado
+    - bool esta_transformado
     ---
     - int calcular_bonificacion(estadistica_base : int, multiplicador : int, indicador_aumento_reduccion : int)
     - void chequeo_vehiculo()
-    - bool pase_texto_bool_transformado(texto_transformado : string)
+    - bool pase_texto_a_bool_transformado(texto_transformado : string)
     ---
     + Transformers()
-    + Transformers(nombre : string, fuerza : int, defensa : int, velocidad : int, faccion : string, vehiculo : string, transformado : bool)
+    + Transformers(nombre : string, fuerza : int, defensa : int, velocidad : int, faccion : string, vehiculo : string, esta_transformado : bool)
     + Transformers(nombre : string, fuerza : int, defensa : int, velocidad : int, faccion : string, vehiculo : string)
     + Transformers(elementos : Vector<string>&)
     + string obtener_nombre()
