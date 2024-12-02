@@ -134,7 +134,19 @@ public:
     //Post: Muestra un menu de Carga con el Mensaje de que se está cerrando la Bóveda.
     void menu_cerranco_boveda();
 
-    void mostrar_presentacion_batalla_final();
+    void menu_batalla_final(bool con_carga);
+
+    void menu_combates();
+
+    void menu_estara_transformado();
+
+    void mostrar_vs_combate_final(bool megatron);
+
+    void mostrar_victoria_combate();
+    
+    void mostrar_derrota_combate();
+
+    void mostrar_empate_combate();
 };
 
 

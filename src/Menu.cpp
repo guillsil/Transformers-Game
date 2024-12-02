@@ -480,7 +480,8 @@ const std::string PRESENTACION_BATALLA_FINAL = R"(
   ║                       ║                                                                                             ║                        ║ 
   ║                       ╚═════════════════════════════════════════════════════════════════════════════════════════════╝                        ║ 
   ║                                                                                                                                              ║
-  ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝)";
+  ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+  )";
 
 const std::string MENU_COMBATES = R"( 
   ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
@@ -500,7 +501,8 @@ const std::string MENU_COMBATES = R"(
   ║                              ║          [1] Secuencia de combates      [2] Avanzar      [3] Regresar          ║                              ║
   ║                              ║                                                                                ║                              ║
   ║                              ╚════════════════════════════════════════════════════════════════════════════════╝                              ║
-  ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝)";
+  ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+  )";
 const std::string OPCION_PELEAR_TRANSFORMADO = R"(
   ║                                                              ¿Como combatiras?                                                               ║
   ║                                                     ╔═════════════════════════════════╗                                                      ║
@@ -510,7 +512,8 @@ const std::string OPCION_PELEAR_TRANSFORMADO = R"(
   ║                                                     ║        [2]  Destransformado     ║                                                      ║
   ║                                                     ║                                 ║                                                      ║
   ║                                                     ╚═════════════════════════════════╝                                                      ║
-  ║                                                                                                                                              ║)";
+  ║                                                                                                                                              ║
+  )";
 
 const std::string SIMBOLO_VS = R"(
   ║                                                                                                                                              ║
@@ -533,7 +536,8 @@ const std::string RESULTADO_COMBATE_VICTORIA = R"(
   ║                                       ╚████╔╝ ██║╚██████╗   ██║   ╚██████╔╝██║  ██║██║██║  ██║██╗██╗                                         ║
   ║                                        ╚═══╝  ╚═╝ ╚═════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚═╝╚═╝  ╚═╝╚═╝╚═╝                                         ║
   ║                                                                                                                                              ║
-  ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝)";
+  ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+  )";
 const std::string RESULTADO_COMBATE_DERROTA = R"(
   ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
   ║                                                                                                                                              ║
@@ -545,7 +549,8 @@ const std::string RESULTADO_COMBATE_DERROTA = R"(
   ║                                     ██████╔╝███████╗██║  ██║██║  ██║╚██████╔╝   ██║   ██║  ██║    ╚═╝╚██╗                                    ║   
   ║                                     ╚═════╝ ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝    ╚═╝   ╚═╝  ╚═╝        ╚═╝                                    ║
   ║                                                                                                                                              ║
-  ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝)";
+  ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+  )";
 
 const std::string RESULTADO_COMBATE_EMPATE = R"(
   ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
@@ -558,7 +563,23 @@ const std::string RESULTADO_COMBATE_EMPATE = R"(
   ║                                             ███████╗██║ ╚═╝ ██║██║     ██║  ██║   ██║   ███████╗                                             ║
   ║                                             ╚══════╝╚═╝     ╚═╝╚═╝     ╚═╝  ╚═╝   ╚═╝   ╚══════╝                                             ║
   ║                                                                                                                                              ║
-  ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝)";
+  ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+  )";
+
+const std::string CARACTERISTICAS_COMBATE_FINAL = R"( 
+  ╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+  ║                                                                                                                                              ║
+  ║                                                         CARACTERISTICAS COMBATE FINAL                                                        ║
+  ║                                                                                                                                              ║
+  ║                           ╔═══════════════════════════════════════════════════════════════════════════════════════╗                          ║
+  ║                           ║                                                                                       ║                          ║
+  ║                           ║    --Este enfrentamiento a diferencia del resto, se hara 3 veces                      ║                          ║
+  ║                           ║    --Entre cada enfrentamiento tendras la posibilidad de transformarte                ║                          ║
+  ║                           ║    --En esta instancia, tu enemigo tambien tendra la posibilidad de transformarse     ║                          ║
+  ║                           ║                                                                                       ║                          ║
+  ║                           ╚═══════════════════════════════════════════════════════════════════════════════════════╝                          ║
+  ╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+  )";
 
 const std::string SIMBOLO_INGRESAR_MENSAJE = "-: ";
 
@@ -745,6 +766,57 @@ void Menu::mostrar_menu_inicial() {
     std::cout << SIMBOLO_INGRESAR_MENSAJE;
 }
 
-void Menu::mostrar_presentacion_batalla_final(){
-  imprimir_con_animacion(PRESENTACION_BATALLA_FINAL, 2);
+void Menu::menu_batalla_final(bool con_carga){
+	limpiar_menu();
+	if(con_carga){
+		imprimir_con_animacion(PRESENTACION_BATALLA_FINAL, 1);
+ 		std::cout << SIMBOLO_INGRESAR_MENSAJE;
+	}
+	else{
+		std::cout << PRESENTACION_BATALLA_FINAL;
+		std::cout << SIMBOLO_INGRESAR_MENSAJE;
+	}
+}
+void Menu:: menu_combates(){
+	limpiar_menu();
+  	std::cout << MENU_COMBATES;
+  	std::cout << SIMBOLO_INGRESAR_MENSAJE;
+}
+
+void Menu::menu_estara_transformado(){
+	std::cout << OPCION_PELEAR_TRANSFORMADO;
+	std::cout << SIMBOLO_INGRESAR_MENSAJE;
+}
+
+void Menu::mostrar_vs_combate_final(bool megatron){
+	limpiar_menu();
+	imprimir_con_animacion(PARTE_SUPERIOR_RECUADRO, 1);
+	if(megatron){
+		imprimir_con_animacion(MEGATRON_ASCII, 1);
+		imprimir_con_animacion(SIMBOLO_VS, 1);
+		imprimir_con_animacion(OPTIMUS_ASCII, 1);
+	}
+	else{
+		imprimir_con_animacion(OPTIMUS_ASCII, 1);
+		imprimir_con_animacion(SIMBOLO_VS, 1);
+		imprimir_con_animacion(MEGATRON_ASCII, 1);
+	}
+	imprimir_con_animacion(PARTE_INFERIOR_RECUADRO,1);
+
+	std::cout << CARACTERISTICAS_COMBATE_FINAL;
+}
+
+void Menu:: mostrar_victoria_combate(){
+	limpiar_menu();
+	std::cout << RESULTADO_COMBATE_VICTORIA;
+}
+
+void Menu:: mostrar_derrota_combate(){
+	limpiar_menu();
+	std::cout << RESULTADO_COMBATE_DERROTA;
+}
+
+void Menu:: mostrar_empate_combate(){
+	limpiar_menu();
+	std::cout << RESULTADO_COMBATE_EMPATE;
 }
