@@ -7,9 +7,9 @@ const int FACTOR_BONIFICACION = 10;
 
 
 Estadisticas::Estadisticas(const size_t &fuerza, const size_t &defensa, const size_t &velocidad) {
-    this->fuerza = fuerza;
-    this->defensa = defensa;
-    this->velocidad = velocidad;
+    this-> fuerza = fuerza;
+    this-> defensa = defensa;
+    this-> velocidad = velocidad;
     actualizar_poder();
 }
 
@@ -21,9 +21,9 @@ void Estadisticas::aplicar_bonificacion() {
 }
 
 void Estadisticas::aplicar_bonificacion_distintas(int bono_fuerza, int bono_defensa, int bono_velocidad){
-    this->fuerza = fuerza + bono_fuerza;
-    this->defensa = defensa + bono_defensa;
-    this->velocidad = velocidad + bono_velocidad; 
+    this-> fuerza = fuerza + bono_fuerza;
+    this-> defensa = defensa + bono_defensa;
+    this-> velocidad = velocidad + bono_velocidad; 
     actualizar_poder();
 }
 
@@ -33,7 +33,7 @@ size_t Estadisticas::obtener_defensa() {return defensa;}
 
 size_t Estadisticas::obtener_velocidad() {return velocidad;}
 
-size_t Estadisticas::obtener_poder() { return poder;}
+size_t Estadisticas::obtener_poder() {return poder;}
 
 void Estadisticas::actualizar_poder(){
     this-> poder = fuerza + defensa + velocidad;  

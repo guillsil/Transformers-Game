@@ -30,7 +30,7 @@ void Megatron::responder(std::string mensaje) {
 
         controlador_de_mensajes.procesar_mensajes(mensaje);
         controlador_de_mensajes.mostrar_mensajes(POR_PALABRA_CLAVE);
-    }else if (estado_de_intencion == MANIPULACION) {
+    } else if (estado_de_intencion == MANIPULACION) {
         palabras_claves.agregar_palabras_clave(CONTIENE_PODER);
         palabras_claves.agregar_palabras_clave(CONTIENE_ALIADO);
         palabras_claves.agregar_palabras_clave(CONTIENE_FUERZA);
@@ -42,7 +42,7 @@ void Megatron::responder(std::string mensaje) {
 
         controlador_de_mensajes.procesar_mensajes(mensaje);
         controlador_de_mensajes.mostrar_mensajes(POR_PALABRA_CLAVE);
-    }else {
+    } else {
         controlador_de_mensajes.mostrar_mensajes(ALEATOREAMENTE);
     }
 }
@@ -50,9 +50,9 @@ void Megatron::responder(std::string mensaje) {
 void Megatron::sugerir_fusion() {
     if (estado_de_intencion == DESPRECIO) {
         std::cout << DESPRECIO_SUGERENCIA_FUSION;
-    }else if (estado_de_intencion == MANIPULACION) {
+    } else if (estado_de_intencion == MANIPULACION) {
         std::cout << MANIPULACION_SUGERENCIA_FUSION;
-    }else {
+    } else {
         std::cout << AMENAZA_SUGERENCIA_FUSION;
     }
 }
@@ -61,9 +61,9 @@ void Megatron::cambiar_intencion(std::string intencion) {
     utilidades.convertir_a_minuscula(intencion);
     if (intencion == MEGATRON_INTENCION_DESPRECIO) {
         estado_de_intencion = DESPRECIO;
-    }else if (intencion == MEGATRON_INTENCION_MANIPULACION) {
+    } else if (intencion == MEGATRON_INTENCION_MANIPULACION) {
         estado_de_intencion = MANIPULACION;
-    }else {
+    } else {
         estado_de_intencion = AMENAZA;
     }
 }

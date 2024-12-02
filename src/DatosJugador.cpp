@@ -7,9 +7,9 @@ DatosJugador::DatosJugador(){
 }
 
 DatosJugador::DatosJugador(std::string nombre_jugador, int puntaje, Personaje personaje_usado){
-    this->nombre_jugador = nombre_jugador;
-    this->puntaje = puntaje;
-    this->personaje_usado = personaje_usado;
+    this-> nombre_jugador = nombre_jugador;
+    this-> puntaje = puntaje;
+    this-> personaje_usado = personaje_usado;
 }
 
 DatosJugador::DatosJugador(Vector<std::string>& elementos){

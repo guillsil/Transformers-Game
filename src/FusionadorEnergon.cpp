@@ -41,16 +41,16 @@ Cristal FusionadorEnergon::fusionar_cristales(Cristal cristal_1, Cristal cristal
         rareza_resultante = obtener_proxima_rareza(rareza_actual);
         resetear_fallos_por_nivel(rareza_actual);
         if (probabilidad_bonificacion <= BONIFICACION_MAXIMA) {
-            probabilidad_bonificacion+=BONIFICACION_EXTRA_POR_FUSION_EXITOSA;
+            probabilidad_bonificacion += BONIFICACION_EXTRA_POR_FUSION_EXITOSA;
         }else {
-            probabilidad_bonificacion=BONIFICACION_BASE;
+            probabilidad_bonificacion = BONIFICACION_BASE;
         }
     }else {
         fallos_consecutivos[rareza_actual]++;
         if (probabilidad_bonificacion >= BONIFICACION_BASE) {
-            probabilidad_bonificacion-=BONIFICACION_EXTRA_POR_FUSION_EXITOSA;
+            probabilidad_bonificacion -= BONIFICACION_EXTRA_POR_FUSION_EXITOSA;
         }else {
-            probabilidad_bonificacion=BONIFICACION_BASE;
+            probabilidad_bonificacion = BONIFICACION_BASE;
         }
         rareza_resultante = obtener_rareza_anterior(rareza_actual);
     }
@@ -66,11 +66,11 @@ void FusionadorEnergon::verificar_rarezas_iguales(Cristal &cristal_1, Cristal &c
 
 bool FusionadorEnergon::verificar_exito_de_fusion(const Rareza &rareza_actual, const int &porcentaje_exito,
     GeneradorAleatorio *generador) {
-    if (fallos_consecutivos[rareza_actual] >= NUMERO_DE_FALLOS_CONSECUTIVOS_PARA_EXITO) {
+    if (fallos_consecutivos[rareza_actual] >= NUMERO_DE_FALLOS_CONSECUTIVOS_PARA_EXITO){
         return  true;
     }
-    if (generador != nullptr) {
-        return generador->generar_chance_porcentual(porcentaje_exito);
+    if (generador != nullptr){
+        return generador-> generar_chance_porcentual(porcentaje_exito);
     }
     GeneradorAleatorio generador_aleatorio;
     return  generador_aleatorio.generar_chance_porcentual(porcentaje_exito);
@@ -85,11 +85,11 @@ void FusionadorEnergon::verificar_fusion_prohibida(const Rareza &rareza) {
 int FusionadorEnergon::obtener_proxima_rareza(const Rareza &rareza) {
     switch (rareza) {
         case COMUN:
-            return  RARO;
+            return RARO;
         case RARO:
-            return  EPICO;
+            return EPICO;
         case EPICO:
-            return  LEGENDARIO;
+            return LEGENDARIO;
         default:
             throw ExcepcionFusionadorEnergon(ERROR_FUSION_PROHIBIDA);
     }
@@ -98,13 +98,13 @@ int FusionadorEnergon::obtener_proxima_rareza(const Rareza &rareza) {
 int FusionadorEnergon::obtener_rareza_anterior(const Rareza &rareza) {
     switch (rareza) {
         case COMUN:
-            return  COMUN;
+            return COMUN;
         case RARO:
-            return  COMUN;
+            return COMUN;
         case EPICO:
-            return  RARO;
+            return RARO;
         case LEGENDARIO:
-            return  EPICO;
+            return EPICO;
         default:
             throw ExcepcionFusionadorEnergon(ERROR_RETROCESO_DE_RAREZA_INVALIDA);
     }

@@ -14,7 +14,7 @@ BovedaCristales::BovedaCristales(): cristales(TAMANIO_MAXIMO_DE_CRISTALES), tama
 }
 
 BovedaCristales::BovedaCristales(size_t tamanio_inicial): cristales(tamanio_inicial){
-    this->tamanio_inicial = tamanio_inicial;
+    this-> tamanio_inicial = tamanio_inicial;
 }
 
 void BovedaCristales::almacenar_cristal(Cristal cristal_nuevo) {
@@ -72,12 +72,6 @@ Cristal BovedaCristales::obtener_cristal_mas_poderoso() {
 
 void BovedaCristales::exportar_cristales(std::string ruta) {
     std::string ruta_completa = construir_ruta_completa(ruta);
-    // std::ofstream archivo_cristales(ruta_completa);
-    // if (!archivo_cristales) {
-    //     throw ExcepcionBovedaCristales(ERROR_NO_SE_PUDO_ABRIR_ARCHIVO);
-    // }
-    // escribir_cristales_en_archivo(archivo_cristales);
-    // archivo_cristales.close();
     ControlArchivo<Cristal> control_archivo_cristales(ruta_completa);
     control_archivo_cristales.sobreescribir_en_archivo(cristales);
 }
