@@ -9,9 +9,23 @@
 #include <string>
 using namespace std;
 
+//comentarios combate
+const string comentario_combate_1 = "  ¡Comienza la batalla! 🔥\n";
+const string comentario_combate_2 = "  PUM!! 💥 ¡Primer golpe demoledor!\n";
+const string comentario_combate_3 = "  Uhh... GOLPE BAJO... 😬\n";
+const string comentario_combate_4 = "  ¡Uh, justo en chasis! ¡Eso tuvo que doler! 😱\n";
+const string comentario_combate_5 = "  ¡Increíble! ¡Contraataca con un golpe de tuercas!\n";
+const string comentario_combate_6 = "  ¡Esquiva con agilidad de un F1!\n";
+const string comentario_combate_7 = "  ¡Cuidado! ¡Está preparando su ataque especial! ¡VAMOS A MORIR TODOS! 😨\n";
+const string comentario_combate_8 = "  ¡¡BAM!! ¡Qué golpe final! ¡Increíble desempeño! 🎇\n";
+const string comentario_combate_9 = "  ¡La batalla ha terminado!\n";
+
+//Presion de teclas
 const string PRESIONE_TECLA_CONTINUAR = "  PRESIONE UNA TECLA PARA CONTINUAR...";
 const string PRESIONE_TECLA_COMBATE_FINAL = "  HAS LLEGADO AL ULTIMO ENCUENTRO\nPRESIONA UNA TECLA PARA INICIARLO...";
 const string PRESIONE_TECLA_RESULTADO_COMBATE = "  PRESIONE ENTER PARA VER EL RESULTADO DEL COMBATE...";
+
+//Partida
 const string PUNTUACION_FINAL = "\n\tPartida finalizada\nPUNTAJE FINAL: ";
 const string SALIDA = "PRESIONE UNA TECLA PARA SALIR...";
 const string ALIADO_ENCUENTRO = "Mira con quien te encontraste, un aliado!!\nObtuviste +25 pts\n";
@@ -57,18 +71,16 @@ private:
     //Se encarga de la interaccion con el usuario al toparse con un transformer de la misma faccion que su personaje principal
     void encuentro_aliado();
 
-    //pre:-
-    //post:
-    //Se encarga de la interaccion con el usuario y el generador de combates
-    //Mostrando el mapa de posibles recorridos
-    //Mostrando el la secuencia de menor gasto y el peso de esta
-    void gestion_generador_combate();
-
     //Pre:-
     //Post:
     //Se encarga de la interaccion entre el usuario y el proceso de encuentros y combates 
     //establecidos en la secuencia de combates minima
     void gestion_simulacion_batalla();
+
+    //Pre:-
+    //Post:
+    //Muestra una secuencia de oraciones que simulan comentarios y sonidos de una batalla
+    void efectos_combate();
 
 public:
     //pre:

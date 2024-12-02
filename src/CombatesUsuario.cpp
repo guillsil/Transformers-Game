@@ -4,6 +4,8 @@
 #include "Utilidades.hpp"
 #include "Menu.hpp"
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
@@ -30,11 +32,40 @@ void CombatesUsuario::establecer_puntaje_combate(Resultado_combate& resultado_co
     }
 }
 
+void CombatesUsuario:: efectos_combate(){
+    int ms_pausar = 3000; //Cantidad en milisegundos a pausar entre cada comentario
+    std::cout << comentario_combate_1;
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms_pausar));
+
+    std::cout << comentario_combate_2;
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms_pausar));
+
+    std::cout << comentario_combate_3;
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms_pausar));
+
+    std::cout << comentario_combate_4;
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms_pausar));
+
+    std::cout << comentario_combate_5;
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms_pausar));
+
+    std::cout << comentario_combate_6;
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms_pausar));
+
+    std::cout << comentario_combate_7;
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms_pausar));
+
+    std::cout << comentario_combate_8;
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms_pausar));
+
+    std::cout << comentario_combate_9;
+}
+
 void CombatesUsuario:: realizar_enfrentamiento(){
     size_t respuesta;
     bool transformado = false;
     Resultado_combate resultado_combate;
-
+    system("clear");
     menu.menu_estara_transformado();
     cin >> respuesta;
     while(respuesta != 1 && respuesta != 2){
@@ -46,6 +77,7 @@ void CombatesUsuario:: realizar_enfrentamiento(){
         transformado = true;
         cout << TRANSFORMADO_PTS << endl;;
     }
+    efectos_combate();
     cout << PRESIONE_TECLA_RESULTADO_COMBATE;
     cin.get();
     resultado_combate = simulacion_combate.combatir(transformado);
@@ -71,10 +103,11 @@ void CombatesUsuario::batalla_jefe_final(){
     cin.get();
     bool es_megatron = simulacion_combate.transformer_encuentro_actual().obtener_nombre() == "Megatron";
     menu.mostrar_vs_combate_final(es_megatron);
-    cout << PRESIONE_TECLA_COMBATE_FINAL;
+    cout << PRESIONE_TECLA_CONTINUAR;
     cin.get();
+    system("clear");
     for (size_t i = 0; i < 3; i++) {
-        cout << "ENCUENTRO NUMERO " << i << endl;
+        cout << "ENCUENTRO NUMERO " << i+1 << endl;
         realizar_enfrentamiento();
     }
 }
@@ -112,6 +145,7 @@ void CombatesUsuario::gestion_simulacion_batalla(){
                 encuentro_aliado();
             }
             else if(!simulacion_combate.hay_avance()){
+                system("clear");
                 batalla_jefe_final();
             }
             else {
