@@ -11,7 +11,7 @@ Protagonista::Protagonista(Personaje personaje): cristales_equipados(TAMANIO_MAX
     if(personaje_jugando == OPTIMUS_PRIME){
         this-> transformer_principal = Transformers(TEXTO_OPTIMUS_PRIME, 70, 90, 50, FACCION_AUTOBOTS, VEHICULO_CAMION);
     } else if (personaje_jugando == MEGATRON){
-        this-> transformer_principal = Transformers(TEXTO_MEGATRON, 60, 70, 100, FACCION_DECEPTICONS, VEHICULO_TANQUE);
+        this-> transformer_principal = Transformers(TEXTO_MEGATRON, 60, 70, 100, FACCION_DECEPTICONS, VEHICULO_AVION);
     } else {
         this-> transformer_principal = Transformers();
     }
