@@ -9,27 +9,14 @@
 #include <string>
 using namespace std;
 
-const string BIENVENIDA_CAMPO_BATALLA = "\tBienvenido al campo de batalla";
-const string BIENVENIDA_BATALLA_FINAL = "\n\tBIENVENIDO A LA BATALLA FINAL";
-const string PREPARACION_SERIE_COMBATES = "Preparate para un serie de combates que te llevaran al enfrentamiento final...";
-const string PRESIONE_TECLA_AVANZAR = "PRESIONE UNA TECLA PARA AVANZAR AL SIGUIENTE ENCUENTRO...";
-const string PRESIONE_TECLA_CAMPO_BATALLA = "PRESIONA UNA TECLA PARA DIRIGIRTE AL CAMPO DE BATALLA...";
+const string PRESIONE_TECLA_CONTINUAR = "  PRESIONE UNA TECLA PARA CONTINUAR...";
+const string PRESIONE_TECLA_COMBATE_FINAL = "  HAS LLEGADO AL ULTIMO ENCUENTRO\nPRESIONA UNA TECLA PARA INICIARLO...";
+const string PRESIONE_TECLA_RESULTADO_COMBATE = "  PRESIONE ENTER PARA VER EL RESULTADO DEL COMBATE...";
 const string PUNTUACION_FINAL = "\n\tPartida finalizada\nPUNTAJE FINAL: ";
 const string SALIDA = "PRESIONE UNA TECLA PARA SALIR...";
-const string COMBATE_FINAL_INTRO = "\n\tCOMBATE FINAL\nTE ENFRENTARAS A ";
-const string CARACTERISTICAS_COMBATE_FINAL = "\n\tCARACTERISTICAS DEL COMBATE\n--Este enfrentamiento a diferencia del resto, se hara 3 veces\n--Entre cada enfrentamiento tendras la posibilidad de transformarte\n--En esta instancia, tu enemigo tambien tendra la posibilidad de transformarse\n";
-const string ALIADO_ENCUENTRO = "Mira con quien te encontraste, un aliado!!\nObtuviste +25 pts";
-const string ENEMIGO_ENCUENTRO = "Oh no! un enemigo!\nTendras que enfrentar a ";
-const string PRESENTACION_MAPA_COMBATES = "Con tu personaje principal y los transformers almacenados, se genero un mapa de posibles \ncombates que desencadenaran siempre a una Batalla final.\nA continuacion el mapa de combates:";
-const string EMOCION_MAPA = "Emocionante ese mapa, eh, pero mas emocionante sera empezar el proceso de combates en el campo de batalla!!";
-const string TRANSFORMADO_PTS = "\nPelearas transformado -10 pts";
-const string COMBATIR_TRANSFORMADO = "¿Combatir transformado? [y]/[n]: ";
-const string COMBATIR_TRANSFORMADO_ERROR = "Entrada invalida. ¿Combatir transformado? [y]/[n]: ";
-const string VICTORIA_MENSAJE = "VICTORIA, felicidades!! +50 pts";
-const string DERROTA_MENSAJE = "DERRROTA :(, suerte para la proxima -50 pts";
-const string EMPATE_MENSAJE = "EMPATE, tus puntos se mantendran iguales";
-const string CONTINUAR_ENCUENTROS = "Continuemos con el siguiente encuentro!!";
-const string OBTENER_SECUENCIA_MINIMA = "\nCon este mapa podremos obtener el recorrido con menos gasto de energon a la batalla final\nPRESIONE UNA TECLA PARA OBTENER EL CAMINO QUE GASTARA MENOS ENERGON...";
+const string ALIADO_ENCUENTRO = "Mira con quien te encontraste, un aliado!!\nObtuviste +25 pts\n";
+const string ENEMIGO_ENCUENTRO = "\t\t\t\t\tOh no! un enemigo!\n\t\t\t\t\tTendras que enfrentar a ";
+const string TRANSFORMADO_PTS = "\n  Pelearas transformado -10 pts";
 
 class CombatesUsuario {
 private:
@@ -37,13 +24,14 @@ private:
     size_t puntos_partida;
     SimulacionCombate simulacion_combate;
     GeneradorCombates generador_combate;
+    Menu menu;
 
     //Metodos privados
 
     //Pre:-
     //Post:
     //Segun el resultado_combate y esta_transformado suma y/o resta puntos a puntos_partida
-    void establecer_puntaje_combate(Resultado_combate resultado_combate, bool esta_transformado);
+    void establecer_puntaje_combate(Resultado_combate& resultado_combate, bool esta_transformado);
 
     //pre:-
     //post:

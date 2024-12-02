@@ -2,6 +2,7 @@
 
 #include "CombatesUsuario.hpp"
 #include "Utilidades.hpp"
+#include "Menu.hpp"
 #include <iostream>
 
 using namespace std;
@@ -14,7 +15,7 @@ CombatesUsuario::CombatesUsuario(Transformers& personaje_principal, Vector<Trans
 
 CombatesUsuario::~CombatesUsuario(){}
 
-void CombatesUsuario::establecer_puntaje_combate(Resultado_combate resultado_combate, bool esta_transformado){
+void CombatesUsuario::establecer_puntaje_combate(Resultado_combate& resultado_combate, bool esta_transformado){
     size_t cant_restar = (esta_transformado) ? 10 : 0;
     switch (resultado_combate) {
     case VICTORIA:
@@ -30,102 +31,140 @@ void CombatesUsuario::establecer_puntaje_combate(Resultado_combate resultado_com
 }
 
 void CombatesUsuario:: realizar_enfrentamiento(){
-    char respuesta;
+    size_t respuesta;
     bool transformado = false;
     Resultado_combate resultado_combate;
 
-    cout << COMBATIR_TRANSFORMADO;
+    menu.menu_estara_transformado();
     cin >> respuesta;
-    while(respuesta != 'y' && respuesta != 'n'){
-        cout << COMBATIR_TRANSFORMADO;
+    while(respuesta != 1 && respuesta != 2){
+        menu.menu_estara_transformado();
         cin >> respuesta;
     }
-    if(respuesta == 'y') {
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    if(respuesta == 1) {
         transformado = true;
         cout << TRANSFORMADO_PTS << endl;;
     }
+    cout << PRESIONE_TECLA_RESULTADO_COMBATE;
+    cin.get();
     resultado_combate = simulacion_combate.combatir(transformado);
     establecer_puntaje_combate(resultado_combate, transformado);
     switch (resultado_combate) {
     case VICTORIA:
-        cout << VICTORIA_MENSAJE << endl;
+        menu.mostrar_victoria_combate();
         break;
     case DERRROTA:
-        cout << DERROTA_MENSAJE << endl;
+        menu.mostrar_derrota_combate();
         break;
     default:
-        cout << EMPATE_MENSAJE << endl;
+        menu.mostrar_empate_combate();
         break;
     }
     cout << "PUNTAJE ACTUAL: " << puntos_partida << endl;
-    
+    cout << PRESIONE_TECLA_CONTINUAR;
+    cin.get();
 }
 
 void CombatesUsuario::batalla_jefe_final(){
-    cout << COMBATE_FINAL_INTRO << simulacion_combate.nombre_encuentro_actual() << endl;
-    cout << CARACTERISTICAS_COMBATE_FINAL << endl;
-
+    cout << PRESIONE_TECLA_COMBATE_FINAL;
+    cin.get();
+    bool es_megatron = simulacion_combate.transformer_encuentro_actual().obtener_nombre() == "Megatron";
+    menu.mostrar_vs_combate_final(es_megatron);
+    cout << PRESIONE_TECLA_COMBATE_FINAL;
+    cin.get();
     for (size_t i = 0; i < 3; i++) {
+        cout << "ENCUENTRO NUMERO " << i << endl;
         realizar_enfrentamiento();
     }
 }
 
 void CombatesUsuario::batalla_generica(){
-    cout << ENEMIGO_ENCUENTRO << simulacion_combate.nombre_encuentro_actual() << endl;
+    menu.mostrar_mensaje(ENEMIGO_ENCUENTRO + simulacion_combate.transformer_encuentro_actual().obtener_nombre());
     realizar_enfrentamiento();
 }
 
 void CombatesUsuario::encuentro_aliado(){
-    cout << simulacion_combate.nombre_encuentro_actual() + "?";
-    cout << ALIADO_ENCUENTRO << endl;
+    menu.mostrar_mensaje(simulacion_combate.transformer_encuentro_actual().obtener_nombre() + "?\n" + ALIADO_ENCUENTRO);
     puntos_partida += 25;
+    cout << PRESIONE_TECLA_CONTINUAR;
+    cin.get();
 }
 
 void CombatesUsuario::gestion_simulacion_batalla(){
-
-    cout << BIENVENIDA_CAMPO_BATALLA << endl;
-    cout << PREPARACION_SERIE_COMBATES << endl 
-    << "Estos son los encuentros que debes realizar:" << endl;
-    generador_combate.mostrar_secuencia_minima();
-    cout << "\n\tComencemos!!" << endl;
-
-    while(simulacion_combate.hay_avance()){
-        cout << PRESIONE_TECLA_AVANZAR;
-        getchar();
-        simulacion_combate.avanzar();
-        if(simulacion_combate.es_aliado()){
-            encuentro_aliado();
-            cout << CONTINUAR_ENCUENTROS << endl;
+    simulacion_combate.reiniciar_avance();
+    size_t opcion = 0;
+    while(opcion < 1 || opcion > 3){
+        menu.menu_combates();
+        cin >> opcion;
+    }
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    while(opcion != 3 && simulacion_combate.hay_avance()){
+        switch (opcion) {
+        case 1:
+            generador_combate.mostrar_secuencia_minima();
+            cout << PRESIONE_TECLA_CONTINUAR;
+            cin.get();
+            break;
+        case 2:
+            simulacion_combate.avanzar();
+            if(simulacion_combate.es_aliado()){
+                encuentro_aliado();
+            }
+            else if(!simulacion_combate.hay_avance()){
+                batalla_jefe_final();
+            }
+            else {
+                batalla_generica();
+            }
+            break;
+        default:
+            break;
         }
-        else if(!simulacion_combate.hay_avance()){
-            batalla_jefe_final();
-        }
-        else {
-            batalla_generica();
-            cout << CONTINUAR_ENCUENTROS << endl;
+        if(simulacion_combate.hay_avance()){
+            opcion = 0;
+            while(opcion < 1 || opcion > 3){
+                menu.menu_combates();
+                cin >> opcion;
+            }
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
         }
     }
-
-    cout << PUNTUACION_FINAL << puntos_partida << endl;
-    cout << SALIDA << endl;
-    getchar();
-}
-
-void CombatesUsuario::gestion_generador_combate(){
-    cout << PRESENTACION_MAPA_COMBATES << endl;
-    generador_combate.mostrar_mapa_combates();
-    cout << OBTENER_SECUENCIA_MINIMA << endl;
-    getchar();
-    generador_combate.mostrar_secuencia_minima();
-    cout << "El gasto total de este camino es: " << generador_combate.costo_energon_secuencia() << " ENERGON" << endl;
 }
 
 void CombatesUsuario:: iniciar_partida_combates(){
-    cout << BIENVENIDA_BATALLA_FINAL << endl;
-    gestion_generador_combate();
-    cout << EMOCION_MAPA << endl;
-    cout << PRESIONE_TECLA_CAMPO_BATALLA << endl;
-    gestion_simulacion_batalla();
+    size_t opcion = 0;
+    while(opcion < 1 || opcion > 4){
+        menu.menu_batalla_final(true);
+        cin >> opcion;
+    }
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    while(opcion != 4){
+        switch (opcion) {
+        case 1:
+            generador_combate.mostrar_mapa_combates();
+            cout << PRESIONE_TECLA_CONTINUAR;
+            cin.get();
+            break;
+        case 2:
+            generador_combate.mostrar_secuencia_minima();
+            cout << "EL GASTO TOTAL DE ESTE CAMINO ES: " << generador_combate.costo_energon_secuencia() << " ENERGON" << endl;
+            cout << PRESIONE_TECLA_CONTINUAR;
+            cin.get();
+            break;
+        case 3:
+            gestion_simulacion_batalla();
+            break;
+        default:
+            break;
+        }
+        opcion = 0;
+        while(opcion < 1 || opcion > 4){
+            menu.menu_batalla_final(false);
+            cin >> opcion;
+        }
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
 }
 
 size_t CombatesUsuario::obtener_puntaje(){
