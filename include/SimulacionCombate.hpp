@@ -63,12 +63,16 @@ class SimulacionCombate {
 
         //Pre:-
         //Post:
-        //Devuleve el nombre del transformer que se encuentra en posicion_actual dentro de la secuencia de combates
-        std:: string nombre_encuentro_actual();
+        //Devuleve transformer que se encuentra en posicion_actual dentro de la secuencia de combates
+        Transformers& transformer_encuentro_actual();
+
+        //pre:-
+        //post:
+        //Reinicia la posicion actual a 0
+        void reiniciar_avance();
 
         //Operador de asignacion
         SimulacionCombate& operator=(const SimulacionCombate& simulacion_combate);
-
 };
 
 

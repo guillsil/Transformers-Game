@@ -54,8 +54,12 @@ void SimulacionCombate:: mostrar_recorrido() {
     //A implementar
 }
 
-std::string SimulacionCombate:: nombre_encuentro_actual(){
-    return secuencia_combate[posicion_actual].obtener_nombre();
+Transformers& SimulacionCombate:: transformer_encuentro_actual(){
+    return secuencia_combate[posicion_actual];
+}
+
+void SimulacionCombate:: reiniciar_avance(){
+    posicion_actual = 0;
 }
 
 SimulacionCombate& SimulacionCombate:: operator=(const SimulacionCombate& simulacion_combate){
