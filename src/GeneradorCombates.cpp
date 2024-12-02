@@ -42,10 +42,10 @@ Grafo GeneradorCombates:: generar_mapa(Vector<Transformers>& transformers_en_map
 Transformers GeneradorCombates:: obtener_jefe_final(Transformers& personaje_principal){
     Transformers jefe_final;
     if(personaje_principal.obtener_nombre() == "Optimus Prime"){
-        jefe_final = Transformers("Megatron",60,70,100,"Autobots","Camion");
+        jefe_final = Transformers("Megatron",60,70,100,"Decepticons","Camion");
     }
     else {
-        jefe_final = Transformers("Optimus Prime",70,90,50,"Decepticons","Tanque");
+        jefe_final = Transformers("Optimus Prime",70,90,50,"Autobots","Tanque");
     }
     return jefe_final;
 }
