@@ -3,9 +3,9 @@
 class Vector
 class Menu
 
-class ExcepcionControlArchivo {
-    + ExcepcionControlArchivo(mensaje : string)
-    + ExcepcionControlArchivo()
+class ExcepcionDatosJugador {
+    + ExcepcionDatosJugador(mensaje : string)
+    + ExcepcionDatosJugador()
 }
 
 class DatosJugador{
@@ -27,4 +27,5 @@ class DatosJugador{
 ' Relaciones
 DatosJugador --> Vector : "conoce para el constructor"
 DatosJugador --> Menu : "acceso a enum Personaje"
+DatosJugador ..> ExcepcionDatosJugador : "lanza"
 @enduml

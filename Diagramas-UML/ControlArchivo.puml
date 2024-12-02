@@ -26,5 +26,5 @@ ControlArchivo --> Vector : "usa"
 ControlArchivo --> Transformers : "usa"
 ControlArchivo --> Cristal : "usa"
 ControlArchivo --> DatosJugador : "usa"
-
+ControlArchivo ..> ExcepcionControlArchivo : "lanza"
 @enduml

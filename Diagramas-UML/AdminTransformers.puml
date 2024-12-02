@@ -32,4 +32,5 @@ AdministradorTransformers --> Vector : "usa"
 AdministradorTransformers --> Transformers : "usa"
 AdministradorTransformers --> ControlArchivo : "usa"
 AdministradorTransformers --> Menu : "usa"
+AdministradorTransformers ..> ExcepcionAdministradorTransformers : "lanza"
 @enduml
