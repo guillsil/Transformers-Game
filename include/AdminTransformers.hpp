@@ -7,7 +7,7 @@
 #include "Transformers.hpp"
 #include "ControlArchivo.hpp"
 
-const size_t NO_ENCONTRADO = -1;
+const size_t BUSCAR_TRANSFORMER_NO_ENCONTRADO = -1;
 
 class ExcepcionAdministradorTransformers : public std::runtime_error {
 public:
