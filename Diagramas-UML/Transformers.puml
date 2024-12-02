@@ -14,7 +14,7 @@ class Transformers {
     - bool transformado
     ---
     - int calcular_bonificacion(estadistica_base : int, multiplicador : int, indicador_aumento_reduccion : int)
-    - void chequeo_vehiculo(al_reves : bool)
+    - void chequeo_vehiculo()
     - bool pase_texto_bool_transformado(texto_transformado : string)
     ---
     + Transformers()
