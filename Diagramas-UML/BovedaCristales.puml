@@ -2,6 +2,7 @@
 'https://plantuml.com/class-diagram
 class Vector
 class Menu
+class Cristal
 
 class ExcepcionBovedaCristales {
     + ExcepcionBovedaCristales(mensaje : string )
@@ -23,6 +24,7 @@ class BovedaCristales {
     + size_t tamanio()
     + Cristal eliminar_cristal(indice : const int&)
     + Cristal obtener_cristal_mas_poderoso()
+    ---
     - string construir_ruta_completa(ruta : string&)
     - void crear_directorios(ruta : const string&)
 }
@@ -30,5 +32,6 @@ class BovedaCristales {
 ' Relaciones
 BovedaCristales --> Vector : "usa"
 BovedaCristales --> Menu : "usa"
+BovedaCristales --> Cristal : "usa"
 BovedaCristales ..> ExcepcionBovedaCristales : "lanza"
 @enduml

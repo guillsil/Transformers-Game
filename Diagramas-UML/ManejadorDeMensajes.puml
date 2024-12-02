@@ -1,5 +1,7 @@
 @startuml
 'https://plantuml.com/class-diagram
+class ManejadorDePalabrasClaves
+class ManejadorDeRespuestas
 
 enum TipoDeRespuesta {
     POR_PALABRA_CLAVE
@@ -15,9 +17,6 @@ class ManejadorDeMensajes {
     + void procesar_mensajes(mensaje : const string&)
     + void mostrar_mensajes(tipo : TipoDeRespuesta)
 }
-
-class ManejadorDePalabrasClaves
-class ManejadorDeRespuestas
 
 ' Relaciones
 ManejadorDeMensajes --> ManejadorDePalabrasClaves : "usa"
