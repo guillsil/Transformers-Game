@@ -18,10 +18,10 @@ void ManejadorDeMensajes::mostrar_mensajes(const TipoDeRespuesta tipo) {
             if (primera_palabra_clave_hallada < 0) {
                 std::cout << manejador_respuestas.obtener_respuesta_por_indice(0);
 
-            }else {
+            } else {
                 std::cout << manejador_respuestas.obtener_respuesta_por_indice(primera_palabra_clave_hallada+1);;
             }
-        break;
+            break;
         case ALEATOREAMENTE:
             std::cout << manejador_respuestas.obtener_respuesta_random();
     }

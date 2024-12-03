@@ -1,5 +1,12 @@
 @startuml
 'https://plantuml.com/class-diagram
+class Protagonista
+class Menu
+class BovedaCristales
+class FusionadorEnergon
+class AdministradorTransformers
+class TablaClasificacion
+class Utilidades
 
 class Juego {
     - Protagonista protagonista

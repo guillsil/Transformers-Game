@@ -1,5 +1,9 @@
 @startuml
 'https://plantuml.com/class-diagram
+class OptimusPrime
+class Megatron
+class BovedaCristales
+class Transformers
 
 class ExcepcionProtagonista {
     + ExcepcionProtagonista(mensaje : string)
@@ -17,10 +21,12 @@ class Protagonista {
     - Megatron megatron
     - Personaje personaje_jugando
     - BovedaCristales cristales_equipados
+    - Transformers transformer_principal
     ---
     + Protagonista(personaje : Personaje)
     + void obtener_respuesta(mensaje : const string&)
     + void obtener_sugerencia()
+    + Transformers obtener_transformer_principal()
     + void actualizar_estado(indice : const char&)
     + Personaje obtener_personaje()
     + void equipar_cristal(cristal : Cristal)
@@ -34,5 +40,6 @@ Protagonista --> OptimusPrime : "usa"
 Protagonista --> Megatron : "usa"
 Protagonista --> BovedaCristales : "contiene"
 Protagonista --> Personaje : "usa"
+Protagonista --> Transformers : "usa"
 Protagonista ..> ExcepcionProtagonista : "lanza"
 @enduml

@@ -19,7 +19,7 @@ void ManejadorDePalabrasClaves::agregar_palabras_clave(const std::string& palabr
 
 
 int ManejadorDePalabrasClaves::buscar_palabras_clave(const std::string& cadena) {
-    for (int i = 0; i < cantidad_palabras_claves; i++)  {
+    for (int i = 0; i < cantidad_palabras_claves; i++){
         std::string::size_type posicion = cadena.find(palabras_claves[i]);
         if (posicion < cadena.length()) {return i;}
     }

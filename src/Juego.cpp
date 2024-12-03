@@ -62,15 +62,15 @@ void Juego::procesar_menu_principal(const char& opcion_menu, const std::string &
             menu.limpiar_menu();
             protagonista = Personaje(MEGATRON);
             manejar_flujo_juego_principal();
-        break;
+            break;
         case OPCION_2:
             menu.limpiar_menu();
             protagonista = Personaje(OPTIMUS_PRIME);
             manejar_flujo_juego_principal();
-        break;
+            break;
         case OPCION_3:
             juego_en_curso = false;
-        break;
+            break;
         default:
             menu.limpiar_menu();
             menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
@@ -143,10 +143,10 @@ void Juego::manejar_fusionar_de_cristales() {
         std::cin >> entrada_2;
         if (verificar_entrada_del_cristal(entrada_1) && verificar_entrada_del_cristal(entrada_2)) {
             fusionador_de_cristales(entrada_1, entrada_2);
-        }else {
+        } else {
             menu.limpiar_y_mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
         }
-    }else {
+    } else {
         menu.limpiar_y_mostrar_mensaje(ERROR_LIMITE_EN_BOVEDA_EXCEDIDO);
     }
 }
@@ -164,7 +164,7 @@ void Juego::manejar_de_almacenamiento_de_cristales() {
         } catch (ExcepcionBovedaCristales& e) {
             menu.limpiar_y_mostrar_mensaje(e.what());
         }
-    }else {
+    } else {
         menu.limpiar_y_mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
     }
 }
@@ -194,7 +194,7 @@ void Juego::manejar_de_bodega_mostrar_tamanio() {
     menu.limpiar_menu();
     try{
         menu.mostrar_mensaje(CANTIDAD_CRISTALES_ALMACENADOS + std::to_string(boveda.tamanio()));
-    }catch (ExcepcionBovedaCristales& e){
+    } catch (ExcepcionBovedaCristales& e){
         menu.mostrar_mensaje(e.what());
     }
 }
@@ -204,7 +204,7 @@ void Juego::manejar_equipar_un_cristal(){
     try{
         protagonista.equipar_cristal(boveda.eliminar_cristal(POSICION_CRISTAL_MAS_PODEROSO));
         menu.mostrar_mensaje(MENSAJE_EQUIPADO_CON_EXITO);
-    }catch (ExcepcionProtagonista& e){
+    } catch (ExcepcionProtagonista& e){
         menu.mostrar_mensaje(e.what());
     }
 }
@@ -213,7 +213,7 @@ void Juego::mostrar_cantidad_cristales_equipados(){
     menu.limpiar_menu();
     try{
         protagonista.ver_cristales_equipados();
-    }catch (ExcepcionBovedaCristales& e){
+    } catch (ExcepcionBovedaCristales& e){
         menu.mostrar_mensaje(e.what());
     }
 }
@@ -254,7 +254,7 @@ void Juego::manejar_boveda() {
                 mostrar_cantidad_cristales_equipados();
                 break;
              case OPCION_9:
-                 continuar = false;
+                continuar = false;
                 menu.limpiar_menu();
                 menu.menu_cerranco_boveda();
                 break;
@@ -265,8 +265,8 @@ void Juego::manejar_boveda() {
 }
 
 std::string Juego::convertir_faccion_string(const int &faccion) {
-    if (faccion == 0) { return "Autobots";}
-    return "Decepticons";
+    if (faccion == 0) { return FACCION_AUTOBOTS;}
+    return FACCION_DECEPTICONS;
 }
 
 std::string Juego::solicitar_nombre_transformers(){
@@ -296,13 +296,13 @@ int Juego::solicitar_faccion(){
 std::string Juego::convertir_vehiculo_string(const int &vehiculo){
     switch (vehiculo) {
         case 0:
-            return "Auto";
+            return VEHICULO_AUTO;
         case 1:
-            return "Camion";
+            return VEHICULO_CAMION;
         case 2:
-            return "Avion";
+            return VEHICULO_AVION;
         case 3:
-            return "Tanque";
+            return VEHICULO_TANQUE;
         default:
             menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
             return "";
@@ -313,7 +313,7 @@ void Juego::manejar_agregar_transformers(const std::string &nombre,const int &fu
                               std::string &vehiculo) {
     try{
         administrador_transformers.agregar_transformer(nombre, fuerza, defensa, velocidad, faccion, vehiculo);
-    }catch (ExcepcionAdministradorTransformers& e){
+    } catch (ExcepcionAdministradorTransformers& e){
         menu.limpiar_y_mostrar_mensaje(e.what());
     }
 }
@@ -328,10 +328,10 @@ void Juego::crear_transformers(const std::string &nombre, const int &tipo_vehicu
         manejar_agregar_transformers(nombre, calcular_estadistica(CAMION_FUERZA_INCIAL), calcular_estadistica(CAMION_DEFENSA_INCIAL), calcular_estadistica(CAMION_VELOCIDAD_INCIAL), convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(tipo_vehiculo));
         break;
     case AVION:
-        manejar_agregar_transformers(nombre,calcular_estadistica(AVION_FUERZA_INCIAL), calcular_estadistica(AVION_DEFENSA_INCIAL), calcular_estadistica(AVION_VELOCIDAD_INCIAL), convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
+        manejar_agregar_transformers(nombre, calcular_estadistica(AVION_FUERZA_INCIAL), calcular_estadistica(AVION_DEFENSA_INCIAL), calcular_estadistica(AVION_VELOCIDAD_INCIAL), convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
         break;
     case TANQUE:
-        manejar_agregar_transformers(nombre,calcular_estadistica(TANQUE_FUERZA_INCIAL), calcular_estadistica(TANQUE_DEFENSA_INCIAL), calcular_estadistica(TANQUE_VELOCIDAD_INCIAL), convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
+        manejar_agregar_transformers(nombre, calcular_estadistica(TANQUE_FUERZA_INCIAL), calcular_estadistica(TANQUE_DEFENSA_INCIAL), calcular_estadistica(TANQUE_VELOCIDAD_INCIAL), convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(tipo_vehiculo));
         break;
     default:
         menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
@@ -343,7 +343,7 @@ void Juego::manejar_crear_autobots(const std::string &nombre){
     if (tipo_vehiculo == AUTO || tipo_vehiculo == CAMION){
         crear_transformers(nombre, tipo_vehiculo);
         menu.limpiar_y_mostrar_mensaje(MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE);
-    }else{
+    } else {
         menu.limpiar_y_mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
     }
 }
@@ -353,7 +353,7 @@ void Juego::manejar_crear_decepticons(const std::string &nombre){
     if (tipo_vehiculo == AVION || tipo_vehiculo == TANQUE){
         crear_transformers(nombre, tipo_vehiculo);
         menu.limpiar_y_mostrar_mensaje(MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE);
-    }else{
+    } else {
         menu.limpiar_y_mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
     }
 }
@@ -364,9 +364,9 @@ void Juego::manejar_crear_transformers(){
     int faccion = solicitar_faccion();
     if (faccion == AUTOBOTS){
         manejar_crear_autobots(nombre);
-    }else if (faccion == DECEPTICONS){
+    } else if (faccion == DECEPTICONS){
         manejar_crear_decepticons(nombre);
-    }else{
+    } else{
         menu.limpiar_y_mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
     }
 }
@@ -375,7 +375,7 @@ void Juego::manejar_buscar_transformers(){
     menu.limpiar_menu();
     const std::string nombre = solicitar_nombre_transformers();
     try {
-        if (administrador_transformers.buscar_transformer(nombre) != NO_ENCONTRADO){
+        if (administrador_transformers.buscar_transformer(nombre) != BUSCAR_TRANSFORMER_NO_ENCONTRADO){
             menu.limpiar_menu();
             menu.menu_transformers_encontrado();
         } else {
@@ -390,10 +390,10 @@ void Juego::manejar_buscar_transformers(){
 void Juego::manejar_eliminar_transformers(){
     menu.limpiar_menu();
     const std::string nombre_transformers = solicitar_nombre_transformers();
-    try{
+    try {
         administrador_transformers.eliminar_transformer(nombre_transformers);
         menu.limpiar_y_mostrar_mensaje(MENSAJE_ELIMINADADO_CORRECTAMENTE);
-    }catch (ExcepcionAdministradorTransformers& e){
+    } catch (ExcepcionAdministradorTransformers& e){
         menu.limpiar_y_mostrar_mensaje(e.what());
     }
 }
@@ -401,7 +401,7 @@ void Juego::manejar_eliminar_transformers(){
 void Juego::manejar_transformar(){
     menu.limpiar_menu();
     std::string nombre_transformers = solicitar_nombre_transformers();
-    try{
+    try {
         administrador_transformers.transformar_transformer(nombre_transformers);
     } catch (ExcepcionAdministradorTransformers& e){
         menu.limpiar_y_mostrar_mensaje(e.what());
@@ -444,7 +444,7 @@ void Juego::manejar_administrar_transformers(){
             default:
                 menu.limpiar_menu();
                 menu.mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
-            }
+        }
     }
 }
 
@@ -468,6 +468,7 @@ void Juego::manejar_interactuar_con_el_personaje(){
             case OPCION_4:
                 menu.limpiar_menu();
                 continuar = false;
+                break;
             default:
                 menu.limpiar_y_mostrar_mensaje(ERROR_ENTRADA_INVALIDA);
         }

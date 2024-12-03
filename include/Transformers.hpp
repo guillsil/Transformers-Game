@@ -27,30 +27,28 @@ const int CAMBIO_TOTALMENTE = 4;
 class Transformers {
 private:
     std::string nombre, faccion, vehiculo;
-    Estadisticas estadisticas; //int fuerza, defensa, velocidad;
-    bool transformado;
+    Estadisticas estadisticas;
+    bool esta_transformado = false;
 
-    //Pre:
+    //Pre: -
     //Post: Cambia la estadistica pasada por puntero segun el numero de cambio
 
     int calcular_bonificacion(int estadistica_base, int multiplicador, int indicador_aumento_reduccion);
 
-
-    //Pre:
+    //Pre: -
     //Post: Cambia las estadisticas dependiendo del vehiculo que es el transformer. Se usa luego de la transformacion.
     //Agregar mejor descripcion
     void chequeo_vehiculo();
 
-    //Pre:
+    //Pre: Texto_tranformado debe ser "Si" o "No"
     //Post: Chequea el estado de transformado del transformer pasado y devuele un string que contiene Si o No
-    bool pase_texto_bool_transformado(std::string texto_transformado);
-
+    bool pase_texto_a_bool_transformado(std::string texto_transformado);
 public:
     //Constructor auxiliar para que funcione el programa
     Transformers();
 
     //Constructor con todos los datos
-    Transformers(std::string nombre, int fuerza, int defensa, int velocidad, std::string faccion, std::string vehiculo, bool transformado);
+    Transformers(std::string nombre, int fuerza, int defensa, int velocidad, std::string faccion, std::string vehiculo, bool esta_transformado);
     
     //Constructor sin transformado
     Transformers(std::string nombre, int fuerza, int defensa, int velocidad, std::string faccion, std::string vehiculo);

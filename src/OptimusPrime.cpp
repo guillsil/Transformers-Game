@@ -29,24 +29,24 @@ void OptimusPrime::responder(std::string mensaje) {
         respuestas.agregar_respuesta(SERENO_RESPUESTA_AUTOBOTS);
         respuestas.agregar_respuesta(SERENO_RESPUESTA_CYBERTRON);
         controlador_de_mensajes.mostrar_mensajes(POR_PALABRA_CLAVE);
-    }else if (estado_de_animo == DETERMINADO) {
+    } else if (estado_de_animo == DETERMINADO) {
         respuestas.agregar_respuesta(DETERMINADO_RESPUESTA_GENERICA);
         respuestas.agregar_respuesta(DETERMINADO_RESPUESTA_MEGATRON);
         respuestas.agregar_respuesta(DETERMINADO_RESPUESTA_DECEPTICONS);
         respuestas.agregar_respuesta(DETERMINADO_RESPUESTA_AUTOBOTS);
         respuestas.agregar_respuesta(DETERMINADO_RESPUESTA_CYBERTRON);
         controlador_de_mensajes.mostrar_mensajes(POR_PALABRA_CLAVE);
-    }else {
+    } else {
         controlador_de_mensajes.mostrar_mensajes(ALEATOREAMENTE);
     }
 }
 
 void OptimusPrime::sugerir_fusion() {
     if (estado_de_animo == SERENO) {
-        std::cout <<SERENO_SUGERENCIA_FUSION;
-    }else if (estado_de_animo == DETERMINADO) {
+        std::cout << SERENO_SUGERENCIA_FUSION;
+    } else if (estado_de_animo == DETERMINADO) {
         std::cout << DETERMINADO_SUGERENCIA_FUSION;
-    }else {
+    } else {
         std::cout << ENFURECIDO_SUGERENCIA_FUSION;
     }
 }
@@ -55,9 +55,9 @@ void OptimusPrime::cambiar_animo(std::string animo) {
     utilidades.convertir_a_minuscula(animo);
     if (animo == OPTIMUS_ANIMO_SERENO) {
         estado_de_animo = SERENO;
-    }else if (animo == OPTIMUS_ANIMO_DETERMINADO) {
+    } else if (animo == OPTIMUS_ANIMO_DETERMINADO) {
         estado_de_animo = DETERMINADO;
-    }else {
+    } else {
         estado_de_animo = ENFURECIDO;
     }
 }

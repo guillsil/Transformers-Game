@@ -48,11 +48,11 @@ Cristal::Cristal(const Rareza &rareza, const bool &exito): rareza(rareza), estad
 }
 
 bool Cristal::operator==(Rareza rareza) {
-    return this->rareza == rareza;
+    return this-> rareza == rareza;
 }
 
 Rareza Cristal::obtener_rareza() {
-    return this->rareza;
+    return this-> rareza;
 }
 
 size_t Cristal::obtener_fuerza() {
@@ -74,13 +74,13 @@ size_t Cristal::obtener_poder() {
 std::string Cristal::convertir_rareza_a_string() {
     switch (rareza) {
         case COMUN:
-            return  COMUN_CADENA;
+            return COMUN_CADENA;
         case RARO:
-            return  RARO_CADENA;
+            return RARO_CADENA;
         case EPICO:
-            return  EPICO_CADENA;
+            return EPICO_CADENA;
         case LEGENDARIO:
-            return  LEGENDARIO_CADENA;
+            return LEGENDARIO_CADENA;
         default: return DESCONOCIDO_CADENA;
     }
 }
@@ -94,8 +94,8 @@ void Cristal::mostrar() {
 
 int Cristal::obtener_porcentaje_exito() {
     switch (rareza) {
-        case COMUN: return  PROBABILIDAD_EXITO_COMUN_A_RARO;
-        case RARO:  return  PROBABILIDAD_EXITO_RARO_A_EPICO;
+        case COMUN: return PROBABILIDAD_EXITO_COMUN_A_RARO;
+        case RARO:  return PROBABILIDAD_EXITO_RARO_A_EPICO;
         case EPICO: return PROBABILIDAD_EXITO_EPICO_A_LEGENDARIO;
         default: return PROBABILIDAD_EXITO_INVALIDA;
     }
@@ -125,7 +125,7 @@ std::ostream &operator<<(std::ostream &os, const Cristal& cristal){
         case EPICO:
             os << EPICO_CADENA; break;
         case LEGENDARIO:
-            os <<  LEGENDARIO_CADENA; break;
+            os << LEGENDARIO_CADENA; break;
         default: 
             os << DESCONOCIDO_CADENA; break;
     }

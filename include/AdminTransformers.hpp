@@ -7,7 +7,7 @@
 #include "Transformers.hpp"
 #include "ControlArchivo.hpp"
 
-const size_t NO_ENCONTRADO = -1;
+const size_t BUSCAR_TRANSFORMER_NO_ENCONTRADO = -1;
 
 class ExcepcionAdministradorTransformers : public std::runtime_error {
 public:
@@ -36,14 +36,14 @@ public:
     //Post: Agrega un nuevo transformer a vector lista_transformers
     void agregar_transformer(std::string nombre, int fuerza, int defensa, int velocidad, std::string faccion, std::string vehiculo);
     
-    //Pre: El vector lista_transformers no debe estar vacio
-    //Post: Elimina un transformer segun el nombre
-    //Ver si se devuelve y se elimina x pantalla o que se hace, usar buscar y operador [] para mejor rendimiento
+    //Pre: 
+    //Post: Elimina un transformer segun el nombre proporcionado. Devuelve un Exception 
+    //      si el vector está vacio o si el nombre no se pudo eliminar/no fue encontrado.
     Transformers eliminar_transformer(std::string nombre);
     
     //Pre: -
     //Post: Buscar un transformer segun el nombre, devuelve su posicion en lista_transformers.
-    // Si no lo encuentra devuelve un numero fuera de rango
+    //      Si no lo encuentra devuelve un int -1.
     size_t buscar_transformer(std::string nombre);
     
     //Pre: -
@@ -54,13 +54,14 @@ public:
     //Post: Devuelve la lista_transformers
     Vector<Transformers>& obtener_transformers_secundarios();
 
-    //Pre:
+    //Pre: -
     //Post: Devuelve el trasformer en la posicion indice del vector lista_transformers
     Transformers operator[](size_t indice);
 
-    //Pre:
+    //Pre: -
     //Post: Cambia de forma al transformer al opuesto al que estaba.
-    // Transformado = true -> false ó Transformado = false -> true
+    //      esta_transformado = true -> false ó esta_transformado = false -> true
+    //      Devuelve un Exception si el vector está vacio o si el nombre no se pudo eliminar/no fue encontrado.
     void transformar_transformer(std::string nombre);
 
     //Destructor

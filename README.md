@@ -49,7 +49,8 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
   * Al iniciarse el juego se obsequiará un cristal de rareza común al jugador 
 
 * ### Parámetro Poder
-  * El parámetro de poder de un cristal se representa mediante la suma de las estadísticas de un cristal es decir es la suma entre la fuerza, defensa y velociad.
+  * El parámetro de poder de un cristal se representa mediante la suma de las estadísticas de un cristal es decir es la suma entre la fuerza, defensa y velocidad.
+  * El parámetro de poder de un trasnformer se representa mediante la suma de sus estadísticas es decir es la suma entre la fuerza, defensa y velocidad.
 
 * ### Como se muestra el cristal con mayor Poder
   * Para poder mostrar el cristal con mayor poder lo que se decide es ir almacenando en la bóveda los cristales de manera ordenada (****Inserción Ordenada***) y asi el obtener el cristal de mayor poder tendrá un costo de ***O(1)***, esto porque se ordena de manera descendente lo que permite obtenerlo de una manera más rápida, ya que está en la primera posición.
@@ -60,18 +61,18 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
 
 * ### Estadisticas con la que se crearan los Transformers
   * A la hora de crear los transformers lo que opto por hacer es que todos tengas un máximo de hasta ***300*** de estadísticas sumadas entre cada una de ellas.
-  * También que todos los transformers creado desde el Administrador de Transformers se creen sin transformar.
+  * También que todos los transformers creado desde el Administrador de Transformers se crean sin estar transformados.
   * La division para cada uno de los transformers es la siguiente:
     * ***Auto:*** fuerza: 50; defensa: 60; velocidad: 100. 
     * ***Camion:*** fuerza: 120; defensa: 80; velocidad: 60.
     * ***Avion:*** fuerza: 60; defensa: 50; velocidad: 100.
     * ***Tanque:*** fuerza: 90; defensa: 110; velocidad: 30.
+  * Fue agregado un metodo el cual permite cierta aletoriedad en estas ultimas estadisticas declaradas. El metodo ***calcular_estadistica*** de la clase Juego, selecciona de manera random números de entre el 1 al 3, los cuales son luego multiplicados por 10. Ademas también obtiene del mismo metodo aleatorio un número de entre 1 y 2, el cual se interpreta de la siguiente manera: si es igual a 1, el número anteriormente obtenido de la multiplicacion se suma, de lo contrario, ser 2, se resta.
 
 * ### Estadisticas de Optimus y Megatron
   * Para las estadísticas de los protagonistas del juego lo inicializamos de la siguiente manera:
-    *  ***Megatron***: fuerza: 60, defensa: 70, velocidad: 100.
-    *  ***Optimus***: fuerza: 70, defensa: 90, velocidad: 50.
-
+    *  ***Megatron***: fuerza: 80, defensa: 90, velocidad: 100, vehiculo: Avion.
+    *  ***Optimus***: fuerza: 80, defensa: 100, velocidad: 70, vehiculo: Camion.
 
 ## Screenshots
 

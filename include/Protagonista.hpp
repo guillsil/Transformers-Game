@@ -8,6 +8,7 @@
 #include <BovedaCristales.hpp>
 #include "OptimusPrime.hpp"
 #include "Megatron.hpp"
+#include "Transformers.hpp"
 
 class ExcepcionProtagonista : public std::runtime_error {
 public:
@@ -40,6 +41,10 @@ public:
     Personaje obtener_personaje();
 
     //Pre: -
+    //Post: Devuelve el transformer que esta usando el Protagonista
+    Transformers obtener_transformer_principal();
+
+    //Pre: -
     //Post: Equipa un cristal en la boveda del personaje a lo sumo solo podrá tener 7 cristales equipados.
     void equipar_cristal(Cristal cristal);
 
@@ -56,6 +61,7 @@ private:
     Megatron megatron;
     Personaje personaje_jugando;
     BovedaCristales cristales_equipados;
+    Transformers transformer_principal;
 
     //Pre: -
     //Post: Devuelve el estado en formato cadena teniendo en cuenta el índice suministrado.
