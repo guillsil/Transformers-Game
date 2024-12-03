@@ -494,6 +494,7 @@ void Juego::manejar_combate(){
         CombatesUsuario combates_usuario(optimus, administrador_transformers.obtener_transformers_secundarios());
         combates_usuario.iniciar_partida_combates();
     }
+    
 }
 
 void Juego::manejar_flujo_juego_principal() {

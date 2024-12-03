@@ -28,6 +28,7 @@ void CombatesUsuario::establecer_puntaje_combate(Resultado_combate& resultado_co
         puntos_partida -= (puntos_partida < cant_restar) ? puntos_partida : cant_restar; 
         break;
     default:
+        puntos_partida -= (puntos_partida < cant_restar) ? puntos_partida : cant_restar; 
         break;
     }
 }
