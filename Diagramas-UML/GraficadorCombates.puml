@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+class Transformers
+class Vector
+
+class GraficadorCombates {
+    ---
+    + GraficadorCombates()
+    + ~GraficadorCombates()
+    + void mostrar_mapa_combates(transformers_en_mapa : Vector<Transformers>&)
+    + void mostrar_secuencia(secuencia : Vector<size_t>&, p_principal : Transformers&, j_final : Transformers&)
+    ---
+    - void vertices_dobles(valor1 : size_t, valor2 : size_t)
+    - void vertices_triples(valor1 : size_t, valor2 : size_t, valor3 : size_t)
+    - void vertice_individual(valor : string)
+    - void vertice_individual(valor : size_t)
+    - void pesos_aristas(p_principal : Transformers&, t_destino : Transformers&)
+    - void pesos_aristas(p_principal : Transformers&, t_destino1 : Transformers&, t_destino2 : Transformers&)
+    - void pesos_aristas(p_principal : Transformers&, t_destino1 : Transformers&, t_destino2 : Transformers&, t_destino3 : Transformers&)
+    - string acotar_nombre(nombre : string)
+    - int costo_avanzar(transformer_origen : Transformers&, transformer_destino : Transformers&)
+}
+
+' Relaciones
+GraficadorCombates --> Transformers : "usa"
+GraficadorCombates --> Vector : "usa"
+
+@enduml

@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+' Declaración de clases utilizadas
+class Transformers
+class Vector
+class Grafo
+class GraficadorCombates
+class Camino
+
+struct Secuencia_combates {
+    + Vector<Transformers> secuencia_combate
+    + int total_energon_secuencia
+}
+
+' Clase principal
+class GeneradorCombates {
+    - Grafo mapa_combates
+    - Camino secuencia_minima_numerica
+    - GraficadorCombates graficador
+    - Vector<Transformers> transformers_en_mapa
+    - Vector<Transformers> secuencia_minima_transformers
+    ---
+    + GeneradorCombates()
+    + GeneradorCombates(personaje_principal : Transformers, transformers_secundarios : Vector<Transformers>)
+    + ~GeneradorCombates()
+    + Vector<Transformers> obtener_secuencia_minima()
+    + int costo_energon_secuencia()
+    + void mostrar_mapa_combates()
+    + void mostrar_secuencia_minima()
+    + GeneradorCombates& operator=(generador_combates : const GeneradorCombates&)
+    ---
+    - Grafo generar_mapa(transformers_en_mapa : Vector<Transformers>&)
+    - Transformers obtener_jefe_final(personaje_principal : Transformers&)
+    - int costo_avanzar(transformer_origen : Transformers&, transformer_destino : Transformers&)
+}
+
+' Relaciones
+GeneradorCombates --> Transformers : "usa"
+GeneradorCombates --> Vector : "usa"
+GeneradorCombates --> Grafo : "usa"
+GeneradorCombates --> GraficadorCombates : "usa"
+GeneradorCombates --> Camino : "usa"
+GeneradorCombates --> Secuencia_combates : "usa"
+
+@enduml

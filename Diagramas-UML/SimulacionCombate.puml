@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+' Declaración de clases utilizadas
+class Transformers
+class Vector
+
+' Enumeración
+enum Resultado_combate {
+    VICTORIA
+    DERROTA
+    EMPATE
+}
+
+class SimulacionCombate {
+    ---
+    + SimulacionCombate()
+    + SimulacionCombate(secuencia_combate : Vector<Transformers>)
+    + ~SimulacionCombate()
+    + Resultado_combate combatir(transformado : bool)
+    + void avanzar()
+    + bool hay_avance()
+    + bool es_aliado()
+    + void mostrar_recorrido()
+    + Transformers& transformer_encuentro_actual()
+    + void reiniciar_avance()
+    + SimulacionCombate& operator=(simulacion_combate : const SimulacionCombate&)
+    ---
+    - Vector<Transformers> secuencia_combate
+    - Transformers personaje_principal
+    - Transformers jefe_final
+    - size_t posicion_actual
+}
+
+' Relaciones
+SimulacionCombate --> Resultado_combate : "usa"
+SimulacionCombate --> Transformers : "usa"
+SimulacionCombate --> Vector : "usa"
+
+@enduml
