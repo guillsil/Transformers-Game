@@ -25,9 +25,9 @@ class Vector<T> {
     + T baja(indice: size_t)
     + bool vacio()
     + size_t tamanio()
-    +mostrar()
-    +limpiar()
-    +invertir()
+    + void mostrar()
+    + void limpiar()
+    + void invertir()
     ---
     -redimensionar(nuevo_tamanio: const size_t)
 }
