@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+
 #include "TDAs/Vector.hpp"
 #include "Estadisticas.hpp"
 
@@ -22,6 +23,7 @@ const int CAMBIO_TOTALMENTE = 4;
 
 //NOMBRE,FUERZA,DEFENSA,VELOCIDAD,FACCIÓN,VEHÍCULO,TRANSFORMADO
 
+
 class Transformers {
 private:
     std::string nombre, faccion, vehiculo;
@@ -30,6 +32,7 @@ private:
 
     //Pre: -
     //Post: Cambia la estadistica pasada por puntero segun el numero de cambio
+
     int calcular_bonificacion(int estadistica_base, int multiplicador, int indicador_aumento_reduccion);
 
     //Pre: -
@@ -88,6 +91,7 @@ public:
     // Pre: -
     // Post: Carga la información al stream de salida.
     friend std::ostream& operator<<(std::ostream& os, const Transformers& transformer);
+
 };
 
 #endif
