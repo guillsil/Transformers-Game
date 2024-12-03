@@ -67,7 +67,6 @@ void CombatesUsuario:: realizar_enfrentamiento(){
     size_t respuesta;
     bool transformado = false;
     Resultado_combate resultado_combate;
-    system("clear");
     menu.menu_estara_transformado();
     cin >> respuesta;
     while(respuesta != 1 && respuesta != 2){
@@ -109,6 +108,7 @@ void CombatesUsuario::batalla_jefe_final(){
     cin.get();
     system("clear");
     for (size_t i = 0; i < 3; i++) {
+        system("clear");
         cout << "ENCUENTRO NUMERO " << i+1 << endl;
         realizar_enfrentamiento();
     }
@@ -121,7 +121,7 @@ void CombatesUsuario::batalla_generica(){
 }
 
 void CombatesUsuario::encuentro_aliado(){
-    menu.mostrar_mensaje(simulacion_combate.transformer_encuentro_actual().obtener_nombre() + "?\n" + ALIADO_ENCUENTRO);
+    menu.mostrar_mensaje("\t\t\t\t\t" + simulacion_combate.transformer_encuentro_actual().obtener_nombre() + "?\n" + ALIADO_ENCUENTRO);
     puntos_partida += 25;
     cout << PRESIONE_TECLA_CONTINUAR;
     cin.get();

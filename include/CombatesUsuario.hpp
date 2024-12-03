@@ -29,7 +29,7 @@ const string PRESIONE_TECLA_RESULTADO_COMBATE = "  PRESIONE ENTER PARA VER EL RE
 //Partida
 const string PUNTUACION_FINAL = "\n\tPartida finalizada\nPUNTAJE FINAL: ";
 const string SALIDA = "PRESIONE UNA TECLA PARA SALIR...";
-const string ALIADO_ENCUENTRO = "Mira con quien te encontraste, un aliado!!\nObtuviste +25 pts\n";
+const string ALIADO_ENCUENTRO = "\t\t\t\t\tMira con quien te encontraste, un aliado!!  Obtuviste +25 pts\n";
 const string ENEMIGO_ENCUENTRO = "\t\t\t\t\tOh no! un enemigo!\n\t\t\t\t\tTendras que enfrentar a ";
 const string TRANSFORMADO_PTS = "\n  Pelearas transformado -10 pts";
 
