@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+' Declaración de clases utilizadas
+class Transformers
+class Vector
+class SimulacionCombate
+class GeneradorCombates
+class Menu
+class Resultado_combate
+
+' Clase principal
+class CombatesUsuario {
+    - size_t puntos_partida
+    - SimulacionCombate simulacion_combate
+    - GeneradorCombates generador_combate
+    - Menu menu
+    ---
+    + CombatesUsuario(personaje_principal : Transformers, transformers_secundarios : Vector<Transformers>)
+    + ~CombatesUsuario()
+    + void iniciar_partida_combates()
+    + size_t obtener_puntaje()
+    ---
+    - void establecer_puntaje_combate(resultado_combate : Resultado_combate&, esta_transformado : bool)
+    - void realizar_enfrentamiento()
+    - void batalla_jefe_final()
+    - void batalla_generica()
+    - void encuentro_aliado()
+    - void gestion_simulacion_batalla()
+    - void efectos_combate()
+}
+
+' Relaciones
+CombatesUsuario --> Transformers : "usa"
+CombatesUsuario --> Vector : "usa"
+CombatesUsuario --> SimulacionCombate : "usa"
+CombatesUsuario --> GeneradorCombates : "usa"
+CombatesUsuario --> Menu : "usa"
+CombatesUsuario --> Resultado_combate : "usa"
+@enduml
