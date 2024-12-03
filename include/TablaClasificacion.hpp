@@ -27,15 +27,16 @@ public:
     TablaClasificacion();
 
     //Pre:
-    //Post:
+    //Post: Muestra por terminal los 10 jugadores de mayor puntaje, ordenados de mayor a menor. 
+    //      De haber menos de 10 jugadores, muestra los que hay.
     void mostrar_top10_jugadores();
 
-    //Pre:
-    //Post: Es una insersion ordenada.
+    //Pre: Se asume que el DatosJugador está bien generado
+    //Post: A traves de insersion ordenada, se agrega un DatosJugador nuevo a la lista_jugadores
     void agregar_jugador(DatosJugador jugador_nuevo);
 
-    //Pre:
-    //Post:
+    //Pre: -
+    //Post: A traves de insersion ordenada, se agrega un DatosJugador nuevo a la lista_jugadores
     void agregar_jugador(std::string nombre_jugador, int puntaje, Personaje personaje_usado);
 
     //Destructor

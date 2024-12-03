@@ -25,7 +25,7 @@ private:
     Personaje personaje_usado;
 
     //Pre: -
-    //Post: Devuelve el Personaje usado desde texto
+    //Post: Devuelve el enum Personaje usado desde texto proporcionado.
     Personaje obtener_personaje_desde_texto(std::string nombre_personaje);
 
     //Pre: -
