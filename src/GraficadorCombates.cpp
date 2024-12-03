@@ -93,7 +93,7 @@ void GraficadorCombates:: pesos_aristas(Transformers& p_principal, Transformers&
 }
 
 void GraficadorCombates:: pesos_aristas(Transformers& p_principal, Transformers& t_destino1, Transformers& t_destino2){
-    cout << "    "<< costo_avanzar(p_principal,t_destino2) <<"         " << costo_avanzar(p_principal,t_destino2) << endl;
+    cout << "    "<< costo_avanzar(p_principal,t_destino1) <<"         " << costo_avanzar(p_principal,t_destino2) << endl;
 }
 
 void GraficadorCombates:: pesos_aristas(Transformers& p_principal, Transformers& t_destino1, Transformers& t_destino2, Transformers& t_destino3){

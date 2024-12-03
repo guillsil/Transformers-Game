@@ -136,6 +136,7 @@ void CombatesUsuario::gestion_simulacion_batalla(){
         switch (opcion) {
         case 1:
             generador_combate.mostrar_secuencia_minima();
+            cout << "  EL GASTO TOTAL DE ESTE CAMINO ES: " << generador_combate.costo_energon_secuencia() << " ENERGON" << endl;
             cout << PRESIONE_TECLA_CONTINUAR;
             cin.get();
             break;
@@ -182,7 +183,7 @@ void CombatesUsuario:: iniciar_partida_combates(){
             break;
         case 2:
             generador_combate.mostrar_secuencia_minima();
-            cout << "EL GASTO TOTAL DE ESTE CAMINO ES: " << generador_combate.costo_energon_secuencia() << " ENERGON" << endl;
+            cout << "  EL GASTO TOTAL DE ESTE CAMINO ES: " << generador_combate.costo_energon_secuencia() << " ENERGON" << endl;
             cout << PRESIONE_TECLA_CONTINUAR;
             cin.get();
             break;
