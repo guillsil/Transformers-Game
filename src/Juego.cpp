@@ -516,8 +516,8 @@ void Juego::manejar_flujo_juego_principal() {
                 menu.limpiar_menu();
                 manejar_administrar_transformers();
                 break;
-            case OPCION_5: // Simulacion de Batalla
-                menu.limpiar_menu();
+        case OPCION_5: // Simulacion de Batalla
+                manejar_combate();
                 break;
             case OPCION_6: // Tabla Clasificación
                 mostrar_tabla_clasificacion();
