@@ -36,6 +36,7 @@ std::string Transformers::obtener_nombre(){
 
 size_t Transformers::obtener_poder(){
     return estadisticas.obtener_poder();
+
 }
 
 void Transformers::cambiar_forma(){
@@ -69,7 +70,6 @@ bool Transformers::operator==(const Transformers &otro_transformer){
 bool Transformers::son_iguales_fuerza(Transformers otro_transformer){
     bool son_transformers_iguales = false;
     int contador_estaditicas_iguales = 0;
-
     if (this-> estadisticas.obtener_fuerza() == otro_transformer.estadisticas.obtener_fuerza()) {contador_estaditicas_iguales++;  /*std::cout << "Fuerza igual "; */}
     if (this-> estadisticas.obtener_defensa() == otro_transformer.estadisticas.obtener_defensa()) {contador_estaditicas_iguales++; /*std::cout << "Defensa igual ";*/}
     if (this-> estadisticas.obtener_velocidad() == otro_transformer.estadisticas.obtener_velocidad()) {contador_estaditicas_iguales++; /*std::cout << "Velocidad igual ";*/}
@@ -161,6 +161,7 @@ void Transformers::mostrar(){
 std::ostream &operator<<(std::ostream &os, const Transformers &transformer){
     os << transformer.nombre
         << "," << transformer.estadisticas
+
         << "," << transformer.faccion
         << "," << transformer.vehiculo
         << ",";

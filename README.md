@@ -71,8 +71,8 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
 
 * ### Estadisticas de Optimus y Megatron
   * Para las estadísticas de los protagonistas del juego lo inicializamos de la siguiente manera:
-    *  ***Megatron***: fuerza: 60, defensa: 70, velocidad: 100, vehiculo: Avion.
-    *  ***Optimus***: fuerza: 70, defensa: 90, velocidad: 50, vehiculo: Camion.
+    *  ***Megatron***: fuerza: 80, defensa: 90, velocidad: 100, vehiculo: Avion.
+    *  ***Optimus***: fuerza: 80, defensa: 100, velocidad: 70, vehiculo: Camion.
 
 ## Screenshots
 

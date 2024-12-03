@@ -1,1 +1,9 @@
-# Informe de complejidad algorítmica
+<img src="image/informe-pages/Informe%20de%20Complejidad%20Algorítmica%20%20Treesort_page-0001.jpg" alt="Informe">
+<img src="image/informe-pages/Informe%20de%20Complejidad%20Algorítmica%20%20Treesort_page-0002.jpg" alt="Informe"> 
+<img src="image/informe-pages/Informe%20de%20Complejidad%20Algorítmica%20%20Treesort_page-0003.jpg" alt="Informe"> 
+<img src="image/informe-pages/Informe%20de%20Complejidad%20Algorítmica%20%20Treesort_page-0004.jpg" alt="Informe"> 
+<img src="image/informe-pages/Informe%20de%20Complejidad%20Algorítmica%20%20Treesort_page-0005.jpg" alt="Informe"> 
+<img src="image/informe-pages/Informe%20de%20Complejidad%20Algorítmica%20%20Treesort_page-0006.jpg" alt="Informe"> 
+<img src="image/informe-pages/Informe%20de%20Complejidad%20Algorítmica%20%20Treesort_page-0007.jpg" alt="Informe"> 
+<img src="image/informe-pages/Informe%20de%20Complejidad%20Algorítmica%20%20Treesort_page-0008.jpg" alt="Informe"> 
+<img src="image/informe-pages/Informe%20de%20Complejidad%20Algorítmica%20%20Treesort_page-0009.jpg" alt="Informe">

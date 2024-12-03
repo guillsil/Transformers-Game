@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Juego.hpp"
 
-
 int main() {
     char opcion_menu;
     std::string nombre_jugador;

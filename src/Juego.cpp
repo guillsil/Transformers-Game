@@ -3,6 +3,7 @@
 //
 
 #include "Juego.hpp"
+#include "CombatesUsuario.hpp"
 
 const std::string MENSAJE_ESTADO_MODIFICADO_CORRECTAMENTE = "Se Modifico Correctamente el estado" ;
 const std::string MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE = "Se creo Correctamente el Transformers";
@@ -482,6 +483,26 @@ void Juego::mostrar_tabla_clasificacion(){
     menu.mostrar_recuadro_inferior();
 }
 
+void Juego::manejar_combate(){
+    menu.limpiar_menu();
+    if (protagonista.obtener_personaje() == MEGATRON){
+        Transformers megatron(TEXTO_MEGATRON, 80, 90, 100, convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(AVION));
+        CombatesUsuario combates_usuario(megatron, administrador_transformers.obtener_transformers_secundarios());
+        combates_usuario.iniciar_partida_combates();
+        if(combates_usuario.get_termino()){
+            tabla_clasificacion.agregar_jugador(nombre_jugador, (int)combates_usuario.obtener_puntaje(), protagonista.obtener_personaje());
+        }
+    }else{
+        Transformers optimus(TEXTO_OPTIMUS_PRIME, 80, 100, 70, convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(CAMION));
+        CombatesUsuario combates_usuario(optimus, administrador_transformers.obtener_transformers_secundarios());
+        combates_usuario.iniciar_partida_combates();
+        if(combates_usuario.get_termino()){
+            tabla_clasificacion.agregar_jugador(nombre_jugador, (int)combates_usuario.obtener_puntaje(), protagonista.obtener_personaje());
+        }
+    }
+    
+}
+
 void Juego::manejar_flujo_juego_principal() {
     bool continuar = true;
     char opcion_menu;
@@ -502,8 +523,8 @@ void Juego::manejar_flujo_juego_principal() {
                 menu.limpiar_menu();
                 manejar_administrar_transformers();
                 break;
-            case OPCION_5: // Simulacion de Batalla
-                menu.limpiar_menu();
+        case OPCION_5: // Simulacion de Batalla
+                manejar_combate();
                 break;
             case OPCION_6: // Tabla Clasificación
                 mostrar_tabla_clasificacion();

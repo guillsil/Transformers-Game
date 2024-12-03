@@ -11,7 +11,7 @@
 #include "Protagonista.hpp"
 #include "AdminTransformers.hpp"
 #include "TablaClasificacion.hpp"
-#include "Utilidades.hpp"
+
 
 
 class Juego {
@@ -41,6 +41,7 @@ private:
     std::string nombre_jugador;
     AdministradorTransformers administrador_transformers;
     TablaClasificacion tabla_clasificacion;
+
 
     //Pre: -
     //Post: El personaje elegido responde al mensaje recibido.
@@ -173,6 +174,10 @@ private:
     //Pre: -
     //Post: Muestra la tabla de clasificaciones por terminal
     void mostrar_tabla_clasificacion();
+
+    //Pre: -
+    //Post: Se encarga de manejar el flujo del simulador de Combate.
+    void manejar_combate();
 
     //Pre:
     //Post: Genera 2 números random y dependiendo de ellos suma o resta un multiplo de 10 (10-30)

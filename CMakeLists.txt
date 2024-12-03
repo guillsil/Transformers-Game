@@ -50,7 +50,13 @@ set(ARCHIVOS_FUENTE
 
         src/Estadisticas.cpp
         src/Grafo/TuplaVerticeDistancia.cpp
+
         src/Protagonista.cpp
+
+        src/GraficadorCombates.cpp
+        src/SimulacionCombate.cpp
+        src/GeneradorCombates.cpp
+        src/CombatesUsuario.cpp
 
         include/ControlArchivo.hpp
         src/Transformers.cpp
