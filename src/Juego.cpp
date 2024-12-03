@@ -3,6 +3,7 @@
 //
 
 #include "Juego.hpp"
+#include "CombatesUsuario.hpp"
 
 const std::string MENSAJE_ESTADO_MODIFICADO_CORRECTAMENTE = "Se Modifico Correctamente el estado" ;
 const std::string MENSAJE_TRANSFORMERS_CREADO_CORRECTAMENTE = "Se creo Correctamente el Transformers";
@@ -480,6 +481,19 @@ void Juego::mostrar_tabla_clasificacion(){
     menu.mostrar_recuadro_superior();
     tabla_clasificacion.mostrar_top10_jugadores();
     menu.mostrar_recuadro_inferior();
+}
+
+void Juego::manejar_combate(){
+    menu.limpiar_menu();
+    if (protagonista.obtener_personaje() == MEGATRON){
+        Transformers megatron(TEXTO_MEGATRON, 80, 90, 100, convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(AVION));
+        CombatesUsuario combates_usuario(megatron, administrador_transformers.obtener_transformers_secundarios());
+        combates_usuario.iniciar_partida_combates();
+    }else{
+        Transformers optimus(TEXTO_OPTIMUS_PRIME, 80, 100, 70, convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(CAMION));
+        CombatesUsuario combates_usuario(optimus, administrador_transformers.obtener_transformers_secundarios());
+        combates_usuario.iniciar_partida_combates();
+    }
 }
 
 void Juego::manejar_flujo_juego_principal() {
