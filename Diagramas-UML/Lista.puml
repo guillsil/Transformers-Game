@@ -1,0 +1,58 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class NodoLista {
+private:
+    - T dato
+    - NodoLista* anterior
+    - NodoLista* siguiente
+    - NodoLista(dato : T)
+    - NodoLista(dato : T, anterior : NodoLista*, siguiente : NodoLista*)
+    ---
+    + T obtener_dato()
+    + T& obtener_referencia_dato()
+    + void cambiar_dato(dato : T)
+    + NodoLista* obtener_anterior()
+    + void cambiar_anterior(anterior : NodoLista*)
+    + NodoLista* obtener_siguiente()
+    + void cambiar_siguiente(siguiente : NodoLista*)
+}
+
+class ExcepcionLista {
+    + ExcepcionLista(mensaje : string )
+    + ExcepcionLista()
+}
+
+class Lista {
+    - NodoLista<T>* primer_nodo;
+    - NodoLista<T>* ultimo_nodo;
+    - NodoLista<T>* cursor;
+    - size_t cantidad_datos;
+    ---
+    - NodoLista<T>* obtener_nodo(posicion : size_t);
+    ---
+    + Lista()
+    + void alta_principio(dato : T)
+    + void alta_final(dato : T)
+    + T baja_primero()
+    + T baja_ultimo()
+    + void insertar(dato : T, posicion : size_t)
+    + T eliminar(posicion : size_t)
+    + T& primero()
+    + T& ultimo()
+    + void reiniciar_cursor(principio : bool)
+    + void avanzar()
+    + void retroceder()
+    + T& elemento()
+    + size_t tamanio()
+    + bool vacio()
+    + Lista(lista : const Lista&) = delete
+    + void operator=(lista : const Lista&) = delete
+    + ~Lista()
+}
+
+
+' Relaciones
+Lista --> NodoLista : "usa"
+Lista ..> ExcepcionLista : "lanza"
+@enduml
