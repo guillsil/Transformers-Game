@@ -126,6 +126,7 @@ void CombatesUsuario::encuentro_aliado(){
 
 void CombatesUsuario::gestion_simulacion_batalla(){
     simulacion_combate.reiniciar_avance();
+    puntos_partida = 0;
     size_t opcion = 0;
     while(opcion < 1 || opcion > 3){
         menu.menu_combates();
