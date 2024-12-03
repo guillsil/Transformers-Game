@@ -71,9 +71,8 @@ const string union_dos_uno = R"(       ░        ░
              ░  ░        
               ░ ░ )";
 
-class GraficadorCombates {
+class GraficadorCombates {  
     private:
-
         //Metodos privados
 
         //pre: 
@@ -106,6 +105,19 @@ class GraficadorCombates {
         //Grafica por pantalla 1 vertice medio con valor en su interior
         void vertice_individual(size_t valor);
 
+        //pre:-
+        //post:
+        //Muestra en el medio el peso de ir desde p_principal hasta t_destino
+        void pesos_aristas(Transformers& p_principal, Transformers& t_destino);
+        //pre:-
+        //post:
+        //Muestra ordenado por ordenadamente el peso de ir desde p_principal hasta t_destino1 y t_destino2
+        void pesos_aristas(Transformers& p_principal, Transformers& t_destino1, Transformers& t_destino2);
+        //pre:-
+        //post:
+        //Muestra ordenado por ordenadamente el peso de ir desde p_principal hasta t_destino1, t_destino2 y t_destino3
+        void pesos_aristas(Transformers& p_principal, Transformers& t_destino1, Transformers& t_destino2, Transformers& t_destino3);
+
         //pre:
         //Nombre debe ser "Optimus Prime" o Megatron
         //post:
@@ -114,6 +126,15 @@ class GraficadorCombates {
         // "Megatron" --> M
         string acotar_nombre(string nombre);
 
+		//Pre:-
+        //Post:
+        //Compara la faccion y/o poder del transformer destino con el del personaje principal
+        //Si la faccion es la misma devuelve 30
+        //Si la faccion es distinta
+        //--Si sus poderes son iguales, devuelve 50.
+        //--Si el poder del personaje principal es mayor, devuelve un numero entre 10 y 49, a mayor diferencia de poder, menor el numero
+        //--Si el poder del personaje principal es menor, devuelve un numero entre 51 y 100 a mayor diferencia de poder, mayor el numero
+		int costo_avanzar(Transformers& transformer_origen, Transformers& transformer_destino);
     public:
         //Constructor
         GraficadorCombates();
