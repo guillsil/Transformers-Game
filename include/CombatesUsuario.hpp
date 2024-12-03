@@ -6,6 +6,7 @@
 #include "TDAs/Vector.hpp"
 #include "SimulacionCombate.hpp"
 #include "GeneradorCombates.hpp"
+#include "TablaClasificacion.hpp"
 #include <string>
 using namespace std;
 
@@ -38,6 +39,7 @@ private:
     size_t puntos_partida;
     SimulacionCombate simulacion_combate;
     GeneradorCombates generador_combate;
+    bool termino_torneo;
     Menu menu;
 
     //Metodos privados
@@ -102,6 +104,8 @@ public:
     //Devuelve el puntaje final de la partida, si no se llama previamente a iniciar_partida_combates() siempre devolvera 0
     //Si se llama a iniciar_partida_combates() devolvera el puntaje obtenido en la partida
     size_t obtener_puntaje();
+
+    bool get_termino();
 };
 
 #endif

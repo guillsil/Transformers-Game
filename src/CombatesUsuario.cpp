@@ -12,6 +12,7 @@ using namespace std;
 CombatesUsuario::CombatesUsuario(Transformers& personaje_principal, Vector<Transformers>& transformers_secundarios){
     generador_combate = GeneradorCombates(personaje_principal, transformers_secundarios);
     simulacion_combate = SimulacionCombate(generador_combate.obtener_secuencia_minima());
+    termino_torneo = false;
     puntos_partida = 0;
 }
 
@@ -111,6 +112,7 @@ void CombatesUsuario::batalla_jefe_final(){
         cout << "ENCUENTRO NUMERO " << i+1 << endl;
         realizar_enfrentamiento();
     }
+    termino_torneo = true;
 }
 
 void CombatesUsuario::batalla_generica(){
@@ -202,6 +204,10 @@ void CombatesUsuario:: iniciar_partida_combates(){
         }
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
+}
+
+bool CombatesUsuario::get_termino(){
+    return termino_torneo;
 }
 
 size_t CombatesUsuario::obtener_puntaje(){

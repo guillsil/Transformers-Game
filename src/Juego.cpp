@@ -489,10 +489,16 @@ void Juego::manejar_combate(){
         Transformers megatron(TEXTO_MEGATRON, 80, 90, 100, convertir_faccion_string(DECEPTICONS), convertir_vehiculo_string(AVION));
         CombatesUsuario combates_usuario(megatron, administrador_transformers.obtener_transformers_secundarios());
         combates_usuario.iniciar_partida_combates();
+        if(combates_usuario.get_termino()){
+            tabla_clasificacion.agregar_jugador(nombre_jugador, combates_usuario.obtener_puntaje(), protagonista.obtener_personaje());
+        }
     }else{
         Transformers optimus(TEXTO_OPTIMUS_PRIME, 80, 100, 70, convertir_faccion_string(AUTOBOTS), convertir_vehiculo_string(CAMION));
         CombatesUsuario combates_usuario(optimus, administrador_transformers.obtener_transformers_secundarios());
         combates_usuario.iniciar_partida_combates();
+        if(combates_usuario.get_termino()){
+            tabla_clasificacion.agregar_jugador(nombre_jugador, combates_usuario.obtener_puntaje(), protagonista.obtener_personaje());
+        }
     }
     
 }
