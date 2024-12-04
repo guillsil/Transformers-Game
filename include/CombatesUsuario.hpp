@@ -33,6 +33,9 @@ const string ALIADO_ENCUENTRO = "\t\t\t\t\tMira con quien te encontraste, un ali
 const string ENEMIGO_ENCUENTRO = "\t\t\t\t\tOh no! un enemigo!\n\t\t\t\t\tTendras que enfrentar a ";
 const string TRANSFORMADO_PTS = "\n  Pelearas transformado -10 pts";
 
+const int PUNTOS_RESTADOS_ESTA_TRANSFORMADO = 10;
+const int PUNTOS_GANAR_PERDER = 50;
+
 class CombatesUsuario {
 private:
     //Atributos

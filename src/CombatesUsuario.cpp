@@ -19,13 +19,13 @@ CombatesUsuario::CombatesUsuario(Transformers& personaje_principal, Vector<Trans
 CombatesUsuario::~CombatesUsuario(){}
 
 void CombatesUsuario::establecer_puntaje_combate(Resultado_combate& resultado_combate, bool esta_transformado){
-    size_t cant_restar = (esta_transformado) ? 10 : 0;
+    size_t cant_restar = (esta_transformado) ? PUNTOS_RESTADOS_ESTA_TRANSFORMADO : 0;
     switch (resultado_combate) {
     case VICTORIA:
-        puntos_partida += (50 - cant_restar);
+        puntos_partida += (PUNTOS_GANAR_PERDER - cant_restar);
         break;
     case DERRROTA:
-        cant_restar += 50;
+        cant_restar += PUNTOS_GANAR_PERDER;
         puntos_partida -= (puntos_partida < cant_restar) ? puntos_partida : cant_restar; 
         break;
     default:

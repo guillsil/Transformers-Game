@@ -7,20 +7,20 @@ GeneradorCombates:: ~GeneradorCombates(){}
 Grafo GeneradorCombates:: generar_mapa(Vector<Transformers>& transformers_en_mapa){
     size_t cantidad_transformers = transformers_en_mapa.tamanio();
     Grafo mapa_combates(cantidad_transformers);
-    Transformers personaje_principal = transformers_en_mapa[0];   
+    Transformers personaje_principal = transformers_en_mapa[POSICION_PERSONAJE_PRINCIPAL];   
     size_t vertice_actual = 0;
     size_t siguiente_vertice = 1;
     size_t ultimo_vertice = cantidad_transformers - 1;
 
     // Conectar el primer vértice al segundo nivel
-    while (siguiente_vertice < min((size_t)4, cantidad_transformers)) {
+    while (siguiente_vertice < min(CANTIDAD_VERTICE_POR_NIVEL, cantidad_transformers)) {
         mapa_combates.agregar_arista(vertice_actual, siguiente_vertice, costo_avanzar(personaje_principal,transformers_en_mapa[siguiente_vertice]) );
         siguiente_vertice++;
     }
     // Conexion a niveles intermedios de hasta 3 vertices
     while (siguiente_vertice < ultimo_vertice) {
         size_t nivel_inicio = siguiente_vertice; //Proximo vertice a conectar
-        size_t nivel_fin = min(siguiente_vertice + 3, ultimo_vertice);
+        size_t nivel_fin = min(siguiente_vertice + POSICION_SIGUIENTE_VERTICE_A_CONECTAR, ultimo_vertice);
 
         for (size_t i = vertice_actual + 1; i < nivel_inicio; ++i) {
             for (size_t j = nivel_inicio; j < nivel_fin; ++j) {
@@ -42,25 +42,25 @@ Grafo GeneradorCombates:: generar_mapa(Vector<Transformers>& transformers_en_map
 Transformers GeneradorCombates:: obtener_jefe_final(Transformers& personaje_principal){
     Transformers jefe_final;
     if(personaje_principal.obtener_nombre() == "Optimus Prime"){
-        jefe_final = Transformers("Megatron",80,90,100,"Decepticons","Avion");
+        jefe_final = TRANSFORMER_MEGATRON;
     }
     else {
-        jefe_final = Transformers("Optimus Prime",80,100,70,"Autobots","Camion");
+        jefe_final = TRANSFORMER_OPTIMUS_PRIME;
     }
     return jefe_final;
 }
 
 int GeneradorCombates:: costo_avanzar(Transformers& transformer_origen, Transformers& transformer_destino){
-    int costo_avance = 30; //Lo definimos como un encuentro aliado
+    int costo_avance = COSTO_AVANCE_ALIADO; //Lo definimos como un encuentro aliado = 30
     
     if(!(transformer_origen == transformer_destino)){
         int comparacion_poderes = (int)transformer_destino.obtener_poder() - (int)transformer_origen.obtener_poder();
-        costo_avance = 50 + comparacion_poderes;
-        if(costo_avance > 100){
-            costo_avance = 100;
+        costo_avance = COSTO_AVANCE_ENEMIGO + comparacion_poderes;
+        if(costo_avance > COSTO_AVANCE_MAXIMO){
+            costo_avance = COSTO_AVANCE_MAXIMO;
         }
-        else if(costo_avance < 10){
-            costo_avance = 10;
+        else if(costo_avance < COSTO_AVANCE_MINIMO){
+            costo_avance = COSTO_AVANCE_MINIMO;
         }
     }
 

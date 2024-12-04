@@ -13,6 +13,16 @@ struct Secuencia_combates {
     int total_energon_secuencia;
 };
 
+const Transformers TRANSFORMER_OPTIMUS_PRIME = Transformers("Optimus Prime",80,100,70,"Autobots","Camion");
+const Transformers TRANSFORMER_MEGATRON = Transformers("Megatron",80,90,100,"Decepticons","Avion");
+const size_t POSICION_PERSONAJE_PRINCIPAL = 0;
+const size_t CANTIDAD_VERTICE_POR_NIVEL = 4;
+const int POSICION_SIGUIENTE_VERTICE_A_CONECTAR = 3;
+const int COSTO_AVANCE_ALIADO = 30;
+const int COSTO_AVANCE_ENEMIGO = 50;
+const int COSTO_AVANCE_MINIMO = 10;
+const int COSTO_AVANCE_MAXIMO = 100;
+
 class GeneradorCombates {
     private:
         //Atributos
