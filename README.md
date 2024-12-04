@@ -58,6 +58,7 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
 * ### Como se Equipa un Cristal al Personaje
   * Para poder equipar con un cristal al personaje lo que se decidió es crearle una bóveda de cristales al personaje en la cual el mismo solo podrá equiparse con hasta ***7 cristales***.
   * Siempre se equipara con el cristal de mayor poder.
+  * Los cristales equipados no afectan en las batallas con otros transformers.
 
 * ### Estadisticas con la que se crearan los Transformers
   * A la hora de crear los transformers lo que opto por hacer es que todos tengas un máximo de hasta ***300*** de estadísticas sumadas entre cada una de ellas.
@@ -73,6 +74,14 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
   * Para las estadísticas de los protagonistas del juego lo inicializamos de la siguiente manera:
     *  ***Megatron***: fuerza: 80, defensa: 90, velocidad: 100, vehiculo: Avion.
     *  ***Optimus***: fuerza: 80, defensa: 100, velocidad: 70, vehiculo: Camion.
+
+* ### Administrador Transformers secundarios
+  * Al iniciar el programa, a traves del constructor, busca el archivo "transformers.csv" e importa todos los transformers declarados en dicho archivo, guardandolos en el vector lista_transformers. Al finalizar el programa, debido al destructor, sobreescribe el archivo "transformers.csv", guardando todos los cambios realizados mientras estaba activo el programa.
+  * El metodo buscar_transformer se lo iguala a BUSCAR_TRANSFORMER_NO_ENCONTRADO, una constante size_t igualada a "-1", si no encuentra el transformer indicado. El size_t -1 es un numero especial ya que los size_t no tiene numeros negativos, el número real es el 18446744073709551615UL. Se eligio este número para saber que se encuentra fuera de rango.
+
+* ### Combate
+  * Cuando se elige transformar al transformer antes de pelear, se restarán 10 puntos al puntaje total.
+  * Cuando se elige transformar el transformer antes de pelear, cambiará de forma a su ***forma vehículo*** antes del combate y volverá a su ***forma normal***, no transformado, una vez terminada la pelea.
 
 ## Screenshots
 
