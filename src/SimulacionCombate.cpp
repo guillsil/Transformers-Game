@@ -20,7 +20,7 @@ Resultado_combate SimulacionCombate:: combatir(bool transformado){
     
     if(posicion_actual == (secuencia_combate.tamanio() - 1)){
         Utilidades utilidad;
-        int valor_jefe_transformado = utilidad.generar_numero_aleatorio(0,1);
+        int valor_jefe_transformado = utilidad.generar_numero_aleatorio(0,2);
         if(valor_jefe_transformado == 1){
             jefe_final.cambiar_forma();
             jefe_final.mostrar();

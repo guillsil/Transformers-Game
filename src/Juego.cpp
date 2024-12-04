@@ -544,8 +544,8 @@ bool Juego::verificar_entrada_del_cristal(const int &entrada) {
 
 int Juego::calcular_estadistica(const int &estadistica_base){
     Utilidades generador;
-    int cantidad_estadistica_extra = 10*(generador.generar_numero_aleatorio(1,3));
-    int suma_resta = generador.generar_numero_aleatorio(1,2);
+    int cantidad_estadistica_extra = 10*(generador.generar_numero_aleatorio(1,4));
+    int suma_resta = generador.generar_numero_aleatorio(1,3);
     if (suma_resta == 2){ //Si es igual a 2, lo tomamos como que debe restarse se multiplicará x -1
         cantidad_estadistica_extra = (-1) * cantidad_estadistica_extra;
     }
