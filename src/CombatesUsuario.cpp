@@ -67,6 +67,7 @@ void CombatesUsuario:: realizar_enfrentamiento(){
     size_t respuesta;
     bool transformado = false;
     Resultado_combate resultado_combate;
+
     menu.menu_estara_transformado();
     cin >> respuesta;
     while(respuesta != 1 && respuesta != 2){
@@ -109,14 +110,23 @@ void CombatesUsuario::batalla_jefe_final(){
     system("clear");
     for (size_t i = 0; i < 3; i++) {
         system("clear");
-        cout << "ENCUENTRO NUMERO " << i+1 << endl;
+        menu.mostrar_recuadro_superior();        
+        cout << "   ENCUENTRO NUMERO " << i+1 << endl;
+        menu.mostrar_recuadro_inferior();
+        menu.mostrar_recuadro_superior();
+        simulacion_combate.transformer_encuentro_actual().mostrar();
+        menu.mostrar_recuadro_inferior();
         realizar_enfrentamiento();
     }
     termino_torneo = true;
 }
 
 void CombatesUsuario::batalla_generica(){
+    system("clear");
     menu.mostrar_mensaje(ENEMIGO_ENCUENTRO + simulacion_combate.transformer_encuentro_actual().obtener_nombre());
+    menu.mostrar_recuadro_superior();
+    simulacion_combate.transformer_encuentro_actual().mostrar();
+    menu.mostrar_recuadro_inferior();
     realizar_enfrentamiento();
 }
 

@@ -21,8 +21,10 @@ Resultado_combate SimulacionCombate:: combatir(bool transformado){
     if(posicion_actual == (secuencia_combate.tamanio() - 1)){
         Utilidades utilidad;
         int valor_jefe_transformado = utilidad.generar_numero_aleatorio(0,1);
-        if(valor_jefe_transformado == 1) jefe_final.cambiar_forma();
-        
+        if(valor_jefe_transformado == 1){
+            jefe_final.cambiar_forma();
+            jefe_final.mostrar();
+        }
         if(personaje_principal.es_mas_fuerte(jefe_final)) resultado_combate = VICTORIA;
         else if(jefe_final.es_mas_fuerte(personaje_principal)) resultado_combate = DERRROTA;
         
