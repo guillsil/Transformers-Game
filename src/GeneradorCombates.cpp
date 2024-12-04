@@ -13,7 +13,7 @@ Grafo GeneradorCombates:: generar_mapa(Vector<Transformers>& transformers_en_map
     size_t ultimo_vertice = cantidad_transformers - 1;
 
     // Conectar el primer vértice al segundo nivel
-    while (siguiente_vertice < min(CANTIDAD_VERTICE_POR_NIVEL, cantidad_transformers)) {
+    while (siguiente_vertice < min(CANTIDAD_VERTICES_POR_NIVEL, cantidad_transformers)) {
         mapa_combates.agregar_arista(vertice_actual, siguiente_vertice, costo_avanzar(personaje_principal,transformers_en_mapa[siguiente_vertice]) );
         siguiente_vertice++;
     }

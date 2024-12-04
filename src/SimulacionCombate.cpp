@@ -64,6 +64,7 @@ SimulacionCombate& SimulacionCombate:: operator=(const SimulacionCombate& simula
     if(this != &simulacion_combate){
         secuencia_combate = simulacion_combate.secuencia_combate;
         personaje_principal = simulacion_combate.personaje_principal;
+        jefe_final = simulacion_combate.jefe_final;
         posicion_actual = 0;
     }
     return *this;

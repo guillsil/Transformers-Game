@@ -1,7 +1,6 @@
 //Alex Fariña 22/11/2024
 
 #include "CombatesUsuario.hpp"
-#include "Utilidades.hpp"
 #include "Menu.hpp"
 #include <iostream>
 #include <chrono>
@@ -79,11 +78,11 @@ void CombatesUsuario:: realizar_enfrentamiento(){
         transformado = true;
         cout << TRANSFORMADO_PTS << endl;;
     }
+    resultado_combate = simulacion_combate.combatir(transformado);
+    establecer_puntaje_combate(resultado_combate, transformado);
     efectos_combate();
     cout << PRESIONE_TECLA_RESULTADO_COMBATE;
     cin.get();
-    resultado_combate = simulacion_combate.combatir(transformado);
-    establecer_puntaje_combate(resultado_combate, transformado);
     switch (resultado_combate) {
     case VICTORIA:
         menu.mostrar_victoria_combate();
