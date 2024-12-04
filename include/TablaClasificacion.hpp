@@ -31,10 +31,6 @@ public:
     //      De haber menos de 10 jugadores, muestra los que hay.
     void mostrar_top10_jugadores();
 
-    //Pre: Se asume que el DatosJugador está bien generado
-    //Post: A traves de insersion ordenada, se agrega un DatosJugador nuevo a la lista_jugadores
-    void agregar_jugador(DatosJugador jugador_nuevo);
-
     //Pre: -
     //Post: A traves de insersion ordenada, se agrega un DatosJugador nuevo a la lista_jugadores
     void agregar_jugador(std::string nombre_jugador, int puntaje, Personaje personaje_usado);

@@ -55,11 +55,6 @@ class SimulacionCombate {
         //Devuelve true si el transformer en posicion_actual es de la misma faccion que personaje_principal
         //Caso contrario devuelve false
         bool es_aliado();
-        
-        //pre:
-        //post:
-        //Muestra por pantalla el recorrido del personaje_principal hasta el encuentro actual
-        void mostrar_recorrido();
 
         //Pre:-
         //Post:

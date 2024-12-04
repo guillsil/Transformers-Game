@@ -50,10 +50,6 @@ bool SimulacionCombate:: es_aliado(){
     return personaje_principal == secuencia_combate[posicion_actual];
 }
 
-void SimulacionCombate:: mostrar_recorrido() {
-    //A implementar
-}
-
 Transformers& SimulacionCombate:: transformer_encuentro_actual(){
     return secuencia_combate[posicion_actual];
 }

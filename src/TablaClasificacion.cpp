@@ -22,18 +22,10 @@ void TablaClasificacion::mostrar_top10_jugadores(){
     }
 }
 
-void TablaClasificacion::agregar_jugador(DatosJugador jugador_nuevo){
-    //Modularizar == que almacenar en boveda
-    size_t posicion = 0;
-    while (posicion < lista_jugadores.tamanio() && lista_jugadores[posicion].obtener_puntaje() > jugador_nuevo.obtener_puntaje()) {
-        posicion++;
-    }
-    lista_jugadores.alta(jugador_nuevo, posicion);
-}
-
 void TablaClasificacion::agregar_jugador(std::string nombre_jugador, int puntaje, Personaje personaje_usado){
     DatosJugador nuevo(nombre_jugador, puntaje, personaje_usado);
     size_t posicion = 0;
+    //Modularizar == que almacenar en bovedas
     while (posicion < lista_jugadores.tamanio() && lista_jugadores[posicion].obtener_puntaje() > nuevo.obtener_puntaje()) {
         posicion++;
     }
