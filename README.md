@@ -84,6 +84,9 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
   * Cuando se elige transformar el transformer antes de pelear, cambiará de forma a su ***forma vehículo*** antes del combate y volverá a su ***forma normal***, no transformado, una vez terminada la pelea.
   * En batalla final, el jugador deberá elegir si transformarse o no, ***sin saber*** si el jefe final se transformara. La posibilidad de que el jefe final se transforme se calcula de manera posterior a que el menu para cambiar la forma del personaje principal. De transformarse, se mostrará las nuevas estadisticas del jefe final.
 
+* ### Informe de complejidad
+  * El codigo se encuentra en la rama InfomeC
+
 ## Screenshots
 
 ### Menú de Administrador Transformers
