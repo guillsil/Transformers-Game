@@ -1,93 +1,38 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/SOoPfuVL)
-# AYED - TPG 2c2024
 
-## Authors
-
-- [@SILVA GUILLERMO ANDRES - 109777](https://www.github.com/guillsil)
-- [@RIVERO ARDISSONE CANDELA BELÉN - 110339](https://www.github.com/CandelaRiveroA)
-- [@FARIÑA GONCALVES ALEX JAVIER  - 112438](https://www.github.com/AlexFari2004)
-- [@NARVÁEZ YAGUANA GABRIEL ALEJANDRO - 111432](https://www.github.com/Gabosawn)
+# **Transformers Battle Simulator - AYED TPG 2C2024**
 
 ![Logo](image/Banner.png)
 
-## Compilación
+---  
 
-El proyecto se puede compilar manualmente por terminal con la siguiente línea:
+Este proyecto es una simulación estratégica de batalla basada en **Transformers**, desarrollada como parte del trabajo práctico grupal de la materia **Algoritmos y Estructuras de Datos (AYED)**.  
 
+#### **📌 Características principales:**  
+- Implementación de estructuras de datos eficientes, incluyendo **grafos, colas de prioridad y vectores**.  
+- Uso del **algoritmo de Dijkstra** para encontrar el camino óptimo en la simulación de batalla.  
+- Administración de **Transformers y cristales**, con mecánicas de equipamiento, almacenamiento y fusión.  
+- Interacción con personajes icónicos como **Optimus Prime y Megatron**.  
+- Diferentes tipos de vehículos con estadísticas balanceadas.  
+- **CMake y compilación manual** para facilitar la ejecución del código.  
+
+#### **📂 Contenidos del repositorio:**  
+- Código fuente en **C++**, estructurado en módulos.  
+- **Informe de complejidad algorítmica** detallado.  
+- Capturas de pantalla del juego y sus menús.  
+
+#### **⚙️ Compilación:**  
+Puedes compilar el proyecto con:  
 ```bash
 g++ -I include src/Grafo/*.cpp src/*.cpp main.cpp -o main
-```
+```  
+O usar **CMake** con el archivo `CMakeLists.txt`.  
 
-O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** presente en el directorio raíz.
+## Authors
 
-## Informe de complejidad algorítmica
-
-[Informe de complejidad algorítmica](./Informe_complejidad_algoritmica.md)
-
-
-## Justificación de la Selección de Estructuras de Datos y Algoritmos.
-
-* ### Cola de Prioridad en el Algoritmo de Camino Mínimo de Dijkstra
-  * El uso de un ***heap*** en ***Dijkstra*** permite que el algoritmo sea mucho más eficiente al seleccionar rápidamente el nodo con menor distancia, mantener actualizadas las prioridades, y evitar exploraciones innecesarias. Esto asegura un rendimiento óptimo, especialmente en grafos grandes o densos.
-  * En pocas palabras: En Dijkstra, nos asegura encontrar el camino más corto de manera eficiente, reduciendo la complejidad a ***O((a + v)log(v))***.
-
-
-* ### Uso de un vector para alamcenar los Transformers Secundarios
-  * Se emplea el ***TDA Vector*** para manejar la lista de transformers debido a su flexibilidad y eficiencia en operaciones comunes como insertar, búsqueda y eliminación. Al ser dinámico, el vector permite ajustar el tamaño según sea necesario, mientras mantiene un rendimiento óptimo para gestionar y mostrar la lista de manera ordenada. Esto facilita la implementación de funcionalidades como agregar, buscar o eliminar transformers de forma sencilla y eficaz.
-
-* ### Grafos en la generación de Combates
-  * Elegimos usar un grafo para representar el mapa de batalla en nuestro juego porque ofrece una estructura flexible y dinámica ideal para simular el avance estratégico del personaje. 
-  * En el grafo, cada nodo representa un punto en el mapa y cada arista una conexión posible, permitiendo así la búsqueda de rutas óptimas para que el personaje se desplace hacia sus objetivos. Además, el grafo maneja de forma eficiente las interacciones del personaje con rivales de diferentes facciones, permitiendo saltar o enfrentar enemigos. 
-  * También facilita la modularidad y escalabilidad del mapa, añadiendo y eliminando puntos de batalla fácilmente para adaptarse a diferentes niveles y escenarios. 
-
-* ### Dijkstra para obtener el camino Minimo en la Simulacion de la batalla
-  *  Usamos el algoritmo de camino mínimo de ***Dijkstra*** en la simulación de batalla porque es altamente eficiente para encontrar la ruta más corta en un grafo, lo cual es esencial para el desplazamiento estratégico del personaje en el mapa de batalla. 
-  * Una vez generado el mapa, Dijkstra permite identificar el camino mínimo entre el personaje y su objetivo rápidamente. Esto asegura que el personaje pueda avanzar de manera óptima.
-
-## Aclaraciones Adicionales
-* ### Obsequio de un Cristal al Iniciar el juego
-  * Al iniciarse el juego se obsequiará un cristal de rareza común al jugador 
-
-* ### Parámetro Poder
-  * El parámetro de poder de un cristal se representa mediante la suma de las estadísticas de un cristal es decir es la suma entre la fuerza, defensa y velocidad.
-  * El parámetro de poder de un trasnformer se representa mediante la suma de sus estadísticas es decir es la suma entre la fuerza, defensa y velocidad.
-
-* ### Como se muestra el cristal con mayor Poder
-  * Para poder mostrar el cristal con mayor poder lo que se decide es ir almacenando en la bóveda los cristales de manera ordenada (****Inserción Ordenada***) y asi el obtener el cristal de mayor poder tendrá un costo de ***O(1)***, esto porque se ordena de manera descendente lo que permite obtenerlo de una manera más rápida, ya que está en la primera posición.
-
-* ### Como se Equipa un Cristal al Personaje
-  * Para poder equipar con un cristal al personaje lo que se decidió es crearle una bóveda de cristales al personaje en la cual el mismo solo podrá equiparse con hasta ***7 cristales***.
-  * Siempre se equipara con el cristal de mayor poder.
-  * Los cristales equipados no afectan en las batallas con otros transformers.
-
-* ### Estadisticas con la que se crearan los Transformers
-  * A la hora de crear los transformers lo que opto por hacer es que todos tengas un máximo de hasta ***300*** de estadísticas sumadas entre cada una de ellas.
-  * También que todos los transformers creado desde el Administrador de Transformers se crean sin estar transformados.
-  * La division para cada uno de los transformers es la siguiente:
-    * ***Auto:*** fuerza: 50; defensa: 60; velocidad: 100. 
-    * ***Camion:*** fuerza: 120; defensa: 80; velocidad: 60.
-    * ***Avion:*** fuerza: 60; defensa: 50; velocidad: 100.
-    * ***Tanque:*** fuerza: 90; defensa: 110; velocidad: 30.
-  * Fue agregado un metodo el cual permite cierta aletoriedad en estas ultimas estadisticas declaradas. El metodo ***calcular_estadistica*** de la clase Juego, selecciona de manera random números de entre el 1 al 3, los cuales son luego multiplicados por 10. Ademas también obtiene del mismo metodo aleatorio un número de entre 1 y 2, el cual se interpreta de la siguiente manera: si es igual a 1, el número anteriormente obtenido de la multiplicacion se suma, de lo contrario, ser 2, se resta.
-
-* ### Estadisticas de Optimus y Megatron
-  * Para las estadísticas de los protagonistas del juego lo inicializamos de la siguiente manera:
-    *  ***Megatron***: fuerza: 80, defensa: 90, velocidad: 100, vehiculo: Avion.
-    *  ***Optimus***: fuerza: 80, defensa: 100, velocidad: 70, vehiculo: Camion.
-
-* ### Administrador Transformers secundarios
-  * Al iniciar el programa, a traves del constructor, busca el archivo "transformers.csv" e importa todos los transformers declarados en dicho archivo, guardandolos en el vector lista_transformers. Al finalizar el programa, debido al destructor, sobreescribe el archivo "transformers.csv", guardando todos los cambios realizados mientras estaba activo el programa.
-  * El metodo buscar_transformer se lo iguala a BUSCAR_TRANSFORMER_NO_ENCONTRADO, una constante size_t igualada a "-1", si no encuentra el transformer indicado. El size_t -1 es un numero especial ya que los size_t no tiene numeros negativos, el número real es el 18446744073709551615UL. Se eligio este número para saber que se encuentra fuera de rango.
-
-* ### Combate
-  * Cuando se elige transformar al transformer antes de pelear, se restarán 10 puntos al puntaje total.
-  * Cuando se elige transformar el transformer antes de pelear, cambiará de forma a su ***forma vehículo*** antes del combate y volverá a su ***forma normal***, no transformado, una vez terminada la pelea.
-  * En batalla final, el jugador deberá elegir si transformarse o no, ***sin saber*** si el jefe final se transformara. La posibilidad de que el jefe final se transforme se calcula de manera posterior a que el menu para cambiar la forma del personaje principal. De transformarse, se mostrará las nuevas estadisticas del jefe final.
-
-* ### Informe de complejidad
-  * El codigo se encuentra en la rama InfomeC
-
-## Screenshots
+- [@SILVA GUILLERMO ANDRES](https://www.github.com/guillsil)
+- [@RIVERO ARDISSONE CANDELA BELÉN](https://www.github.com/CandelaRiveroA)
+- [@FARIÑA GONCALVES ALEX JAVIER](https://www.github.com/AlexFari2004)
+- [@NARVÁEZ YAGUANA GABRIEL ALEJANDRO](https://www.github.com/Gabosawn)
 
 ### Menú de Administrador Transformers
 
@@ -138,6 +83,7 @@ O, alternativamente, con CMake, utilizando el archivo **CMakeLists.txt** present
 | <img src="image/respuesta_fusion.png" alt="TP1: Interacción con Transformers">           | <img src="image/respuesta_mensaje.png" alt="TP1: Interacción con Transformers">    |
 | Modificar Estado                                                                         | Resultado de Fusionar                                                              |
 | <img src="image/respuesta_modificar_estado.png" alt="TP1: Interacción con Transformers"> | <img src="image/respuesta_fusionador.png" alt="TP1: Interacción con Transformers"> |
+
 
 
 
